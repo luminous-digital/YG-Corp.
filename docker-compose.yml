@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.6.33
+    volumes:
+      - wagtail_mysql_data:/var/lib/mysql
+    ports:
+      - "3310:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=wagtail
+
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    links:
+      - db
+    tty: true
+    depends_on:
+      - db
+    environment:
+      - DJANGO_SETTINGS_MODULE=yougov.settings.dev
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=wagtail
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=admin
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+
+    command: >
+      bash -c "python manage.py migrate
+      && python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  wagtail_mysql_data:
+
