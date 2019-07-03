@@ -74,12 +74,15 @@ class RichTextBlock(blocks.RichTextBlock):
         label = "Full Rich Text"
 
 
-class VideoMediaChooserBlock(blocks.StreamBlock):
-    video_url = EmbedBlock()
-    video_file = TestMediaBlock(icon="media")
+class ChooserBlock(blocks.StreamBlock):
 
     class Meta:
         max_num = 1
+
+
+class VideoMediaChooserBlock(ChooserBlock):
+    video_url = EmbedBlock()
+    video_file = TestMediaBlock(icon="media")
 
 
 class VideoBlock(blocks.StructBlock):
@@ -104,7 +107,7 @@ class ImageColorTypeChooserBlock(blocks.ChoiceBlock):
     ]
 
 
-class ImageTabChooserBlock(blocks.ChoiceBlock):
+class LinkTabChooserBlock(blocks.ChoiceBlock):
 
     choices = [
         ('_self', 'Current Tab'),
@@ -119,7 +122,7 @@ class ImageBlock(blocks.StructBlock):
     sub_copy_color = ImageColorTypeChooserBlock(required=True, help_text="choose sub copy color")
     link_text = blocks.CharBlock(required=True, max_length=128)
     link_url = blocks.URLBlock(required=True, help_text="add url")
-    link_tab_chooser = ImageTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
     link_media_content = blocks.TextBlock(help_text="for now idk for what")
 
     image = ImageChooserBlock(required=True, help_text="choose image")
@@ -149,3 +152,28 @@ class CalloutStreamBlock(blocks.StreamBlock):
         icon = "spinner"
         label = "Callout Stream"
         max_num = 3
+
+
+"""Footer snippet blocks"""
+
+
+class LinkChooserBlock(ChooserBlock):
+    link_external_url = blocks.URLBlock(required=True, help_text="add url")
+    link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
+
+
+class PolicyLinks(blocks.StructBlock):
+    link_name = blocks.TextBlock(required=True, help_text="add your callout")
+    link_page = blocks.PageChooserBlock(required=True, help_text="choose internal page")
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+
+    class Meta:
+        icon = "link"
+
+
+class SiteLinks(PolicyLinks):
+    link_page = LinkChooserBlock(required=True, help_text="choose one type of url you want to use")
+
+
+class GlobalSitesLinks(PolicyLinks):
+    link_page = blocks.URLBlock(required=True, help_text="add url")
