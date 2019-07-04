@@ -36,6 +36,12 @@ class FooterSnippet(models.Model):
         null=True,
         blank=True,
     )
+    social_channel_links = StreamField([
+        ('social_channel_links', blocks.SocialChannelsLinks()),
+        ],
+        null=True,
+        blank=True,
+    )
 
     panels = [
         FieldPanel('name'),
@@ -43,6 +49,7 @@ class FooterSnippet(models.Model):
         FieldPanel('footer_text'),
         FieldPanel('copyright_message'),
         StreamFieldPanel('policy_links'),
+        StreamFieldPanel('social_channel_links'),
         StreamFieldPanel('site_links'),
         StreamFieldPanel('global_links'),
     ]
