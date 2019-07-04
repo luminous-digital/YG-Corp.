@@ -1,0 +1,33 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% for element in footer_elements|slice:":1" %}
+    {% image element.logo fill-150x100 as logo %}
+    <img src="{{logo.url}}">
+    {{ element.footer_text|richtext }}
+    {{ element.copyright_message }}
+    <hr>
+    <div>
+        Policy Links: <br>
+        {% for block in element.policy_links %}
+            <a href="{{block.value.link_page.url}}" target="{{block.value.link_tab_chooser}}">{{block.value.link_name}}</a><br>
+        {% endfor %}
+    </div>
+    <hr>
+    <div>
+        Site links: <br>
+        {% for block in element.site_links %}
+            {% if block.value.link_page.0.block_type == 'link_internal_page' %}
+                <a href="{{block.value.link_page.0.value.url}}" target="{{block.value.link_tab_chooser}}">{{block.value.link_name}}</a><br>
+            {% else %}
+                <a href="{{block.value.link_page.0.value}}" target="{{block.value.link_tab_chooser}}">{{block.value.link_name}}</a><br>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <hr>
+    <div>
+        Global Links:<br>
+        {% for block in element.global_links %}
+            <a href="{{block.value.link_page}}" target="{{block.value.link_tab_chooser}}">{{block.value.link_name}}</a><br>
+        {% endfor %}
+    </div>
+
+{% endfor %}
