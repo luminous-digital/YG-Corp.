@@ -11,6 +11,13 @@
             <a href="{{block.value.link_page.url}}" target="{{block.value.link_tab_chooser}}">{{block.value.link_name}}</a><br>
         {% endfor %}
     </div>
+    <div>
+        Social Channels Links: <br>
+        {% for block in element.social_channel_links %}
+            {% image block.value.social_channel_logo fill-80x50 as img %}
+            <a href="{{block.value.social_channel_url}}" target="_blank"><img src="{{img.url}}"></a><br>
+        {% endfor %}
+    </div>
     <hr>
     <div>
         Site links: <br>

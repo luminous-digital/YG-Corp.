@@ -177,3 +177,11 @@ class SiteLinks(PolicyLinks):
 
 class GlobalSitesLinks(PolicyLinks):
     link_page = blocks.URLBlock(required=True, help_text="add url")
+
+
+class SocialChannelsLinks(blocks.StructBlock):
+    social_channel_logo = ImageChooserBlock(required=True, help_text="choose social channel logo")
+    social_channel_url = blocks.URLBlock(required=True, help_text="add url")
+
+    class Meta:
+        icon = "link"
