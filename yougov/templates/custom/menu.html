@@ -1,0 +1,28 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% for element in menu_elements|slice:":1" %}
+    {{ element.name }}
+    {% image element.logo fill-150x100 as logo %}
+    <img src="{{logo.url}}">
+    <div>
+        {% for block in element.menu_links %}
+            {{ block.value.menu_navigation_level_1.0.url }}<br><br>
+
+            {% for nested_menu in block.value.menu_navigation_level_1 %}
+                {% if nested_menu.block_type == 'menu_external_url' %}
+                    <a href="{{nested_menu.value.url}}" target="_blank">{{nested_menu.value.displayed_name}}</a><br>
+                {% else %}
+                    <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}">{{nested_menu.value}}</a><br>
+                {% endif %}
+            {% endfor %}
+            {% for nested_menu in block.value.menu_navigation_level_2 %}
+                {% if nested_menu.block_type == 'menu_external_url' %}
+                    <a href="{{nested_menu.value.url}}" target="_blank">{{nested_menu.value.displayed_name}}</a><br>
+                {% else %}
+                    <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}">{{nested_menu.value}}</a><br>
+                {% endif %}
+            {% endfor %}
+        <hr>
+        {% endfor %}
+    </div>
+{% endfor %}

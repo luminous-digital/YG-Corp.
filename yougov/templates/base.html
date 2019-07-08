@@ -1,4 +1,4 @@
-{% load static wagtailuserbar footer_tag %}
+{% load static wagtailuserbar footer_tag menu_tag %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -60,6 +60,8 @@
             </form>
           </div>
         </nav>
+
+        {% menu_elements %}
 
         {% block content %}
             <div>content</div>
