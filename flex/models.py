@@ -8,10 +8,7 @@ from wagtail.core.fields import StreamField
 from streams import blocks
 
 
-class FlexPage(Page):
-    """Flexible page class"""
-    template = "flex/flex_page.html"
-
+class AbstractFlexPage(Page):
     content = StreamField(
         [
             ("title_and_text", blocks.TitleAndTextBlock()),
@@ -31,6 +28,14 @@ class FlexPage(Page):
         FieldPanel("subtitle"),
         StreamFieldPanel("content")
     ]
+
+    class Meta:
+        abstract = True
+
+
+class FlexPage(AbstractFlexPage):
+    """Flexible page class"""
+    template = "flex/flex_page.html"
 
     class Meta:
         verbose_name = "Flex Page"
