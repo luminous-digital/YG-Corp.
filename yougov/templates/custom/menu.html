@@ -1,7 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% for element in menu_elements|slice:":1" %}
-    {{ element.name }}
     {% image element.logo fill-150x100 as logo %}
     <img src="{{logo.url}}">
     <div>
