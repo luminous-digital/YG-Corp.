@@ -163,7 +163,7 @@ class LinkChooserBlock(ChooserBlock):
 
 
 class PolicyLinks(blocks.StructBlock):
-    link_name = blocks.TextBlock(required=True, help_text="add your callout")
+    link_name = blocks.TextBlock(required=True, help_text="add your link name")
     link_page = blocks.PageChooserBlock(required=True, help_text="choose internal page")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
 
@@ -185,3 +185,33 @@ class SocialChannelsLinks(blocks.StructBlock):
 
     class Meta:
         icon = "link"
+
+
+"""Website menu snippets blocks"""
+
+
+class MenuExternalURL(blocks.StructBlock):
+    displayed_name = blocks.CharBlock(required=True, max_length=16)
+    url = blocks.URLBlock(required=True, help_text="add url")
+
+    class Meta:
+        icon = "site"
+
+
+class MenuLinkChooser(blocks.StreamBlock):
+    menu_external_url = MenuExternalURL(required=True, help_text="choose url")
+    menu_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
+
+
+class MenuLinkChooserLevelOne(MenuLinkChooser):
+
+    class Meta:
+        max_num = 1
+
+
+class MenuNavigationLevelOne(blocks.StructBlock):
+    menu_navigation_level_1 = MenuLinkChooserLevelOne(required=True, help_text="choose page")
+    menu_navigation_level_2 = MenuLinkChooser(required=False, help_text="add nested pages")
+
+    class Meta:
+        icon = "site"

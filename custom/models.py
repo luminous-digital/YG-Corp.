@@ -56,3 +56,36 @@ class FooterSnippet(models.Model):
 
     def __str__(self):
         return self.name
+
+
+@register_snippet
+class MenuSnippet(models.Model):
+
+    CURRENT_TAB = "_self"
+    NEW_TAB = "_blank"
+    MENU_TAB_CHOOSER_CHOICES = (
+        (CURRENT_TAB, "Current tab"),
+        (NEW_TAB, "New tab")
+    )
+
+    name = models.CharField(null=False, blank=False, max_length=16, help_text="Name of a footer")
+    logo = models.ForeignKey("wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL,
+                             related_name="+")
+
+    menu_tab_chooser = models.CharField(max_length=16, choices=MENU_TAB_CHOOSER_CHOICES, default=CURRENT_TAB)
+    menu_links = StreamField([
+        ('social_channel_links', blocks.MenuNavigationLevelOne()),
+        ],
+        null=True,
+        blank=True,
+    )
+
+    panels = [
+        FieldPanel('name'),
+        ImageChooserPanel('logo'),
+        FieldPanel('menu_tab_chooser'),
+        StreamFieldPanel('menu_links'),
+    ]
+
+    def __str__(self):
+        return self.name
