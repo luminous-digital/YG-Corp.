@@ -63,10 +63,10 @@ class MenuSnippet(models.Model):
 
     CURRENT_TAB = "_self"
     NEW_TAB = "_blank"
-    MENU_TAB_CHOOSER_CHOICES = [
+    MENU_TAB_CHOOSER_CHOICES = (
         (CURRENT_TAB, "Current tab"),
         (NEW_TAB, "New tab")
-    ]
+    )
 
     name = models.CharField(null=False, blank=False, max_length=16, help_text="Name of a footer")
     logo = models.ForeignKey("wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL,
