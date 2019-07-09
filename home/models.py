@@ -3,7 +3,7 @@ from flex.models import AbstractFlexPage
 
 class HomePage(AbstractFlexPage):
     """ Home page model"""
-    templates = "home/home_page.html"
+    template = "flex/flex_page.html"
 
     max_count = 1
 
