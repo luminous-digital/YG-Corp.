@@ -198,12 +198,21 @@ class MenuExternalURL(blocks.StructBlock):
         icon = "site"
 
 
+class MenuAnchorPage(blocks.StructBlock):
+    displayed_name = blocks.CharBlock(required=True, max_length=16)
+    navigation_html_id = blocks.CharBlock(required=True, max_length=16)
+
+    class Meta:
+        icon = "site"
+
+
 class MenuLinkChooser(blocks.StreamBlock):
     menu_external_url = MenuExternalURL(required=True, help_text="choose url")
     menu_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
 
 
 class MenuLinkChooserLevelOne(MenuLinkChooser):
+    menu_anchor_page = MenuAnchorPage(required=True, help_text="choose anchor page")
 
     class Meta:
         max_num = 1
