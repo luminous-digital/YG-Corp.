@@ -80,11 +80,19 @@ class MenuSnippet(models.Model):
         blank=True,
     )
 
+    social_channel_links_mobile_menu = StreamField([
+        ('social_channel_links', blocks.SocialChannelsLinks()),
+        ],
+        null=True,
+        blank=True,
+    )
+
     panels = [
         FieldPanel('name'),
         ImageChooserPanel('logo'),
         FieldPanel('menu_tab_chooser'),
         StreamFieldPanel('menu_links'),
+        StreamFieldPanel('social_channel_links_mobile_menu'),
     ]
 
     def __str__(self):

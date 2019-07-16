@@ -1,6 +1,6 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 
-
+{% for element in menu_elements|slice:":1" %}
 <header class="l-header">
     <div class="l-inner">
         <div class="c-header">
@@ -26,55 +26,53 @@
                     <div class="c-header__nav-wrapper">
                         <nav class="c-header__nav">
                             <ul class="c-nav-list">
-                                {% for element in menu_elements|slice:":1" %}
-                                    {% for block in element.menu_links %}
-                                    <li class="c-nav-list__item {% if forloop.first %} is-active {% endif %}">
-                                        {% for nested_menu in block.value.menu_navigation_level_1 %}
-                                            {% if nested_menu.block_type == 'menu_anchor_page' %}
-                                                <a href="#{{nested_menu.value.navigation_html_id}}" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
-                                                    {{nested_menu.value.displayed_name}}
-                                                </a>
-                                            {% elif nested_menu.block_type == 'menu_external_url' %}
-                                                <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
-                                                    {{nested_menu.value.displayed_name}}
-                                                </a>
-                                            {% else %}
-                                                <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
-                                                    {{nested_menu.value}}
-                                                </a>
-                                            {% endif %}
-                                        {% endfor %}
-                                        {% if block.value.menu_navigation_level_2 %}
-                                            <div class="c-sub-nav">
-                                                <ul class="c-sub-nav-list">
-                                                    <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
-                                                        <a href="#" class="c-sub-nav-list__back c-arrow-link c-arrow-link--rev t-text-9 js-sub-nav-close-trigger">
-                                                            <span class="c-arrow-link__icon o-icon-wrapper">
-                                                                <svg class="o-icon o-icon--arrow-right">
-                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                                                </svg>
-                                                            </span>
-                                                            Main Menu
-                                                        </a>
-                                                    </li>
-                                                    {% for nested_menu in block.value.menu_navigation_level_2 %}
-                                                        <li class="c-sub-nav-list__item">
-                                                        {% if nested_menu.block_type == 'menu_external_url' %}
-                                                            <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link">
-                                                                {{nested_menu.value.displayed_name}}
-                                                            </a>
-                                                        {% else %}
-                                                            <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link">
-                                                                {{nested_menu.value}}
-                                                            </a>
-                                                        {% endif %}
-                                                        </li>
-                                                    {% endfor %}
-                                                </ul>
-                                            </div>
+                                {% for block in element.menu_links %}
+                                <li class="c-nav-list__item {% if forloop.first %} is-active {% endif %}">
+                                    {% for nested_menu in block.value.menu_navigation_level_1 %}
+                                        {% if nested_menu.block_type == 'menu_anchor_page' %}
+                                            <a href="#{{nested_menu.value.navigation_html_id}}" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
+                                                {{nested_menu.value.displayed_name}}
+                                            </a>
+                                        {% elif nested_menu.block_type == 'menu_external_url' %}
+                                            <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
+                                                {{nested_menu.value.displayed_name}}
+                                            </a>
+                                        {% else %}
+                                            <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
+                                                {{nested_menu.value}}
+                                            </a>
                                         {% endif %}
-                                    </li>
                                     {% endfor %}
+                                    {% if block.value.menu_navigation_level_2 %}
+                                        <div class="c-sub-nav">
+                                            <ul class="c-sub-nav-list">
+                                                <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
+                                                    <a href="#" class="c-sub-nav-list__back c-arrow-link c-arrow-link--rev t-text-9 js-sub-nav-close-trigger">
+                                                        <span class="c-arrow-link__icon o-icon-wrapper">
+                                                            <svg class="o-icon o-icon--arrow-right">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                                                            </svg>
+                                                        </span>
+                                                        Main Menu
+                                                    </a>
+                                                </li>
+                                                {% for nested_menu in block.value.menu_navigation_level_2 %}
+                                                    <li class="c-sub-nav-list__item">
+                                                    {% if nested_menu.block_type == 'menu_external_url' %}
+                                                        <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link">
+                                                            {{nested_menu.value.displayed_name}}
+                                                        </a>
+                                                    {% else %}
+                                                        <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link">
+                                                            {{nested_menu.value}}
+                                                        </a>
+                                                    {% endif %}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    {% endif %}
+                                </li>
                                 {% endfor %}
                             </ul>
                         </nav>
@@ -117,85 +115,60 @@
                         </div>
                     </div>
                     <div class="c-sub-nav">
-                        {% for element in menu_elements|slice:":1" %}
-                            {% for block in element.menu_links %}
-                                {% for nested_menu in block.value.menu_navigation_level_1 %}
-                                    {% if nested_menu.block_type == 'menu_anchor_page' %}
-                                        <ul id="{{nested_menu.value.navigation_html_id}}" class="c-sub-nav-list">
-                                    {% else %}
-                                        <ul id="#" class="c-sub-nav-list">
-                                    {% endif %}
-                                {% endfor %}
-                                    <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
-                                        <a href="#" class="c-sub-nav-list__back c-arrow-link c-arrow-link--rev t-text-9 js-sub-nav-close-trigger">
-                                            <span class="c-arrow-link__icon o-icon-wrapper">
-                                                <svg class="o-icon o-icon--arrow-right">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                                </svg>
-                                            </span>
-                                            Main Menu
-                                        </a>
-                                    </li>
-                                        {% for nested_menu in block.value.menu_navigation_level_2 %}
-                                            <li class="c-sub-nav-list__item">
-                                            {% if nested_menu.block_type == 'menu_external_url' %}
-                                                <a href="{{nested_menu.value.url}}" class="c-underline-link" target="_blank">
-                                                    {{nested_menu.value.displayed_name}}
-                                                </a>
-                                            {% else %}
-                                                <a href="{{nested_menu.value.url}}" class="c-underline-link" target="{{ element.menu_tab_chooser }}">
-                                                    {{nested_menu.value}}
-                                                </a>
-                                            {% endif %}
-                                            </li>
-                                        {% endfor %}
-                                </ul>
+                        {% for block in element.menu_links %}
+                            {% for nested_menu in block.value.menu_navigation_level_1 %}
+                                {% if nested_menu.block_type == 'menu_anchor_page' %}
+                                    <ul id="{{nested_menu.value.navigation_html_id}}" class="c-sub-nav-list">
+                                {% else %}
+                                    <ul id="#" class="c-sub-nav-list">
+                                {% endif %}
                             {% endfor %}
+                                <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
+                                    <a href="#" class="c-sub-nav-list__back c-arrow-link c-arrow-link--rev t-text-9 js-sub-nav-close-trigger">
+                                        <span class="c-arrow-link__icon o-icon-wrapper">
+                                            <svg class="o-icon o-icon--arrow-right">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                                            </svg>
+                                        </span>
+                                        Main Menu
+                                    </a>
+                                </li>
+                                    {% for nested_menu in block.value.menu_navigation_level_2 %}
+                                        <li class="c-sub-nav-list__item">
+                                        {% if nested_menu.block_type == 'menu_external_url' %}
+                                            <a href="{{nested_menu.value.url}}" class="c-underline-link" target="_blank">
+                                                {{nested_menu.value.displayed_name}}
+                                            </a>
+                                        {% else %}
+                                            <a href="{{nested_menu.value.url}}" class="c-underline-link" target="{{ element.menu_tab_chooser }}">
+                                                {{nested_menu.value}}
+                                            </a>
+                                        {% endif %}
+                                        </li>
+                                    {% endfor %}
+                            </ul>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="c-header__social-media">
                     <ul class="c-social-media c-social-media--horizontal">
-                        <li class="c-social-media__list">
-                            <a href="https://en-gb.facebook.com/" class="c-icon-with-decor" target="_blank" rel="noopener noreferrer">
-                                <span class="o-icon-wrapper">
-                                    <svg class="o-icon o-icon--facebook">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-facebook' %}"></use>
-                                    </svg>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="c-social-media__list">
-                            <a href="https://twitter.com/" class="c-icon-with-decor" target="_blank" rel="noopener noreferrer">
-                                <span class="o-icon-wrapper">
-                                    <svg class="o-icon o-icon--twitter">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-twitter' %}"></use>
-                                    </svg>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="c-social-media__list">
-                            <a href="https://www.instagram.com/" class="c-icon-with-decor" target="_blank" rel="noopener noreferrer">
-                                <span class="o-icon-wrapper">
-                                    <svg class="o-icon o-icon--instagram">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-instagram' %}"></use>
-                                    </svg>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="c-social-media__list">
-                            <a href="#" class="c-icon-with-decor" target="_blank" rel="noopener noreferrer">
-                                <span class="o-icon-wrapper">
-                                    <svg class="o-icon o-icon--rss">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-rss' %}"></use>
-                                    </svg>
-                                </span>
-                            </a>
-                        </li>
+                        {% for block in element.social_channel_links_mobile_menu %}
+                            <li class="c-social-media__list">
+                                <a href="{{block.value.social_channel_url}}" class="c-icon-with-decor" target="_blank" rel="noopener noreferrer">
+                                    <span class="o-icon-wrapper">
+                                        <svg class="o-icon o-icon--{{block.value.social_channel_logo}}">
+                                            {% with 'svg/symbol/svg/sprite.symbol.svg#icon-'|add:block.value.social_channel_logo as logo_static %}
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static logo_static %}"></use>
+                                            {% endwith %}
+                                        </svg>
+                                    </span>
+                                </a>
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
+{% endfor %}
