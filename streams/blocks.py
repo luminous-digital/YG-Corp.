@@ -157,6 +157,16 @@ class CalloutStreamBlock(blocks.StreamBlock):
 """Footer snippet blocks"""
 
 
+class SocialLinkChooserBlock(blocks.ChoiceBlock):
+
+    choices = [
+        ('facebook', 'facebook'),
+        ('twitter', 'twitter'),
+        ('instagram', 'instagram'),
+        ('rss', 'rss'),
+    ]
+
+
 class LinkChooserBlock(ChooserBlock):
     link_external_url = blocks.URLBlock(required=True, help_text="add url")
     link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
@@ -180,7 +190,7 @@ class GlobalSitesLinks(PolicyLinks):
 
 
 class SocialChannelsLinks(blocks.StructBlock):
-    social_channel_logo = ImageChooserBlock(required=True, help_text="choose social channel logo")
+    social_channel_logo = SocialLinkChooserBlock(required=True, help_text="choose social channel logo")
     social_channel_url = blocks.URLBlock(required=True, help_text="add url")
 
     class Meta:
