@@ -27,35 +27,27 @@
                         <nav class="c-header__nav">
                             <ul class="c-nav-list">
                                 {% for block in element.menu_links %}
-                                <li class="c-nav-list__item {% if forloop.first %} is-active {% endif %}">
-                                    {% for nested_menu in block.value.menu_navigation_level_1 %}
-                                        {% if nested_menu.block_type == 'menu_anchor_page' %}
-                                            <a href="#{{nested_menu.value.navigation_html_id}}" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
+                                {% for nested_menu in block.value.menu_navigation_level_1 %}
+                                <li class="c-nav-list__item {% if request.path == nested_menu.value.url %} is-active {% endif %}">
+                                        {% if nested_menu.block_type == 'menu_external_url' %}
+                                            <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link c-underline-link--desktop">
                                                 {{nested_menu.value.displayed_name}}
                                             </a>
-                                        {% elif nested_menu.block_type == 'menu_external_url' %}
-                                            <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
+                                            <a href="#{{block.value.navigation_html_id}}" class="c-underline-link js-sub-nav-open-trigger">
                                                 {{nested_menu.value.displayed_name}}
-                                            </a>
+                                             </a>
                                         {% else %}
-                                            <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link{%if block.value.menu_navigation_level_2%} js-sub-nav-open-trigger{% endif %}">
+                                            <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link c-underline-link--desktop">
                                                 {{nested_menu.value}}
                                             </a>
+                                            <a href="#{{block.value.navigation_html_id}}" class="c-underline-link js-sub-nav-open-trigger">
+                                                {{nested_menu.value}}
+                                             </a>
                                         {% endif %}
-                                    {% endfor %}
+                                {% endfor %}
                                     {% if block.value.menu_navigation_level_2 %}
                                         <div class="c-sub-nav">
                                             <ul class="c-sub-nav-list">
-                                                <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
-                                                    <a href="#" class="c-sub-nav-list__back c-arrow-link c-arrow-link--rev t-text-9 js-sub-nav-close-trigger">
-                                                        <span class="c-arrow-link__icon o-icon-wrapper">
-                                                            <svg class="o-icon o-icon--arrow-right">
-                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                                            </svg>
-                                                        </span>
-                                                        Main Menu
-                                                    </a>
-                                                </li>
                                                 {% for nested_menu in block.value.menu_navigation_level_2 %}
                                                     <li class="c-sub-nav-list__item">
                                                     {% if nested_menu.block_type == 'menu_external_url' %}
@@ -117,24 +109,18 @@
                     <div class="c-sub-nav">
                         {% for block in element.menu_links %}
                             {% for nested_menu in block.value.menu_navigation_level_1 %}
-                                {% if nested_menu.block_type == 'menu_anchor_page' %}
-                                    <ul id="{{nested_menu.value.navigation_html_id}}" class="c-sub-nav-list">
-                                {% else %}
-                                    <ul id="#" class="c-sub-nav-list">
-                                {% endif %}
-                            {% endfor %}
-                                <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
-                                    <a href="#" class="c-sub-nav-list__back c-arrow-link c-arrow-link--rev t-text-9 js-sub-nav-close-trigger">
-                                        <span class="c-arrow-link__icon o-icon-wrapper">
-                                            <svg class="o-icon o-icon--arrow-right">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                            </svg>
-                                        </span>
-                                        Main Menu
-                                    </a>
-                                </li>
-                                    {% for nested_menu in block.value.menu_navigation_level_2 %}
-                                        <li class="c-sub-nav-list__item">
+                                <ul id="{{block.value.navigation_html_id}}" class="c-sub-nav-list">
+                                    <li class="c-sub-nav-list__item c-sub-nav-list__item--mobile">
+                                        <a href="#" class="c-sub-nav-list__back c-underline-link c-underline-link--revert t-text-9 js-sub-nav-close-trigger">
+                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                <svg class="o-icon o-icon--arrow-left">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                                                </svg>
+                                            </span>
+                                            Main Menu
+                                        </a>
+                                    </li>
+                                    <li class="c-sub-nav-list__item">
                                         {% if nested_menu.block_type == 'menu_external_url' %}
                                             <a href="{{nested_menu.value.url}}" class="c-underline-link" target="_blank">
                                                 {{nested_menu.value.displayed_name}}
@@ -144,9 +130,22 @@
                                                 {{nested_menu.value}}
                                             </a>
                                         {% endif %}
-                                        </li>
-                                    {% endfor %}
-                            </ul>
+                                    </li>
+                            {% endfor %}
+                                {% for nested_menu in block.value.menu_navigation_level_2 %}
+                                    <li class="c-sub-nav-list__item">
+                                        {% if nested_menu.block_type == 'menu_external_url' %}
+                                            <a href="{{nested_menu.value.url}}" class="c-underline-link" target="_blank">
+                                                {{nested_menu.value.displayed_name}}
+                                            </a>
+                                        {% else %}
+                                            <a href="{{nested_menu.value.url}}" class="c-underline-link" target="{{ element.menu_tab_chooser }}">
+                                                {{nested_menu.value}}
+                                            </a>
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                                </ul>
                         {% endfor %}
                     </div>
                 </div>
