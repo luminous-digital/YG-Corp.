@@ -27,9 +27,9 @@ class AbstractSnippet(models.Model):
 @register_snippet
 class FooterSnippet(AbstractSnippet):
 
-    footer_text = RichTextField(features=['h1', 'h2', 'h3', 'h4', 'h5', 'bold', 'italic', 'ul', 'ol', 'hr'], null=True,
+    footer_text = RichTextField(features=['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'bold', 'italic', 'ul', 'ol', 'hr'],
+                                null=True,
                                 blank=True)
-    copyright_message = models.TextField(null=True, blank=False)
 
     policy_links = StreamField([
         ('policy_link', blocks.PolicyLinks()),
@@ -54,7 +54,6 @@ class FooterSnippet(AbstractSnippet):
         FieldPanel('name'),
         ImageChooserPanel('logo'),
         FieldPanel('footer_text'),
-        FieldPanel('copyright_message'),
         StreamFieldPanel('policy_links'),
         StreamFieldPanel('social_channel_links'),
         StreamFieldPanel('site_links'),
