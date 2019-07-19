@@ -159,6 +159,16 @@ class CalloutStreamBlock(blocks.StreamBlock):
         max_num = 3
 
 
+class ImageContentBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True, help_text="choose image")
+    caption = blocks.TextBlock(required=True, help_text="add caption")
+
+    class Meta:
+        template = "streams/image_content_block.html"
+        icon = "image"
+        label = "Image Contact"
+
+
 """Footer snippet blocks"""
 
 
