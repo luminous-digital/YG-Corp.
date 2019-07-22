@@ -1,9 +1,13 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% image self.image original as img %}
-<div class="c-wysiwyg">
-    <figure>
-        <img src="{{img.url}}" alt="">
-        <figcaption>{{self.caption}}</figcaption>
-    </figure>
+<div class="l-section">
+    <div class="l-inner l-inner--small">
+        <div class="c-wysiwyg">
+            <figure>
+                <img src="{{img.url}}" alt="">
+                <figcaption>{{self.caption}}</figcaption>
+            </figure>
+        </div>
+    </div>
 </div>
