@@ -10,8 +10,6 @@ from streams import blocks
 class AbstractSnippet(models.Model):
 
     name = models.CharField(null=False, blank=False, max_length=16, help_text="Name of a footer")
-    logo = models.ForeignKey("wagtailimages.Image", null=True, blank=False, on_delete=models.SET_NULL,
-                             related_name="+")
 
     social_channel_links = StreamField([
         ('social_channel_links', blocks.SocialChannelsLinks()),
@@ -52,7 +50,6 @@ class FooterSnippet(AbstractSnippet):
 
     panels = [
         FieldPanel('name'),
-        ImageChooserPanel('logo'),
         FieldPanel('footer_text'),
         StreamFieldPanel('policy_links'),
         StreamFieldPanel('social_channel_links'),
@@ -84,7 +81,6 @@ class MenuSnippet(AbstractSnippet):
 
     panels = [
         FieldPanel('name'),
-        ImageChooserPanel('logo'),
         FieldPanel('menu_tab_chooser'),
         StreamFieldPanel('menu_links'),
         StreamFieldPanel('social_channel_links'),
