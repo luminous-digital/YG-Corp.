@@ -1,4 +1,4 @@
-{% load static wagtailuserbar footer_tag menu_tag %}
+{% load static wagtailuserbar footer_tag menu_tag cookie_tag%}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -29,6 +29,7 @@
         {% wagtailuserbar %}
 
         {% menu_elements %}
+        {% cookie_elements %}
 
         <main class="l-main js-scroll-to">
             {% block content %}
