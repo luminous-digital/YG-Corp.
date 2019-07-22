@@ -16,6 +16,8 @@ class AbstractFlexPage(Page):
             ("full_rich_text", blocks.RichTextBlock()),
             ("video_block", blocks.VideoBlock()),
             ('image_block', blocks.ImageBlock()),
+            ('image_person_block', blocks.ImagePersonBlock()),
+            ('image_people_block', blocks.ImagePeopleBlock()),
             ('image_content_block', blocks.ImageContentBlock()),
             ('callout_stream_block', blocks.CalloutStreamBlock()),
         ],

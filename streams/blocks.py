@@ -166,7 +166,7 @@ class ImageContentBlock(blocks.StructBlock):
     class Meta:
         template = "streams/image_content_block.html"
         icon = "image"
-        label = "Image Contact"
+        label = "Image Content"
 
 
 """Footer snippet blocks"""
@@ -241,3 +241,31 @@ class MenuNavigationLevelOne(blocks.StructBlock):
 
     class Meta:
         icon = "site"
+
+
+""" Image panel block"""
+
+
+class ImagePersonBlock(blocks.StructBlock):
+
+    image = ImageChooserBlock(required=True, help_text="choose image")
+    name = blocks.CharBlock(required=True, max_length=32, help_text="add name and surname")
+    title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
+    biography = blocks.TextBlock(required=True, help_text="biography about")
+
+    class Meta:
+        template = "streams/image_person_block.html"
+        icon = "placeholder"
+        label = "Person panel"
+
+
+class ImagePeopleBlock(blocks.StructBlock):
+
+    cards = blocks.ListBlock(
+        ImagePersonBlock()
+    )
+
+    class Meta:
+        template = "streams/image_people_block.html"
+        icon = "placeholder"
+        label = "People panel"
