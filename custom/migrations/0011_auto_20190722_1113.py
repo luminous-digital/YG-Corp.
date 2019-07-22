@@ -2,25 +2,6 @@
 
 from django.db import migrations
 
-# def remove_logo_column_footer(apps, schema_editor):
-#     # We can't import the Person model directly as it may be a newer
-#     # version than this migration expects. We use the historical version.
-#     snippets = apps.get_model("custom", "FooterSnippet")
-#     for snippet in snippets.objects.all():
-#         if snippet.logo:
-#             snippet.logo.remove()
-#             snippet.save()
-#
-#
-# def remove_logo_column_menu(apps, schema_editor):
-#     # We can't import the Person model directly as it may be a newer
-#     # version than this migration expects. We use the historical version.
-#     snippets = apps.get_model("custom", "MenuSnippet")
-#     for snippet in snippets.objects.all():
-#         if snippet.logo:
-#             snippet.logo.remove()
-#             snippet.save()
-
 
 class Migration(migrations.Migration):
 
@@ -29,8 +10,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # migrations.RunPython(remove_logo_column_footer),
-        # migrations.RunPython(remove_logo_column_menu),
         migrations.RemoveField(
             model_name='footersnippet',
             name='logo',
