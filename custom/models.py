@@ -88,3 +88,14 @@ class MenuSnippet(AbstractSnippet):
 
     def __str__(self):
         return self.name
+
+
+@register_snippet
+class CookieSnippet(models.Model):
+    name = models.CharField(null=False, blank=False, max_length=16, help_text="Name of a cookie snippet")
+    text = models.TextField(null=False, blank=False, help_text="cookie main text")
+    opt_in = models.CharField(null=False, blank=False, max_length=32, help_text="button accept text")
+    opt_out = models.CharField(null=False, blank=False, max_length=32, help_text="button reject text")
+
+    def __str__(self):
+        return self.name
