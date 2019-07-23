@@ -3,6 +3,7 @@ from wagtail.core import blocks
 from wagtail.embeds.blocks import EmbedBlock
 from django.utils.html import format_html
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
 
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
@@ -255,7 +256,7 @@ class ImagePersonBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/image_person_block.html"
-        icon = "placeholder"
+        icon = "user"
         label = "Person panel"
 
 
@@ -267,5 +268,78 @@ class ImagePeopleBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/image_people_block.html"
-        icon = "placeholder"
+        icon = "group"
         label = "People panel"
+
+
+"""Download Blocks"""
+
+
+class DownloadItemTagBlock(blocks.ChoiceBlock):
+    PRESS_RELEASE = "press_release"
+    WEBCAST = "webcast"
+    PRESENTATION = "presentation"
+    REPORT = "report"
+    PDF = "pdf"
+
+    choices = (
+        (PRESS_RELEASE, "Press release"),
+        (WEBCAST, "Webcast"),
+        (PRESENTATION, "Presentation"),
+        (REPORT, "Report"),
+        (PDF, "PDF"),
+    )
+
+
+class DownloadSourceBaseBlock(blocks.StructBlock):
+
+    source_name = blocks.CharBlock(required=True, max_length=128, help_text="choose source name")
+    item_relevant_tag = DownloadItemTagBlock(required=True,
+                                             help_text="choose relevant tag associated with download item")
+
+
+class DownloadAudioVideoBlock(DownloadSourceBaseBlock):
+    audio_video = AbstractMediaChooserBlock(required=True, help_text="choose audio or video file")
+
+    class Meta:
+        icon = "media"
+
+
+class DownloadHyperLinkBlock(DownloadSourceBaseBlock):
+    hyper_link_url = blocks.URLBlock(required=True, help_text="choose url")
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+
+    class Meta:
+        icon = "site"
+
+
+class DownloadDocumentBlock(DownloadSourceBaseBlock):
+    document = DocumentChooserBlock(required=True, help_text="choose file eg. PDF")
+
+    class Meta:
+        icon = "doc-full"
+
+
+class DownloadSourceTypeBlock(blocks.StreamBlock):
+
+    audio_video = DownloadAudioVideoBlock(required=True)
+    hyperlink = DownloadHyperLinkBlock(required=True)
+    document = DownloadDocumentBlock(required=True)
+
+
+class DownloadBlock(blocks.StructBlock):
+
+    news = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ('date', blocks.DateBlock(required=True)),
+                ('file_name', blocks.CharBlock(required=True, max_length=128, help_text="file name")),
+                ('source_type', DownloadSourceTypeBlock(required=False)),
+            ]
+        )
+    )
+
+    class Meta:
+        template = "streams/download_block.html"
+        icon = "download"
+        label = "Download panel"

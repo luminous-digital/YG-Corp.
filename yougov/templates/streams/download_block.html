@@ -1,0 +1,54 @@
+{% load static %}
+<div class="l-section">
+    <div class="c-downloads-wrapper">
+        <div class="c-downloads-table">
+            <div class="c-downloads-table__heading c-downloads-table__heading--alt">
+                <div class="c-heading">
+                    <h6 class="c-heading__date">
+                        Date
+                    </h6>
+                    <h6 class="c-heading__news">
+                         News title
+                    </h6>
+                </div>
+            </div>
+            {% for news in self.news %}
+                <div class="c-downloads-table__content">
+                    <div class="c-downloads">
+                        <div class="c-downloads__post-wrapper">
+                            <time datetime="0000-00-00" class="c-downloads__date">
+                                {{ news.date|date:"d/m/y" }}
+                            </time>
+                            <h5 class="c-downloads__title">
+                                {{ news.file_name }}
+                            </h5>
+                        </div>
+                        <div class="c-downloads__info-wrapper">
+                            {% for source in news.source_type %}
+                                {% if source.value.hyper_link_url %}
+                                    <a href="{{ source.value.hyper_link_url }}" target="{{ source.value.link_tab_chooser }}" class="c-underline-link c-underline-link--revert" download>
+                                        <span class="c-underline-link__icon o-icon-wrapper">
+                                            <svg class="o-icon o-icon--triangle">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-triangle' %}"></use>
+                                            </svg>
+                                        </span>
+                                        {{ source.value.source_name }}
+                                    </a>
+                                    {% else %}
+                                    <a href="{%if source.value.audio_video%}{{source.value.audio_video.url}}{%else%}{{source.value.document.url}}{%endif%}" class="c-underline-link c-underline-link--revert" download>
+                                        <span class="c-underline-link__icon o-icon-wrapper">
+                                            <svg class="o-icon o-icon--triangle">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-down' %}"></use>
+                                            </svg>
+                                        </span>
+                                        {{ source.value.source_name }}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
