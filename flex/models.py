@@ -9,13 +9,17 @@ from streams import blocks
 
 
 class AbstractFlexPage(Page):
+
+    # commented image_block because of https://luminousweb.atlassian.net/browse/YOUG-16
+    # for now it is not necessary and creates misunderstanding with image_content_block
+
     content = StreamField(
         [
             ("title_and_text", blocks.TitleAndTextBlock()),
             ("quotation_block", blocks.QuotationBlock()),
             ("full_rich_text", blocks.RichTextBlock()),
             ("video_block", blocks.VideoBlock()),
-            ('image_block', blocks.ImageBlock()),
+            # ('image_block', blocks.ImageBlock()),
             ('image_person_block', blocks.ImagePersonBlock()),
             ('image_people_block', blocks.ImagePeopleBlock()),
             ('image_content_block', blocks.ImageContentBlock()),
