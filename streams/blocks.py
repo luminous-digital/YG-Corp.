@@ -404,7 +404,6 @@ class AdvisorListContentBlock(blocks.StructBlock):
     address_field_2 = blocks.CharBlock(required=True, max_length=64, help_text="")
     address_field_3 = blocks.CharBlock(required=True, max_length=64, help_text="")
     hyperlink = blocks.URLBlock(required=True, help_text="add url")
-    image = ImageChooserBlock(required=True, help_text="choose image")
 
 
 class AdvisorsBlock(blocks.StructBlock):
