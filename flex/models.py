@@ -26,6 +26,7 @@ class AbstractFlexPage(Page):
             ('callout_stream_block', blocks.CalloutStreamBlock()),
             ('download_block', blocks.DownloadBlock()),
             ('contact_block', blocks.ContactInfoBlock()),
+            ('advisor_analyst_block', blocks.AdvisorsBlock()),
         ],
         null=True,
         blank=True,
