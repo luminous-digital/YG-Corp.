@@ -391,3 +391,29 @@ class ContactInfoBlock(blocks.StructBlock):
         template = "streams/contact_block.html"
         icon = "mail"
         label = "Contact panel"
+
+
+""" Advisor/Analyst blocks """
+
+
+class AdvisorListContentBlock(blocks.StructBlock):
+
+    title = blocks.CharBlock(required=True, max_length=64, help_text="add job title")
+    company_name = blocks.CharBlock(required=True, max_length=64, help_text="add company name")
+    address_field_1 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    address_field_2 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    address_field_3 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+    image = ImageChooserBlock(required=True, help_text="choose image")
+
+
+class AdvisorsBlock(blocks.StructBlock):
+
+    advisors = blocks.ListBlock(
+        AdvisorListContentBlock(required=True)
+    )
+
+    class Meta:
+        template = "streams/advisor_block.html"
+        icon = "form"
+        label = "Advisor panel"
