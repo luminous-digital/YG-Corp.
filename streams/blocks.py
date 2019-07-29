@@ -429,3 +429,15 @@ class IframeBlock(blocks.StructBlock):
         template = "streams/iframe_block.html"
         icon = "link"
         label = "Iframe panel"
+
+
+""" Hero banner """
+
+class HeroBannerBlock(blocks.StructBlock):
+    banner_text = RichTextBlock(required=False, label="Hero banner text")
+    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+
+    class Meta:
+        template = "streams/hero_banner_block.html"
+        icon = "doc-full"
+        label = "Hero banner"
