@@ -1902,6 +1902,13 @@ input[type=range]::-moz-range-thumb {
   line-height: 1.2;
   letter-spacing: 0.15px; }
 
+.c-downloads__info-wrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column; }
+
 .c-downloads__info-wrapper .c-underline-link {
   font-family: "Rawline", "Arial", sans-serif;
   font-size: 14px;
@@ -1933,6 +1940,7 @@ input[type=range]::-moz-range-thumb {
     width: calc(100% - 200px); }
   .c-downloads__date {
     width: 25%; } }
+
 
 /* ==========================================================================
    Footer list

@@ -330,7 +330,7 @@ class DownloadSourceTypeBlock(blocks.StreamBlock):
 
 
 class DownloadBlock(blocks.StructBlock):
-
+    column_title = blocks.CharBlock(required=True, max_length=64, help_text="add column title")
     news = blocks.ListBlock(
         blocks.StructBlock(
             [
