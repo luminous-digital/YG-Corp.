@@ -418,3 +418,14 @@ class AdvisorsBlock(blocks.StructBlock):
         template = "streams/advisor_block.html"
         icon = "form"
         label = "Advisor panel"
+
+
+""" Iframe block """
+
+class IframeBlock(blocks.StructBlock):
+    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+
+    class Meta:
+        template = "streams/iframe_block.html"
+        icon = "link"
+        label = "Iframe panel"
