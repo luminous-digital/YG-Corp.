@@ -8,6 +8,8 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
 
+# wont be used. Everything on video_block template
+
 class TestMediaBlock(AbstractMediaChooserBlock):
     def render_basic(self, value, context=None):
         if not value:
@@ -88,7 +90,7 @@ class ChooserBlock(blocks.StreamBlock):
 
 class VideoMediaChooserBlock(ChooserBlock):
     video_url = EmbedBlock()
-    video_file = TestMediaBlock(icon="media")
+    video_file = AbstractMediaChooserBlock(icon="media")
 
 
 class VideoBlock(blocks.StructBlock):
@@ -391,3 +393,39 @@ class ContactInfoBlock(blocks.StructBlock):
         template = "streams/contact_block.html"
         icon = "mail"
         label = "Contact panel"
+
+
+""" Advisor/Analyst blocks """
+
+
+class AdvisorListContentBlock(blocks.StructBlock):
+
+    title = blocks.CharBlock(required=True, max_length=64, help_text="add job title")
+    company_name = blocks.CharBlock(required=True, max_length=64, help_text="add company name")
+    address_field_1 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    address_field_2 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    address_field_3 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+
+
+class AdvisorsBlock(blocks.StructBlock):
+
+    advisors = blocks.ListBlock(
+        AdvisorListContentBlock(required=True)
+    )
+
+    class Meta:
+        template = "streams/advisor_block.html"
+        icon = "form"
+        label = "Advisor panel"
+
+
+""" Iframe block """
+
+class IframeBlock(blocks.StructBlock):
+    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+
+    class Meta:
+        template = "streams/iframe_block.html"
+        icon = "link"
+        label = "Iframe panel"
