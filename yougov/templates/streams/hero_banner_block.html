@@ -7,14 +7,18 @@
                 </div>
             </div>
             <div class="c-info-teaser__link">
-                <a href="{{self.hyperlink}}" class="c-underline-link">
-                    About YouGov
+                {% for block in self.hyperlink %}
+                <a href="{% if block.block_type == 'link_external_page' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}"
+                   class="c-underline-link"
+                   {% if block.block_type == 'link_document' %} download{% else %} target="{{self.link_tab_chooser}}"{% endif %}>
+                    {{self.link_text}}
                     <span class="c-underline-link__icon o-icon-wrapper">
                         <svg class="o-icon o-icon--arrow-right">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
                         </svg>
                     </span>
                 </a>
+                {% endfor %}
             </div>
         </div>
     </div>
