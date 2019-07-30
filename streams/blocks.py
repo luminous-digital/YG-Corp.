@@ -429,3 +429,25 @@ class IframeBlock(blocks.StructBlock):
         template = "streams/iframe_block.html"
         icon = "link"
         label = "Iframe panel"
+
+
+""" Hero banner blocks"""
+
+class HeroBannerLinkBlock(blocks.StreamBlock):
+    link_external_page = blocks.URLBlock(required=True, help_text="add url")
+    link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
+    link_document = DocumentChooserBlock(required=True, help_text="choose file eg. PDF")
+
+    class Meta:
+        max_num = 1
+
+class HeroBannerBlock(blocks.StructBlock):
+    banner_text = RichTextBlock(required=False, label="Hero banner text")
+    hyperlink = HeroBannerLinkBlock(required=True, help_text="add link")
+    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+
+    class Meta:
+        template = "streams/hero_banner_block.html"
+        icon = "doc-full"
+        label = "Hero banner"
