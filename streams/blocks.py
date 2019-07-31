@@ -8,8 +8,6 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 
 
-# wont be used. Everything on video_block template
-
 class TestMediaBlock(AbstractMediaChooserBlock):
     def render_basic(self, value, context=None):
         if not value:
@@ -90,7 +88,7 @@ class ChooserBlock(blocks.StreamBlock):
 
 class VideoMediaChooserBlock(ChooserBlock):
     video_url = EmbedBlock()
-    video_file = AbstractMediaChooserBlock(icon="media")
+    video_file = TestMediaBlock(icon="media")
 
 
 class VideoBlock(blocks.StructBlock):
@@ -330,7 +328,7 @@ class DownloadSourceTypeBlock(blocks.StreamBlock):
 
 
 class DownloadBlock(blocks.StructBlock):
-    column_title = blocks.CharBlock(required=True, max_length=64, help_text="add column title")
+
     news = blocks.ListBlock(
         blocks.StructBlock(
             [
