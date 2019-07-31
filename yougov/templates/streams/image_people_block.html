@@ -1,7 +1,11 @@
-<ul class="c-cards-list">
-    {% for card in self.cards %}
-        <li class="c-cards-list__item">
-                {% include 'streams/image_person_base_block.html' with name=card.name image=card.image title=card.title biography=card.biography%}
-        </li>
-    {% endfor %}
-</ul>
+<div class="l-inner">
+    <div class="l-advisor">
+        <ul class="c-cards-list">
+            {% for card in self.cards %}
+                <li class="c-cards-list__item">
+                        {% include 'streams/image_person_base_block.html' with name=card.name image=card.image title=card.title biography=card.biography%}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

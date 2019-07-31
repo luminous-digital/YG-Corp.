@@ -1,29 +1,31 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
-<div class="c-person-card js-accordion">
-    <figure class="c-person-card__media">
-        {% image image original as img %}
-        <img src="{{ img.url }}" alt="Office worker"/>
-    </figure>
-    <h5 class="c-person-card__title">
-        {{ name }}
-    </h5>
-    <h6 class="c-person-card__subtitle">
-        {{ title }}
-    </h6>
-    <div class="c-person-card__details">
-        <p class="c-person-card__info">
-            {{ biography }}
-        </p>
-    </div>
-    <div class="c-person-card__action">
-        <button class="c-read-more-btn c-underline-link c-underline-link--with-rotation js-toggle-accordion">
-            <span class="c-read-more-btn__span">Read more</span>
-            <span class="c-read-more-btn__span">Read less</span>
-            <span class="c-underline-link__icon o-icon-wrapper">
-                <svg class="o-icon o-icon--cross">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
-                </svg>
-            </span>
-        </button>
-    </div>
-</div>
+
+        <div class="c-person-card js-accordion">
+            <figure class="c-person-card__media">
+                {% image image original as img %}
+                <img src="{{ img.url }}" alt="Office worker"/>
+            </figure>
+            <h5 class="c-person-card__title">
+                {{ name }}
+            </h5>
+            <h6 class="c-person-card__subtitle">
+                {{ title }}
+            </h6>
+            <div class="c-person-card__details">
+                <p class="c-person-card__info">
+                    {{ biography }}
+                </p>
+            </div>
+            <div class="c-person-card__action">
+                <button class="c-read-more-btn c-underline-link c-underline-link--with-rotation js-toggle-accordion">
+                    <span class="c-read-more-btn__span">Read more</span>
+                    <span class="c-read-more-btn__span">Read less</span>
+                    <span class="c-underline-link__icon o-icon-wrapper">
+                        <svg class="o-icon o-icon--cross">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </div>
+
