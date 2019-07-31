@@ -95,6 +95,7 @@ class CookieSnippet(models.Model):
     text = models.TextField(null=False, blank=False, help_text="cookie main text")
     opt_in = models.CharField(null=False, blank=False, max_length=32, help_text="button accept text")
     opt_out = models.CharField(null=False, blank=False, max_length=32, help_text="button reject text")
+    ga_id = models.CharField(null=True, blank=True, max_length=32, help_text="Google Analytics ID")
 
     def __str__(self):
         return self.name
