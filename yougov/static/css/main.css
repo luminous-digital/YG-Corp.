@@ -1350,8 +1350,7 @@ WYSIWYG
   .c-wysiwyg h1 {
     font-size: 42px;
     font-weight: 500;
-    line-height: 1.33333;
-    margin: 60px 0; }
+    line-height: 1.33333; }
     @media (min-width: 768px) {
       .c-wysiwyg h1 {
         font-size: 76px;
@@ -1365,8 +1364,7 @@ WYSIWYG
   .c-wysiwyg h2 {
     font-size: 26px;
     font-weight: 500;
-    line-height: 1.15385;
-    margin: 60px 0; }
+    line-height: 1.15385; }
     @media (min-width: 768px) {
       .c-wysiwyg h2 {
         font-size: 42px;
@@ -1379,8 +1377,7 @@ WYSIWYG
     font-size: 22px;
     font-weight: 500;
     line-height: 1.13636;
-    letter-spacing: 0.25px;
-    margin: 60px 0; }
+    letter-spacing: 0.25px; }
     @media (min-width: 768px) {
       .c-wysiwyg h3 {
         font-size: 34px;
@@ -1389,8 +1386,7 @@ WYSIWYG
     font-size: 20px;
     font-weight: 500;
     line-height: 1.2;
-    letter-spacing: 0.15px;
-    margin: 60px 0; }
+    letter-spacing: 0.15px; }
   .c-wysiwyg h5 {
     font-weight: 400;
     font-size: 20px;
@@ -1403,8 +1399,7 @@ WYSIWYG
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  letter-spacing: 0.44px;
-  margin: 60px 0; }
+  letter-spacing: 0.44px; }
 
 .c-wysiwyg strong {
   font-weight: 700; }
@@ -1413,22 +1408,19 @@ WYSIWYG
   font-size: 16px;
   font-weight: 700;
   line-height: 1.5;
-  letter-spacing: 0.15px;
-  margin: 60px 0; }
+  letter-spacing: 0.15px; }
 
 .c-wysiwyg ul {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  letter-spacing: 0.44px;
-  margin: 60px 0; }
+  letter-spacing: 0.44px; }
 
 .c-wysiwyg ol {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  letter-spacing: 0.44px;
-  margin: 60px 0; }
+  letter-spacing: 0.44px; }
 
 .c-wysiwyg figure {
   width: 100%;
