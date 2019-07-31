@@ -1,5 +1,5 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
-<div class="c-person-card js-card">
+<div class="c-person-card js-accordion">
     <figure class="c-person-card__media">
         {% image image original as img %}
         <img src="{{ img.url }}" alt="Office worker"/>
@@ -16,7 +16,7 @@
         </p>
     </div>
     <div class="c-person-card__action">
-        <button class="c-read-more-btn c-underline-link c-underline-link--with-rotation js-toggle-btn">
+        <button class="c-read-more-btn c-underline-link c-underline-link--with-rotation js-toggle-accordion">
             <span class="c-read-more-btn__span">Read more</span>
             <span class="c-read-more-btn__span">Read less</span>
             <span class="c-underline-link__icon o-icon-wrapper">
