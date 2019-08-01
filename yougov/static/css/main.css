@@ -1528,7 +1528,7 @@ body.is-modal-open {
     width: 328px;
     height: 328px;
     content: '';
-    background-image: url("../../../static/img/pic-widget-decor-2.png");
+    background-image: url("/static/img/pic-widget-decor-2.png");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover; }
@@ -1546,7 +1546,7 @@ body.is-modal-open {
       content: '';
       -webkit-transform: translateY(50%);
               transform: translateY(50%);
-      background-image: url("../../../static/img/pic-widget-decor-3.png");
+      background-image: url("/static/img/pic-widget-decor-3.png");
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: cover; } }
@@ -1590,7 +1590,7 @@ body.is-modal-open {
   .l-two-cols__box--with-decor-left {
     padding-top: 80px; }
     .l-two-cols__box--with-decor-left:before {
-      background-image: url("../../../static/img/pic-widget-decor-1.png"); }
+      background-image: url("/static/img/pic-widget-decor-1.png"); }
   .l-two-cols--with-decor-top {
     position: relative;
     overflow: hidden;
@@ -1604,7 +1604,7 @@ body.is-modal-open {
       content: '';
       -webkit-transform: translateY(-65%);
               transform: translateY(-65%);
-      background-image: url("../../../static/img/pic-widget-decor-3.png");
+      background-image: url("/static/img/pic-widget-decor-3.png");
       background-repeat: no-repeat;
       background-position: 50% 50%;
       background-size: cover; } }
@@ -1645,7 +1645,7 @@ body.is-modal-open {
     width: 50%;
     height: auto;
     padding-top: 25%;
-    background-image: url("../../../static/img/pic-widget-decor-2.png"); }
+    background-image: url("/static/img/pic-widget-decor-2.png"); }
   .l-two-cols__row + .l-two-cols__row {
     margin-top: 192px; }
   .l-two-cols__row + .l-two-cols__row--with-decor-left {
