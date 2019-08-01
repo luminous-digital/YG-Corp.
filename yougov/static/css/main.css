@@ -1935,7 +1935,7 @@ WYSIWYG
     display: block;
     width: 33.33333%;
     content: '';
-    background-image: url("../../../static/img/img-layer.png"); } }
+    background-image: url("/static/img/img-layer.png"); } }
 
 @media (min-width: 1200px) {
   .c-advisor:before {
