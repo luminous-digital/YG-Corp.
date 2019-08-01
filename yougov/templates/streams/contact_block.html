@@ -1,59 +1,62 @@
 <div class="l-section">
-    <div class="l-contact">
-         <div class="l-contact__row">
-             <div class="c-info c-wysiwyg">
-                 <h4>
-                     <strong>{{self.left_column.title}}</strong>
-                 </h4>
-                 <h5>
-                     {{self.left_column.sub_title}}
-                 </h5>
-                 {% for item in self.left_column.items %}
-                     <br>
+    <div class="l-inner">
+        <div class="l-contact">
+             <div class="l-contact__row">
+                 <div class="c-info c-wysiwyg">
+                     <h4>
+                         <strong>{{self.left_column.title}}</strong>
+                     </h4>
                      <h5>
-                         {{item.title}}
+                         {{self.left_column.sub_title}}
                      </h5>
-                     <p>
-                         {{item.email}}
-                     </p>
-                 {% endfor %}
+                     {% for item in self.left_column.items %}
+                         <h5>
+                             {{item.title}}
+                         </h5>
+                         <p>
+                             {{item.email}}
+                         </p>
+                     {% endfor %}
+                 </div>
              </div>
-         </div>
-         <div class="l-contact__row l-contact__row--alt">
-             <div class="c-info c-info--alt c-wysiwyg">
-                 <h4>
-                     <strong>{{self.right_column.title}}</strong>
-                 </h4>
-                 {% for item in self.right_column.items %}
-                     <h6>
-                         {{item.city}}
-                     </h6>
-                     <p>
-                         {{item.address_line_1}}
-                         <br>
-                         {{item.address_line_2}}
-                         <br>
-                         {{item.address_line_3}}
-                         <br>
-                         {{item.country}}
-                     </p>
-                     <br>
-                     {{item.right_column_text_editor}}
-                     <br>
-                     <p>
-                         Tel: <a href="tel:{{item.telephone}}" target="_blank">{{item.telephone}}</a>*
-                     </p>
-                     <p>
-                         Email: <a href="mailto:{{item.email_address}}">{{item.email_address}}</a>
-                     </p>
-                     <p>
-                         Web: <a href="{{item.website}}">{{item.website}}</a>
-                     <p>
-                     <br>
-                     <br>
-                 {% endfor %}
-                 {{ self.contact_text_editor }}
+             <div class="l-contact__row l-contact__row--alt">
+                 <div class="c-info c-info--alt c-wysiwyg">
+                     <h4>
+                         <strong>{{self.right_column.title}}</strong>
+                     </h4>
+                     {% for item in self.right_column.items %}
+                         <h6>
+                             {{item.city}}
+                         </h6>
+                         <p>
+                             {{item.address_line_1}}
+                             <br>
+                             {{item.address_line_2}}
+                             <br>
+                             {{item.address_line_3}}
+                             <br>
+                             {{item.country}}
+                             <br>
+                         </p>
+                             {{item.right_column_text_editor}}
+                         <p>
+                             <br>
+                             {% if item.telephone %}
+                             Tel: <a href="tel:{{item.telephone}}" target="_blank">{{item.telephone}}</a>*
+                             <br>
+                             {% endif %}
+                             {% if item.email_address %}
+                             Email: <a href="mailto:{{item.email_address}}">{{item.email_address}}</a>
+                             <br>
+                             {% endif %}
+                             {% if item.website %}
+                             Web: <a href="{{item.website}}">{{item.website}}</a>
+                             {% endif %}
+                         </p>
+                     {% endfor %}
+                     {{ self.contact_text_editor }}
+                 </div>
              </div>
-         </div>
+        </div>
     </div>
 </div>
