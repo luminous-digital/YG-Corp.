@@ -1,4 +1,4 @@
-<div class="c-quote" style="color: #00B7B4;{% if self.optional_padding_above %}padding-top: 76px{% endif %};">
+<div class="c-quote" style="color: #00B7B4;{% if self.optional_padding_above %}padding-top: 76px;{% endif %}">
   <h4 class="c-quote__author t-headline-4 t-bold">
     {{ self.quote_author }}
   </h4>
@@ -13,7 +13,7 @@
         {{ self.link_text }}
         <span class="c-underline-link__icon o-icon-wrapper">
             <svg class="o-icon o-icon--arrow-right">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
             </svg>
         </span>
     </a>
