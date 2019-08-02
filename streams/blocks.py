@@ -56,11 +56,24 @@ class WhiteGreyBackgroundChooserBlock(blocks.ChoiceBlock):
     ]
 
 
+class LinkTabChooserBlock(blocks.ChoiceBlock):
+
+    choices = [
+        ('_self', 'Current Tab'),
+        ('_blank', 'New Tab'),
+    ]
+
+
 class QuotationBlock(blocks.StructBlock):
     """Quotation block"""
-    quotation = blocks.TextBlock(required=True, help_text="Add your quote")
-    citation = blocks.TextBlock(required=True, help_text="add citation")
+    quote_author = blocks.TextBlock(required=True, help_text="add your quote")
+    author_title = blocks.TextBlock(required=True, help_text="add citation")
+    quote_text = blocks.TextBlock(required=True, help_text="add citation")
     background = WhiteGreyBackgroundChooserBlock(required=True, help_text="choose color")
+    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_url = blocks.URLBlock(required=True, help_text="add url")
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+    optional_padding_above = blocks.BooleanBlock(required=False, help_text="add tick box")
 
     class Meta:
         template = "streams/quotation_block.html"
@@ -112,14 +125,6 @@ class ImageColorTypeChooserBlock(blocks.ChoiceBlock):
     choices = [
         ('#FFFFFF', 'White'),
         ('#000000', 'Black'),
-    ]
-
-
-class LinkTabChooserBlock(blocks.ChoiceBlock):
-
-    choices = [
-        ('_self', 'Current Tab'),
-        ('_blank', 'New Tab'),
     ]
 
 
