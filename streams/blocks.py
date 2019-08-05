@@ -66,13 +66,13 @@ class LinkTabChooserBlock(blocks.ChoiceBlock):
 
 class QuotationBlock(blocks.StructBlock):
     """Quotation block"""
-    quote_author = blocks.TextBlock(required=True, help_text="add your quote")
-    author_title = blocks.TextBlock(required=True, help_text="add citation")
-    quote_text = blocks.TextBlock(required=True, help_text="add citation")
+    quote_author = blocks.TextBlock(required=True)
+    author_title = blocks.TextBlock(required=True)
+    quote_text = blocks.TextBlock(required=True)
     link_text = blocks.CharBlock(required=True, max_length=128)
-    link_url = blocks.URLBlock(required=True, help_text="add url")
+    link_url = blocks.URLBlock(required=True)
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
-    optional_padding_above = blocks.BooleanBlock(required=False, help_text="add tick box")
+    optional_padding_above = blocks.BooleanBlock(required=False, help_text="add padding above field")
 
     class Meta:
         template = "streams/quotation_block.html"
