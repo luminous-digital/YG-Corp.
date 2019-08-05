@@ -2,8 +2,6 @@
 
 {% image self.video_thumbnail original as img %}
 {% for video in self.media_chooser %}
-<div class="l-inner">
-    <div class="l-advisor">
         <div class="c-video-module js-video">
             <div class="c-video-module__media">
                 <div class="c-video" style="background-image: url({{img.url}})">
@@ -64,6 +62,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 {% endfor %}
