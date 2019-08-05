@@ -69,7 +69,6 @@ class QuotationBlock(blocks.StructBlock):
     quote_author = blocks.TextBlock(required=True, help_text="add your quote")
     author_title = blocks.TextBlock(required=True, help_text="add citation")
     quote_text = blocks.TextBlock(required=True, help_text="add citation")
-    background = WhiteGreyBackgroundChooserBlock(required=True, help_text="choose color")
     link_text = blocks.CharBlock(required=True, max_length=128)
     link_url = blocks.URLBlock(required=True, help_text="add url")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
