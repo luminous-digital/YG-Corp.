@@ -29,6 +29,8 @@ class AbstractFlexPage(Page):
             ('advisor_analyst_block', blocks.AdvisorsBlock()),
             ('iframe_block', blocks.IframeBlock()),
             ('hero_banner_block', blocks.HeroBannerBlock()),
+            ('accordion_block', blocks.AccordionBlock()),
+            ('accordion_list_block', blocks.AccordionListBlock()),
         ],
         null=True,
         blank=True,

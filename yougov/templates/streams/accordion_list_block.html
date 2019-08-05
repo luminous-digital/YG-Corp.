@@ -1,0 +1,11 @@
+<div class="l-inner">
+    <div class="l-advisor">
+        <ul class="c-accordion-list">
+            {% for accordion in self.accordions %}
+                <li class="c-accordion-list__item">
+                    {% include 'streams/accordion_base_block.html' with title=accordion.title subtitle=accordion.subtitle content=accordion.content expand=accordion.expand%}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

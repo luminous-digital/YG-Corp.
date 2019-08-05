@@ -426,6 +426,7 @@ class AdvisorsBlock(blocks.StructBlock):
 
 """ Iframe block """
 
+
 class IframeBlock(blocks.StructBlock):
     hyperlink = blocks.URLBlock(required=True, help_text="add url")
 
@@ -437,6 +438,7 @@ class IframeBlock(blocks.StructBlock):
 
 """ Hero banner blocks"""
 
+
 class HeroBannerLinkBlock(blocks.StreamBlock):
     link_external_page = blocks.URLBlock(required=True, help_text="add url")
     link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
@@ -444,6 +446,7 @@ class HeroBannerLinkBlock(blocks.StreamBlock):
 
     class Meta:
         max_num = 1
+
 
 class HeroBannerBlock(blocks.StructBlock):
     banner_text = RichTextBlock(required=False, label="Hero banner text")
@@ -455,3 +458,38 @@ class HeroBannerBlock(blocks.StructBlock):
         template = "streams/hero_banner_block.html"
         icon = "doc-full"
         label = "Hero banner"
+
+
+class AccordionExpandChooserBlock(blocks.ChoiceBlock):
+
+    choices = [
+        ('expand', 'Expand'),
+        ('collapse', 'Collapse'),
+    ]
+
+
+""" Accordion module blocks"""
+
+
+class AccordionBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
+    subtitle = blocks.CharBlock(required=False, max_length=32, help_text="add subtitle")
+    content = RichTextBlock(required=True, label="Content")
+    expand = AccordionExpandChooserBlock(required=True, help_text="expand/collapse region")
+
+    class Meta:
+        template = "streams/accordion_block.html"
+        icon = "arrow-down"
+        label = "Accordion panel"
+
+
+class AccordionListBlock(blocks.StructBlock):
+
+    accordions = blocks.ListBlock(
+        AccordionBlock()
+    )
+
+    class Meta:
+        template = "streams/accordion_list_block.html"
+        icon = "arrow-down-big"
+        label = "Accordion list panel"
