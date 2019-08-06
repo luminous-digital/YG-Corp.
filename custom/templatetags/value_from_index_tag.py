@@ -4,5 +4,5 @@ register = template.Library()
 
 
 @register.filter
-def value_from_index_tag(d, key):
+def value_from_index(d, key):
     return d[key]
