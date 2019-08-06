@@ -4,11 +4,13 @@
         <div class="c-table">
             <div class="c-table__head">
                 <div class="c-table__row">
-                    {% for header_row in self.table.data.0 %}
-                    <div class="c-table__col">
-                        <h6 class="t-subtitle-1">{{header_row}}</h6>
-                    </div>
-                    {% endfor %}
+                    {% if self.table.first_row_is_table_header %}
+                        {% for header_row in self.table.data.0 %}
+                        <div class="c-table__col">
+                            <h6 class="t-subtitle-1">{{header_row}}</h6>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             <div class="c-table__body">
@@ -17,10 +19,10 @@
                             {% for data_elem in data %}
                             <div class="c-table__col">
                                 <dl class="c-data-box">
-                                    {% with loop=forloop.counter0 %}
-                                    <dt class="c-data-box__title t-subtitle-1">{{self.table.data.0|table_counter_tag:loop}}</dt>
-                                    <dd class="c-data-box__desc t-headline-5">{{data_elem}}</dd>
-                                    {% endwith %}
+                                    {% if self.table.first_col_is_header %}
+                                        <dt class="c-data-box__title t-subtitle-1">{{self.table.data.0|table_counter_tag:forloop.counter0}}</dt>
+                                    {% endif %}
+                                    <dd class="c-data-box__desc t-headline-5">{% if data_elem == None %}{% else %}{{data_elem}}{% endif %}</dd>
                                 </dl>
                             </div>
                             {% endfor %}
@@ -30,3 +32,4 @@
         </div>
     </div>
 </div>
+
