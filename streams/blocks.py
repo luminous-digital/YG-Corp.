@@ -598,3 +598,36 @@ class FormLink(blocks.StructBlock):
 
 class FormModuleBlock(WagtailFormBlock):
     link_data = FormLink(required=True)
+
+
+""" Event Calendar blocks"""
+
+
+class EventConfirmBlock(blocks.ChoiceBlock):
+
+    CONFIRMATION_YES = "yes"
+    CONFIRMATION_NO = "no"
+
+    choices = (
+        (CONFIRMATION_YES, "Yes"),
+        (CONFIRMATION_NO, "No"),
+    )
+
+
+class EventBlock(blocks.StructBlock):
+
+    name = blocks.CharBlock(required=True, max_length=264, help_text="event name")
+    date = blocks.DateBlock(required=True)
+    to_be_confirmed = EventConfirmBlock(required=True)
+
+
+class EventListBlock(blocks.StructBlock):
+
+    events = blocks.ListBlock(
+        EventBlock()
+    )
+
+    class Meta:
+        template = "streams/event_list_block.html"
+        icon = "date"
+        label = "Event list panel"
