@@ -2,17 +2,17 @@
 <div class="l-inner">
     <div class="l-advisor">
         <div class="c-table">
-            <div class="c-table__head">
-                <div class="c-table__row">
-                    {% if self.table.first_row_is_table_header %}
-                        {% for header_row in self.table.data.0 %}
-                        <div class="c-table__col">
-                            <h6 class="t-subtitle-1">{{header_row}}</h6>
-                        </div>
-                        {% endfor %}
-                    {% endif %}
+            {% if self.table.first_row_is_table_header %}
+                <div class="c-table__head">
+                    <div class="c-table__row">
+                            {% for header_row in self.table.data.0 %}
+                            <div class="c-table__col">
+                                <h6 class="t-subtitle-1">{{header_row}}</h6>
+                            </div>
+                            {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             <div class="c-table__body">
                 {% for data in self.table.data|slice:"1:" %}
                         <div class="c-table__row">
