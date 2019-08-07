@@ -507,3 +507,38 @@ class TableModuleBlock(blocks.StructBlock):
         template = "streams/table_block.html"
         icon = "list-ul"
         label = "Table module"
+
+
+class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
+    choices = [
+        ('#00b7b5', 'Cyan'),
+        ('#9078d7', 'Violet'),
+        ('#605a70', 'Grey'),
+        ('#241d36', 'Dark'),
+    ]
+
+
+class LinkContainerBlock(blocks.StructBlock):
+    background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
+    title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
+    content = blocks.CharBlock(required=False, max_length=32, help_text="add content")
+    image = ImageChooserBlock(required=True, help_text="choose image")
+    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_url = blocks.URLBlock(required=True, help_text="add url")
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open page on new or current tab")
+
+
+class TwoColumnsBlock(blocks.StructBlock):
+    left = LinkContainerBlock()
+    right = LinkContainerBlock()
+
+
+class WidgetChooserBlock(blocks.StreamBlock):
+    link_container = LinkContainerBlock(required=False)
+    two_columns = TwoColumnsBlock(required=False)
+    iframe = IframeBlock(required=False)
+
+    class Meta:
+        template = "streams/widget_block.html"
+        icon = "list-ul"
+        label = "Widget module"
