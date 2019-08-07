@@ -31,7 +31,8 @@ class AbstractFlexPage(Page):
             ('hero_banner_block', blocks.HeroBannerBlock()),
             ('accordion_block', blocks.AccordionBlock()),
             ('accordion_list_block', blocks.AccordionListBlock()),
-            ('table_block', blocks.TableModuleBlock())
+            ('table_block', blocks.TableModuleBlock()),
+            ('form_block', blocks.WagtailFormBlock()),
         ],
         null=True,
         blank=True,

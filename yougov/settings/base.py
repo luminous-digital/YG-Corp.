@@ -25,12 +25,13 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'custom',
+    'flex',
     'home',
     'search',
-    'flex',
     'streams',
 
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
     'wagtail.contrib.redirects',
     'wagtail.contrib.table_block',
     'wagtail.embeds',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtailmedia',
+    'wagtailstreamforms',
     'modelcluster',
     'taggit',
 
@@ -161,6 +163,11 @@ MEDIA_URL = '/media/'
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "yougov"
+
+WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
+    ('streamforms/form_block.html', 'Default Form Template'),  # default
+    ('form/form_block.html', 'Custom Form Template'),
+)
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
