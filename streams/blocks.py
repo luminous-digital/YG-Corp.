@@ -9,6 +9,7 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 from wagtailstreamforms.blocks import WagtailFormBlock
 
+
 # wont be used. Everything on video_block template
 
 class TestMediaBlock(AbstractMediaChooserBlock):
@@ -50,7 +51,6 @@ class TitleAndTextBlock(blocks.StructBlock):
 
 
 class WhiteGreyBackgroundChooserBlock(blocks.ChoiceBlock):
-
     choices = [
         ('#F5F6F7', 'Grey'),
         ('#FFFFFF', 'White'),
@@ -58,7 +58,6 @@ class WhiteGreyBackgroundChooserBlock(blocks.ChoiceBlock):
 
 
 class LinkTabChooserBlock(blocks.ChoiceBlock):
-
     choices = [
         ('_self', 'Current Tab'),
         ('_blank', 'New Tab'),
@@ -70,7 +69,7 @@ class QuotationBlock(blocks.StructBlock):
     quote_author = blocks.TextBlock(required=True)
     author_title = blocks.TextBlock(required=True)
     quote_text = blocks.TextBlock(required=True)
-    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_text = blocks.CharBlock(required=True, max_length=255)
     link_url = blocks.URLBlock(required=True)
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
     optional_padding_above = blocks.BooleanBlock(required=False, help_text="add padding above field")
@@ -96,7 +95,6 @@ class RichTextBlock(blocks.RichTextBlock):
 
 
 class ChooserBlock(blocks.StreamBlock):
-
     class Meta:
         max_num = 1
 
@@ -121,7 +119,6 @@ class VideoBlock(blocks.StructBlock):
 
 
 class ImageColorTypeChooserBlock(blocks.ChoiceBlock):
-
     choices = [
         ('#FFFFFF', 'White'),
         ('#000000', 'Black'),
@@ -133,7 +130,7 @@ class ImageBlock(blocks.StructBlock):
     header_color = ImageColorTypeChooserBlock(required=True, help_text="choose header color")
     sub_copy = blocks.TextBlock(required=True, help_text="add your sub_copy")
     sub_copy_color = ImageColorTypeChooserBlock(required=True, help_text="choose sub copy color")
-    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_text = blocks.CharBlock(required=True, max_length=255)
     link_url = blocks.URLBlock(required=True, help_text="add url")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
     link_media_content = blocks.TextBlock(help_text="for now idk for what")
@@ -181,7 +178,6 @@ class ImageContentBlock(blocks.StructBlock):
 
 
 class SocialLinkChooserBlock(blocks.ChoiceBlock):
-
     choices = [
         ('facebook', 'facebook'),
         ('twitter', 'twitter'),
@@ -237,7 +233,6 @@ class MenuLinkChooser(blocks.StreamBlock):
 
 
 class MenuLinkChooserLevelOne(MenuLinkChooser):
-
     class Meta:
         max_num = 1
 
@@ -255,10 +250,9 @@ class MenuNavigationLevelOne(blocks.StructBlock):
 
 
 class ImagePersonBlock(blocks.StructBlock):
-
     image = ImageChooserBlock(required=True, help_text="choose image")
-    name = blocks.CharBlock(required=True, max_length=32, help_text="add name and surname")
-    title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
+    name = blocks.CharBlock(required=True, max_length=255, help_text="add name and surname")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
     biography = blocks.TextBlock(required=True, help_text="biography about")
 
     class Meta:
@@ -268,7 +262,6 @@ class ImagePersonBlock(blocks.StructBlock):
 
 
 class ImagePeopleBlock(blocks.StructBlock):
-
     cards = blocks.ListBlock(
         ImagePersonBlock()
     )
@@ -299,8 +292,7 @@ class DownloadItemTagBlock(blocks.ChoiceBlock):
 
 
 class DownloadSourceBaseBlock(blocks.StructBlock):
-
-    source_name = blocks.CharBlock(required=True, max_length=128, help_text="choose source name")
+    source_name = blocks.CharBlock(required=True, max_length=255, help_text="choose source name")
     item_relevant_tag = DownloadItemTagBlock(required=True,
                                              help_text="choose relevant tag associated with download item")
 
@@ -328,19 +320,17 @@ class DownloadDocumentBlock(DownloadSourceBaseBlock):
 
 
 class DownloadSourceTypeBlock(blocks.StreamBlock):
-
     audio_video = DownloadAudioVideoBlock(required=True)
     hyperlink = DownloadHyperLinkBlock(required=True)
     document = DownloadDocumentBlock(required=True)
 
 
 class DownloadBlock(blocks.StructBlock):
-
     news = blocks.ListBlock(
         blocks.StructBlock(
             [
                 ('date', blocks.DateBlock(required=True)),
-                ('file_name', blocks.CharBlock(required=True, max_length=128, help_text="file name")),
+                ('file_name', blocks.CharBlock(required=True, max_length=255, help_text="file name")),
                 ('source_type', DownloadSourceTypeBlock(required=False)),
             ]
         )
@@ -356,13 +346,13 @@ class DownloadBlock(blocks.StructBlock):
 
 
 class LeftColumnItemBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=True, max_length=64, help_text="add title")
-    email = blocks.CharBlock(required=True, max_length=32, help_text="add email")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
+    email = blocks.CharBlock(required=True, max_length=255, help_text="add email")
 
 
 class LeftColumnContact(blocks.StructBlock):
-    title = blocks.CharBlock(required=True, max_length=64, help_text="add title")
-    sub_title = blocks.CharBlock(required=True, max_length=128, help_text="add sub title")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
+    sub_title = blocks.CharBlock(required=True, max_length=255, help_text="add sub title")
 
     items = blocks.ListBlock(
         LeftColumnItemBlock(required=True)
@@ -370,26 +360,25 @@ class LeftColumnContact(blocks.StructBlock):
 
 
 class RightColumnItemBlock(blocks.StructBlock):
-    city = blocks.CharBlock(required=True, max_length=32, help_text="add city")
-    address_line_1 = blocks.CharBlock(required=True, max_length=32, help_text="add address")
-    address_line_2 = blocks.CharBlock(required=True, max_length=32, help_text="add address")
-    address_line_3 = blocks.CharBlock(required=True, max_length=32, help_text="add address")
-    country = blocks.CharBlock(required=True, max_length=32, help_text="add country")
+    city = blocks.CharBlock(required=True, max_length=255, help_text="add city")
+    address_line_1 = blocks.CharBlock(required=True, max_length=255, help_text="add address")
+    address_line_2 = blocks.CharBlock(required=True, max_length=255, help_text="add address")
+    address_line_3 = blocks.CharBlock(required=True, max_length=255, help_text="add address")
+    country = blocks.CharBlock(required=True, max_length=255, help_text="add country")
     right_column_text_editor = RichTextBlock(required=False, label="Right column text")
-    telephone = blocks.CharBlock(required=False, max_length=32, help_text="add telephone")
-    email_address = blocks.CharBlock(required=False, max_length=64, help_text="add email")
+    telephone = blocks.CharBlock(required=False, max_length=255, help_text="add telephone")
+    email_address = blocks.CharBlock(required=False, max_length=255, help_text="add email")
     website = blocks.URLBlock(required=False, help_text="add website address")
 
 
 class RightColumnContact(blocks.StructBlock):
-    title = blocks.CharBlock(required=True, max_length=64, help_text="add title")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
     items = blocks.ListBlock(
         RightColumnItemBlock(required=True)
     )
 
 
 class ContactInfoBlock(blocks.StructBlock):
-
     left_column = LeftColumnContact(required=True)
     right_column = RightColumnContact(required=True)
     contact_text_editor = RichTextBlock(required=False, label="Contact text editor")
@@ -404,17 +393,15 @@ class ContactInfoBlock(blocks.StructBlock):
 
 
 class AdvisorListContentBlock(blocks.StructBlock):
-
-    title = blocks.CharBlock(required=True, max_length=64, help_text="add job title")
-    company_name = blocks.CharBlock(required=True, max_length=64, help_text="add company name")
-    address_field_1 = blocks.CharBlock(required=True, max_length=64, help_text="")
-    address_field_2 = blocks.CharBlock(required=True, max_length=64, help_text="")
-    address_field_3 = blocks.CharBlock(required=True, max_length=64, help_text="")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add job title")
+    company_name = blocks.CharBlock(required=True, max_length=255, help_text="add company name")
+    address_field_1 = blocks.CharBlock(required=True, max_length=255, help_text="")
+    address_field_2 = blocks.CharBlock(required=True, max_length=255, help_text="")
+    address_field_3 = blocks.CharBlock(required=True, max_length=255, help_text="")
     hyperlink = blocks.URLBlock(required=True, help_text="add url")
 
 
 class AdvisorsBlock(blocks.StructBlock):
-
     advisors = blocks.ListBlock(
         AdvisorListContentBlock(required=True)
     )
@@ -452,7 +439,7 @@ class HeroBannerLinkBlock(blocks.StreamBlock):
 class HeroBannerBlock(blocks.StructBlock):
     banner_text = RichTextBlock(required=False, label="Hero banner text")
     hyperlink = HeroBannerLinkBlock(required=True, help_text="add link")
-    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_text = blocks.CharBlock(required=True, max_length=255)
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
 
     class Meta:
@@ -462,7 +449,6 @@ class HeroBannerBlock(blocks.StructBlock):
 
 
 class AccordionExpandChooserBlock(blocks.ChoiceBlock):
-
     choices = [
         ('expand', 'Expand'),
         ('collapse', 'Collapse'),
@@ -473,8 +459,8 @@ class AccordionExpandChooserBlock(blocks.ChoiceBlock):
 
 
 class AccordionBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
-    subtitle = blocks.CharBlock(required=False, max_length=32, help_text="add subtitle")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
+    subtitle = blocks.CharBlock(required=False, max_length=255, help_text="add subtitle")
     content = RichTextBlock(required=True, label="Content")
     expand = AccordionExpandChooserBlock(required=True, help_text="expand/collapse region")
 
@@ -485,7 +471,6 @@ class AccordionBlock(blocks.StructBlock):
 
 
 class AccordionListBlock(blocks.StructBlock):
-
     accordions = blocks.ListBlock(
         AccordionBlock()
     )
@@ -500,7 +485,6 @@ class AccordionListBlock(blocks.StructBlock):
 
 
 class TableModuleBlock(blocks.StructBlock):
-
     table = TableBlock()
 
     class Meta:
@@ -508,7 +492,7 @@ class TableModuleBlock(blocks.StructBlock):
         icon = "list-ul"
         label = "Table module"
 
-        
+
 class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
     choices = [
         ('#00b7b5', 'Cyan'),
@@ -518,17 +502,22 @@ class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
     ]
 
 
+"""Widget/Two columns module blocks"""
+
+
 class LinkContainerBlock(blocks.StructBlock):
     background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
-    title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
-    content = blocks.CharBlock(required=True, max_length=58, help_text="add content")
+    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
+    content = blocks.CharBlock(required=True, max_length=255, help_text="add content")
     image = ImageChooserBlock(required=False, help_text="choose image")
-    link_text = blocks.CharBlock(required=True, max_length=128)
+    link_text = blocks.CharBlock(required=True, max_length=255)
     link_url = blocks.URLBlock(required=True, help_text="add url")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open page on new or current tab")
 
     class Meta:
         template = "streams/link_container_block.html"
+        icon = "doc-empty"
+        label = "Link container"
 
 
 class TwoColumnsBlock(blocks.StructBlock):
@@ -537,6 +526,8 @@ class TwoColumnsBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/two_columns_base_block.html"
+        icon = "doc-full"
+        label = "Two columns"
 
 
 class IframeWidgetBlock(blocks.StructBlock):
@@ -544,6 +535,8 @@ class IframeWidgetBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/iframe_base_block.html"
+        icon = "link"
+        label = "Iframe"
 
 
 class WidgetChooserBlock(blocks.StreamBlock):
@@ -553,19 +546,21 @@ class WidgetChooserBlock(blocks.StreamBlock):
 
     class Meta:
         template = "streams/widget_block.html"
-        icon = "list-ul"
+        icon = "cog"
         label = "Widget module"
 
 
 class TwoColumnModuleBlock(blocks.StructBlock):
     social_links = blocks.ListBlock(SocialChannelsLinks())
-    left_widget = WidgetChooserBlock(required=False)
-    right_widget = WidgetChooserBlock(required=False)
+    left_widget = WidgetChooserBlock(required=False, label="Left widget")
+    right_widget = WidgetChooserBlock(required=False, label="Right widget")
 
     class Meta:
         template = "streams/two_columns_block.html"
+        icon = "cogs"
+        label = "Two columns module"
 
-        
+
 """ Form module blocks """
 
 
@@ -594,7 +589,6 @@ class FormPageDocBlock(blocks.StreamBlock):
 
 
 class FormLink(blocks.StructBlock):
-
     link_text = blocks.CharBlock(required=True, max_length=256, help_text="add text")
     link = FormPageDocBlock(required=True, help_text="choose page or document")
     error_message = blocks.CharBlock(required=True, max_length=256, help_text="add message")
