@@ -1,4 +1,4 @@
-{% load field_type_tag static%}
+{% load field_type_tag static %}
 <div class="l-inner l-inner--small">
     <form class="f-form f-form--validation js-form js-ajax-form"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}
           action="{{ value.form_action }}" method="post" novalidate target="_blank">

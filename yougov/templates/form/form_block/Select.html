@@ -1,9 +1,9 @@
 {% load static %}
 <div class="f-field f-field--select">
-    <select class="f-field__control js-select" data-placeholder="{{ placeholder }}" name="{{name}}" {%if required%}required=''{%endif%} id="{{ id }}">
+    <select class="f-field__control js-select" data-placeholder="{{ placeholder }}" name="{{name}}" {% if required%}required=''{% endif %} id="{{ id }}">
         <option></option>
-        {% for x in field %}
-            <option value="{{ x|striptags }}">{{ x|striptags }}</option>
+        {% for option in field %}
+            <option value="{{ option|striptags }}">{{ option|striptags }}</option>
         {% endfor %}
     </select>
     <span class="o-icon-wrapper">
