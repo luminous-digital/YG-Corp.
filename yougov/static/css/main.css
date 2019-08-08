@@ -918,7 +918,7 @@ template {
 @font-face {
   font-family: 'Rawline';
   src: url("/static/fonts/rawline-400-webfont.eot");
-  src: url("/static/fonts/rawline-400-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/rawline-400-webfont.woff2") format("woff2"), url("static/fonts/rawline-400-webfont.woff") format("woff"), url("/static/fonts/rawline-400-webfont.ttf") format("truetype"), url("/static/fonts/rawline-400-webfont.svg#rawlineregular") format("svg");
+  src: url("/static/fonts/rawline-400-webfont.eot?#iefix") format("embedded-opentype"), url("/static/fonts/rawline-400-webfont.woff2") format("woff2"), url("/static/fonts/rawline-400-webfont.woff") format("woff"), url("/static/fonts/rawline-400-webfont.ttf") format("truetype"), url("/static/fonts/rawline-400-webfont.svg#rawlineregular") format("svg");
   font-weight: 400;
   font-style: normal; }
 
