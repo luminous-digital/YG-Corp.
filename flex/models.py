@@ -32,7 +32,7 @@ class AbstractFlexPage(Page):
             ('accordion_block', blocks.AccordionBlock()),
             ('accordion_list_block', blocks.AccordionListBlock()),
             ('table_block', blocks.TableModuleBlock()),
-            ('form_block', blocks.WagtailFormBlock()),
+            ('form_module_block', blocks.FormModuleBlock()),
         ],
         null=True,
         blank=True,
