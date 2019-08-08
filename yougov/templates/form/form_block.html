@@ -1,0 +1,92 @@
+{% load field_type_tag static %}
+<div class="l-inner l-inner--small">
+    <form class="f-form f-form--validation js-form js-ajax-form"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}
+          action="{{ value.form_action }}" method="post" novalidate target="_blank">
+        {{ form.media }}
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+        {% for field in form.visible_fields %}
+            {% with template_type=field|field_type %}
+                {% with template_name=template_type|stringformat:"s"|add:".html" %}
+                    {% include "form/form_block/"|add:template_name with placeholder=field.label_tag|striptags required=field.field.required id=field.id_for_label name=field.name%}
+                {% endwith %}
+            {% endwith %}
+        {% endfor %}
+        <div class="f-form__action">
+            <button class="c-btn c-btn--fluid" type="submit">
+                {{ value.form.submit_button_text }}
+                <span class="c-btn__icon o-icon-wrapper">
+                    <svg class="o-icon o-icon--error">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}">
+                        </use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="l-popup-wrapper">
+    <div class="c-popup">
+        <a class="c-popup__close js-popup-close-trigger">
+            <span class="o-icon-wrapper">
+                <svg class="o-icon o-icon--cross-large">
+                    <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
+                </svg>
+            </span>
+        </a>
+        <div class="c-popup__content">
+            <div class="c-form-info c-form-info--success">
+                <div class="c-form-info__icon" href="#">
+                    <span class="o-icon-wrapper">
+                        <svg class="o-icon o-icon--tick o-icon--popup">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-tick' %}">
+                            </use>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="c-form-info__heading t-headline-2">
+                    {{ self.link_data.success_message }}
+                </h2>
+                <h5 class="c-form-info__desc t-headline-5">
+                    {{ self.link_data.sub_copy }}
+                </h5>
+            </div>
+            <div class="c-form-info c-form-info--error">
+                <div class="c-form-info__icon">
+                    <span class="o-icon-wrapper">
+                        <svg class="o-icon o-icon--error o-icon--popup o-icon--popup-alt">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-fail' %}">
+                            </use>
+                        </svg>
+                    </span>
+                </div>
+                <h2 class="c-form-info__heading t-headline-2">
+                    {{ self.link_data.error_message }}
+                </h2>
+                <h5 class="c-form-info__desc t-headline-5">
+                    {{ self.link_data.sub_copy }}
+                </h5>
+            </div>
+        </div>
+        <div class="c-popup__cta">
+            {% for ref in self.link_data.link %}
+                {% if ref.block_type == 'internal_page' %}
+                    <a href="{{ ref.value.page.url }}" class="c-underline-link" target="{{ ref.value.link_tab_chooser }}">
+                {% else %}
+                    <a href="{{ ref.value.document.url }}" class="c-underline-link">
+                {% endif %}
+            {% endfor %}
+                {{ self.link_data.link_text }}
+                <span class="c-underline-link__icon o-icon-wrapper">
+                    <svg class="o-icon o-icon--error">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
