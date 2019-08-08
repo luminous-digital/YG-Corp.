@@ -165,7 +165,6 @@ MEDIA_URL = '/media/'
 WAGTAIL_SITE_NAME = "yougov"
 
 WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
-    ('streamforms/form_block.html', 'Default Form Template'),  # default
     ('form/form_block.html', 'YouGov Form Template'),
 )
 
