@@ -1,0 +1,18 @@
+{% load static %}
+<div class="f-field">
+    <input class="f-field__control" placeholder="{{ placeholder }}" name="{{name}}" type="{% if type %}{{ type }}{% else %}text{% endif %}" {%if required%}required=''{% endif %} {% if type %}data-parsley-type="{{type}}" {% endif %}data-parsley-errors-container="#{{ id }}"/>
+    <span class="f-field__validation-icon o-icon-wrapper">
+        <svg class="o-icon o-icon--error">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-fail'%}">
+            </use>
+        </svg>
+        <svg class="o-icon o-icon--tick">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-tick' %}">
+            </use>
+        </svg>
+    </span>
+    <div class="f-field__message" id="{{ id }}">
+    </div>
+</div>

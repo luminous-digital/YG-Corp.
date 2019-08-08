@@ -1,0 +1,16 @@
+{% load static %}
+<div class="f-field f-field--select">
+    <select class="f-field__control js-select" data-placeholder="{{ placeholder }}" name="{{name}}" {% if required%}required=''{% endif %} id="{{ id }}">
+        <option></option>
+        {% for option in field %}
+            <option value="{{ option|striptags }}">{{ option|striptags }}</option>
+        {% endfor %}
+    </select>
+    <span class="o-icon-wrapper">
+        <svg class="o-icon o-icon--arrow-simple">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold' %}">
+            </use>
+        </svg>
+    </span>
+</div>
