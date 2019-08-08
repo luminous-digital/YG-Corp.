@@ -32,6 +32,8 @@ class AbstractFlexPage(Page):
             ('accordion_block', blocks.AccordionBlock()),
             ('accordion_list_block', blocks.AccordionListBlock()),
             ('table_block', blocks.TableModuleBlock()),
+            ('widget_block', blocks.WidgetChooserBlock()),
+            ('two_columns_block', blocks.TwoColumnModuleBlock()),
             ('form_module_block', blocks.FormModuleBlock()),
         ],
         null=True,

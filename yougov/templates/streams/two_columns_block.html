@@ -1,0 +1,186 @@
+{% load static %}
+<div class="l-inner">
+    <div class="l-advisor">
+        <div class="l-two-cols l-two-cols--grid">
+            <div class="l-two-cols__box l-two-cols__box--socials">
+                <ul class="c-social-media c-social-media--horizontal c-social-media--start">
+                    {% for link in self.social_links %}
+                    <li class="c-social-media__list">
+                        <a href="{{ link.social_channel_url }}" class="c-icon-with-decor c-icon-with-decor--light" target="_blank" rel="noopener noreferrer">
+                            <span class="o-icon-wrapper">
+                                <svg class="o-icon o-icon--twitter">
+                                     {% with 'svg/symbol/svg/sprite.symbol.svg#icon-'|add:link.social_channel_logo as logo_static %}
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static logo_static %}"></use>
+                                    {% endwith %}
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="l-two-cols__box l-two-cols__box--with-decor-left">
+                {{ self.left_widget }}
+            </div>
+            <div class="l-two-cols__box l-two-cols__box--simple-widget">
+                {{ self.right_widget }}
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------------------------------------------------------>
+<strong>-------------------------------------------</strong>
+<div class="l-two-cols l-two-cols--grid">
+            <div class="l-two-cols__box l-two-cols__box--socials">
+                <ul class="c-social-media c-social-media--horizontal c-social-media--start">
+                    <li class="c-social-media__list">
+                        <a href="#" class="c-icon-with-decor c-icon-with-decor--light" target="_blank" rel="noopener noreferrer">
+                            <span class="o-icon-wrapper">
+                                <svg class="o-icon o-icon--twitter">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-twitter"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="c-social-media__list">
+                        <a href="#" class="c-icon-with-decor c-icon-with-decor--light" target="_blank" rel="noopener noreferrer">
+                            <span class="o-icon-wrapper">
+                                <svg class="o-icon o-icon--linkedin">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-linkedin"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="l-two-cols__box l-two-cols__box--with-decor-left">
+                <div class="c-widget">
+                    <div class="c-widget__row">
+                        <div class="c-widget__iframe">
+                            <iframe src="http://www.bbc.co.uk/news/uk-politics-38265064/embed" class="c-iframe" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                    <div class="c-widget__row">
+                        <div class="c-widget__col">
+                            <a href="#" class="c-widget-module" style="background-color: #241D36;">
+                                <div class="c-widget-module__main">
+                                    <h4 class="c-widget-module__title">
+                                        Our data
+                                    </h4>
+                                    <p class="c-widget-module__desc">
+                                        Link to solutions site
+                                    </p>
+                                    <div class="c-widget-module__action">
+                                        <span class="c-underline-link">
+                                            Read more
+                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                <svg class="o-icon o-icon--arrow-right">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="c-widget__col">
+                            <a href="#" class="c-widget-module" style="background-color: #00B7B4;">
+                                <div class="c-widget-module__main">
+                                    <h4 class="c-widget-module__title">
+                                        Have a question?
+                                    </h4>
+                                    <p class="c-widget-module__desc">
+                                        Visit our press office page to find out more
+                                    </p>
+                                    <div class="c-widget-module__action">
+                                        <span class="c-underline-link">
+                                            Read more
+                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                <svg class="o-icon o-icon--arrow-right">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="l-two-cols__box l-two-cols__box--simple-widget">
+                <div class="c-widget">
+                    <div class="c-widget__row">
+                        <a href="#" class="c-widget-module" style="background-color: #00B7B4;">
+                            <div class="c-widget-module__main">
+                                <h4 class="c-widget-module__title">
+                                    Latest report
+                                </h4>
+                                <p class="c-widget-module__desc">
+                                    Download our latest Annual Report &amp; Accounts 2018
+                                </p>
+                                <div class="c-widget-module__action">
+                                    <span class="c-underline-link">
+                                        Downloads
+                                        <span class="c-underline-link__icon o-icon-wrapper">
+                                            <svg class="o-icon o-icon--arrow-right">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="c-widget-module__media" style="background-image: url(./static/img/pic-widget-1.jpg);"></div>
+                        </a>
+                    </div>
+                    <div class="c-widget__row">
+                        <div class="c-widget__iframe">
+                            <iframe src="http://www.bbc.co.uk/news/uk-politics-38265064/embed" class="c-iframe" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                    <div class="c-widget__row">
+                        <div class="c-widget__col">
+                            <a href="#" class="c-widget-module" style="background-color: #9078D7;">
+                                <div class="c-widget-module__main">
+                                    <h4 class="c-widget-module__title">
+                                        Why invest?
+                                    </h4>
+                                    <p class="c-widget-module__desc">
+                                        Read our investment case
+                                    </p>
+                                    <div class="c-widget-module__action">
+                                        <span class="c-underline-link">
+                                            Read more
+                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                <svg class="o-icon o-icon--arrow-right">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="c-widget__col">
+                            <a href="#" class="c-widget-module" style="background-color: #605A70;">
+                                <div class="c-widget-module__main">
+                                    <h4 class="c-widget-module__title">
+                                        Latest announcements
+                                    </h4>
+                                    <div class="c-widget-module__action">
+                                        <span class="c-underline-link">
+                                            See all announcements
+                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                <svg class="o-icon o-icon--arrow-right">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
