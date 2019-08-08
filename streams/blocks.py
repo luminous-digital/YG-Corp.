@@ -521,24 +521,46 @@ class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
 class LinkContainerBlock(blocks.StructBlock):
     background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
     title = blocks.CharBlock(required=True, max_length=32, help_text="add title")
-    content = blocks.CharBlock(required=False, max_length=32, help_text="add content")
-    image = ImageChooserBlock(required=True, help_text="choose image")
+    content = blocks.CharBlock(required=True, max_length=58, help_text="add content")
+    image = ImageChooserBlock(required=False, help_text="choose image")
     link_text = blocks.CharBlock(required=True, max_length=128)
     link_url = blocks.URLBlock(required=True, help_text="add url")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open page on new or current tab")
 
+    class Meta:
+        template = "streams/link_container_block.html"
+
 
 class TwoColumnsBlock(blocks.StructBlock):
-    left = LinkContainerBlock()
-    right = LinkContainerBlock()
+    left = LinkContainerBlock(required=False)
+    right = LinkContainerBlock(required=False)
+
+    class Meta:
+        template = "streams/two_columns_base_block.html"
+
+
+class IframeWidgetBlock(blocks.StructBlock):
+    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+
+    class Meta:
+        template = "streams/iframe_base_block.html"
 
 
 class WidgetChooserBlock(blocks.StreamBlock):
     link_container = LinkContainerBlock(required=False)
     two_columns = TwoColumnsBlock(required=False)
-    iframe = IframeBlock(required=False)
+    iframe = IframeWidgetBlock(required=False)
 
     class Meta:
         template = "streams/widget_block.html"
         icon = "list-ul"
         label = "Widget module"
+
+
+class TwoColumnModuleBlock(blocks.StructBlock):
+    social_links = blocks.ListBlock(SocialChannelsLinks())
+    left_widget = WidgetChooserBlock(required=False)
+    right_widget = WidgetChooserBlock(required=False)
+
+    class Meta:
+        template = "streams/two_columns_block.html"

@@ -1,81 +1,11 @@
-{% load static %}
 <div class="l-inner">
     <div class="l-advisor">
         <div class="c-widget">
-            <div class="c-widget__row">
-                <div class="c-widget__col">
-                    <a href="{{ self.left_column.link_url }}" class="c-widget-module" style="background-color: {{ self.left_column.background_colour }};">
-                        <div class="c-widget-module__main">
-                            <h4 class="c-widget-module__title">
-                                {{ self.left_column.title }}
-                            </h4>
-                            <p class="c-widget-module__desc">
-                                {{ self.left_column.content }}
-                            </p>
-                            <div class="c-widget-module__action">
-                                <span class="c-underline-link">
-                                    {{ self.left_column.link_text }}
-                                    <span class="c-underline-link__icon o-icon-wrapper">
-                                        <svg class="o-icon o-icon--arrow-right">
-                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </a>
+            {% for element in self %}
+                <div class="c-widget__row">
+                    {{ element }}
                 </div>
-                <div class="c-widget__col">
-                    <a href="{{ self.right_column.link_url }}" class="c-widget-module" style="background-color: {{ self.right_column.background_colour }};">
-                        <div class="c-widget-module__main">
-                            <h4 class="c-widget-module__title">
-                                {{ self.right_column.title }}
-                            </h4>
-                            <p class="c-widget-module__desc">
-                                {{ self.right_column.content }}
-                            </p>
-                            <div class="c-widget-module__action">
-                                <span class="c-underline-link">
-                                    {{ self.right_column.link_text }}
-                                    <span class="c-underline-link__icon o-icon-wrapper">
-                                        <svg class="o-icon o-icon--arrow-right">
-                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="c-widget__row">
-                <div class="c-widget__iframe">
-                    <iframe src="{{ self.iframe }}" class="c-iframe" frameborder="0" scrolling="no"></iframe>
-                </div>
-            </div>
-            <div class="c-widget__row">
-                <a href="#" class="c-widget-module" style="background-color: {{ self.bottom_row.background_colour }};">
-                    <div class="c-widget-module__main">
-                        <h4 class="c-widget-module__title">
-                            {{ self.bottom_row.title }}
-                        </h4>
-                        <p class="c-widget-module__desc">
-                            {{ self.bottom_row.content }}
-                        </p>
-                        <div class="c-widget-module__action">
-                            <span class="c-underline-link">
-                                Downloads
-                                <span class="c-underline-link__icon o-icon-wrapper">
-                                    <svg class="o-icon o-icon--arrow-right">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
-                                    </svg>
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="c-widget-module__media" style="background-image: url(./static/img/pic-widget-1.jpg);"></div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
