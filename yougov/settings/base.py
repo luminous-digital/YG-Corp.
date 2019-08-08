@@ -166,7 +166,7 @@ WAGTAIL_SITE_NAME = "yougov"
 
 WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
     ('streamforms/form_block.html', 'Default Form Template'),  # default
-    ('form/form_block.html', 'Custom Form Template'),
+    ('form/form_block.html', 'YouGov Form Template'),
 )
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
