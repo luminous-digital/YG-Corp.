@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div class="l-inner">
+    <div class="l-news">
+        <ul class="c-list c-list--horizontal-wrap">
+                {% for article in news %}
+            <li class="c-list__item">
+                    {% include 'news/news_base.html' with image=article.image article_title=article.article_title publication_date=article.publication_date article_description=article.article_description article_link=article.article_link %}
+                 </li>
+                {% endfor %}
+        <ul>
+    </div>
+</div>
+{% endblock %}
