@@ -95,3 +95,6 @@ media/
 
 #uploads
 uploads/
+
+#staticfiles
+staticfiles/

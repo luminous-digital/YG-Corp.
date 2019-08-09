@@ -35,6 +35,7 @@ class AbstractFlexPage(Page):
             ('widget_block', blocks.WidgetChooserBlock()),
             ('two_columns_block', blocks.TwoColumnModuleBlock()),
             ('form_module_block', blocks.FormModuleBlock()),
+            ('event_module_block', blocks.EventListBlock()),
         ],
         null=True,
         blank=True,
