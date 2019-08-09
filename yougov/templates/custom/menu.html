@@ -50,7 +50,7 @@
                                 <ul class="c-nav__list">
                                 {% for block in element.menu_links %}
                                     {% for nested_menu in block.value.menu_navigation_level_1 %}
-                                        <li class="c-nav-list__item {% if request.path == nested_menu.value.url %} is-active {% endif %}">
+                                        <li class="c-nav__item {% if request.path == nested_menu.value.url %} is-active {% endif %}">
                                             {% if nested_menu.block_type == 'menu_external_url' %}
                                                 <a href="#{{block.value.navigation_html_id}}" class="c-nav__link js-sub-nav-open-trigger">
                                                     <span class="c-nav__name">{{nested_menu.value.displayed_name}}</span>
