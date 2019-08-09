@@ -604,7 +604,6 @@ class FormModuleBlock(WagtailFormBlock):
 
 
 class EventConfirmBlock(blocks.ChoiceBlock):
-
     CONFIRMATION_YES = "yes"
     CONFIRMATION_NO = "no"
 
@@ -615,14 +614,12 @@ class EventConfirmBlock(blocks.ChoiceBlock):
 
 
 class EventBlock(blocks.StructBlock):
-
     name = blocks.CharBlock(required=True, max_length=264, help_text="event name")
     date = blocks.DateBlock(required=True)
     to_be_confirmed = EventConfirmBlock(required=True)
 
 
 class EventListBlock(blocks.StructBlock):
-
     events = blocks.ListBlock(
         EventBlock()
     )
