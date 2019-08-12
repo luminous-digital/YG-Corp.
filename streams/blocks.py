@@ -143,25 +143,21 @@ class ImageBlock(blocks.StructBlock):
         label = "Image"
 
 
-class CalloutContentBlock(blocks.StructBlock):
-    callout = blocks.TextBlock(required=True, help_text="add your callout")
-    header = blocks.TextBlock(required=True, help_text="add your header")
-    sub_copy = blocks.TextBlock(required=True, help_text="add your sub_copy")
-    background = WhiteGreyBackgroundChooserBlock(required=True, help_text="choose color")
+class CalloutsBlock(blocks.StructBlock):
+    heading = blocks.CharBlock(required=True, max_length=255)
+    callout = blocks.CharBlock(required=True, max_length=255)
+    subcopy = blocks.CharBlock(required=True, max_length=255)
+
+
+class CalloutsModuleBlock(blocks.StructBlock):
+    callouts = blocks.ListBlock(
+        CalloutsBlock()
+    )
 
     class Meta:
+        template = "streams/callout_module_block.html"
         icon = "spinner"
-        label = "Callout Content"
-
-
-class CalloutStreamBlock(blocks.StreamBlock):
-    content = CalloutContentBlock(required=True, help_text="You can add max 3 callouts")
-
-    class Meta:
-        template = "streams/callout_block.html"
-        icon = "spinner"
-        label = "Callout Stream"
-        max_num = 3
+        label = "Callouts"
 
 
 class ImageContentBlock(blocks.StructBlock):
