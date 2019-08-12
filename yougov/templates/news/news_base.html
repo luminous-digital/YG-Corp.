@@ -1,0 +1,17 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% image image original as img %}
+
+<a href="{{ article_link }}" class="c-news-card" target="{{ link_tab_chooser }}">
+    <figure class="c-news-card__media">
+        <img src="{{ img.url }}" alt="News image"/>
+    </figure>
+    <time datetime="{{ publication_date }}" class="c-news-card__date">
+        {{ publication_date|date:'E d, Y' }}
+    </time>
+    <h5 class="c-news-card__title">
+        {{ article_title }}
+    </h5>
+    <p class="c-news-card__info">
+        {{ article_description }}
+    </p>
+</a>
