@@ -77,10 +77,17 @@ class MenuSnippet(AbstractSnippet):
         null=True,
         blank=True,
     )
+    global_navigation_link = StreamField([
+        ('global_navigation_link', blocks.GlobalNavigationBar()),
+        ],
+        null=True,
+        blank=True,
+    )
 
     panels = [
         FieldPanel('name'),
         FieldPanel('menu_tab_chooser'),
+        StreamFieldPanel('global_navigation_link'),
         StreamFieldPanel('menu_links'),
         StreamFieldPanel('social_channel_links'),
     ]
