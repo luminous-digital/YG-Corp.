@@ -23,7 +23,7 @@ class AbstractFlexPage(Page):
             ('image_person_block', blocks.ImagePersonBlock()),
             ('image_people_block', blocks.ImagePeopleBlock()),
             ('image_content_block', blocks.ImageContentBlock()),
-            ('callout_stream_block', blocks.CalloutStreamBlock()),
+            ('callout_module_block', blocks.CalloutsModuleBlock()),
             ('download_block', blocks.DownloadBlock()),
             ('contact_block', blocks.ContactInfoBlock()),
             ('advisor_analyst_block', blocks.AdvisorsBlock()),
