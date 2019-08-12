@@ -10,16 +10,15 @@
                         Our other sites:
                     </p>
                 </li>
-                <li class="c-topbar__item">
-                    <a href="products-and-services.html" class="c-underline-link" target="_blank">
-                        Products and services
-                    </a>
-                </li>
-                <li class="c-topbar__item">
-                    <a href="careers.html" class="c-underline-link" target="_blank">
-                        Careers
-                    </a>
-                </li>
+                {% for global_sites in element.global_navigation_link %}
+                    {% for link in global_sites.value.global_link %}
+                        <li class="c-topbar__item">
+                            <a href="{{ link.value.url }}" class="c-underline-link" target="{{ global_sites.value.link_tab_chooser }}">
+                                {% if link.block_type == 'menu_external_url' %}{{link.value.displayed_name}}{% else %}{{link.value}}{% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -126,14 +125,16 @@
                                     {% for block in element.menu_links %}
                                     <div id="{{block.value.navigation_html_id}}" class="c-sub-nav-box">
                                         <div class="c-sub-nav-box__download">
-                                            <a href="#" class="c-download-box" download="#">
+                                            {% for link in block.value.link.link %}
+                                                <a href="{{ link.value.url }}" class="c-download-box" target="{{ element.menu_tab_chooser }}" {% if link.block_type == 'document' %}download="{{ link.value.url }}" {% endif %}>
                                                 <figure class="c-download-box__media">
-                                                    <img src="{% static 'img/pic-download-1.jpg' %}" alt="alt" />
+                                                    {% image block.value.link.image original as img %}
+                                                    <img src="{{ img.url }}" alt="alt" />
                                                 </figure>
                                                 <div class="c-download-box__action">
                                                     <span class="c-underline-link c-underline-link--inline">
                                                         <span class="c-underline-link__text">
-                                                            Download our factsheet&nbsp;
+                                                            {{ block.value.link.text }}&nbsp;
                                                             <span class="c-underline-link__icon o-icon-wrapper">
                                                                 <svg class="o-icon o-icon--arrow-right">
                                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -145,6 +146,7 @@
                                                     </span>
                                                 </div>
                                             </a>
+                                            {%endfor %}
                                         </div>
                                         <div class="c-sub-nav-box__list">
                                             <a href="#"
@@ -162,7 +164,7 @@
                                                 {% for nested_menu in block.value.menu_navigation_level_1 %}
                                                 <li class="c-nav-list__item {% if request.path == nested_menu.value.url %} is-active {% endif %}">
                                                         {% if nested_menu.block_type == 'menu_external_url' %}
-                                                            <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link c-underline-link--inline">
+                                                            <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link c-underline-link--inline">
                                                                 <span class="c-underline-link__text">
                                                                 {{nested_menu.value.displayed_name}}
                                                                     <span class="c-underline-link__icon o-icon-wrapper">
@@ -192,7 +194,7 @@
                                                         {% for nested_menu in block.value.menu_navigation_level_2 %}
                                                             <li class="c-nav-list__item">
                                                             {% if nested_menu.block_type == 'menu_external_url' %}
-                                                                <a href="{{nested_menu.value.url}}" target="_blank" class="c-underline-link c-underline-link--inline">
+                                                                <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link c-underline-link--inline">
                                                                     <span class="c-underline-link__text">
                                                                     {{nested_menu.value.displayed_name}}
                                                                         <span class="c-underline-link__icon o-icon-wrapper">
@@ -239,26 +241,20 @@
     <div class="l-header__social-media">
         <div class="c-header__social-media">
             <ul class="c-social-media c-social-media--horizontal">
+                {% for block in element.social_channel_links %}
                 <li class="c-social-media__list">
-                    <a href="#" class="c-icon-with-decor" target="_blank">
+                    <a href="{{block.value.social_channel_url}}" class="c-icon-with-decor" target="_blank">
                         <span class="o-icon-wrapper">
-                            <svg class="o-icon o-icon--twitter">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-twitter' %}"></use>
+                            <svg class="o-icon o-icon--{{block.value.social_channel_logo}}">
+                                {% with 'svg/symbol/svg/sprite.symbol.svg#icon-'|add:block.value.social_channel_logo as logo_static %}
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="{% static logo_static %}"></use>
+                                {% endwith %}
                             </svg>
                         </span>
                     </a>
                 </li>
-                <li class="c-social-media__list">
-                    <a href="#" class="c-icon-with-decor" target="_blank">
-                        <span class="o-icon-wrapper">
-                            <svg class="o-icon o-icon--linkedin">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-linkedin' %}"></use>
-                            </svg>
-                        </span>
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
