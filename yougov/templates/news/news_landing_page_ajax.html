@@ -1,0 +1,6 @@
+{% for article in news %}
+    <li class="c-list__item">
+        {% include 'news/news_base.html' with image=article.image article_title=article.article_title publication_date=article.publication_date article_description=article.article_description article_link=article.article_link %}
+    </li>
+{% endfor %}
+
