@@ -627,8 +627,8 @@ class FormModuleBlock(WagtailFormBlock):
 
 
 class EventConfirmBlock(blocks.ChoiceBlock):
-    CONFIRMATION_YES = "yes"
-    CONFIRMATION_NO = "no"
+    CONFIRMATION_YES = 1
+    CONFIRMATION_NO = 0
 
     choices = (
         (CONFIRMATION_YES, "Yes"),
