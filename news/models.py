@@ -30,13 +30,12 @@ class NewsLandingPage(Page):
         verbose_name_plural = "News Landing Page"
 
 
-
 class NewsPage(Page):
     NEW_TAB = "_blank"
     CURRENT_TAB = "_self"
     TAB_CHOOSER = (
-        (NEW_TAB, "Current tab"),
-        (CURRENT_TAB, "New tab"),
+        (NEW_TAB, "New tab"),
+        (CURRENT_TAB, "Current tab"),
     )
 
     image = models.ForeignKey("wagtailimages.Image", blank=False, null=True, on_delete=models.SET_NULL)
@@ -44,7 +43,7 @@ class NewsPage(Page):
     publication_date = models.DateField(default=now, blank=False, null=False)
     article_description = models.TextField(max_length=255, blank=False, null=False)
     article_link = models.URLField(max_length=255, blank=False, null=False)
-    link_tab_chooser =  models.CharField(max_length=6, choices=TAB_CHOOSER, default=NEW_TAB)
+    link_tab_chooser = models.CharField(max_length=6, choices=TAB_CHOOSER, default=CURRENT_TAB)
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('image'),

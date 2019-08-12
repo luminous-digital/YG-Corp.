@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 {% image image original as img %}
 
-<a href="{{ article_link }}" target="{{ link_tab_chooser }}" class="c-news-card">
+<a href="{{ article_link }}" class="c-news-card" target="{{ link_tab_chooser }}">
     <figure class="c-news-card__media">
         <img src="{{ img.url }}" alt="News image"/>
     </figure>
