@@ -5,9 +5,6 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from django.utils.timezone import now
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-
-from streams.blocks import LinkTabChooserBlock
 
 
 class NewsLandingPage(Page):
