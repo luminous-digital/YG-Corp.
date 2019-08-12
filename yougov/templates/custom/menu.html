@@ -5,11 +5,13 @@
     <div class="l-header__topbar">
         <div class="l-inner">
             <ul class="c-topbar">
+                {% if element.global_navigation_text %}
                 <li class="c-topbar__item">
-                    <p href="governance.html" class="t-body-2">
-                        Our other sites:
+                    <p class="t-body-2">
+                        {{ element.global_navigation_text }}
                     </p>
                 </li>
+                {% endif %}
                 {% for global_sites in element.global_navigation_link %}
                     {% for link in global_sites.value.global_link %}
                         <li class="c-topbar__item">
