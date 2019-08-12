@@ -5,6 +5,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from django.utils.timezone import now
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 class NewsLandingPage(Page):
@@ -16,10 +17,17 @@ class NewsLandingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['news'] = NewsPage.objects.live().public()
+        per_page = 6
+        page = int(request.GET['page']) if request.GET['page'] else 1
+        news = NewsPage.objects.live().public()
+        context['load_more'] = news.count() > page * per_page
+        context['news'] = news[((page - 1) * per_page):((page - 1) * per_page) + per_page]
         return context
 
-    template = "news/news_landing_page.html"
+    def get_template(self, request):
+        if request.GET.get('ajax'):
+            return "news/news_landing_page_ajax.html"
+        return "news/news_landing_page.html"
 
     class Meta:
         verbose_name = "News Landing Page"
