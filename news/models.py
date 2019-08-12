@@ -7,6 +7,8 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from django.utils.timezone import now
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
+from streams.blocks import LinkTabChooserBlock
+
 
 class NewsLandingPage(Page):
     custom_title = models.CharField(max_length=255, blank=False, null=False)
@@ -18,7 +20,7 @@ class NewsLandingPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         per_page = 6
-        page = int(request.GET['page']) if request.GET['page'] else 1
+        page = int(request.GET.get('page')) if request.GET.get('page') else 1
         news = NewsPage.objects.live().public()
         context['load_more'] = news.count() > page * per_page
         context['news'] = news[((page - 1) * per_page):((page - 1) * per_page) + per_page]
