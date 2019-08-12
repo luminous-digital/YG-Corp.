@@ -22,7 +22,7 @@ class NewsLandingPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         per_page = 6
-        page = int(request.GET['page']) if request.GET['page'] else 1
+        page = int(request.GET.get('page')) if request.GET.get('page') else 1
         news = NewsPage.objects.live().public()
         context['load_more'] = news.count() > page * per_page
         context['news'] = news[((page - 1) * per_page):((page - 1) * per_page) + per_page]
