@@ -1,4 +1,6 @@
 """StreamFields"""
+from xml.dom import minidom
+
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.embeds.blocks import EmbedBlock
@@ -8,9 +10,14 @@ from wagtail.documents.blocks import DocumentChooserBlock
 
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 from wagtailstreamforms.blocks import WagtailFormBlock
-
+from urllib.request import urlopen
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
+from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL
 
 # wont be used. Everything on video_block template
+
+
 
 class TestMediaBlock(AbstractMediaChooserBlock):
     def render_basic(self, value, context=None):
@@ -525,6 +532,46 @@ class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
     ]
 
 
+""" News Feed module blocks"""
+
+
+class NewsFeedModuleBlock(blocks.StructBlock):
+    number_of_news = blocks.IntegerBlock(required=True)
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        key = make_template_fragment_key('newsfeed', [context['self']['number_of_news']])
+        rows = cache.get(key)
+        if not rows:
+            xmldoc = minidom.parse(urlopen(EDISONINVESTMENTSEARCH_XML_URL))
+            publications = xmldoc.getElementsByTagName('publication')
+            rows = []
+            for publication in publications[:context['self']['number_of_news']]:
+                row = {'headline': self.get_value_from(publication, 'headline'),
+                       'description': self.get_value_from(publication, 'description'),
+                       'research_link': self.get_value_from(publication, 'research_link')}
+                rows.append(row)
+            cache.set(key, rows)
+        context['rows'] = rows
+        return context
+
+    @staticmethod
+    def get_value_from(source, index):
+        return source.getElementsByTagName(index)[0].firstChild.nodeValue
+
+    class Meta:
+        template = "streams/newsfeed_block.html"
+        icon = "doc-full-inverse"
+        label = "Edison news feed panel"
+
+
+class NewsFeedWidgetBlock(NewsFeedModuleBlock):
+    class Meta:
+        template = "streams/newsfeed_widget_block.html"
+        icon = "doc-full-inverse"
+        label = "Edison news feed"
+
+
 """Widget/Two columns module blocks"""
 
 
@@ -566,6 +613,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     link_container = LinkContainerBlock(required=False)
     two_columns = TwoColumnsBlock(required=False)
     iframe = IframeWidgetBlock(required=False)
+    news_feed = NewsFeedWidgetBlock(required=False)
 
     class Meta:
         template = "streams/widget_block.html"

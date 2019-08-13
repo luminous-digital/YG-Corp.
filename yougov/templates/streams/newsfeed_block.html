@@ -1,0 +1,29 @@
+{% load static %}
+<div class="l-inner">
+    <div class="l-advisor">
+        <div class="c-newsfeed">
+            <h4 class="c-newsfeed__heading">
+                Company Research
+            </h4>
+            <div class="c-newsfeed__content">
+                <ul class="c-list">
+                    {% for element in rows %}
+                    <li class="c-list__item">
+                        {% include 'streams/newsfeed_base_block.html' with headline=element.headline description=element.description research_link=element.research_link  %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="c-newsfeed__btn-wrapper">
+                <a href="https://www.edisoninvestmentresearch.com/widgets/901/35" class="c-underline-link" target="_blank">
+                    See more company research
+                    <span class="c-underline-link__icon o-icon-wrapper">
+                        <svg class="o-icon o-icon--arrow-right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
