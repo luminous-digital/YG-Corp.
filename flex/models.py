@@ -36,6 +36,7 @@ class AbstractFlexPage(Page):
             ('two_columns_block', blocks.TwoColumnModuleBlock()),
             ('form_module_block', blocks.FormModuleBlock()),
             ('event_module_block', blocks.EventListBlock()),
+            ('newsfeed_block', blocks.NewsFeedModuleBlock()),
         ],
         null=True,
         blank=True,

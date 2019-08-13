@@ -174,6 +174,15 @@ WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
+EDISONINVESTMENTSEARCH_XML_URL = "https://www.edisoninvestmentresearch.com/widgets-xml/901"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache',
+        'TIMEOUT': 3600,
+    }
+}
 
 try:
     from .local import *  # NOQA
