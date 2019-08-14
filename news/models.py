@@ -19,7 +19,7 @@ class NewsLandingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        per_page = 1
+        per_page = 6
         page = self.get_current_page(request)
         news = NewsPage.objects.live().public()
         context['next_url'] = news.count() > page * per_page
