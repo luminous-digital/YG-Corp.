@@ -23,6 +23,7 @@ services:
       - "8000:8000"
     links:
       - db
+      - elasticsearch
     tty: true
     depends_on:
       - db
@@ -34,11 +35,26 @@ services:
       - MYSQL_PASSWORD=admin
       - MYSQL_HOST=db
       - MYSQL_PORT=3306
+      - ELASTIC_HOST=elasticsearch
+      - ELASTIC_PORT=9200
 
     command: >
       bash -c "python manage.py migrate
       && python manage.py runserver 0.0.0.0:8000"
 
+  elasticsearch:
+    image: elasticsearch:5.4.0
+    depends_on:
+      - db
+    environment:
+      ES_JAVA_OPTS: "-Xms750m -Xmx750m"
+    volumes:
+      - wagtail_es_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
 volumes:
   wagtail_mysql_data:
+  wagtail_es_data:
 

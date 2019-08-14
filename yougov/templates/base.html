@@ -62,10 +62,9 @@
                     </a>
                 </div>
                 <div class="c-modal__body">
-                    <form class="f-search-form">
+                    <form action="/search/" class="f-search-form">
                         <div class="f-field f-field--search">
-                            <input type="text" class="f-field__control" placeholder="Search" />
-                            <a href="#" class="f-field__btn js-search-toggler">
+                            <input type="text" class="f-field__control" placeholder="Search" name="query"/>
                                 <span class="o-icon-wrapper">
                                     <svg class="o-icon o-icon--search">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -74,7 +73,7 @@
                                     </svg>
                                 </span>
                             </a>
-                            <button class="f-field__btn f-field__btn--hidden">
+                            <button type="submit" class="f-field__btn f-field__btn--hidden">
                                 <span class="o-icon-wrapper">
                                     <svg class="o-icon o-icon--search">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"

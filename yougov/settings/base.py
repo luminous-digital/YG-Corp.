@@ -184,6 +184,17 @@ CACHES = {
     }
 }
 
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.search.backends.elasticsearch5',
+        'URLS': ['http://{}:{}'.format(os.environ.get('ELASTIC_HOST', '127.0.0.1'), os.environ.get('ELASTIC_PORT', '9200')), ],
+        'INDEX': 'yougov',
+        'TIMEOUT': 5,
+        'OPTIONS': {},
+        'INDEX_SETTINGS': {},
+    }
+}
+
 try:
     from .local import *  # NOQA
 except ImportError:

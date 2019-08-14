@@ -4,6 +4,7 @@ from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
+from wagtail.search import index
 
 from streams import blocks
 
@@ -47,6 +48,10 @@ class AbstractFlexPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("subtitle"),
         StreamFieldPanel("content")
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('content')
     ]
 
     class Meta:
