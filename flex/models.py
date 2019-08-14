@@ -37,6 +37,7 @@ class AbstractFlexPage(Page):
             ('form_module_block', blocks.FormModuleBlock()),
             ('event_module_block', blocks.EventListBlock()),
             ('newsfeed_block', blocks.NewsFeedModuleBlock()),
+            ('timeline_block', blocks.TimeLineModuleBlock()),
         ],
         null=True,
         blank=True,
