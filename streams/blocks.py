@@ -447,6 +447,7 @@ class AdvisorsBlock(blocks.StructBlock):
 
 class IframeBlock(blocks.StructBlock):
     hyperlink = blocks.URLBlock(required=True, help_text="add url")
+    padding = blocks.BooleanBlock(required=False, label="Add padding")
 
     class Meta:
         template = "streams/iframe_block.html"
@@ -602,6 +603,7 @@ class TwoColumnsBlock(blocks.StructBlock):
 
 class IframeWidgetBlock(blocks.StructBlock):
     hyperlink = blocks.URLBlock(required=True, help_text="add url")
+    padding = blocks.BooleanBlock(required=False, label="Add padding")
     background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
 
     class Meta:
