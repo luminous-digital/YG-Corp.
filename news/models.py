@@ -7,6 +7,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 from django.utils.timezone import now
+from wagtail.search import index
 
 
 class NewsLandingPage(Page):
@@ -66,6 +67,13 @@ class NewsPage(Page):
         FieldPanel('article_description'),
         FieldPanel('article_link'),
         FieldPanel('link_tab_chooser'),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('article_title'),
+        index.FilterField('publication_date'),
+        index.SearchField('article_description'),
+        index.SearchField('article_link'),
     ]
 
     template = "news/news_page.html"
