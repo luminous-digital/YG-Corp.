@@ -602,6 +602,7 @@ class TwoColumnsBlock(blocks.StructBlock):
 
 class IframeWidgetBlock(blocks.StructBlock):
     hyperlink = blocks.URLBlock(required=True, help_text="add url")
+    background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
 
     class Meta:
         template = "streams/iframe_base_block.html"
