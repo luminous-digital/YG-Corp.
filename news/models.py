@@ -1,6 +1,8 @@
 """News page."""
 
 from django.db import models
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -19,7 +21,7 @@ class NewsLandingPage(Page):
         per_page = 6
         page = int(request.GET.get('page')) if request.GET.get('page') else 1
         news = NewsPage.objects.live().public()
-        context['load_more'] = news.count() > page * per_page
+        context['next_url'] = news.count() > page * per_page
         context['news'] = news[((page - 1) * per_page):((page - 1) * per_page) + per_page]
         return context
 
@@ -27,6 +29,15 @@ class NewsLandingPage(Page):
         if request.GET.get('ajax'):
             return "news/news_landing_page_ajax.html"
         return "news/news_landing_page.html"
+
+    def serve(self, request, *args, **kwargs):
+        serve_return = super().serve(request, *args, **kwargs)
+        if request.GET.get('ajax'):
+            return JsonResponse({
+                'html': render_to_string(self.get_template(request), self.get_context(request, *args, **kwargs)),
+                'next_url': self.get_context(request, *args, **kwargs)['next_url']
+            }, safe=False)
+        return serve_return
 
     class Meta:
         verbose_name = "News Landing Page"
