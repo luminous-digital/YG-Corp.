@@ -22,16 +22,16 @@
         </div>
         <div class="l-search-results__list">
             {% if search_results %}
-                <ul>
+                <ul class="c-list c-list--load-more">
                     {% for result in search_results %}
                         <li class="c-list__item">
                             <div class="c-list__decor">
                                 <a href="{% pageurl result %}" class="c-redirect-cta" target="_blank">
                                     <h5 class="c-redirect-cta__section t-headline-5">
-                                        Section 1 ???
+                                        {{ result }}
                                     </h5>
                                     <h5 class="c-redirect-cta__title t-headline-5">
-                                        {{ result }}
+                                        {% if result.search_description %} {{ result.search_description }} {% endif %}
                                     </h5>
                                     <div class="c-redirect-cta__icon" target="_blank">
                                         <span class="o-icon-wrapper">
@@ -45,8 +45,8 @@
                         </li>
                     {% endfor %}
                 </ul>
-                    {% if search_results.has_next %}
-                        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
+                    {#% if search_results.has_next %#}
+<!--                        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>-->
                         <div class="l-search-results__cta">
                             <button class="c-read-more-btn c-underline-link js-list-load-more">
                                 <span class="c-read-more-btn__span">
@@ -59,10 +59,11 @@
                                 </span>
                             </button>
                         </div>
-                        {% include
-                    {% endif %}
+                    {#% endif %#}
             {% elif search_query %}
-                No results found
+                <h5 class="c-redirect-cta__section t-headline-5">
+                    No results found
+                </h5>
             {% endif %}
         </div>
     </div>

@@ -17,10 +17,6 @@ class NewsLandingPage(Page):
         FieldPanel('custom_title')
     ]
 
-    search_fields = Page.search_fields + [
-        index.SearchField('custom_title'),
-    ]
-
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         per_page = 6
