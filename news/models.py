@@ -19,8 +19,8 @@ class NewsLandingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        per_page = 6
-        page = int(request.GET.get('page')) if request.GET.get('page') else 1
+        per_page = 1
+        page = self.get_current_page(request)
         news = NewsPage.objects.live().public()
         context['next_url'] = news.count() > page * per_page
         context['news'] = news[((page - 1) * per_page):((page - 1) * per_page) + per_page]
@@ -31,14 +31,24 @@ class NewsLandingPage(Page):
             return "news/news_landing_page_ajax.html"
         return "news/news_landing_page.html"
 
+    @staticmethod
+    def get_current_page(request):
+        return int(request.GET.get('page')) if request.GET.get('page') else 1
+
     def serve(self, request, *args, **kwargs):
-        serve_return = super().serve(request, *args, **kwargs)
         if request.GET.get('ajax'):
+            current_page = self.get_current_page(request)
+            next_page = current_page + 1
+            next_url = False
+            is_next_url = self.get_context(request, *args, **kwargs)['next_url']
+            current_url = request.get_full_path()
+            if is_next_url:
+                next_url = f'{current_url.split("?")[0]}?ajax=1&page={next_page}'
             return JsonResponse({
                 'html': render_to_string(self.get_template(request), self.get_context(request, *args, **kwargs)),
-                'next_url': self.get_context(request, *args, **kwargs)['next_url']
+                'next_url': next_url,
             }, safe=False)
-        return serve_return
+        return super().serve(request, *args, **kwargs)
 
     class Meta:
         verbose_name = "News Landing Page"
