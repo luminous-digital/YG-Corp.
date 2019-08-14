@@ -27,6 +27,7 @@ services:
     tty: true
     depends_on:
       - db
+      - elasticsearch
     environment:
       - DJANGO_SETTINGS_MODULE=yougov.settings.dev
       - MYSQL_ROOT_PASSWORD=admin
