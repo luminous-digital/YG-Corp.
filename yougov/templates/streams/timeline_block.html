@@ -4,19 +4,19 @@
         <div class="l-timeline__col l-timeline__col--fixed js-timeline--col">
             <div class="c-counter-box">
                 <p class="c-counter-box__number js-timeline-number-panel" id="countup-panel">
-                    {{ self.panel_members }}
+                    0
                 </p>
                 <p class="c-counter-box__desc">
                     panel members
                 </p>
                 <p class="c-counter-box__number js-timeline-number-employees" id="countup-employees">
-                    {{ self.employees }}
+                    0
                 </p>
                 <p class="c-counter-box__desc">
                     employees
                 </p>
                 <p class="c-counter-box__number js-timeline-number-offices" id="countup-offices">
-                    {{ self.offices }}
+                    0
                 </p>
                 <p class="c-counter-box__desc">
                     offices
@@ -30,7 +30,7 @@
                     <div class="c-timeline-box">
                         <div class="c-timeline-box__heading t-headline-2">{{ element.year_field }}</div>
                         <div class="c-timeline-box__content c-wysiwyg c-wysiwyg--small">
-                            <p>{{ self.text_editor }}</p>
+                            <p>{{ element.text_editor }}</p>
                             {% image element.image original as img %}
                             <img src="{{ img.url }}" alt="Pic">
                         </div>

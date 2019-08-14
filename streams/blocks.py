@@ -703,7 +703,6 @@ class EventListBlock(blocks.StructBlock):
 
 class TimeLineBlock(blocks.StructBlock):
     year_field = blocks.CharBlock(required=True, max_length=256)
-    logo_image = ImageChooserBlock(required=False)
     text_editor = blocks.RichTextBlock(required=True)
     image = ImageChooserBlock(required=True)
     panel_field = blocks.CharBlock(required=True, max_length=256)
@@ -712,9 +711,6 @@ class TimeLineBlock(blocks.StructBlock):
 
 
 class TimeLineModuleBlock(blocks.StructBlock):
-    panel_members = blocks.CharBlock(required=True, max_length=256)
-    employees = blocks.CharBlock(required=True, max_length=256)
-    offices = blocks.CharBlock(required=True, max_length=256)
 
     timeline = blocks.ListBlock(
         TimeLineBlock()
@@ -722,5 +718,5 @@ class TimeLineModuleBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/timeline_block.html"
-        icon = "date"
+        icon = "time"
         label = "Timeline panel"
