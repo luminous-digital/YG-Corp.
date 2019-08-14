@@ -720,3 +720,42 @@ class TimeLineModuleBlock(blocks.StructBlock):
         template = "streams/timeline_block.html"
         icon = "time"
         label = "Timeline panel"
+
+
+""" Office location blocks """
+
+
+class OfficeLocationDetailBlock(blocks.StructBlock):
+    office_name = blocks.CharBlock(required=True, max_length=255)
+    address_line_1 = blocks.CharBlock(required=True, max_length=255)
+    address_line_2 = blocks.CharBlock(required=True, max_length=255)
+    address_line_3 = blocks.CharBlock(required=True, max_length=255)
+
+
+class CountryDetailsOfficeBlock(blocks.StructBlock):
+    country_name = blocks.CharBlock(required=True, max_length=255)
+    address = OfficeLocationDetailBlock(required=True)
+    telephone = blocks.CharBlock(required=False, max_length=255)
+    email = blocks.EmailBlock(required=True)
+    website = blocks.URLBlock()
+    did_you_know = blocks.TextBlock(required=False)
+
+
+class OfficeLocationListBlock(blocks.StructBlock):
+    hq_office = CountryDetailsOfficeBlock()
+    additional_offices = blocks.ListBlock(
+        OfficeLocationDetailBlock()
+    )
+
+
+class OfficeLocationBlock(blocks.StructBlock):
+    countries = blocks.ListBlock(
+        OfficeLocationListBlock()
+    )
+
+    class Meta:
+        template = "streams/office_location_block.html"
+        icon = "home"
+        label = "Location office panel"
+
+
