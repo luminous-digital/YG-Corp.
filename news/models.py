@@ -22,8 +22,12 @@ class NewsLandingPage(Page):
         per_page = 6
         page = self.get_current_page(request)
         news = NewsPage.objects.live().public()
-        context['next_url'] = news.count() > page * per_page
+        context['is_next_url'] = news.count() > page * per_page
         context['news'] = news[((page - 1) * per_page):((page - 1) * per_page) + per_page]
+        if context['is_next_url']:
+            current_url = request.get_full_path()
+            next_page = page + 1
+            context['next_url'] = f'{current_url.split("?")[0]}?ajax=1&page={next_page}'
         return context
 
     def get_template(self, request):
@@ -37,12 +41,11 @@ class NewsLandingPage(Page):
 
     def serve(self, request, *args, **kwargs):
         if request.GET.get('ajax'):
-            current_page = self.get_current_page(request)
-            next_page = current_page + 1
             next_url = False
-            is_next_url = self.get_context(request, *args, **kwargs)['next_url']
-            current_url = request.get_full_path()
-            if is_next_url:
+            if self.get_context(request, *args, **kwargs)['is_next_url']:
+                current_page = self.get_current_page(request)
+                next_page = current_page + 1
+                current_url = request.get_full_path()
                 next_url = f'{current_url.split("?")[0]}?ajax=1&page={next_page}'
             return JsonResponse({
                 'html': render_to_string(self.get_template(request), self.get_context(request, *args, **kwargs)),
