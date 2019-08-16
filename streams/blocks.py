@@ -580,14 +580,14 @@ class NewsFeedModuleBlock(blocks.StructBlock):
         return source.getElementsByTagName(index)[0].firstChild.nodeValue
 
     class Meta:
-        template = "streams/newsfeed_block.html"
+        template = "streams/edison_block.html"
         icon = "doc-full-inverse"
         label = "Edison news feed panel"
 
 
 class NewsFeedWidgetBlock(NewsFeedModuleBlock):
     class Meta:
-        template = "streams/newsfeed_widget_block.html"
+        template = "streams/edison_widget_block.html"
         icon = "doc-full-inverse"
         label = "Edison news feed"
 

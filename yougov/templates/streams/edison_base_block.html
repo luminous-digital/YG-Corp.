@@ -1,6 +1,6 @@
 {% load static %}
 
-<a href="{{ element.research_link }}" class="c-excerpt">
+<a href="{{ element.research_link }}" class="c-excerpt" target="_blank">
     <p class="c-excerp__subtitle">
         {{ element.headline }}
     </p>
@@ -8,7 +8,7 @@
         {{ element.description|truncatewords:20 }}
     </p>
     <div class="c-excerp__btn-wrapper">
-        <span class="c-underline-link" target="_blank">
+        <span class="c-underline-link">
             Read more
             <span class="c-underline-link__icon o-icon-wrapper">
                 <svg class="o-icon o-icon--arrow-right">
