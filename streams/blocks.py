@@ -549,6 +549,7 @@ class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
         ('#9078d7', 'Violet'),
         ('#605a70', 'Grey'),
         ('#241d36', 'Dark'),
+        ('#DC4C81', 'Pink'),
     ]
 
 
