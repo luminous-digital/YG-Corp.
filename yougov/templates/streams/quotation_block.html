@@ -2,24 +2,23 @@
 <div class="l-inner">
     <div class="l-quote">
         <div class="c-quote" style="color: #00B7B4;{% if self.optional_padding_above %}padding-top: 76px;{% endif %}">
-          <h4 class="c-quote__author t-headline-4 t-bold">
             {% if self.quote_author %}
+          <h4 class="c-quote__author t-headline-4 t-bold">
               {{ self.quote_author }}
-              {% endif %}
           </h4>
+            {% endif %}
+            {% if self.author_title %}
           <h5 class="c-quote__position t-headline-5">
-              {% if self.author_title %}
               {{ self.author_title }}
-              {% endif %}
           </h5>
+            {% endif %}
           <h2 class="c-quote__quotation t-headline-2">
             {{ self.quote_text }}"
           </h2>
+            {% if self.link_text %}
           <div class="c-quote__action">
             <a href="{{ self.link_url }}" class="c-underline-link" target="{{ self.link_tab_chooser }}">
-                {% if self.link_text %}
                 {{ self.link_text }}
-                 {% endif %}
                 <span class="c-underline-link__icon o-icon-wrapper">
                     <svg class="o-icon o-icon--arrow-right">
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
@@ -27,6 +26,7 @@
                 </span>
             </a>
           </div>
+            {% endif %}
         </div>
     </div>
 </div>
