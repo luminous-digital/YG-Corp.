@@ -1,8 +1,10 @@
 <div class="l-real-text">
     <div class="l-inner">
         <div class="c-wysiwyg">
-            <h2> {{ self.title }}</h2>
+            <h2 style=color:{{self.title_colour}};> {{ self.title }}</h2>
+            {% if self.text %}
             <p> {{ self.text }} </p>
+            {% endif %}
         </div>
     </div>
 </div>
