@@ -1,8 +1,11 @@
+{% load static %}
 <div class="l-inner js-map-container">
     <section class="l-heading">
-        <h1 class="c-heading t-headline-2">
-            Global offices
-        </h1>
+        <div class="c-heading">
+            <h1 class="c-heading__title t-headline-2">
+                Global offices
+            </h1>
+        </div>
     </section>
     <section class="l-filters">
         <form class="f-form f-form--filters">
@@ -24,7 +27,7 @@
                     <span class="o-icon-wrapper">
                         <svg class="o-icon o-icon--arrow-simple">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold">
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold' %}">
                             </use>
                         </svg>
                     </span>
@@ -36,7 +39,7 @@
                     <span class="o-icon-wrapper">
                         <svg class="o-icon o-icon--arrow-simple">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold">
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold' %}">
                             </use>
                         </svg>
                     </span>
@@ -47,7 +50,7 @@
                     Clear filters
                     <span class="c-clear-btn__icon o-icon-wrapper">
                         <svg class="o-icon o-icon--cross">
-                            <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+                            <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
                         </svg>
                     </span>
                 </button>
@@ -61,7 +64,7 @@
                     <button class="c-map__popup__close js-map-popup-close">
                         <span class="o-icon-wrapper">
                             <svg class="o-icon o-icon--cross">
-                                <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+                                <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
                             </svg>
                         </span>
                     </button>
@@ -77,7 +80,7 @@
                                 <span class="c-marker-box__icon o-icon-wrapper">
                                     <svg class="o-icon o-icon--map-pin">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-map-pin">
+                                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-map-pin' %}">
                                         </use>
                                     </svg>
                                 </span>
@@ -122,18 +125,20 @@
                         </div>
                         <div class="c-offices__additional">
                           <ul class="c-list c-list--horizontal-wrap c-list--half-width">
+                              {% for add_office in country.additional_offices %}
                               <li class="c-list__item">
                                 <div class="c-office-info">
                                     <h5 class="c-office-info__type t-headline-5 t-light">
-                                        Office type/additional
+                                        {{ add_office.office_name }}
                                     </h5>
                                     <address class="c-office-info__address t-body-1 t-light">
-                                        No.1 Spinningfields, Quay Street<br>
-                                        Manchester<br>
-                                        M3 3JE
+                                        {{ add_office.address_line_1 }}<br>
+                                        {{ add_office.address_line_2 }}<br>
+                                        {{ add_office.address_line_3 }}
                                     </address>
                                 </div>
                               </li>
+                              {% endfor %}
                           </ul>
                         </div>
                     </div>
