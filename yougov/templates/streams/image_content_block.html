@@ -6,7 +6,9 @@
         <div class="c-wysiwyg">
             <figure>
                 <img src="{{img.url}}" alt="">
-                <figcaption>{{self.caption}}</figcaption>
+                {% if self.caption %}
+                    <figcaption>{{self.caption}}</figcaption>
+                {% endif %}
             </figure>
         </div>
     </div>

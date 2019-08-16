@@ -188,7 +188,7 @@ class CalloutsModuleBlock(blocks.StructBlock):
 
 class ImageContentBlock(blocks.StructBlock):
     image = ImageChooserBlock(required=True, help_text="choose image")
-    caption = blocks.TextBlock(required=True, help_text="add caption")
+    caption = blocks.TextBlock(required=False, help_text="add caption")
 
     class Meta:
         template = "streams/image_content_block.html"
