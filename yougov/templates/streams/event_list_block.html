@@ -1,4 +1,4 @@
-{% load static %}
+{% load static  days_to_add_tag %}
 <div class="l-inner">
     <div class="l-tabs">
         <div class="c-tabs js-tabs-container">
@@ -51,15 +51,37 @@
                                     {{event.name}}{% if event.to_be_confirmed == '1' %}*{% endif %}
                                 </h5>
                             </div>
-                            <div class="c-event-box__btn-wrapper">
-                                <a href="#" target="_blank" class="c-icon-btn">
-                                    <span class="c-icon-btn__icon o-icon-wrapper">
-                                        <svg class="o-icon o-icon--calendar">
-                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-calendar' %}"></use>
-                                        </svg>
-                                    </span>
-                                    Add to calendar
-                                </a>
+                            <div class="c-event-box__dropdown">
+                                <div class="c-custom-dropdown js-custom-dropdown-wrapper">
+                                    <button class="c-custom-dropdown__trigger js-custom-dropdown-trigger c-icon-btn">
+                                        <span class="c-icon-btn__icon o-icon-wrapper">
+                                            <svg class="o-icon o-icon--calendar">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-calendar"></use>
+                                            </svg>
+                                        </span>
+                                        Add to calendar
+                                    </button>
+                                    <div class="c-custom-dropdown__content">
+                                        <ul class="c-custom-dropdown__list">
+                                            <li class="c-custom-dropdown__list-item">
+                                                {% with event_date=event.date|days_to_add %}
+                                                <a href="http://www.google.com/calendar/render?action=TEMPLATE&text={{event.name}}&dates={{ event.date|date:'Ymd' }}/{{ event_date|date:'Ymd' }}"
+                                                    target="_blank" rel="nofollow" class="c-custom-dropdown__link">Google Calendar</a>
+                                                {% endwith %}
+                                            </li>
+                                            <li class="c-custom-dropdown__list-item">
+                                                <a href="#" target="_blank" class="c-custom-dropdown__link">
+                                                    Apple Mail
+                                                </a>
+                                            </li>
+                                            <li class="c-custom-dropdown__list-item">
+                                                <a href="#" target="_blank" class="c-custom-dropdown__link">
+                                                    Outlook
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </li>
