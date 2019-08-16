@@ -46,10 +46,20 @@ class TestMediaBlock(AbstractMediaChooserBlock):
         return format_html(player_code, value.file.url)
 
 
+class TitleColorChooserBlock(blocks.ChoiceBlock):
+    choices = [
+        ('#00B7B4', 'Cyan'),
+        ('#9078D7', 'Violet'),
+        ('#000000', 'Black'),
+        ('#FF6352', 'Orange'),
+    ]
+
+
 class TitleAndTextBlock(blocks.StructBlock):
     """Title and text"""
     title = blocks.CharBlock(required=True, help_text='Add your title')
-    text = blocks.TextBlock(required=True, help_text='Add addition text')
+    title_colour = TitleColorChooserBlock(required=True)
+    text = blocks.TextBlock(required=False, help_text='Add addition text')
 
     class Meta:
         template = "streams/title_and_text_block.html"
@@ -468,10 +478,10 @@ class HeroBannerLinkBlock(blocks.StreamBlock):
 
 
 class HeroBannerBlock(blocks.StructBlock):
-    banner_text = RichTextBlock(required=False, label="Hero banner text")
-    hyperlink = HeroBannerLinkBlock(required=True, help_text="add link")
-    link_text = blocks.CharBlock(required=True, max_length=255)
-    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+    banner_text = RichTextBlock(required=True, label="Hero banner text")
+    hyperlink = HeroBannerLinkBlock(required=False, help_text="add link")
+    link_text = blocks.CharBlock(required=False, max_length=255)
+    link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
     class Meta:
         template = "streams/hero_banner_block.html"
