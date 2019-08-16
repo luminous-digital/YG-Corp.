@@ -361,6 +361,14 @@ class DownloadHyperLinkBlock(DownloadSourceBaseBlock):
         icon = "site"
 
 
+class DownloadPageLinkBlock(DownloadSourceBaseBlock):
+    page_link = blocks.PageChooserBlock(required=True, help_text="choose page")
+    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open image on new or current tab")
+
+    class Meta:
+        icon = "redirect"
+
+
 class DownloadDocumentBlock(DownloadSourceBaseBlock):
     document = DocumentChooserBlock(required=True, help_text="choose file eg. PDF")
 
@@ -371,6 +379,7 @@ class DownloadDocumentBlock(DownloadSourceBaseBlock):
 class DownloadSourceTypeBlock(blocks.StreamBlock):
     audio_video = DownloadAudioVideoBlock(required=True)
     hyperlink = DownloadHyperLinkBlock(required=True)
+    page_link = DownloadPageLinkBlock(required=True)
     document = DownloadDocumentBlock(required=True)
 
 
