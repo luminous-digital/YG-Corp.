@@ -3,8 +3,8 @@
 
 {% block content %}
 <div class="l-inner">
-    <div class="l-news">
-        <ul class="c-list c-list--horizontal-wrap">
+    <div class="l-news js-ajax-load-more-container">
+        <ul class="c-list c-list--horizontal-wrap js-ajax-load-more-list">
             {% for article in news %}
                 <li class="c-list__item">
                     {% include 'news/news_base.html' with image=article.image article_title=article.article_title publication_date=article.publication_date article_description=article.article_description article_link=article.article_link %}
@@ -13,18 +13,25 @@
         </ul>
 
         {% if is_next_url %}
-        <button data-href="{{ next_url }}" class="c-read-more-btn c-underline-link js-list-load-more">
-            <span class="c-read-more-btn__span">
-                Load more
-            </span>
-            <span class="c-underline-link__icon o-icon-wrapper">
-                <svg class="o-icon o-icon--cross">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
-                </svg>
-            </span>
-        </button>
+        <div class="l-news__action">
+            <div class="c-loader">
+                <div class="c-loader__item"></div>
+                <div class="c-loader__item"></div>
+                <div class="c-loader__item"></div>
+                <div class="c-loader__item"></div>
+            </div>
+            <button data-href="{{ next_url }}" class="c-read-more-btn c-underline-link js-ajax-load-more-trigger">
+                <span class="c-read-more-btn__span">
+                    Load more
+                </span>
+                <span class="c-underline-link__icon o-icon-wrapper">
+                    <svg class="o-icon o-icon--cross">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
         {% endif %}
     </div>
 </div>
-
 {% endblock %}
