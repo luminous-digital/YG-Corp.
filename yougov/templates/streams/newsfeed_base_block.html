@@ -5,7 +5,7 @@
         {{ element.headline }}
     </p>
     <p class="c-excerp__text">
-        {{ element.description }}
+        {{ element.description|truncatewords:20 }}
     </p>
     <div class="c-excerp__btn-wrapper">
         <span class="c-underline-link" target="_blank">
