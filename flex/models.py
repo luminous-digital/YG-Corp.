@@ -19,6 +19,7 @@ class AbstractFlexPage(Page):
             ("title_and_text", blocks.TitleAndTextBlock()),
             ("quotation_block", blocks.QuotationBlock()),
             ("full_rich_text", blocks.RichTextBlock()),
+            ("full_rte_editor", blocks.RichTextBlockFull()),
             ("video_block", blocks.VideoBlock()),
             # ('image_block', blocks.ImageBlock()),
             ('image_person_block', blocks.ImagePersonBlock()),

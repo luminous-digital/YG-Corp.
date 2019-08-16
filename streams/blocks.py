@@ -108,7 +108,16 @@ class RichTextBlock(blocks.RichTextBlock):
     class Meta:
         template = "streams/rich_text_block.html"
         icon = "doc-full"
-        label = "Full Rich Text"
+        label = "RTE"
+
+
+class RichTextBlockFull(blocks.StructBlock):
+    rich_text = RichTextBlock(required=True)
+
+    class Meta:
+        template = "streams/rich_text_block.html"
+        icon = "doc-full-inverse"
+        label = "Full RTE"
 
 
 class ChooserBlock(blocks.StreamBlock):
