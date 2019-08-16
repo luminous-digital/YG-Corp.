@@ -1,8 +1,10 @@
 
 {% if self.rich_text %}
     <div class="l-real-text">
-        <div class="c-wysiwyg">
-            {{ self.rich_text }}
+        <div class="l-inner">
+            <div class="c-wysiwyg">
+                {{ self.rich_text }}
+            </div>
         </div>
     </div>
 {% else %}
