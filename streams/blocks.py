@@ -602,7 +602,7 @@ class LinkContainerBlock(blocks.StructBlock):
     content = blocks.CharBlock(required=True, max_length=255, help_text="add content")
     image = ImageChooserBlock(required=False, help_text="choose image")
     link_text = blocks.CharBlock(required=True, max_length=255)
-    link_url = blocks.URLBlock(required=True, help_text="add url")
+    link_page = LinkChooserBlock(required=True, help_text="choose page")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open page on new or current tab")
 
     class Meta:

@@ -1,5 +1,7 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
-<a href="{{ link_url }}" class="c-widget-module" style="background-color: {{ background_colour }};">
+{% for link in link_page %}
+<a href="{% if link.block_type == 'link_internal_page' %}{{ link.value.url }}{% else %}{{ link }}{% endif %}" class="c-widget-module" target="{{ link_tab_chooser }}" style="background-color: {{ background_colour }};">
+{% endfor %}
     <div class="c-widget-module__main">
         <h4 class="c-widget-module__title">
             {{ title }}
