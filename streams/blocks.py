@@ -144,10 +144,11 @@ class VideoMediaChooserBlock(ChooserBlock):
 class VideoBlock(blocks.StructBlock):
     """ Video block"""
 
-    header = blocks.TextBlock(required=True, help_text="add your header")
-    sub_copy = blocks.TextBlock(required=True, help_text="add your sub_copy")
-    video_thumbnail = ImageChooserBlock(required=True, help_text="choose video thumbnail image")
-    media_chooser = VideoMediaChooserBlock(max_num=1)
+    header = blocks.TextBlock(required=False)
+    sub_copy = blocks.TextBlock(required=False)
+    video_thumbnail = ImageChooserBlock(required=False)
+    media_chooser = VideoMediaChooserBlock(max_num=1, required=False)
+    link = VideoMediaChooserBlock(max_num=1, required=False)
 
     class Meta:
         template = "streams/video_block.html"

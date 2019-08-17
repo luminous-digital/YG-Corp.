@@ -36,12 +36,16 @@
                 <div class="l-inner">
                     <div class="c-video-module__content">
                         <div class="c-video-teaser">
+                            {% if self.header %}
                             <h4 class="c-video-teaser__heading t-headline-4 t-bold">
                                 {{self.header}}
                             </h4>
+                            {% endif %}
+                            {% if self.sub_copy %}
                             <h2 class="c-video-teaser__text t-headline-2">
                                 {{self.sub_copy}}
                             </h2>
+                            {% endif %}
                         </div>
                         <a class="c-play js-play" href="#">
                             <div class="c-play__button">
