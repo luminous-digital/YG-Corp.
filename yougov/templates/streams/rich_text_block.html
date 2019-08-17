@@ -1,8 +1,8 @@
 
-{% if self.rich_text %}
+{% if self.full_size %}
     <div class="l-real-text">
         <div class="l-inner">
-            <div class="c-wysiwyg">
+            <div class="c-wysiwyg" style="color:{{ self.text_colour }};">
                 {{ self.rich_text }}
             </div>
         </div>
@@ -10,8 +10,8 @@
 {% else %}
     <div class="l-real-text">
         <div class="l-inner l-inner--small">
-            <div class="c-wysiwyg">
-                {{ self }}
+            <div class="c-wysiwyg" style="color:{{ self.text_colour }};">
+                {{ self.rich_text }}
             </div>
         </div>
     </div>

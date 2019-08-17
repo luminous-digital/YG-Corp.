@@ -113,6 +113,8 @@ class RichTextBlock(blocks.RichTextBlock):
 
 class RichTextBlockFull(blocks.StructBlock):
     rich_text = RichTextBlock(required=True)
+    text_colour = TitleColorChooserBlock(required=True)
+    full_size = blocks.BooleanBlock(required=False)
 
     class Meta:
         template = "streams/rich_text_block.html"
