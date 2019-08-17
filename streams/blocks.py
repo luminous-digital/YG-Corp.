@@ -148,7 +148,9 @@ class VideoBlock(blocks.StructBlock):
     sub_copy = blocks.TextBlock(required=False)
     video_thumbnail = ImageChooserBlock(required=False)
     media_chooser = VideoMediaChooserBlock(max_num=1, required=False)
-    link = VideoMediaChooserBlock(max_num=1, required=False)
+    link = LinkAndDocChooserBlock(required=False)
+    link_text = blocks.CharBlock(required=False, max_length=255)
+    link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
     class Meta:
         template = "streams/video_block.html"

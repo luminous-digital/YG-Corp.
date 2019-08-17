@@ -1,7 +1,8 @@
 {% load static video_tag wagtailcore_tags wagtailimages_tags %}
 
 {% image self.video_thumbnail original as img %}
-{% for video in self.media_chooser %}
+{% if self.media_chooser %}
+    {% for video in self.media_chooser %}
         <div class="c-video-module js-video">
             <div class="c-video-module__media">
                 <div class="c-video" style="background-image: url({{img.url}})">
@@ -66,4 +67,41 @@
                 </div>
             </div>
         </div>
-{% endfor %}
+    {% endfor %}
+{% else %}
+    <div class="c-video-module js-video">
+        <div class="c-video-module__media">
+            <div class="c-video" style="background-image: url({{img.url}})">
+            </div>
+        </div>
+        <div class="c-video-module__content-wrapper">
+            <div class="l-inner">
+                <div class="c-video-module__content">
+                    <div class="c-video-teaser">
+                        {% if self.header %}
+                        <h4 class="c-video-teaser__heading t-headline-4 t-bold">
+                            {{self.header}}
+                        </h4>
+                        {% endif %}
+                        {% if self.sub_copy %}
+                        <h2 class="c-video-teaser__text t-headline-2">
+                            {{self.sub_copy}}
+                        </h2>
+                        {% endif %}
+                    </div>
+                    {% for block in self.link %}
+                    <a class="c-play js-play" href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}" target="{{ self.link_tab_chooser }}">
+                        <div class="c-play__text t-button">
+                            <p>{{ self.link_text }}
+                                <svg class="o-icon o-icon--arrow-right">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                                </svg>
+                            </p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
