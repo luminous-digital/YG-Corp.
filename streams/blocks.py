@@ -668,7 +668,7 @@ class QuickLinksListBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/quick_links_block.html"
-        icon = "doc-empty"
+        icon = "arrow-right"
         label = "Quick Links"
 
 
