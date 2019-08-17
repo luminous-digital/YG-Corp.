@@ -127,6 +127,15 @@ class ChooserBlock(blocks.StreamBlock):
         max_num = 1
 
 
+class LinkChooserBlock(ChooserBlock):
+    link_external_url = blocks.URLBlock(required=True, help_text="add url")
+    link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
+
+
+class LinkAndDocChooserBlock(LinkChooserBlock):
+    document = DocumentChooserBlock(required=True, help_text="choose file eg. PDF")
+
+
 class VideoMediaChooserBlock(ChooserBlock):
     video_url = EmbedBlock()
     video_file = AbstractMediaChooserBlock(icon="media")
@@ -209,11 +218,6 @@ class SocialLinkChooserBlock(blocks.ChoiceBlock):
         ('rss', 'rss'),
         ('linkedin', 'linkedin')
     ]
-
-
-class LinkChooserBlock(ChooserBlock):
-    link_external_url = blocks.URLBlock(required=True, help_text="add url")
-    link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
 
 
 class PolicyLinks(blocks.StructBlock):
@@ -488,18 +492,9 @@ class IframeBlock(blocks.StructBlock):
 """ Hero banner blocks"""
 
 
-class HeroBannerLinkBlock(blocks.StreamBlock):
-    link_external_page = blocks.URLBlock(required=True, help_text="add url")
-    link_internal_page = blocks.PageChooserBlock(required=True, help_text="choose page")
-    link_document = DocumentChooserBlock(required=True, help_text="choose file eg. PDF")
-
-    class Meta:
-        max_num = 1
-
-
 class HeroBannerBlock(blocks.StructBlock):
     banner_text = RichTextBlock(required=True, label="Hero banner text")
-    hyperlink = HeroBannerLinkBlock(required=False, help_text="add link")
+    hyperlink = LinkAndDocChooserBlock(required=False, help_text="add link")
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
@@ -610,10 +605,10 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
 class LinkContainerBlock(blocks.StructBlock):
     background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
     title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
-    content = blocks.CharBlock(required=True, max_length=255, help_text="add content")
+    content = blocks.CharBlock(required=False, max_length=255)
     image = ImageChooserBlock(required=False, help_text="choose image")
     link_text = blocks.CharBlock(required=True, max_length=255)
-    link_page = LinkChooserBlock(required=True, help_text="choose page")
+    link_or_doc = LinkAndDocChooserBlock(required=True, help_text="choose page or doc")
     link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open page on new or current tab")
 
     class Meta:
