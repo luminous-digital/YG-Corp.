@@ -26,25 +26,23 @@
                             </div>
                             <div class="c-downloads__info-wrapper">
                                 {% for source in news.source_type %}
-                                    {% if source.value.hyper_link_url %}
-                                        <a href="{{ source.value.hyper_link_url }}" target="{{ source.value.link_tab_chooser }}" class="c-underline-link c-underline-link--revert" download>
+                                    {% if source.value.hyper_link_url or source.value.page_link %}
+                                        <a href="{{ source.value.hyper_link_url }}{{ source.value.page_link.url }}" target="{{ source.value.link_tab_chooser }}" class="c-underline-link c-underline-link--revert">
                                             <span class="c-underline-link__icon o-icon-wrapper">
                                                 <svg class="o-icon o-icon--triangle">
                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-triangle' %}"></use>
                                                 </svg>
                                             </span>
-                                            {{ source.value.source_name }}
-                                        </a>
-                                        {% else %}
-                                        <a href="{%if source.value.audio_video%}{{source.value.audio_video.url}}{%else%}{{source.value.document.url}}{%endif%}" class="c-underline-link c-underline-link--revert" download>
+                                    {% else %}
+                                        <a href="{% if source.value.audio_video %}{{source.value.audio_video.url}}{% else %}{{source.value.document.url}}{% endif %}" class="c-underline-link c-underline-link--revert" download>
                                             <span class="c-underline-link__icon o-icon-wrapper">
-                                                <svg class="o-icon o-icon--triangle">
-                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-down' %}"></use>
+                                                <svg class="o-icon o-icon--download">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-download' %}"></use>
                                                 </svg>
                                             </span>
+                                    {% endif %}
                                             {{ source.value.source_name }}
                                         </a>
-                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
