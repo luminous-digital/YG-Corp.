@@ -672,12 +672,26 @@ class QuickLinksListBlock(blocks.StructBlock):
         label = "Quick Links"
 
 
+class QuotationWidgetBlock(QuotationBlock):
+
+    class Meta:
+        template = "streams/quotation_widget_block.html"
+
+
+class CalloutWidgetBlock(CalloutsBlock):
+
+    class Meta:
+        template = "streams/callouts_widget_block.html"
+
+
 class WidgetChooserBlock(blocks.StreamBlock):
     link_container = LinkContainerBlock(required=False)
     two_columns = TwoColumnsBlock(required=False)
     iframe = IframeWidgetBlock(required=False)
     news_feed = NewsFeedWidgetBlock(required=False)
     quick_links = QuickLinksListBlock(required=False)
+    quote = QuotationWidgetBlock(required=False)
+    callout = CalloutsBlock(required=False)
 
     class Meta:
         template = "streams/widget_block.html"
