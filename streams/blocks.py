@@ -752,3 +752,25 @@ class TimeLineModuleBlock(blocks.StructBlock):
         template = "streams/timeline_block.html"
         icon = "time"
         label = "Timeline panel"
+
+
+""" Padding blocks"""
+
+
+class PaddingChoiceBlock(blocks.ChoiceBlock):
+    TOP = 'top'
+    BOTTOM = 'bottom'
+
+    choices = (
+        (TOP, "Top"),
+        (BOTTOM, "Bottom"),
+    )
+
+
+class PaddingBlock(blocks.StructBlock):
+    padding = PaddingChoiceBlock()
+
+    class Meta:
+        template = "streams/padding_block.html"
+        icon = "arrows-up-down"
+        label = "Padding"
