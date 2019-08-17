@@ -1,3 +1,5 @@
 <div class="c-widget__iframe" style="background-color: {{ self.background_colour }};">
-    <iframe src="{{ self.hyperlink }}" class="c-iframe {% if self.padding %} c-iframe--pad {% endif %}" frameborder="0" scrolling="no"></iframe>
+    {% if hyperlink %}
+         <iframe src="{{ self.hyperlink }}" class="c-iframe {% if self.padding %} c-iframe--pad {% endif %}" frameborder="0" scrolling="no"></iframe>
+    {% endif %}
 </div>

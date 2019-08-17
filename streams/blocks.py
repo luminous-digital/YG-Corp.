@@ -603,13 +603,13 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
 
 
 class LinkContainerBlock(blocks.StructBlock):
-    background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
-    title = blocks.CharBlock(required=True, max_length=255, help_text="add title")
+    background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
+    title = blocks.CharBlock(required=False, max_length=255, help_text="add title")
     content = blocks.CharBlock(required=False, max_length=255)
     image = ImageChooserBlock(required=False, help_text="choose image")
-    link_text = blocks.CharBlock(required=True, max_length=255)
-    link_or_doc = LinkAndDocChooserBlock(required=True, help_text="choose page or doc")
-    link_tab_chooser = LinkTabChooserBlock(required=True, help_text="choose either open page on new or current tab")
+    link_text = blocks.CharBlock(required=False, max_length=255)
+    link_or_doc = LinkAndDocChooserBlock(required=False, help_text="choose page or doc")
+    link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open page on new or current tab")
 
     class Meta:
         template = "streams/link_container_block.html"
@@ -628,7 +628,7 @@ class TwoColumnsBlock(blocks.StructBlock):
 
 
 class IframeWidgetBlock(blocks.StructBlock):
-    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+    hyperlink = blocks.URLBlock(required=False, help_text="add url")
     padding = blocks.BooleanBlock(required=False, label="Add padding")
     background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
 
