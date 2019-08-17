@@ -5,8 +5,10 @@
     <div class="l-inner l-inner--small">
         <div class="c-wysiwyg">
             <figure>
-                <img src="{{img.url}}" alt="">
+                <img src="{{ img.url }}" alt="">
+                {% if self.caption %}
                 <figcaption>{{self.caption}}</figcaption>
+                {% endif %}
             </figure>
         </div>
     </div>
