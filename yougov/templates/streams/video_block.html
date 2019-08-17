@@ -90,7 +90,7 @@
                         {% endif %}
                     </div>
                     {% for block in self.link %}
-                    <a class="c-play js-play" href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}" target="{{ self.link_tab_chooser }}">
+                    <a class="c-play" href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}" target="{{ self.link_tab_chooser }}">
                         <div class="c-play__text t-button">
                             <p>{{ self.link_text }}
                                 <svg class="o-icon o-icon--arrow-right">
