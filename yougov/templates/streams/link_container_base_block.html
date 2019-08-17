@@ -3,12 +3,16 @@
 <a href="{% if link.block_type == 'link_external_url' %}{{ link }}{% else %}{{ link.value.url }}{% endif %}" class="c-widget-module" target="{{ link_tab_chooser }}" style="background-color: {{ background_colour }};">
 {% endfor %}
     <div class="c-widget-module__main">
+        {% if title %}
         <h4 class="c-widget-module__title">
             {{ title }}
         </h4>
+        {% endif %}
+        {% if content %}
         <p class="c-widget-module__desc">
             {{ content }}
         </p>
+        {% endif %}
         <div class="c-widget-module__action">
             <span class="c-underline-link">
                 {{ link_text }}
