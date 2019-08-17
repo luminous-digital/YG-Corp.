@@ -678,7 +678,7 @@ class QuotationWidgetBlock(QuotationBlock):
         template = "streams/quotation_widget_block.html"
 
 
-class CalloutWidgetBlock(CalloutsBlock):
+class CalloutsWidgetBlock(CalloutsModuleBlock):
 
     class Meta:
         template = "streams/callouts_widget_block.html"
@@ -691,7 +691,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     news_feed = NewsFeedWidgetBlock(required=False)
     quick_links = QuickLinksListBlock(required=False)
     quote = QuotationWidgetBlock(required=False)
-    callout = CalloutsBlock(required=False)
+    callouts = CalloutsWidgetBlock(required=False)
 
     class Meta:
         template = "streams/widget_block.html"
