@@ -4,12 +4,12 @@
         <div class="c-downloads-wrapper">
             <div class="c-downloads-table">
                 <div class="c-downloads-table__heading c-downloads-table__heading--alt">
-                    <div class="c-heading">
+                    <div class="c-heading c-heading--alt">
                         <h6 class="c-heading__date">
                             Date
                         </h6>
                         <h6 class="c-heading__news">
-                             {{self.column_title}}
+                             News title
                         </h6>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             <div class="c-downloads__info-wrapper">
                                 {% for source in news.source_type %}
                                     {% if source.value.hyper_link_url or source.value.page_link %}
-                                        <a href="{{ source.value.hyper_link_url }}{{ source.value.page_link.url }}" target="{{ source.value.link_tab_chooser }}" class="c-underline-link c-underline-link--revert">
+                                        <a href="{{ source.value.hyper_link_url }}{{ source.value.page_link.url }}" target="{{ source.value.link_tab_chooser }}" class="c-underline-link c-underline-link--inline c-underline-link--left">
                                             <span class="c-underline-link__icon o-icon-wrapper">
                                                 <svg class="o-icon o-icon--triangle">
                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-triangle' %}"></use>
