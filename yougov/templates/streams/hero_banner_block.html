@@ -9,9 +9,9 @@
             </div>
             <div class="c-info-teaser__link">
                 {% for block in self.hyperlink %}
-                <a href="{% if block.block_type == 'link_external_page' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}"
+                <a href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}"
                    class="c-underline-link"
-                   {% if block.block_type == 'link_document' %} download{% else %} target="{{self.link_tab_chooser}}"{% endif %}>
+                   {% if block.block_type == 'document' %} download{% else %} target="{{self.link_tab_chooser}}"{% endif %}>
                     {{self.link_text}}
                     <span class="c-underline-link__icon o-icon-wrapper">
                         <svg class="o-icon o-icon--arrow-right">
