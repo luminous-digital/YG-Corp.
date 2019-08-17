@@ -1,0 +1,38 @@
+{% load static %}
+<div class="l-quick-links">
+    <div class="l-quick-links__heading">
+        <h2 class="t-headline-2 t-regular">
+            Quick links
+        </h2>
+    </div>
+    <div class="l-quick-links__content">
+        <ul class="c-list c-list--big-spacing" >
+            {% for quick_link in self.links %}
+                <li class="c-list__item">
+                    <div class="c-quick-link" data-sr-id="8" style="visibility: visible; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;">
+                        <h3 class="c-quick-link__title" style="color: {% if quick_link.title_color %}{{ quick_link.title_color }}{% endif %}">
+                            {{ quick_link.title }}
+                        </h3>
+                        <p class="c-quick-link__desc">
+                            {{ quick_link.subtitle }}
+                        </p>
+                        <div class="c-quick-link__action">
+                            {% for link in quick_link.link_or_doc %}
+                                <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ quick_link.link_tab_chooser }}">
+                            {% endfor %}
+                                {{ quick_link.link_text }}
+                                {% if quick_link.link_or_doc %}
+                                    <span class="c-underline-link__icon o-icon-wrapper">
+                                        <svg class="o-icon o-icon--arrow-right">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                                        </svg>
+                                    </span>
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -47,12 +47,23 @@ class TestMediaBlock(AbstractMediaChooserBlock):
 
 
 class TitleColorChooserBlock(blocks.ChoiceBlock):
-    choices = [
-        ('#00B7B4', 'Cyan'),
-        ('#9078D7', 'Violet'),
-        ('#000000', 'Black'),
-        ('#FF6352', 'Orange'),
-    ]
+    CYAN = '#00B7B4'
+    BLUE = '#00B7B5'
+    VIOLET = '#9078D7'
+    ORANGE = '#FF6352'
+    GREY = '#605A70'
+    DARK_BLUE_PURPLE = '#241D36'
+    BLACK = '#000000'
+
+    choices = (
+        (CYAN, "Cyan"),
+        (BLUE, "Blue"),
+        (VIOLET, "Violet"),
+        (ORANGE, "Orange"),
+        (GREY, "Grey"),
+        (DARK_BLUE_PURPLE, "Dark blue / Purple"),
+        (BLACK, 'Black'),
+    )
 
 
 class TitleAndTextBlock(blocks.StructBlock):
@@ -641,11 +652,32 @@ class IframeWidgetBlock(blocks.StructBlock):
         label = "Iframe"
 
 
+class QuickLinksBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=True, max_length=255)
+    title_color = TitleColorChooserBlock(required=True)
+    subtitle = blocks.TextBlock(required=False)
+    link_text = blocks.CharBlock(required=False, max_length=255)
+    link_or_doc = LinkAndDocChooserBlock(required=False, help_text="choose page or doc")
+    link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open page on new or current tab")
+
+
+class QuickLinksListBlock(blocks.StructBlock):
+    links = blocks.ListBlock(
+        QuickLinksBlock()
+    )
+
+    class Meta:
+        template = "streams/quick_links_block.html"
+        icon = "arrow-right"
+        label = "Quick Links"
+
+
 class WidgetChooserBlock(blocks.StreamBlock):
     link_container = LinkContainerBlock(required=False)
     two_columns = TwoColumnsBlock(required=False)
     iframe = IframeWidgetBlock(required=False)
     news_feed = NewsFeedWidgetBlock(required=False)
+    quick_links = QuickLinksListBlock(required=False)
 
     class Meta:
         template = "streams/widget_block.html"
