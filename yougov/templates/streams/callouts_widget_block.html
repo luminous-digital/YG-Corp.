@@ -1,5 +1,14 @@
 <div class="l-callouts">
     <div class="l-callouts__content">
+        {% if self.title %}
+            <section class="l-heading">
+                <div class="c-heading c-heading--small">
+                    <h2 class="c-heading__title t-headline-2 t-regular">
+                        {{ self.title }}
+                    </h2>
+                </div>
+            </section>
+        {% endif %}
         <ul class="c-list c-list--horizontal-wrap">
             {% for element in self.callouts %}
                 <li class="c-list__item">
