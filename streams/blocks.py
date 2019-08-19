@@ -627,10 +627,6 @@ class LinkContainerImageSideBlock(blocks.ChoiceBlock):
 
 
 class LinkContainerBlock(blocks.StructBlock):
-    LEFT = 'left'
-    RIGHT = 'right'
-    choices = ((LEFT, 'left'), (RIGHT, 'right'))
-
     background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
     title = blocks.CharBlock(required=False, max_length=255, help_text="add title")
     content = blocks.CharBlock(required=False, max_length=255)
