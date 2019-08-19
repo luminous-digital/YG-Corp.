@@ -684,6 +684,19 @@ class CalloutsWidgetBlock(CalloutsModuleBlock):
         template = "streams/callouts_widget_block.html"
 
 
+class BoardOfDirectors(blocks.StructBlock):
+    title = blocks.CharBlock(required=True, max_length=255)
+    link_text = blocks.CharBlock(required=False, max_length=255)
+    link_or_doc = LinkAndDocChooserBlock(required=False)
+    link_tab_chooser = LinkTabChooserBlock(required=False)
+    image = ImageChooserBlock(required=True)
+
+    class Meta:
+        template = "streams/board_of_directors_block.html"
+        icon = "image"
+        label = "Board of directors"
+
+
 class WidgetChooserBlock(blocks.StreamBlock):
     link_container = LinkContainerBlock(required=False)
     two_columns = TwoColumnsBlock(required=False)
@@ -692,6 +705,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     quick_links = QuickLinksListBlock(required=False)
     quote = QuotationWidgetBlock(required=False)
     callouts = CalloutsWidgetBlock(required=False)
+    board_of_directors = BoardOfDirectors(required=False)
 
     class Meta:
         template = "streams/widget_block.html"
