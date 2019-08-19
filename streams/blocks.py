@@ -631,7 +631,7 @@ class LinkContainerBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False, max_length=255, help_text="add title")
     content = blocks.CharBlock(required=False, max_length=255)
     image = ImageChooserBlock(required=False, help_text="choose image")
-    image_position = LinkContainerImageSideBlock(required=False, default=choices[1])
+    image_position = LinkContainerImageSideBlock(required=False, default=LinkContainerImageSideBlock.choices[1])
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_or_doc = LinkAndDocChooserBlock(required=False, help_text="choose page or doc")
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open page on new or current tab")
