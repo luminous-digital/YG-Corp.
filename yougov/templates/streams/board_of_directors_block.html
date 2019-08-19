@@ -1,0 +1,25 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% if self.link_or_doc %}
+    {% for link in self.link_or_doc %}
+        <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-tile" {% if self.image %}{% image self.image original as img %} style="background-image: url({{img.url}})" {% endif %} target="{{ self.link_tab_chooser }}">
+    {% endfor %}
+{% else %}
+    <a href="#" class="c-tile" {% if self.image %}{% image self.image original as img %} style="background-image: url({{img.url}})" {% endif %} target="{{ self.link_tab_chooser }}">
+{% endif %}
+    <div class="c-tile__content">
+        <h4 class="c-tile__title t-headline-4 t-bold">
+            {{ self.title }}
+        </h4>
+        <div class="c-tile__action">
+            <span class="c-underline-link">
+                {{ self.link_text }}
+                <span class="c-underline-link__icon o-icon-wrapper">
+                    <svg class="o-icon o-icon--arrow-right">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}">
+                        </use>
+                    </svg>
+                </span>
+            </span>
+        </div>
+    </div>
+</a>
