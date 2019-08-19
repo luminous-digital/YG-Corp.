@@ -201,6 +201,7 @@ class CalloutsBlock(blocks.StructBlock):
 
 
 class CalloutsModuleBlock(blocks.StructBlock):
+    headline = blocks.CharBlock(required=False, max_length=255)
     callouts = blocks.ListBlock(
         CalloutsBlock()
     )
@@ -616,11 +617,21 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
 """Widget/Two columns module blocks"""
 
 
+class LinkContainerImageSideBlock(blocks.ChoiceBlock):
+    LEFT = 'left'
+    RIGHT = 'right'
+    choices = (
+        (LEFT, 'left'),
+        (RIGHT, 'right')
+    )
+
+
 class LinkContainerBlock(blocks.StructBlock):
     background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
     title = blocks.CharBlock(required=False, max_length=255, help_text="add title")
     content = blocks.CharBlock(required=False, max_length=255)
     image = ImageChooserBlock(required=False, help_text="choose image")
+    image_position = LinkContainerImageSideBlock(required=False, default=LinkContainerImageSideBlock.choices[1])
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_or_doc = LinkAndDocChooserBlock(required=False, help_text="choose page or doc")
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open page on new or current tab")
@@ -662,6 +673,7 @@ class QuickLinksBlock(blocks.StructBlock):
 
 
 class QuickLinksListBlock(blocks.StructBlock):
+    headline = blocks.CharBlock(required=False, max_length=255)
     links = blocks.ListBlock(
         QuickLinksBlock()
     )
@@ -714,7 +726,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
 
 
 class TwoColumnModuleBlock(blocks.StructBlock):
-    social_links = blocks.ListBlock(SocialChannelsLinks())
+    social_links = blocks.ListBlock(SocialChannelsLinks(required=False))
     left_widget = WidgetChooserBlock(required=False, label="Left widget")
     right_widget = WidgetChooserBlock(required=False, label="Right widget")
 

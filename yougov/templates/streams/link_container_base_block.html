@@ -6,6 +6,12 @@
 {% else %}
     <a href="#" class="c-widget-module" target="{{ link_tab_chooser }}" style="background-color: {{ background_colour }};">
 {% endif %}
+    {% if image_position == 'left' %}
+        {% if image %}
+            {% image image original as img %}
+            <div class="c-widget-module__media" style="background-image: url({{img.url}})"></div>
+        {% endif %}
+    {% endif %}
     <div class="c-widget-module__main">
         {% if title %}
             <h4 class="c-widget-module__title">
@@ -28,8 +34,10 @@
             </span>
         </div>
     </div>
-    {% if image %}
-        {% image image original as img %}
-        <div class="c-widget-module__media" style="background-image: url({{img.url}})"></div>
+    {% if image_position == 'right' %}
+        {% if image %}
+            {% image image original as img %}
+            <div class="c-widget-module__media" style="background-image: url({{img.url}})"></div>
+        {% endif %}
     {% endif %}
 </a>
