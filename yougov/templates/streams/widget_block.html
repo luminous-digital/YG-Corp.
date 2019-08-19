@@ -2,7 +2,7 @@
     <div class="l-advisor">
         <div class="c-widget">
             {% for element in self %}
-                <div class="c-widget__row">
+                <div class="c-widget__row" {% if element.block_type == 'iframe' %}style="background-color: {{ element.value.background_colour }};"{% endif %}>
                     {{ element }}
                 </div>
             {% endfor %}
