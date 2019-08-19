@@ -117,7 +117,7 @@ class RichTextBlock(blocks.RichTextBlock):
                          'document-link', 'image', 'embed']
 
     class Meta:
-        template = "streams/rte_block.html"
+        template = "streams/full_rich_text.html"
         icon = "doc-full"
         label = "RTE"
 
