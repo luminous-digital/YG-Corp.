@@ -15,8 +15,8 @@ from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL
 
-# wont be used. Everything on video_block template
 
+# wont be used. Everything on video_block template
 
 
 class TestMediaBlock(AbstractMediaChooserBlock):
@@ -210,6 +210,12 @@ class CalloutsModuleBlock(blocks.StructBlock):
         template = "streams/callout_module_block.html"
         icon = "spinner"
         label = "Callouts"
+
+
+class ThreeColumnCalloutsModuleBlock(CalloutsModuleBlock):
+    class Meta:
+        template = "streams/three_column_callout_module_block.html"
+        label = "3 Column Callout"
 
 
 class ImageContentBlock(blocks.StructBlock):
@@ -685,13 +691,11 @@ class QuickLinksListBlock(blocks.StructBlock):
 
 
 class QuotationWidgetBlock(QuotationBlock):
-
     class Meta:
         template = "streams/quotation_widget_block.html"
 
 
 class CalloutsWidgetBlock(CalloutsModuleBlock):
-
     class Meta:
         template = "streams/callouts_widget_block.html"
 
@@ -726,7 +730,6 @@ class WidgetChooserBlock(blocks.StreamBlock):
 
 
 class TwoColumnWidgetChooserBlock(WidgetChooserBlock):
-
     class Meta:
         template = "streams/widget_block_base.html"
 
@@ -842,7 +845,6 @@ class TimeLineBlock(blocks.StructBlock):
 
 
 class TimeLineModuleBlock(blocks.StructBlock):
-
     timeline = blocks.ListBlock(
         TimeLineBlock()
     )

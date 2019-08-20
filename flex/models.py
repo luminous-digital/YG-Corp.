@@ -20,6 +20,7 @@ class AbstractFlexPage(Page):
             ('accordion_list_block', blocks.AccordionListBlock()),
             ('advisor_analyst_block', blocks.AdvisorsBlock()),
             ('callout_module_block', blocks.CalloutsModuleBlock()),
+            ('three_column_callout_module_block', blocks.ThreeColumnCalloutsModuleBlock()),
             ('contact_block', blocks.ContactInfoBlock()),
             ('download_block', blocks.DownloadBlock()),
             ('iframe_block', blocks.IframeBlock()),
