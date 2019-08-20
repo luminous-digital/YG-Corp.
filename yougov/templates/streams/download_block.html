@@ -8,9 +8,11 @@
                         <h6 class="c-heading__date">
                             Date
                         </h6>
-                        <h6 class="c-heading__news">
-                             {{ self.title }}
-                        </h6>
+                        {% if self.title %}
+                            <h6 class="c-heading__news">
+                                 {{ self.title }}
+                            </h6>
+                        {% endif %}
                     </div>
                 </div>
                 {% for news in self.news %}
