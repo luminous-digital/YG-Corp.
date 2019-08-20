@@ -411,6 +411,7 @@ class DownloadSourceTypeBlock(blocks.StreamBlock):
 
 
 class DownloadBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False, max_length=255)
     news = blocks.ListBlock(
         blocks.StructBlock(
             [
