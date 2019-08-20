@@ -4,11 +4,9 @@
         <div class="c-tabs js-tabs-container">
             <div class="c-tabs__nav">
                 <button class="c-tabs__placeholder c-underline-link js-tabs-open-trigger">
-                    {% with self.events|dictsortreversed:"date"|first as first_event %}
                     <span class="js-tabs-placeholder">
-                        {{ first_event.date|date:'Y' }}
+                        All
                     </span>
-                    {% endwith %}
                     <span class="c-tabs__placeholder-icon o-icon-wrapper">
                         <svg class="o-icon o-icon--arrow-right-bold">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold' %}"></use>
@@ -16,6 +14,11 @@
                     </span>
                 </button>
                 <ul class="c-tabs__nav-list js-tabs-nav">
+                    <li class="c-tabs__nav-item js-clear-filter is-active">
+                        <button class="c-tabs__cta c-underline-link">
+                            All
+                        </button>
+                    </li>
                     {% for event in self.events|dictsortreversed:"date" %}
                         {% ifchanged %}
                             <li class="c-tabs__nav-item" data-tab="{{ event.date|date:'Y' }}">
