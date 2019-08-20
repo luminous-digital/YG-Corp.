@@ -725,10 +725,37 @@ class WidgetChooserBlock(blocks.StreamBlock):
         label = "Widget module"
 
 
+class TwoColumnWidgetChooserBlock(WidgetChooserBlock):
+
+    class Meta:
+        template = "streams/widget_block_base.html"
+
+
+class TwoColumnTypeBlock(blocks.ChoiceBlock):
+    TOP = 'l-decor-wrapper--top'
+    BOTTOM = 'l-decor-wrapper--mobile-bottom'
+    choices = (
+        (TOP, 'Top'),
+        (BOTTOM, 'Bottom')
+    )
+
+
+class TwoColumnWidgetDecor(blocks.ChoiceBlock):
+    LEFT = 'l-two-cols__box--with-decor-left'
+    SIMPLE = 'l-two-cols__box--simple-widget'
+    choices = (
+        (LEFT, 'With decor left'),
+        (SIMPLE, 'Simple widget'),
+    )
+
+
 class TwoColumnModuleBlock(blocks.StructBlock):
+    type = TwoColumnTypeBlock(required=False, default=TwoColumnTypeBlock.choices[1])
     social_links = blocks.ListBlock(SocialChannelsLinks(required=False))
-    left_widget = WidgetChooserBlock(required=False, label="Left widget")
-    right_widget = WidgetChooserBlock(required=False, label="Right widget")
+    left_widget_decor = TwoColumnWidgetDecor(required=False, default=TwoColumnWidgetDecor.choices[0])
+    left_widget = TwoColumnWidgetChooserBlock(required=False, label="Left widget")
+    right_widget_decor = TwoColumnWidgetDecor(required=False, default=TwoColumnWidgetDecor.choices[1])
+    right_widget = TwoColumnWidgetChooserBlock(required=False, label="Right widget")
 
     class Meta:
         template = "streams/two_columns_block.html"
