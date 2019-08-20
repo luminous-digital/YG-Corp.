@@ -735,8 +735,8 @@ class TwoColumnTypeBlock(blocks.ChoiceBlock):
     TOP = 'l-decor-wrapper--top'
     BOTTOM = 'l-decor-wrapper--mobile-bottom'
     choices = (
-        (TOP, 'top'),
-        (BOTTOM, 'bottom')
+        (TOP, 'Top'),
+        (BOTTOM, 'Bottom')
     )
 
 
@@ -744,8 +744,8 @@ class TwoColumnWidgetDecor(blocks.ChoiceBlock):
     LEFT = 'l-two-cols__box--with-decor-left'
     SIMPLE = 'l-two-cols__box--simple-widget'
     choices = (
-        (LEFT, 'with-decor-left'),
-        (SIMPLE, 'simple-widget'),
+        (LEFT, 'With decor left'),
+        (SIMPLE, 'Simple widget'),
     )
 
 
