@@ -9,6 +9,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+from flex.views import ical_view
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -17,6 +18,8 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+
+    url(r'^calendar-add/ical/(?P<name>[\w.@+-]+)/(?P<date>[\w.@+-]+)', ical_view, name="calendar-add"),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in

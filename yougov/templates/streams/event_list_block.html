@@ -1,4 +1,4 @@
-{% load static  days_to_add_tag %}
+{% load static  days_to_add_tag url_encode_tag %}
 <div class="l-inner">
     <div class="l-tabs">
         <div class="c-tabs js-tabs-container">
@@ -73,13 +73,8 @@
                                                 {% endwith %}
                                             </li>
                                             <li class="c-custom-dropdown__list-item">
-                                                <a href="#" target="_blank" class="c-custom-dropdown__link">
-                                                    Apple Mail
-                                                </a>
-                                            </li>
-                                            <li class="c-custom-dropdown__list-item">
-                                                <a href="#" target="_blank" class="c-custom-dropdown__link">
-                                                    Outlook
+                                                <a href="/calendar-add/ical/{{ event.name|url_encode }}/{{ event.date|date:'Ymd' }}" target="_blank" class="c-custom-dropdown__link" download>
+                                                    Apple Mail / Outlook
                                                 </a>
                                             </li>
                                         </ul>
