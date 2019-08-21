@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'custom',
     'flex',
     'home',
+    'office',
     'news',
     'search',
     'streams',

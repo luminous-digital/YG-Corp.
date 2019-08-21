@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags %}
+
+{% block content %}
+<div class="l-inner js-map-container">
+    <section class="l-heading">
+        <div class="c-heading">
+            <h1 class="c-heading__title t-headline-2">
+                Global offices
+            </h1>
+        </div>
+    </section>
+    <section class="l-filters">
+        <form class="f-form f-form--filters">
+            <div class="f-form__col">
+                <h5 class="f-form__title t-headline-5">
+                    Filter by:
+                </h5>
+            </div>
+            <div class="f-form__col f-form__col--big">
+                <div class="f-field f-field--select">
+                    <select class="f-field__control js-select" name="region" data-placeholder="Select" required=''>
+                        <option></option>
+                        <option value="Europe">Europe</option>
+                        <option value="North America">North America</option>
+                        <option value="Middle East & Africa">Middle East & Africa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="Asia Pacific">Asia Pacific</option>
+                    </select>
+                    <span class="o-icon-wrapper">
+                        <svg class="o-icon o-icon--arrow-simple">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold' %}">
+                            </use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="f-field f-field--select">
+                    <select class="f-field__control js-select" name="country" data-placeholder="Select" required='' disabled>
+                        <option></option>
+                    </select>
+                    <span class="o-icon-wrapper">
+                        <svg class="o-icon o-icon--arrow-simple">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold' %}">
+                            </use>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+            <div class="f-form__col">
+                <button type="button" class="c-clear-btn t-caption js-clear-filters">
+                    Clear filters
+                    <span class="c-clear-btn__icon o-icon-wrapper">
+                        <svg class="o-icon o-icon--cross">
+                            <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </section>
+    <section class="l-locations">
+        <div class="l-locations__row l-locations__row--no-padding">
+            <div class="c-map">
+                <div class="c-map__popup js-map-popup-container">
+                    <button class="c-map__popup__close js-map-popup-close">
+                        <span class="o-icon-wrapper">
+                            <svg class="o-icon o-icon--cross">
+                                <use xmlns:xlink="http:www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-cross' %}"></use>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="c-map__popup__content"></div>
+                </div>
+                <div class="c-map__main js-map" aria-label="google map" data-zoom="2.4" data-lat="0" data-lng="0">
+                    Offices map
+                </div>
+                <div class="c-map__legend">
+                    <ul class="c-list c-list--horizontal">
+                        <li class="c-list__item">
+                            <div class="c-marker-box">
+                                <span class="c-marker-box__icon o-icon-wrapper">
+                                    <svg class="o-icon o-icon--map-pin">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-map-pin' %}">
+                                        </use>
+                                    </svg>
+                                </span>
+                                Headquarters
+                            </div>
+                        </li>
+                        <li class="c-list__item">
+                            <div class="c-marker-box">
+                                <span class="c-marker-box__icon">
+                                    <span class="c-marker-box__small-marker"></span>
+                                </span>
+                                Office location
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% for country in self.countries %}
+            <div class="l-locations__row">
+                <div class="c-offices">
+                    <div class="c-offices__heading">
+                        <h4 class="c-offices__title t-headline-4 t-bold">
+                            {{ country.hq_office.country_name }}
+                        </h4>
+                    </div>
+                    <div class="c-offices__body">
+                        <div class="c-offices__headquarters">
+                            <div class="c-office-info">
+                                <h5 class="c-office-info__type t-headline-5 t-light">
+                                    {{ country.hq_office.address.office_name }}
+                                </h5>
+                                <address class="c-office-info__address t-body-1 t-light">
+                                    {{ country.hq_office.address.address_line_1 }}<br>
+                                    {{ country.hq_office.address.address_line_2 }}<br>
+                                    {{ country.hq_office.address.address_line_3 }}
+                                </address>
+                                <p class="c-office-info__contact t-body-1 t-light">Tel: <a href="tel:{{ country.hq_office.telephone }}">{{ country.hq_office.telephone }}</a></p>
+                                <p class="c-office-info__contact t-body-1 t-light">Email: <a href="{{ country.hq_office.email }}">{{ country.hq_office.email }}</a></p>
+                                <p class="c-office-info__contact t-body-1 t-light">Web: <a href="{{ country.hq_office.website }}" target="_blank">{% if 'https' in country.hq_office.website %} {{ country.hq_office.website|slice:"8:" }} {% elif 'http' in country.hq_office.website %} {{ country.hq_office.website|slice:"7:" }} {% endif %}</a></p>
+                            </div>
+                        </div>
+                        <div class="c-offices__additional">
+                          <ul class="c-list c-list--horizontal-wrap c-list--half-width">
+                              {% for add_office in country.additional_offices %}
+                              <li class="c-list__item">
+                                <div class="c-office-info">
+                                    <h5 class="c-office-info__type t-headline-5 t-light">
+                                        {{ add_office.office_name }}
+                                    </h5>
+                                    <address class="c-office-info__address t-body-1 t-light">
+                                        {{ add_office.address_line_1 }}<br>
+                                        {{ add_office.address_line_2 }}<br>
+                                        {{ add_office.address_line_3 }}
+                                    </address>
+                                </div>
+                              </li>
+                              {% endfor %}
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

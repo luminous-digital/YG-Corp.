@@ -7,11 +7,13 @@ from django.contrib import admin
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from office import views as office_views
 
 from search import views as search_views
 from flex.views import ical_view
 
 urlpatterns = [
+    url(r'^src/js/modules/offices-map/locations.json', office_views.json, name='offices_json'),
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
