@@ -586,7 +586,7 @@ class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
 
 class NewsFeedModuleBlock(blocks.StructBlock):
     number_of_news = blocks.IntegerBlock(required=True)
-    background_colour = LinkContainerBackgroundColorChooserBlock(required=True, help_text="background color")
+    background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
