@@ -48,7 +48,7 @@
                         <div class="c-event-box">
                             <div class="c-event-box__head">
                                 <time datetime="{{ event.date|date:'d/m/Y' }}" class="c-event-box__date">
-                                    {{ event.date|date:"j F Y" }}
+                                    {{ event.date|date:"d M Y" }}
                                 </time>
                                 <h5 class="c-event-box__title">
                                     {{event.name}}{% if event.to_be_confirmed == '1' %}*{% endif %}
