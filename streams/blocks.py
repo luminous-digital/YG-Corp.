@@ -47,7 +47,7 @@ class TestMediaBlock(AbstractMediaChooserBlock):
 
 
 class TitleColorChooserBlock(blocks.ChoiceBlock):
-    WHITE = '#111111'
+    WHITE = '#FFFFFF'
     CYAN = '#00B7B4'
     BLUE = '#00B7B5'
     VIOLET = '#9078D7'
