@@ -74,7 +74,12 @@
                                             </li>
                                             <li class="c-custom-dropdown__list-item">
                                                 <a href="/calendar-add/ical/{{ event.name|url_encode }}/{{ event.date|date:'Ymd' }}" target="_blank" class="c-custom-dropdown__link" download>
-                                                    Apple Mail / Outlook
+                                                    Apple Mail
+                                                </a>
+                                            </li>
+                                            <li class="c-custom-dropdown__list-item">
+                                                <a href="/calendar-add/ical/{{ event.name|url_encode }}/{{ event.date|date:'Ymd' }}" target="_blank" class="c-custom-dropdown__link" download>
+                                                    Outlook
                                                 </a>
                                             </li>
                                         </ul>
