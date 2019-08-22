@@ -199,6 +199,8 @@ WAGTAILSEARCH_BACKENDS = {
 
 OFFICE_LOCATION_MODULE_JSON_URL = 'src/js/modules/offices-map/locations.json'
 
+GOOGLE_API_KEY = 'AIzaSyBdcLxxVkU3DeOprUIuHvTWE8-WxVsBYZs'
+
 try:
     from .local import *  # NOQA
 except ImportError:

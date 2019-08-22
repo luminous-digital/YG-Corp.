@@ -1,4 +1,4 @@
-{% load static wagtailuserbar footer_tag menu_tag cookie_tag cookie_ga_id_tag %}
+{% load static wagtailuserbar footer_tag menu_tag cookie_tag cookie_ga_id_tag google_api_key_tag %}
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
@@ -28,6 +28,7 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id={% cookie_ga_id %}"></script>
         <script>
             window.GAID = '{% cookie_ga_id %}';
+            window.googleAPIKey = '{% google_api_key %}';
         </script>
     </head>
 
