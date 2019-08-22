@@ -40,6 +40,7 @@ class AbstractFlexPage(Page):
             ('two_columns_block', blocks.TwoColumnModuleBlock()),
             ("video_block", blocks.VideoBlock()),
             ('widget_block', blocks.WidgetChooserBlock()),
+            ('right_widget_block', blocks.RightWidgetChooserBlock()),
             ("full_rich_text", blocks.RichTextBlock()),
             # ('image_block', blocks.ImageBlock()),
         ],
