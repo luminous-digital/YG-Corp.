@@ -199,6 +199,8 @@ WAGTAILSEARCH_BACKENDS = {
 
 OFFICE_LOCATION_MODULE_JSON_URL = 'src/js/modules/offices-map/locations.json'
 
+GOOGLE_API_KEY = 'Add google api key in local.py'
+
 try:
     from .local import *  # NOQA
 except ImportError:
