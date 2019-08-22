@@ -10,9 +10,10 @@ from wagtail.documents import urls as wagtaildocs_urls
 from office import views as office_views
 
 from search import views as search_views
+from yougov.settings.base import OFFICE_LOCATION_MODULE_JSON_URL
 
 urlpatterns = [
-    url(r'^src/js/modules/offices-map/locations.json', office_views.json, name='offices_json'),
+    url(r'^{}'.format(OFFICE_LOCATION_MODULE_JSON_URL), office_views.json, name='offices_json'),
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),

@@ -4,6 +4,8 @@ from wagtail.core.models import Orderable, Page
 from modelcluster.fields import ParentalKey
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel
 
+from yougov.settings.base import OFFICE_LOCATION_MODULE_JSON_URL
+
 
 class OfficeComponent(Page):
     @property
@@ -15,6 +17,11 @@ class OfficeComponent(Page):
     content_panels = Page.content_panels + [
         InlinePanel('related_offices', label="Related Offices")
     ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['OFFICE_LOCATION_MODULE_JSON_URL'] = OFFICE_LOCATION_MODULE_JSON_URL
+        return context
 
 
 class Office(Orderable):
