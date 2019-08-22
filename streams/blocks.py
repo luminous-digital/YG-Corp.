@@ -197,7 +197,7 @@ class ImageBlock(blocks.StructBlock):
 class CalloutsBlock(blocks.StructBlock):
     heading = blocks.CharBlock(required=True, max_length=255)
     callout = blocks.CharBlock(required=True, max_length=255)
-    subcopy = blocks.CharBlock(required=True, max_length=255)
+    subcopy = blocks.CharBlock(required=False, max_length=255)
 
 
 class CalloutsModuleBlock(blocks.StructBlock):
