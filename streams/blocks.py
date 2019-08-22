@@ -585,6 +585,7 @@ class LinkContainerBackgroundColorChooserBlock(blocks.ChoiceBlock):
 
 
 class NewsFeedModuleBlock(blocks.StructBlock):
+    headline = blocks.CharBlock(required=False, default="Company research", max_length=255)
     number_of_news = blocks.IntegerBlock(required=True)
     background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
 
