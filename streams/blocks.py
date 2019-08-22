@@ -870,12 +870,14 @@ class TimeLineModuleBlock(blocks.StructBlock):
 
 
 class PaddingChoiceBlock(blocks.ChoiceBlock):
-    TOP = 'top'
-    BOTTOM = 'bottom'
+    LARGE = 'l'
+    MEDIUM = 'm'
+    SMALL = 's'
 
     choices = (
-        (TOP, "Top"),
-        (BOTTOM, "Bottom"),
+        (LARGE, 'Large'),
+        (MEDIUM, 'Medium'),
+        (SMALL, 'Small'),
     )
 
 
