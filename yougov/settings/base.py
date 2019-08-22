@@ -197,6 +197,8 @@ WAGTAILSEARCH_BACKENDS = {
     }
 }
 
+OFFICE_LOCATION_MODULE_JSON_URL = 'src/js/modules/offices-map/locations.json'
+
 try:
     from .local import *  # NOQA
 except ImportError:
