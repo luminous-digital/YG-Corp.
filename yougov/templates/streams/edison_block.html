@@ -3,19 +3,19 @@
     <div class="l-inner">
         <div class="c-heading">
             <h1 class="c-heading__title t-headline-2">
-                Company research
+                {{ self.headline }}
             </h1>
         </div>
     </div>
 </section>
 <section class="l-section">
-    <div class="l-inner l-inner--very-small">
+    <div class="l-inner l-inner--small">
         <div class="c-newsfeed c-newsfeed--invert-colors" {% if self.background_colour %}style="background-color: {{ self.background_colour }};"{% endif %}">
             <div class="c-newsfeed__content">
                 <ul class="c-list">
                     {% for element in rows %}
                     <li class="c-list__item">
-                        {% include 'streams/edison_base_block.html' with headline=element.headline description=element.description research_link=element.research_link  %}
+                        {% include 'streams/edison_base_block.html' with headline=element.headline description=element.description research_link=element.research_link  edison_revert_color='c-excerpt--alt' %}
                     </li>
                     {% endfor %}
                 </ul>
