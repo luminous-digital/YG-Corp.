@@ -729,7 +729,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     class Meta:
         template = "streams/widget_block.html"
         icon = "cog"
-        label = "Left Widget module"
+        label = "Widget left module"
 
 
 class RightWidgetChooserBlock(WidgetChooserBlock):
@@ -737,7 +737,7 @@ class RightWidgetChooserBlock(WidgetChooserBlock):
     class Meta:
         template = "streams/widget_block_right_align.html"
         icon = "cog"
-        label = "Right Widget module"
+        label = "Widget right module"
 
 
 class TwoColumnWidgetChooserBlock(WidgetChooserBlock):
