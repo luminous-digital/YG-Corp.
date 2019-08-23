@@ -15,8 +15,9 @@
         {{ quote_text }}
         </h2>
         {% if link_text %}
+        {% for block in self.link_url %}
             <div class="c-quote__action">
-                <a href="{{ link_url }}" class="c-underline-link" target="{{ link_tab_chooser }}">
+                <a href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}" class="c-underline-link" target="{{ link_tab_chooser }}">
                 {{ self.link_text }}
                     <span class="c-underline-link__icon o-icon-wrapper">
                         <svg class="o-icon o-icon--arrow-right">
@@ -25,6 +26,7 @@
                     </span>
                 </a>
             </div>
+        {% endfor %}
         {% endif %}
     </div>
 </div>
