@@ -116,7 +116,7 @@ class RichTextBlock(blocks.RichTextBlock):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.features = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'bold', 'italic', 'link', 'hr',
-                         'document-link', 'image', 'embed']
+                         'document-link', 'image', 'embed', 'center']
 
     class Meta:
         template = "streams/full_rich_text.html"
