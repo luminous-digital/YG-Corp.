@@ -12,7 +12,7 @@ def register_lefttext_feature(features):
     # Step 1
     feature_name = "left"
     type_ = "LEFTTEXT"
-    tag = "dl"
+    tag = "divl"
 
     # Step 2
     control = {
@@ -59,7 +59,7 @@ def register_centertext_feature(features):
     # Step 1
     feature_name = "center"
     type_ = "CENTERTEXT"
-    tag = "dt"
+    tag = "divc"
 
     # Step 2
     control = {
@@ -106,7 +106,7 @@ def register_righttext_feature(features):
     # Step 1
     feature_name = "right"
     type_ = "RIGHTTEXT"
-    tag = "dd"
+    tag = "divr"
 
     # Step 2
     control = {
