@@ -47,6 +47,7 @@ class TestMediaBlock(AbstractMediaChooserBlock):
 
 
 class TitleColorChooserBlock(blocks.ChoiceBlock):
+    WHITE = '#FFFFFF'
     CYAN = '#00B7B4'
     BLUE = '#00B7B5'
     VIOLET = '#9078D7'
@@ -56,6 +57,7 @@ class TitleColorChooserBlock(blocks.ChoiceBlock):
     BLACK = '#000000'
 
     choices = (
+        (WHITE, 'White'),
         (CYAN, "Cyan"),
         (BLUE, "Blue"),
         (VIOLET, "Violet"),
@@ -157,6 +159,7 @@ class VideoBlock(blocks.StructBlock):
 
     header = blocks.TextBlock(required=False)
     sub_copy = blocks.TextBlock(required=False)
+    text_colour = TitleColorChooserBlock(required=True)
     video_thumbnail = ImageChooserBlock(required=False)
     media_chooser = VideoMediaChooserBlock(max_num=1, required=False)
     link = LinkAndDocChooserBlock(required=False)

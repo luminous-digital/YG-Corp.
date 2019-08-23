@@ -38,12 +38,12 @@
                     <div class="c-video-module__content">
                         <div class="c-video-teaser">
                             {% if self.header %}
-                            <h4 class="c-video-teaser__heading t-headline-4 t-bold">
+                            <h4 class="c-video-teaser__heading t-headline-4 t-bold" style="color:{{ self.text_colour }};">
                                 {{self.header}}
                             </h4>
                             {% endif %}
                             {% if self.sub_copy %}
-                            <h2 class="c-video-teaser__text t-headline-2">
+                            <h2 class="c-video-teaser__text t-headline-2" style="color:{{ self.text_colour }};">
                                 {{self.sub_copy}}
                             </h2>
                             {% endif %}
@@ -58,7 +58,7 @@
                                     </svg>
                                 </span>
                             </div>
-                            <div class="c-play__text t-button">
+                            <div class="c-play__text t-button" style="color:{{ self.text_colour }};">
                                 <p>Watch the video</p>
                                 <p class="t-regular">Transparency with data<span>{{ video.value.duration | video_tag }}</span></p>
                             </div>
