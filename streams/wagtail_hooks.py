@@ -48,7 +48,7 @@ def register_lefttext_feature(features):
     # Step 5
     features.register_converter_rule("contentstate", feature_name, db_conversion)
 
-    # Step 6, This is optional.
+    # Step 6
     features.default_features.append(feature_name)
 
 
@@ -95,7 +95,7 @@ def register_centertext_feature(features):
     # Step 5
     features.register_converter_rule("contentstate", feature_name, db_conversion)
 
-    # Step 6, This is optional.
+    # Step 6
     features.default_features.append(feature_name)
 
 
@@ -142,5 +142,5 @@ def register_righttext_feature(features):
     # Step 5
     features.register_converter_rule("contentstate", feature_name, db_conversion)
 
-    # Step 6, This is optional.
+    # Step 6
     features.default_features.append(feature_name)
