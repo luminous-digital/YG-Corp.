@@ -10,18 +10,18 @@ def register_lefttext_feature(features):
     """Creates centered text in our richtext editor and page."""
 
     # Step 1
-    feature_name = "center"
+    feature_name = "left"
     type_ = "LEFTTEXT"
-    tag = "div"
+    tag = "dl"
 
     # Step 2
     control = {
         "type": type_,
         "label": "Left",
-        "description": "Center Text",
+        "description": "Left Text",
         "style": {
             "display": "block",
-            "text-align": "center",
+            "text-align": "left",
         },
     }
 
@@ -59,7 +59,7 @@ def register_centertext_feature(features):
     # Step 1
     feature_name = "center"
     type_ = "CENTERTEXT"
-    tag = "div"
+    tag = "dt"
 
     # Step 2
     control = {
@@ -85,7 +85,7 @@ def register_centertext_feature(features):
                 type_: {
                     "element": tag,
                     "props": {
-                        "style": "text-align: left;"
+                        "style": "text-align: center;"
                     }
                 }
             }
@@ -98,23 +98,24 @@ def register_centertext_feature(features):
     # Step 6, This is optional.
     features.default_features.append(feature_name)
 
+
 @hooks.register("register_rich_text_features")
-def register_centertext_feature(features):
+def register_righttext_feature(features):
     """Creates centered text in our richtext editor and page."""
 
     # Step 1
-    feature_name = "center"
-    type_ = "CENTERTEXT"
-    tag = "div"
+    feature_name = "right"
+    type_ = "RIGHTTEXT"
+    tag = "dd"
 
     # Step 2
     control = {
         "type": type_,
-        "label": "Center",
-        "description": "Center Text",
+        "label": "Right",
+        "description": "Right Text",
         "style": {
             "display": "block",
-            "text-align": "center",
+            "text-align": "right",
         },
     }
 
@@ -131,7 +132,7 @@ def register_centertext_feature(features):
                 type_: {
                     "element": tag,
                     "props": {
-                        "style": "text-align: left;"
+                        "style": "text-align: right;"
                     }
                 }
             }
