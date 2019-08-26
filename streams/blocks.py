@@ -14,7 +14,7 @@ from urllib.request import urlopen
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL
-
+from html import unescape
 
 # wont be used. Everything on video_block template
 
@@ -592,6 +592,8 @@ class NewsFeedModuleBlock(blocks.StructBlock):
     headline = blocks.CharBlock(required=False, default="Company research", max_length=255)
     number_of_news = blocks.IntegerBlock(required=True)
     background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
+    link_url = blocks.URLBlock(required=False)
+    link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
@@ -603,7 +605,7 @@ class NewsFeedModuleBlock(blocks.StructBlock):
             rows = []
             for publication in publications[:context['self']['number_of_news']]:
                 row = {'headline': self.get_value_from(publication, 'headline'),
-                       'description': self.get_value_from(publication, 'description'),
+                       'description': unescape(self.get_value_from(publication, 'description')),
                        'research_link': self.get_value_from(publication, 'research_link')}
                 rows.append(row)
             cache.set(key, rows)

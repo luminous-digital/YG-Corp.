@@ -12,8 +12,9 @@
             {% endfor %}
         </ul>
     </div>
+    {% if self.link_url %}
     <div class="c-newsfeed__btn-wrapper">
-        <a href="https://www.edisoninvestmentresearch.com/widgets/901/35" class="c-underline-link" target="_blank">
+        <a href="{{ self.link_url }}" class="c-underline-link" target="{{ self.link_tab_chooser }}">
             See more company research
             <span class="c-underline-link__icon o-icon-wrapper">
                 <svg class="o-icon o-icon--arrow-right">
@@ -22,4 +23,5 @@
             </span>
         </a>
     </div>
+    {% endif %}
 </div>
