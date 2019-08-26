@@ -520,6 +520,7 @@ class IframeBlock(blocks.StructBlock):
 
 class HeroBannerBlock(blocks.StructBlock):
     banner_text = RichTextBlock(required=True, label="Hero banner text")
+    banner_color = TitleColorChooserBlock(required=False)
     hyperlink = LinkAndDocChooserBlock(required=False, help_text="add link")
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
