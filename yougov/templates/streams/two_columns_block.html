@@ -1,4 +1,4 @@
-{% load static %}
+{% load static two_column_decor_tag %}
 <div class="l-inner">
     <div class="l-decor-wrapper {{ self.type }}">
         <div class="l-two-cols l-two-cols--grid">
@@ -21,10 +21,10 @@
                     </ul>
                 </div>
             {% endif %}
-            <div class="{{ self.left_widget_decor }} l-two-cols__box--simple-widget">
+            <div class="l-two-cols__box {{ self.left_widget_decor }}">
                 {{ self.left_widget }}
             </div>
-            <div class="{{ self.right_widget_decor }} l-two-cols__box--simple-widget-alt">
+            <div class="l-two-cols__box {{ self.right_widget_decor }}{% if self.left_widget_decor|two_column_decor:self.right_widget_decor %}--alt{% endif %}">
                 {{ self.right_widget }}
             </div>
         </div>
