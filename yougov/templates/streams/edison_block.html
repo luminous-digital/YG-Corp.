@@ -1,4 +1,5 @@
 {% load static %}
+{% if self.headline %}
 <section class="l-heading">
     <div class="l-inner">
         <div class="c-heading">
@@ -8,6 +9,7 @@
         </div>
     </div>
 </section>
+{% endif %}
 <section class="l-section">
     <div class="l-inner l-inner--small">
         <div class="c-newsfeed c-newsfeed--invert-colors c-newsfeed--no-padding" {% if self.background_colour %}style="background-color: {{ self.background_colour }};"{% endif %}">
