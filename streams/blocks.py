@@ -143,7 +143,6 @@ class QuotationBlock(blocks.StructBlock):
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
     optional_padding_above = blocks.BooleanBlock(required=False, help_text="add padding above field")
 
-
     class Meta:
         template = "streams/quotation_block.html"
         icon = "openquote"

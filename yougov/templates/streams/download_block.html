@@ -1,4 +1,4 @@
-{% load static %}
+{% load static year_list_tag %}
 <div class="l-section">
     <div class="l-inner">
         <div class="c-downloads-wrapper">
@@ -20,15 +20,18 @@
                                 All
                             </button>
                         </li>
-                        {% for news in self.news|dictsortreversed:"date" %}
-                            {% ifchanged %}
-                                <li class="c-tabs__nav-item" data-tab="{{ news.date|date:'Y' }}">
-                                    <button class="c-tabs__cta c-underline-link">
-                                       {{ news.date|date:'Y' }}
-                                    </button>
-                                </li>
-                            {% endifchanged %}
+                        {% for news_date in self.news|dictsortreversed:"date"|year_list %}
+                            <li class="c-tabs__nav-item" data-tab="{{ news_date }}">
+                                <button class="c-tabs__cta c-underline-link">
+                                   {{ news_date }}
+                                </button>
+                            </li>
                         {% endfor %}
+                        <li class="c-tabs__nav-item" data-tab="Archive">
+                            <button class="c-tabs__cta c-underline-link">
+                                Archive
+                            </button>
+                        </li>
                     </ul>
                 </div>
                 <div class="c-downloads-table js-table-content">
@@ -45,7 +48,11 @@
                         </div>
                     </div>
                     {% for news in self.news|dictsortreversed:"date" %}
-                        <div class="c-downloads-table__content" data-tab="{{ news.date|date:'Y' }}" data-index="{{ forloop.counter }}">
+                        {% if news.date.year in self.news|dictsortreversed:"date"|year_list %}
+                            <div class="c-downloads-table__content" data-tab="{{ news.date|date:'Y' }}" data-index="{{ forloop.counter }}">
+                        {% else %}
+                            <div class="c-downloads-table__content" data-tab="Archive" data-index="{{ forloop.counter }}">
+                        {% endif %}
                             <div class="c-downloads">
                                 <div class="c-downloads__post-wrapper">
                                     <time datetime="{{ news.date|date:'Y-m-d' }}" class="c-downloads__date">

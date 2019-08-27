@@ -5,6 +5,7 @@ from wagtail.admin.rich_text.converters.html_to_contentstate import (
 )
 from wagtail.core import hooks
 
+
 @hooks.register("register_rich_text_features")
 def register_lefttext_feature(features):
     """Creates centered text in our richtext editor and page."""
