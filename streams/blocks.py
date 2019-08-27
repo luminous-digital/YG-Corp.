@@ -13,7 +13,7 @@ from wagtailstreamforms.blocks import WagtailFormBlock
 from urllib.request import urlopen
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
-from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL
+from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL, YOUGOV_NEWS_XML_URL
 from html import unescape
 
 # wont be used. Everything on video_block template
@@ -627,6 +627,26 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
         template = "streams/edison_widget_block.html"
         icon = "doc-full-inverse"
         label = "Edison news feed"
+
+
+class YouGovModuleBlock(NewsFeedModuleBlock):
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        key = make_template_fragment_key('newsfeed', [context['self']['number_of_news']])
+        rows = cache.get(key)
+        if not rows:
+            xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
+            entries = xmldoc.getElementsByTagName('entry')
+            rows = []
+            for entry in entries[:context['self']['number_of_news']]:
+                row = {'title': self.get_value_from(entry, 'title'),
+                       'h3': unescape(self.get_value_from(entry, 'h3')),
+                       }
+                rows.append(row)
+            cache.set(key, rows)
+        context['rows'] = rows
+        return context
 
 
 """Widget/Two columns module blocks"""

@@ -177,6 +177,8 @@ BASE_URL = 'http://example.com'
 
 EDISONINVESTMENTSEARCH_XML_URL = "https://www.edisoninvestmentresearch.com/widgets-xml/901"
 
+YOUGOV_NEWS_XML_URL = 'https://yougov.co.uk/news/feeds/latest/'
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
