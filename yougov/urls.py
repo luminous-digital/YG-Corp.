@@ -9,6 +9,7 @@ from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from office import views as office_views
 
+from streams.views import serve
 from search import views as search_views
 from yougov.settings.base import OFFICE_LOCATION_MODULE_JSON_URL
 from flex.views import ical_view
@@ -18,6 +19,8 @@ urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^documents/(\d+)/(.*)$', serve, name='wagtaildocs_serve'),
+
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),

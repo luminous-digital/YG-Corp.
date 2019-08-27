@@ -1,4 +1,5 @@
 """StreamFields"""
+import webbrowser
 import re
 import tweepy
 from html import unescape
