@@ -7,6 +7,7 @@ def json(request):
     offices = Office.objects.all()
     json = [{"lat": o.lat,
              'lng': o.lng,
+             'isHeadquarter': o.is_headquarter,
              "region": o.region,
              "country": o.country,
              "city": o.city,
