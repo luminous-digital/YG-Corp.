@@ -1,10 +1,10 @@
 {% load static %}
 <a href="{{ element.research_link }}" class="c-excerpt {{ edison_revert_color }}" target="_blank">
     <p class="c-excerp__subtitle">
-        {{ element.headline }}
+        {{ element.title }}
     </p>
     <p class="c-excerp__text">
-        {{ element.description|truncatewords:20 }}
+        {{ element.p }}
     </p>
     <div class="c-excerp__btn-wrapper">
         <span class="c-underline-link">
