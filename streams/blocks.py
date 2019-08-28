@@ -629,24 +629,33 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
         label = "Edison news feed"
 
 
-class YouGovModuleBlock(NewsFeedModuleBlock):
+class RssBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        key = make_template_fragment_key('newsfeed', [context['self']['number_of_news']])
-        rows = cache.get(key)
-        if not rows:
-            xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
-            entries = xmldoc.getElementsByTagName('entry')
-            rows = []
-            for entry in entries[:context['self']['number_of_news']]:
-                row = {'title': self.get_value_from(entry, 'title'),
-                       'h3': unescape(self.get_value_from(entry, 'h3')),
-                       }
-                rows.append(row)
-            cache.set(key, rows)
+        #key = make_template_fragment_key('newsfeed', [context['self']['number_of_news']])
+        #rows = cache.get(key)
+        #if not rows:
+        xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
+        entries = xmldoc.getElementsByTagName('entry')
+        rows = []
+        for entry in entries[:context['self']['number_of_news']]:
+            row = {'title': self.get_value_from(entry, 'title'),
+                   'h3': unescape(self.get_value_from(entry, 'h3')),
+                   }
+            rows.append(row)
+            #cache.set(key, rows)
         context['rows'] = rows
         return context
+
+    @staticmethod
+    def get_value_from(source, index):
+        return source.getElementsByTagName(index)[0].firstChild.nodeValue
+
+    class Meta:
+        template = "streams/rss_block.html"
+        icon = "doc-full-inverse"
+        label = "Rss feed"
 
 
 """Widget/Two columns module blocks"""
