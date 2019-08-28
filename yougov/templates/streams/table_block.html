@@ -1,7 +1,7 @@
-{% load value_from_index_tag %}
+{% load value_from_index_tag table_column_counter_tag %}
 <div class="l-inner">
     <div class="l-advisor">
-        <div class="c-table c-table--3-cols">
+        <div class="c-table c-table--{{ self.table.data.0|table_column_counter }}-cols">
             {% if self.table.first_row_is_table_header %}
                 <div class="c-table__head">
                     <div class="c-table__row">
