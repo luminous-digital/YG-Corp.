@@ -1,4 +1,5 @@
 """StreamFields"""
+import re
 from html import unescape
 from urllib.request import urlopen
 from xml.dom import minidom
@@ -629,37 +630,44 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
         icon = "doc-full-inverse"
         label = "Edison news feed"
 
-import xml.etree.ElementTree as ET
 
 class RssBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        #key = make_template_fragment_key('newsfeed', [context['self']['number_of_news']])
-        #rows = cache.get(key)
-        #if not rows
-        xmldoc = ET.parse(urlopen(YOUGOV_NEWS_XML_URL))
-        root = xmldoc.getroot()
-        for child in root.iter('entry'):
-            print(child.tag)
-        # entries = xmldoc.getElementsByTagName('entry')
-        # rows = []
-        # for entry in entries[:context['self']['number_of_news']]:
-        #     row = {'title': self.get_value_from(entry, 'title')
-        #           }
-        #     rows.append(row)
-        #     #cache.set(key, rows)
-        # context['rows'] = rows
+        key = make_template_fragment_key('rss', [context['self']['number_of_news']])
+        rows = cache.get(key)
+        if not rows:
+            xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
+            entries = xmldoc.getElementsByTagName('entry')
+            rows = []
+            for entry in entries[:context['self']['number_of_news']]:
+                row = {'title': self.get_value_from(entry, 'title'),
+                       'summary': unescape(self.get_value_from_paragraph(entry, 'summary'))
+                      }
+                rows.append(row)
+            cache.set(key, rows)
+        context['rows'] = rows
         return context
 
     @staticmethod
     def get_value_from_paragraph(source, index):
-        return source.getElementsByTagName(index)[0].firstChild.nodeValue
+        s = source.getElementsByTagName(index)[0].firstChild.nodeValue
+        cleanr = re.compile('<.*?>')
+        cleantext = re.sub(cleanr, '', s)
+        return cleantext
 
     class Meta:
         template = "streams/rss_block.html"
         icon = "doc-full-inverse"
         label = "Rss feed"
+
+
+class RssWidgetBlock(RssBlock):
+    class Meta:
+        template = "streams/rss_widget_block.html"
+        icon = "doc-full-inverse"
+        label = "Rss news feed"
 
 
 """Widget/Two columns module blocks"""
@@ -760,6 +768,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     two_columns = TwoColumnsBlock(required=False)
     iframe = IframeWidgetBlock(required=False)
     news_feed = NewsFeedWidgetBlock(required=False)
+    rss_feed = RssWidgetBlock(required=False)
     quick_links = QuickLinksListBlock(required=False)
     quote = QuotationWidgetBlock(required=False)
     callouts = CalloutsWidgetBlock(required=False)
