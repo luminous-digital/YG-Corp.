@@ -629,14 +629,19 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
         label = "Edison news feed"
 
 
+import requests
+from html.parser import HTMLParser
+from bs4 import BeautifulSoup as soup
+
 class RssBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
         #key = make_template_fragment_key('newsfeed', [context['self']['number_of_news']])
         #rows = cache.get(key)
-        #if not rows:
+        #if not rows
         xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
+        print(xmldoc)
         entries = xmldoc.getElementsByTagName('entry')
         rows = []
         for entry in entries[:context['self']['number_of_news']]:
