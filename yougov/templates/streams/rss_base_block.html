@@ -1,0 +1,9 @@
+{% load static %}
+<a href="#" class="c-excerpt {{ edison_revert_color }}" target="_blank">
+    <p class="c-excerp__subtitle">
+        {{ element.title }}
+    </p>
+    <p class="c-excerp__text">
+        {{ element.summary|truncatewords:20 }}
+    </p>
+</a>

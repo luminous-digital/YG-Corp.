@@ -1,20 +1,22 @@
 """StreamFields"""
+import re
+from html import unescape
+from urllib.request import urlopen
 from xml.dom import minidom
 
-from wagtail.contrib.table_block.blocks import TableBlock
-from wagtail.core import blocks
-from wagtail.embeds.blocks import EmbedBlock
-from django.utils.html import format_html
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.documents.blocks import DocumentChooserBlock
-
-from wagtailmedia.blocks import AbstractMediaChooserBlock
-from wagtailstreamforms.blocks import WagtailFormBlock
-from urllib.request import urlopen
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
-from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL
-from html import unescape
+from django.utils.html import format_html
+from wagtail.contrib.table_block.blocks import TableBlock
+from wagtail.core import blocks
+from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtailmedia.blocks import AbstractMediaChooserBlock
+from wagtailstreamforms.blocks import WagtailFormBlock
+
+from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL, YOUGOV_NEWS_XML_URL
+
 
 # wont be used. Everything on video_block template
 
@@ -629,6 +631,45 @@ class NewsFeedWidgetBlock(NewsFeedModuleBlock):
         label = "Edison news feed"
 
 
+class RssBlock(NewsFeedModuleBlock):
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        key = make_template_fragment_key('rss', [context['self']['number_of_news']])
+        rows = cache.get(key)
+        if not rows:
+            xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
+            entries = xmldoc.getElementsByTagName('entry')
+            rows = []
+            for entry in entries[:context['self']['number_of_news']]:
+                row = {'title': self.get_value_from(entry, 'title'),
+                       'summary': unescape(self.get_value_from_paragraph(entry, 'summary'))
+                      }
+                rows.append(row)
+            cache.set(key, rows)
+        context['rows'] = rows
+        return context
+
+    @staticmethod
+    def get_value_from_paragraph(source, index):
+        source_text = source.getElementsByTagName(index)[0].firstChild.nodeValue
+        clean_regex = re.compile('<.*?>')
+        cleaned_text = re.sub(clean_regex, '', source_text)
+        return cleaned_text
+
+    class Meta:
+        template = "streams/rss_block.html"
+        icon = "doc-full-inverse"
+        label = "Rss feed"
+
+
+class RssWidgetBlock(RssBlock):
+    class Meta:
+        template = "streams/rss_widget_block.html"
+        icon = "doc-full-inverse"
+        label = "Rss news feed"
+
+
 """Widget/Two columns module blocks"""
 
 
@@ -727,6 +768,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     two_columns = TwoColumnsBlock(required=False)
     iframe = IframeWidgetBlock(required=False)
     news_feed = NewsFeedWidgetBlock(required=False)
+    rss_feed = RssWidgetBlock(required=False)
     quick_links = QuickLinksListBlock(required=False)
     quote = QuotationWidgetBlock(required=False)
     callouts = CalloutsWidgetBlock(required=False)
