@@ -652,10 +652,10 @@ class RssBlock(NewsFeedModuleBlock):
 
     @staticmethod
     def get_value_from_paragraph(source, index):
-        s = source.getElementsByTagName(index)[0].firstChild.nodeValue
-        cleanr = re.compile('<.*?>')
-        cleantext = re.sub(cleanr, '', s)
-        return cleantext
+        source_text = source.getElementsByTagName(index)[0].firstChild.nodeValue
+        clean_regex = re.compile('<.*?>')
+        cleaned_text = re.sub(clean_regex, '', source_text)
+        return cleaned_text
 
     class Meta:
         template = "streams/rss_block.html"
