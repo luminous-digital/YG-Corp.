@@ -24,7 +24,7 @@
             <div class="l-two-cols__box {{ self.left_widget_decor }}">
                 {{ self.left_widget }}
             </div>
-            <div class="l-two-cols__box {{ self.right_widget_decor }}{% if self.left_widget_decor|two_column_decor:self.right_widget_decor %}--alt{% endif %}">
+            <div class="l-two-cols__box {{ self.right_widget_decor }}{% if self.left_widget_decor|two_column_decor:self.right_widget_decor %}-alt{% endif %}">
                 {{ self.right_widget }}
             </div>
         </div>
