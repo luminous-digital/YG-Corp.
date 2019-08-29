@@ -50,9 +50,11 @@ class AbstractFlexPage(Page):
     )
 
     subtitle = models.CharField(max_length=100, null=True, blank=True)
+    is_timestamp_displayed = models.BooleanField(default=False, blank=True, null=True, verbose_name='Display published date')
 
     content_panels = Page.content_panels + [
         FieldPanel("subtitle"),
+        FieldPanel("is_timestamp_displayed"),
         StreamFieldPanel("content")
     ]
 
