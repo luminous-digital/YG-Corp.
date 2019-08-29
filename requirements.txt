@@ -7,3 +7,4 @@ gunicorn
 django-heroku
 elasticsearch==5.4.0
 icalendar
+tweepy==3.8.0

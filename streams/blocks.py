@@ -1,5 +1,6 @@
 """StreamFields"""
 import re
+import tweepy
 from html import unescape
 from urllib.request import urlopen
 from xml.dom import minidom
@@ -668,6 +669,64 @@ class RssWidgetBlock(RssBlock):
         template = "streams/rss_widget_block.html"
         icon = "doc-full-inverse"
         label = "Rss news feed"
+
+
+""" Twitter news feed """
+
+class TwitterNewsFeedBlock(NewsFeedModuleBlock):
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        return context
+
+    def get_all_tweets(self, screen_name, number_of_tweets):
+        # Twitter only allows access to a users most recent 3240 tweets with this method
+
+        consumer_key = ""
+        consumer_secret = ""
+        access_key = ""
+        access_secret = ""
+
+        # authorize twitter, initialize tweepy
+        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+        auth.set_access_token(access_key, access_secret)
+        api = tweepy.API(auth)
+
+        # initialize a list to hold all the tweepy Tweets
+        alltweets = []
+
+        # make initial request for most recent tweets (200 is the maximum allowed count)
+        new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets)
+
+        # save most recent tweets
+        alltweets.extend(new_tweets)
+
+        # save the id of the oldest tweet less one
+        oldest = alltweets[-1].id - 1
+
+        # keep grabbing tweets until there are no tweets left to grab
+        while len(new_tweets) > 0:
+
+            # all subsiquent requests use the max_id param to prevent duplicates
+            new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, max_id=oldest)
+
+            # save most recent tweets
+            alltweets.extend(new_tweets)
+
+            # update the id of the oldest tweet less one
+            oldest = alltweets[-1].id - 1
+
+        # transform the tweepy tweets into a 2D array that will populate the csv
+        outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
+
+        #
+        # # write the csv
+        # with open('%s_tweets.csv' % screen_name, 'wb') as f:
+        #     writer = csv.writer(f)
+        #     writer.writerow(["id", "created_at", "text"])
+        #     writer.writerows(outtweets)
+
+        pass
 
 
 """Widget/Two columns module blocks"""
