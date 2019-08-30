@@ -679,58 +679,23 @@ class TwitterNewsFeedBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['tweets'] = self.get_all_tweets(context['self']['number_of_news'], 'yougov')
+        # key = make_template_fragment_key('twitter', [context['self']['number_of_news']])
+        # tweets = cache.get(key)
+        # if not tweets:
+        tweets = self.get_all_tweets(context['self']['number_of_news'], 'yougov')
+            # cache.set(key, tweets)
+        context['tweets'] = tweets
         return context
 
     @staticmethod
     def get_all_tweets(number_of_tweets, screen_name=None,):
-        # Twitter only allows access to a users most recent 3240 tweets with this method
         if not screen_name:
             screen_name = 'yougov'
-
-        # authorize twitter, initialize tweepy
         auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY)
         auth.set_access_token(TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_SECRET_TOKEN_KEY)
         api = tweepy.API(auth)
-
-        # initialize a list to hold all the tweepy Tweets
-        # alltweets = []
-
-        # make initial request for most recent tweets (200 is the maximum allowed count)
-        new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets)
-        print(new_tweets)
+        new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, truncated=False, tweet_mode='extended')
         return new_tweets
-
-        #
-        # # save most recent tweets
-        # alltweets.extend(new_tweets)
-        #
-        # # save the id of the oldest tweet less one
-        # oldest = alltweets[-1].id - 1
-        #
-        # # keep grabbing tweets until there are no tweets left to grab
-        # while len(new_tweets) > 0:
-        #
-        #     # all subsiquent requests use the max_id param to prevent duplicates
-        #     new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, max_id=oldest)
-        #
-        #     # save most recent tweets
-        #     alltweets.extend(new_tweets)
-        #
-        #     # update the id of the oldest tweet less one
-        #     oldest = alltweets[-1].id - 1
-        #
-        # # transform the tweepy tweets into a 2D array that will populate the csv
-        # outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
-
-        #
-        # # write the csv
-        # with open('%s_tweets.csv' % screen_name, 'wb') as f:
-        #     writer = csv.writer(f)
-        #     writer.writerow(["id", "created_at", "text"])
-        #     writer.writerows(outtweets)
-
-        # pass
 
     class Meta:
         template = "streams/twitter_block.html"

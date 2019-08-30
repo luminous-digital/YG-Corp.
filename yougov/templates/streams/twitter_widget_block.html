@@ -3,11 +3,12 @@
         Latest from Twitter
     </h4>
     <div class="c-newsfeed__content">
-        {{ tweets }}
         <ul class="c-list">
+            {% for tweet in tweets %}
             <li class="c-list__item">
-               {% include 'streams/twitter_base_block.html' with title=element.title summary=element.summary  %}
+               {% include 'streams/twitter_base_block.html' with text=tweet.full_text user_name=tweet.user.name  date=tweet.created_at tweet_url=tweet.entities.urls.0.url %}
             </li>
+            {% endfor %}
         </ul>
     </div>
     <div class="c-newsfeed__btn-wrapper">

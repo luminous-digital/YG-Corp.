@@ -1,10 +1,11 @@
-<a href="#" class="c-excerpt c-excerpt--twitter">
+<a href="{% if tweet_url %}{{ tweet_url }}{% else %}#{% endif %}" class="c-excerpt c-excerpt--twitter">
     <p class="c-excerpt__text">
         <span class="c-excerpt__name">@Name</span>
-        Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.
+        {{ text }}
     </p>
     <div class="c-excerpt__signature">
-        <time class="c-excerpt__time" datetime="25-06-2019 16:32">25 Jun 16:32</time>
-        <p class="c-excerpt__name">@YouGov</p>
+        <time class="c-excerpt__time" datetime="25-06-2019 16:32">{{ date|date:"d M H:i" }}</time>
+<!--        <time class="c-excerpt__time" datetime="25-06-2019 16:32">25 Jun 16:32</time>-->
+        <p class="c-excerpt__name">@{{ user_name }}</p>
     </div>
 </a>
