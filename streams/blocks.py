@@ -16,7 +16,8 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 from wagtailstreamforms.blocks import WagtailFormBlock
 
-from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL, YOUGOV_NEWS_XML_URL
+from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL, YOUGOV_NEWS_XML_URL, TWITTER_CONSUMER_KEY, \
+    TWITTER_CONSUMER_SECRET_KEY, TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_SECRET_TOKEN_KEY
 
 
 # wont be used. Everything on video_block template
@@ -673,51 +674,54 @@ class RssWidgetBlock(RssBlock):
 
 """ Twitter news feed """
 
+
 class TwitterNewsFeedBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+        context['tweets'] = self.get_all_tweets(context['self']['number_of_news'], 'yougov')
         return context
 
-    def get_all_tweets(self, screen_name, number_of_tweets):
+    @staticmethod
+    def get_all_tweets(number_of_tweets, screen_name=None,):
         # Twitter only allows access to a users most recent 3240 tweets with this method
-
-        consumer_key = ""
-        consumer_secret = ""
-        access_key = ""
-        access_secret = ""
+        if not screen_name:
+            screen_name = 'yougov'
 
         # authorize twitter, initialize tweepy
-        auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-        auth.set_access_token(access_key, access_secret)
+        auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY)
+        auth.set_access_token(TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_SECRET_TOKEN_KEY)
         api = tweepy.API(auth)
 
         # initialize a list to hold all the tweepy Tweets
-        alltweets = []
+        # alltweets = []
 
         # make initial request for most recent tweets (200 is the maximum allowed count)
         new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets)
+        print(new_tweets)
+        return new_tweets
 
-        # save most recent tweets
-        alltweets.extend(new_tweets)
-
-        # save the id of the oldest tweet less one
-        oldest = alltweets[-1].id - 1
-
-        # keep grabbing tweets until there are no tweets left to grab
-        while len(new_tweets) > 0:
-
-            # all subsiquent requests use the max_id param to prevent duplicates
-            new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, max_id=oldest)
-
-            # save most recent tweets
-            alltweets.extend(new_tweets)
-
-            # update the id of the oldest tweet less one
-            oldest = alltweets[-1].id - 1
-
-        # transform the tweepy tweets into a 2D array that will populate the csv
-        outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
+        #
+        # # save most recent tweets
+        # alltweets.extend(new_tweets)
+        #
+        # # save the id of the oldest tweet less one
+        # oldest = alltweets[-1].id - 1
+        #
+        # # keep grabbing tweets until there are no tweets left to grab
+        # while len(new_tweets) > 0:
+        #
+        #     # all subsiquent requests use the max_id param to prevent duplicates
+        #     new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, max_id=oldest)
+        #
+        #     # save most recent tweets
+        #     alltweets.extend(new_tweets)
+        #
+        #     # update the id of the oldest tweet less one
+        #     oldest = alltweets[-1].id - 1
+        #
+        # # transform the tweepy tweets into a 2D array that will populate the csv
+        # outtweets = [[tweet.id_str, tweet.created_at, tweet.text.encode("utf-8")] for tweet in alltweets]
 
         #
         # # write the csv
@@ -726,7 +730,19 @@ class TwitterNewsFeedBlock(NewsFeedModuleBlock):
         #     writer.writerow(["id", "created_at", "text"])
         #     writer.writerows(outtweets)
 
-        pass
+        # pass
+
+    class Meta:
+        template = "streams/twitter_block.html"
+        icon = "doc-full-inverse"
+        label = "Twitter feed"
+
+
+class TwitterNewsWidgetBlock(TwitterNewsFeedBlock):
+    class Meta:
+        template = "streams/twitter_widget_block.html"
+        icon = "doc-full-inverse"
+        label = "Twitter news feed"
 
 
 """Widget/Two columns module blocks"""
@@ -828,6 +844,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     iframe = IframeWidgetBlock(required=False)
     news_feed = NewsFeedWidgetBlock(required=False)
     rss_feed = RssWidgetBlock(required=False)
+    twitter_feed = TwitterNewsWidgetBlock(required=False)
     quick_links = QuickLinksListBlock(required=False)
     quote = QuotationWidgetBlock(required=False)
     callouts = CalloutsWidgetBlock(required=False)
