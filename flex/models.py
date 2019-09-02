@@ -25,6 +25,7 @@ class AbstractFlexPage(Page):
             ('download_block', blocks.DownloadBlock()),
             ('iframe_block', blocks.IframeBlock()),
             ('image_content_block', blocks.ImageContentBlock()),
+            ('image_full_bleed_block', blocks.ImageFullBleedBlock()),
             ('image_person_block', blocks.ImagePersonBlock()),
             ('image_people_block', blocks.ImagePeopleBlock()),
             ('newsfeed_block', blocks.NewsFeedModuleBlock()),

@@ -1,0 +1,8 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<div class="c-video-module c-video-module--alt js-video" style="height: {{self.image_height}}px">
+    <div class="c-video-module__media" style="height: {{self.image_height}}px">
+        {% image self.image original as img %}
+        <div class="c-video" style="background-image: url({{ img.url }}); height: {{self.image_height}}px"></div>
+    </div>
+</div>
