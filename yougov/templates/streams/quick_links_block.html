@@ -20,7 +20,8 @@
                         </p>
                         <div class="c-quick-link__action">
                             {% for link in quick_link.link_or_doc %}
-                                <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ quick_link.link_tab_chooser }}">
+                                <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ quick_link.link_tab_chooser }}"
+                                    {% if quick_link.if_document_pdf == "Download" and link.block_type == 'document' %} download{% endif %}>
                             {% endfor %}
                                 {{ quick_link.link_text }}
                                 {% if quick_link.link_or_doc %}
