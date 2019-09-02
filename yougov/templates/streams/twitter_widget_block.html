@@ -1,24 +1,30 @@
+{% load static %}
 <div class="c-newsfeed">
     <h4 class="c-newsfeed__heading">
-        Latest from Twitter
+        {{ self.headline }}
     </h4>
     <div class="c-newsfeed__content">
         <ul class="c-list">
             {% for tweet in tweets %}
             <li class="c-list__item">
-               {% include 'streams/twitter_base_block.html' with text=tweet.full_text user_name=tweet.user.name  date=tweet.created_at tweet_url=tweet.entities.urls.0.url %}
+               {% include 'streams/twitter_base_block.html' with text=tweet.full_text user_name=tweet.user_name  date=tweet.created_at tweet_url=tweet.tweet_url.0.url %}
             </li>
             {% endfor %}
         </ul>
     </div>
     <div class="c-newsfeed__btn-wrapper">
-        <a href="#" class="c-underline-link" target="_blank">
-            Read more
-            <span class="c-underline-link__icon o-icon-wrapper">
-                <svg class="o-icon o-icon--arrow-right">
-                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
-                </svg>
-            </span>
-        </a>
+        {% for link in self.link_feed %}
+            <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ self.link_tab_chooser }}">
+                {{ self.link_text }}
+                <span class="c-underline-link__icon o-icon-wrapper">
+                    <svg class="o-icon o-icon--arrow-right">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                    </svg>
+                </span>
+            </a>
+        {% endfor %}
+        {% if not self.link_feed %}
+            {{ self.link_text }}
+        {% endif %}
     </div>
 </div>

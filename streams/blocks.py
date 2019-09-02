@@ -596,7 +596,8 @@ class NewsFeedModuleBlock(blocks.StructBlock):
     headline = blocks.CharBlock(required=False, default="Company research", max_length=255)
     number_of_news = blocks.IntegerBlock(required=True)
     background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
-    link_url = blocks.URLBlock(required=False)
+    link_text = blocks.CharBlock(required=False, default="Read more", max_length=255)
+    link_feed = LinkChooserBlock(required=False)
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
     def get_context(self, request, *args, **kwargs):
@@ -646,7 +647,7 @@ class RssBlock(NewsFeedModuleBlock):
             for entry in entries[:context['self']['number_of_news']]:
                 row = {'title': self.get_value_from(entry, 'title'),
                        'summary': unescape(self.get_value_from_paragraph(entry, 'summary'))
-                      }
+                       }
                 rows.append(row)
             cache.set(key, rows)
         context['rows'] = rows
@@ -679,23 +680,38 @@ class TwitterNewsFeedBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        # key = make_template_fragment_key('twitter', [context['self']['number_of_news']])
-        # tweets = cache.get(key)
-        # if not tweets:
-        tweets = self.get_all_tweets(context['self']['number_of_news'], 'yougov')
-            # cache.set(key, tweets)
+        key = make_template_fragment_key('twitter', [context['self']['number_of_news']])
+        tweets = cache.get(key)
+        if not tweets:
+            tweets = self.get_all_tweets(context['self']['number_of_news'], 'yougov')
+            cache.set(key, tweets)
         context['tweets'] = tweets
         return context
 
-    @staticmethod
-    def get_all_tweets(number_of_tweets, screen_name=None,):
+    def get_all_tweets(self, number_of_tweets, screen_name=None, ):
         if not screen_name:
             screen_name = 'yougov'
         auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY)
         auth.set_access_token(TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_SECRET_TOKEN_KEY)
         api = tweepy.API(auth)
-        new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, truncated=False, tweet_mode='extended')
-        return new_tweets
+        new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, truncated=False,
+                                       tweet_mode='extended')
+        tweets = []
+        for tweet in new_tweets:
+            tweet_text = self.remove_url_from_tweet_text(tweet.full_text)
+
+            tweet = {
+                'full_text': tweet_text,
+                'user_name': tweet.user.name,
+                'created_at': tweet.created_at,
+                'tweet_url': tweet.entities['urls'],
+            }
+            tweets.append(tweet)
+        return tweets
+
+    @staticmethod
+    def remove_url_from_tweet_text(tweet_text):
+        return re.sub(r'http\S+', '', tweet_text)
 
     class Meta:
         template = "streams/twitter_block.html"
@@ -822,7 +838,6 @@ class WidgetChooserBlock(blocks.StreamBlock):
 
 
 class RightWidgetChooserBlock(WidgetChooserBlock):
-
     class Meta:
         template = "streams/widget_block_right_align.html"
         icon = "cog"
