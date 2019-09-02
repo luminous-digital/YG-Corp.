@@ -1,5 +1,6 @@
 """StreamFields"""
 import re
+import tweepy
 from html import unescape
 from urllib.request import urlopen
 from xml.dom import minidom
@@ -15,7 +16,8 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailmedia.blocks import AbstractMediaChooserBlock
 from wagtailstreamforms.blocks import WagtailFormBlock
 
-from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL, YOUGOV_NEWS_XML_URL
+from yougov.settings.base import EDISONINVESTMENTSEARCH_XML_URL, YOUGOV_NEWS_XML_URL, TWITTER_CONSUMER_KEY, \
+    TWITTER_CONSUMER_SECRET_KEY, TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_SECRET_TOKEN_KEY
 
 
 # wont be used. Everything on video_block template
@@ -594,7 +596,8 @@ class NewsFeedModuleBlock(blocks.StructBlock):
     headline = blocks.CharBlock(required=False, default="Company research", max_length=255)
     number_of_news = blocks.IntegerBlock(required=True)
     background_colour = LinkContainerBackgroundColorChooserBlock(required=False, help_text="background color")
-    link_url = blocks.URLBlock(required=False)
+    link_text = blocks.CharBlock(required=False, default="Read more", max_length=255)
+    link_feed = LinkChooserBlock(required=False)
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
     def get_context(self, request, *args, **kwargs):
@@ -644,7 +647,7 @@ class RssBlock(NewsFeedModuleBlock):
             for entry in entries[:context['self']['number_of_news']]:
                 row = {'title': self.get_value_from(entry, 'title'),
                        'summary': unescape(self.get_value_from_paragraph(entry, 'summary'))
-                      }
+                       }
                 rows.append(row)
             cache.set(key, rows)
         context['rows'] = rows
@@ -668,6 +671,59 @@ class RssWidgetBlock(RssBlock):
         template = "streams/rss_widget_block.html"
         icon = "doc-full-inverse"
         label = "Rss news feed"
+
+
+""" Twitter news feed """
+
+
+class TwitterNewsFeedBlock(NewsFeedModuleBlock):
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        key = make_template_fragment_key('twitter', [context['self']['number_of_news']])
+        tweets = cache.get(key)
+        if not tweets:
+            tweets = self.get_all_tweets(context['self']['number_of_news'], 'yougov')
+            cache.set(key, tweets)
+        context['tweets'] = tweets
+        return context
+
+    def get_all_tweets(self, number_of_tweets, screen_name=None, ):
+        if not screen_name:
+            screen_name = 'yougov'
+        auth = tweepy.OAuthHandler(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET_KEY)
+        auth.set_access_token(TWITTER_ACCESS_TOKEN_KEY, TWITTER_ACCESS_SECRET_TOKEN_KEY)
+        api = tweepy.API(auth)
+        new_tweets = api.user_timeline(screen_name=screen_name, count=number_of_tweets, truncated=False,
+                                       tweet_mode='extended')
+        tweets = []
+        for tweet in new_tweets:
+            tweet_text = self.remove_url_from_tweet_text(tweet.full_text)
+
+            tweet = {
+                'full_text': tweet_text,
+                'user_name': tweet.user.name,
+                'created_at': tweet.created_at,
+                'tweet_url': tweet.entities['urls'],
+            }
+            tweets.append(tweet)
+        return tweets
+
+    @staticmethod
+    def remove_url_from_tweet_text(tweet_text):
+        return re.sub(r'http\S+', '', tweet_text)
+
+    class Meta:
+        template = "streams/twitter_block.html"
+        icon = "doc-full-inverse"
+        label = "Twitter feed"
+
+
+class TwitterNewsWidgetBlock(TwitterNewsFeedBlock):
+    class Meta:
+        template = "streams/twitter_widget_block.html"
+        icon = "doc-full-inverse"
+        label = "Twitter news feed"
 
 
 """Widget/Two columns module blocks"""
@@ -769,6 +825,7 @@ class WidgetChooserBlock(blocks.StreamBlock):
     iframe = IframeWidgetBlock(required=False)
     news_feed = NewsFeedWidgetBlock(required=False)
     rss_feed = RssWidgetBlock(required=False)
+    twitter_feed = TwitterNewsWidgetBlock(required=False)
     quick_links = QuickLinksListBlock(required=False)
     quote = QuotationWidgetBlock(required=False)
     callouts = CalloutsWidgetBlock(required=False)
@@ -781,7 +838,6 @@ class WidgetChooserBlock(blocks.StreamBlock):
 
 
 class RightWidgetChooserBlock(WidgetChooserBlock):
-
     class Meta:
         template = "streams/widget_block_right_align.html"
         icon = "cog"

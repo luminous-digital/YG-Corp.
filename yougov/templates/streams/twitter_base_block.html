@@ -1,0 +1,10 @@
+<a href="{% if tweet_url %}{{ tweet_url }}{% else %}#{% endif %}" class="c-excerpt c-excerpt--twitter">
+    <p class="c-excerpt__text">
+        <span class="c-excerpt__name">@{{ user_name }}</span>
+        {{ text }}
+    </p>
+    <div class="c-excerpt__signature">
+        <time class="c-excerpt__time" datetime="25-06-2019 16:32">{{ date|date:"d M H:i" }}</time>
+        <p class="c-excerpt__name">@{{ user_name }}</p>
+    </div>
+</a>
