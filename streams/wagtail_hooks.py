@@ -1,4 +1,4 @@
-"""Richtext hooks."""
+from django.utils.html import escape
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
 from wagtail.admin.rich_text.converters.html_to_contentstate import (
     InlineStyleElementHandler
@@ -145,3 +145,34 @@ def register_righttext_feature(features):
 
     # Step 6
     features.default_features.append(feature_name)
+
+
+def external_linktype_handler(attrs):
+    href = attrs["href"]
+    return '<a href="%s" target="_blank">' % escape(href)
+
+@hooks.register('register_rich_text_features')
+def register_external_link(features):
+    features.register_link_type('external', external_linktype_handler)
+
+# from django.utils.html import escape
+from wagtail.core import hooks
+from wagtail.core.rich_text import LinkHandler
+
+
+# class NewWindowExternalLinkHandler(LinkHandler):
+#     # This specifies to do this override for external links only.
+#     # Other identifiers are available for other types of links.
+#     identifier = 'external'
+#
+#     @classmethod
+#     def expand_db_attributes(cls, attrs):
+#         href = attrs["href"]
+#         # Let's add the target attr, and also rel="noopener" + noreferrer fallback.
+#         # See https://github.com/whatwg/html/issues/4078.
+#         return '<a href="%s" target="_blank" rel="noopener noreferrer">' % escape(href)
+#
+#
+# @hooks.register('register_rich_text_features')
+# def register_external_link(features):
+#     features.register_link_type(NewWindowExternalLinkHandler)
