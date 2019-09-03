@@ -1,7 +1,8 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 {% if self.link_or_doc %}
     {% for link in self.link_or_doc %}
-        <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-tile" {% if self.image %}{% image self.image original as img %} style="background-image: url({{img.url}})" {% endif %} target="{{ self.link_tab_chooser }}">
+        <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-tile" {% if self.image %}{% image self.image original as img %} style="background-image: url({{img.url}})" {% endif %} target="{{ self.link_tab_chooser }}"
+            {% if self.if_document_pdf == "Download" and link.block_type == 'document' %} download{% endif %}>
     {% endfor %}
 {% else %}
     <a href="#" class="c-tile" {% if self.image %}{% image self.image original as img %} style="background-image: url({{img.url}})" {% endif %} target="{{ self.link_tab_chooser }}">

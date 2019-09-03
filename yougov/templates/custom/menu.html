@@ -129,7 +129,8 @@
                                             <div id="{{block.value.navigation_html_id}}" class="c-sub-nav-box">
                                                 <div class="c-sub-nav-box__download">
                                                     {% for link in block.value.link.link %}
-                                                        <a href="{{ link.value.url }}" class="c-download-box" target="{{ element.menu_tab_chooser }}" {% if link.block_type == 'document' %}download="{{ link.value.url }}" {% endif %}>
+                                                        {{ block.value.link.value.download_or_open }}
+                                                        <a href="{{ link.value.url }}" class="c-download-box" target="{{ element.menu_tab_chooser }}" {% if block.value.link.if_document_pdf == "Download" and link.block_type == 'document' %}download{% endif %}>
                                                             <figure class="c-download-box__media">
                                                                 {% image block.value.link.image original as img %}
                                                                 <img src="{{ img.url }}" alt="alt" />

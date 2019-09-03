@@ -123,6 +123,16 @@ class RichTextBlockFull(blocks.StructBlock):
         label = "Full RTE"
 
 
+class DocumentDownloadOrOpen(blocks.ChoiceBlock):
+    OPEN = 'Open'
+    DOWNLOAD = 'Download'
+
+    choices = (
+        (DOWNLOAD, 'Download'),
+        (OPEN, 'Open')
+    )
+
+
 class ChooserBlock(blocks.StreamBlock):
     class Meta:
         max_num = 1
@@ -332,6 +342,7 @@ class MenuLevelTwoImageLink(blocks.StructBlock):
     text = blocks.CharBlock(required=True, max_length=255, help_text="Link or file title")
     image = ImageChooserBlock(required=True)
     link = MenuLinkWithDocumentChooser(required=True)
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0], help_text="choose either download or open pdf file")
 
 
 class MenuLinkChooserLevelTwo(blocks.StructBlock):
@@ -401,6 +412,8 @@ class DownloadSourceBaseBlock(blocks.StructBlock):
 
 class DownloadAudioVideoBlock(DownloadSourceBaseBlock):
     audio_video = AbstractMediaChooserBlock(required=True, help_text="choose audio or video file")
+    download_or_open = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                              help_text="choose either download or open pdf file")
 
     class Meta:
         icon = "media"
@@ -424,6 +437,8 @@ class DownloadPageLinkBlock(DownloadSourceBaseBlock):
 
 class DownloadDocumentBlock(DownloadSourceBaseBlock):
     document = DocumentChooserBlock(required=True, help_text="choose file eg. PDF")
+    download_or_open = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                              help_text="choose either download or open pdf file")
 
     class Meta:
         icon = "doc-full"
@@ -544,6 +559,8 @@ class HeroBannerBlock(blocks.StructBlock):
     banner_text = RichTextBlock(required=True, label="Hero banner text")
     banner_color = TitleColorChooserBlock(required=False)
     hyperlink = LinkAndDocChooserBlock(required=False, help_text="add link")
+    if_hyperlink_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                              help_text="choose either download or open pdf file")
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open image on new or current tab")
 
@@ -765,6 +782,8 @@ class LinkContainerBlock(blocks.StructBlock):
     image_position = LinkContainerImageSideBlock(required=False, default=LinkContainerImageSideBlock.choices[1])
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_or_doc = LinkAndDocChooserBlock(required=False, help_text="choose page or doc")
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                             help_text="choose either download or open pdf file")
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open page on new or current tab")
 
     class Meta:
@@ -800,6 +819,8 @@ class QuickLinksBlock(blocks.StructBlock):
     subtitle = blocks.TextBlock(required=False)
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_or_doc = LinkAndDocChooserBlock(required=False, help_text="choose page or doc")
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                             help_text="choose either download or open pdf file")
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open page on new or current tab")
 
 
@@ -829,6 +850,8 @@ class BoardOfDirectors(blocks.StructBlock):
     title = blocks.CharBlock(required=True, max_length=255)
     link_text = blocks.CharBlock(required=False, max_length=255)
     link_or_doc = LinkAndDocChooserBlock(required=False)
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                             help_text="choose either download or open pdf file")
     link_tab_chooser = LinkTabChooserBlock(required=False)
     image = ImageChooserBlock(required=True)
 

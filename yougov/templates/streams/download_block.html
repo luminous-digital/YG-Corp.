@@ -72,7 +72,7 @@
                                                     </svg>
                                                 </span>
                                         {% else %}
-                                            <a href="{% if source.value.audio_video %}{{source.value.audio_video.url}}{% else %}{{source.value.document.url}}{% endif %}"  class="c-underline-link c-underline-link--inline c-underline-link--left" download>
+                                            <a href="{% if source.value.audio_video %}{{source.value.audio_video.url}}{% else %}{{source.value.document.url}}{% endif %}"  class="c-underline-link c-underline-link--inline c-underline-link--left" {% if source.value.download_or_open == "Download" %}download{% endif %}>
                                                 <span class="c-underline-link__icon o-icon-wrapper">
                                                     <svg class="o-icon o-icon--download">
                                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-download' %}"></use>
