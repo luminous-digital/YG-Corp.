@@ -167,7 +167,7 @@
                                                     <ul class="c-list c-list--column-wrap">
                                                         {% if block.value.menu_navigation_level_2 %}
                                                             {% for nested_menu in block.value.menu_navigation_level_2 %}
-                                                                <li class="c-nav-list__item">
+                                                                <li class="c-list__item">
                                                                 {% if nested_menu.block_type == 'menu_external_url' %}
                                                                     <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link c-underline-link--inline">
                                                                         <span class="c-underline-link__text">
