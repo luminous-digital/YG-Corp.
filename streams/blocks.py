@@ -1062,3 +1062,21 @@ class BackPageLinkBlock(blocks.StructBlock):
         template = "streams/back_page_block.html"
         icon = "site"
         label = "Back Page panel"
+
+
+""" Logos module blocks"""
+
+
+class LogoBlock(blocks.StructBlock):
+    svg_image = DocumentChooserBlock(required=True, help_text="Choose only svg files")
+
+
+class LogosListBlock(blocks.StructBlock):
+    logos = blocks.ListBlock(
+        LogoBlock()
+    )
+
+    class Meta:
+        template = "streams/logo_block.html"
+        icon = "site"
+        label = "Logos panel"

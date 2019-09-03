@@ -1,0 +1,16 @@
+{% load static %}
+<div class="l-inner">
+    <div class="c-logos-bar">
+        <ul class="c-list c-list--horizontal">
+            {% for logo in self.logos %}
+            <li class="c-list__item">
+                <a href="https://www.esomar.org/" class="c-logos-bar__link">
+                    <figure class="c-logos-bar__media">
+                        <img src="{{ logo.svg_image.url }}" alt="Esomar logo" class="c-logos-bar__img">
+                    </figure>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
