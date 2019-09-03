@@ -44,6 +44,7 @@ class AbstractFlexPage(Page):
             ('right_widget_block', blocks.RightWidgetChooserBlock()),
             ("full_rich_text", blocks.RichTextBlock()),
             ("rss_block", blocks.RssBlock()),
+            ("back_page_block", blocks.BackPageLinkBlock()),
             # ('image_block', blocks.ImageBlock()),
         ],
         null=True,
