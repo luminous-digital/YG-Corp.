@@ -12,7 +12,7 @@ from wagtail.utils.sendfile import sendfile
 def serve(request, document_id, document_filename):
     '''
         This function was pasted from wagtail libary and
-        override to open documents in new file
+        override to open documents in web browser tab
     '''
     Document = get_document_model()
     doc = get_object_or_404(Document, id=document_id)
