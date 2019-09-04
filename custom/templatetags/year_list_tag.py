@@ -10,4 +10,10 @@ def year_list(years):
     dates = []
     for year in years:
         dates.append(year["date"].year)
-    return list(dict.fromkeys(dates))[:YEARS_BEFORE_ARCHIVE]
+    dates = list(dict.fromkeys(dates))
+    if len(dates) <= 1:
+        return
+    if len(dates) > YEARS_BEFORE_ARCHIVE:
+        dates = dates[:YEARS_BEFORE_ARCHIVE]
+        dates.append('Archive')
+    return dates
