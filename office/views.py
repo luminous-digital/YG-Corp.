@@ -14,6 +14,7 @@ def json(request):
              "addressLine1": o.address_line_1,
              "addressLine2": o.address_line_2,
              "addressLine3": o.address_line_3,
+             "addressLine4": o.address_line_4,
              "tel": o.tel,
              "mail": o.mail,
              "web": o.web,
