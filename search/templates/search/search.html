@@ -38,7 +38,7 @@
                         </li>
                     {% endfor %}
                 </ul>
-                    {#% if search_results.has_next %#}
+                    {% if pagination.has_next %}
 <!--                        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>-->
                         <div class="l-search-results__cta">
                             <button class="c-read-more-btn c-underline-link js-list-load-more">
@@ -52,7 +52,7 @@
                                 </span>
                             </button>
                         </div>
-                    {#% endif %#}
+                    {% endif %}
             {% elif search_query %}
                 <h5 class="c-redirect-cta__section t-headline-5">
                     No results found
