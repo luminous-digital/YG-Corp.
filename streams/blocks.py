@@ -1062,3 +1062,24 @@ class BackPageLinkBlock(blocks.StructBlock):
         template = "streams/back_page_block.html"
         icon = "site"
         label = "Back Page panel"
+
+
+""" Logos module blocks"""
+
+
+class LogoBlock(blocks.StructBlock):
+    logo_image = ImageChooserBlock(required=True, help_text="Choose only svg files")
+    logo_alt_text = blocks.CharBlock(required=False, max_length=255, help_text="text that will appear if logo won't show")
+    logo_link = LinkChooserBlock(required=False)
+    link_tab_chooser = LinkTabChooserBlock(required=False)
+
+
+class LogosListBlock(blocks.StructBlock):
+    logos = blocks.ListBlock(
+        LogoBlock()
+    )
+
+    class Meta:
+        template = "streams/logo_block.html"
+        icon = "wagtail-inverse"
+        label = "Logos panel"
