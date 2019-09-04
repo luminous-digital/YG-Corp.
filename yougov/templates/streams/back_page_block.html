@@ -1,21 +1,19 @@
 {% load static %}
 {% if self.link_style == 'RTE' or self.link_style == 'RTE_FULL'%}
-    <div class="l-real-text">
-        <div class="l-inner {% if self.link_style == 'RTE_FULL' %}l-inner--small{% endif %}">
-            <div class="c-wysiwyg">
-                <div class="rich-text">
-                    <p>
-                        <a href="{{ self.link.url }}" class="c-back-link" target="_blank">
-                            <span class="o-icon-wrapper">
-                                <svg class="o-icon o-icon--arrow-mid">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-mid' %}">
-                                </use>
-                                </svg>
-                            </span>
-                            Back to {{ self.link }}
-                        </a>
-                    </p>
-                </div>
+    <div class="l-inner {% if self.link_style == 'RTE_FULL' %}l-inner--small{% endif %}">
+        <div class="c-wysiwyg">
+            <div class="rich-text">
+                <p>
+                    <a href="{{ self.link.url }}" class="c-back-link" target="_blank">
+                        <span class="o-icon-wrapper">
+                            <svg class="o-icon o-icon--arrow-mid">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-mid' %}">
+                            </use>
+                            </svg>
+                        </span>
+                        Back to {{ self.link }}
+                    </a>
+                </p>
             </div>
         </div>
     </div>
