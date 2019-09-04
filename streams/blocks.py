@@ -649,7 +649,7 @@ class NewsFeedModuleBlock(blocks.StructBlock):
             for publication in publications[:context['self']['number_of_news']]:
                 row = {'headline': self.get_value_from(publication, 'headline'),
                        'description': unescape(self.get_value_from(publication, 'description')),
-                       'id': self.get_value_from(publication, 'id')}
+                       'research_link': self.get_value_from(publication, 'research_link')}
                 rows.append(row)
             cache.set(key, rows)
         context['rows'] = rows
@@ -685,7 +685,7 @@ class RssBlock(NewsFeedModuleBlock):
             for entry in entries[:context['self']['number_of_news']]:
                 row = {'title': self.get_value_from(entry, 'title'),
                        'summary': unescape(self.get_value_from_paragraph(entry, 'summary')),
-                       'link': self.get_value_from(entry, 'link'),
+                       'id': self.get_value_from(entry, 'id'),
                        }
                 rows.append(row)
             cache.set(key, rows)
