@@ -7,7 +7,7 @@
         <ul class="c-list">
             {% for element in rows %}
                 <li class="c-list__item">
-                   {% include 'streams/rss_base_block.html' with title=element.title summary=element.summary  %}
+                   {% include 'streams/rss_base_block.html' with title=element.title research_link=element.id summary=element.summary  %}
                 </li>
             {% endfor %}
         </ul>

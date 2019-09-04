@@ -684,7 +684,8 @@ class RssBlock(NewsFeedModuleBlock):
             rows = []
             for entry in entries[:context['self']['number_of_news']]:
                 row = {'title': self.get_value_from(entry, 'title'),
-                       'summary': unescape(self.get_value_from_paragraph(entry, 'summary'))
+                       'summary': unescape(self.get_value_from_paragraph(entry, 'summary')),
+                       'id': self.get_value_from(entry, 'id'),
                        }
                 rows.append(row)
             cache.set(key, rows)

@@ -17,7 +17,7 @@
                 <ul class="c-list">
                     {% for element in rows %}
                     <li class="c-list__item">
-                        {% include 'streams/rss_base_block.html' with title=element.title summary=element.summary edison_revert_color='c-excerpt--alt' %}
+                        {% include 'streams/rss_base_block.html' with title=element.title summary=element.summary research_link=element.id edison_revert_color='c-excerpt--alt' %}
                     </li>
                     {% endfor %}
                 </ul>
