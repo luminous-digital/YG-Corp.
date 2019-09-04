@@ -38,6 +38,7 @@ class Office(Orderable):
     address_line_1 = models.CharField(null=True, blank=True, max_length=255)
     address_line_2 = models.CharField(null=True, blank=True, max_length=255)
     address_line_3 = models.CharField(null=True, blank=True, max_length=255)
+    address_line_4 = models.CharField(null=True, blank=True, max_length=255)
     tel = models.CharField(null=True, blank=True, max_length=255)
     mail = models.EmailField(null=True, blank=True)
     web = models.URLField(null=True, blank=True,)
@@ -53,6 +54,7 @@ class Office(Orderable):
         FieldPanel('address_line_1'),
         FieldPanel('address_line_2'),
         FieldPanel('address_line_3'),
+        FieldPanel('address_line_4'),
         FieldPanel('tel'),
         FieldPanel('mail'),
         FieldPanel('web'),
