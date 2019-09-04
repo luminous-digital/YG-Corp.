@@ -1,12 +1,15 @@
-{% load static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 <div class="l-inner">
-    <div class="c-logos-bar">
-        <ul class="c-list c-list--horizontal">
+    <div class="c-logos-bar js-scroll-reveal">
+        <ul class="c-list c-list--horizontal-wrap c-list--horizontal-centered">
             {% for logo in self.logos %}
             <li class="c-list__item">
-                <a href="https://www.esomar.org/" class="c-logos-bar__link">
+                {% image logo.logo_image original as img %}
+                {% for link in logo.logo_link %}
+                    <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-logos-bar__link" target="{{ logo.link_tab_chooser }}">
+                {% endfor %}
                     <figure class="c-logos-bar__media">
-                        <img src="{{ logo.svg_image.url }}" alt="Esomar logo" class="c-logos-bar__img">
+                        <img src="{{ img.url }}" alt="{{ logo.logo_alt_text }}" class="c-logos-bar__img" />
                     </figure>
                 </a>
             </li>
