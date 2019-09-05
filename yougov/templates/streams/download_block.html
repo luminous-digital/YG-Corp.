@@ -15,13 +15,8 @@
                         </span>
                     </button>
                     <ul class="c-tabs__nav-list js-main-tabs-nav">
-                        <li class="c-tabs__nav-item js-tab-clear-filter is-active">
-                            <button class="c-tabs__cta c-underline-link">
-                                All
-                            </button>
-                        </li>
                         {% for news_date in self.news|dictsortreversed:"date"|year_list %}
-                            <li class="c-tabs__nav-item" data-tab="{{ news_date }}">
+                            <li {% if news_date == 'All' %}class="c-tabs__nav-item js-tab-clear-filter is-active"{% else %}class="c-tabs__nav-item" data-tab="{{ news_date }}"{% endif %}>
                                 <button class="c-tabs__cta c-underline-link">
                                    {{ news_date }}
                                 </button>

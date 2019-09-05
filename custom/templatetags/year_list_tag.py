@@ -16,4 +16,5 @@ def year_list(years):
     if len(dates) > YEARS_BEFORE_ARCHIVE:
         dates = dates[:YEARS_BEFORE_ARCHIVE]
         dates.append('Archive')
+    dates.insert(0, 'All')
     return dates
