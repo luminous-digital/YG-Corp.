@@ -904,11 +904,15 @@ class TwoColumnTypeBlock(blocks.ChoiceBlock):
 
 
 class TwoColumnWidgetDecor(blocks.ChoiceBlock):
-    LEFT = 'l-two-cols__box--with-decor-left'
-    SIMPLE = 'l-two-cols__box--simple-widget'
+    LEFT = 'l-two-cols__box l-two-cols__box--with-decor-left'
+    SIMPLE = 'l-two-cols__box l-two-cols__box--simple-widget'
+    BASIC = 'l-two-cols__col'
+    CENTER = 'l-two-cols__col l-two-cols__col--center'
     choices = (
         (LEFT, 'With decor left'),
         (SIMPLE, 'Simple widget'),
+        (BASIC, 'Basic widget'),
+        (CENTER, 'Center widget'),
     )
 
 
