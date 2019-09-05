@@ -14,13 +14,8 @@
                     </span>
                 </button>
                 <ul class="c-tabs__nav-list js-tabs-nav">
-                    <li class="c-tabs__nav-item js-clear-filter is-active">
-                        <button class="c-tabs__cta c-underline-link">
-                            All
-                        </button>
-                    </li>
                     {% for event_date in self.events|dictsortreversed:"date"|year_list %}
-                        <li class="c-tabs__nav-item" data-tab="{{ event_date }}">
+                        <li {% if event_date == 'All' %}class="c-tabs__nav-item js-clear-filter is-active"{% else %}class="c-tabs__nav-item" data-tab="{{ event_date }}" {% endif %}>
                             <button class="c-tabs__cta c-underline-link">
                                 {{ event_date }}
                             </button>
