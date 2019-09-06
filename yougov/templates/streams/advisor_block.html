@@ -1,10 +1,10 @@
-{% load static %}
+{% load static css_style_counter_tag %}
 <div class="l-inner">
     <div class="l-advisor">
         <ul class="c-advisor-list">
             {% for advisor in self.advisors %}
                  <li class="c-advisor-list__item">
-                    <div class="c-advisor c-advisor{% if forloop.counter|divisibleby:2 %}{% else %}--alt{% endif %}">
+                    <div class="c-advisor c-advisor{% if forloop.counter|css_style_counter %}--alt{% endif %}">
                         <h4 class="c-advisor__heading">
                             {{advisor.title}}
                         </h4>
