@@ -4,7 +4,7 @@
         <ul class="c-advisor-list">
             {% for advisor in self.advisors %}
                  <li class="c-advisor-list__item">
-                    <div class="c-advisor c-advisor{{ forloop.counter|css_style_counter }}">
+                    <div class="c-advisor c-advisor{% if forloop.counter|css_style_counter %}--alt{% endif %}">
                         <h4 class="c-advisor__heading">
                             {{advisor.title}}
                         </h4>
