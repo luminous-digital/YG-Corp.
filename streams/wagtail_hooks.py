@@ -1,4 +1,4 @@
-"""Richtext hooks."""
+from django.utils.html import escape
 import wagtail.admin.rich_text.editors.draftail.features as draftail_features
 from wagtail.admin.rich_text.converters.html_to_contentstate import (
     InlineStyleElementHandler
@@ -145,3 +145,13 @@ def register_righttext_feature(features):
 
     # Step 6
     features.default_features.append(feature_name)
+
+
+def external_link_type_handler(attrs):
+    href = attrs["href"]
+    return '<a href="%s" target="_blank">' % escape(href)
+
+
+@hooks.register('register_rich_text_features')
+def register_external_link(features):
+    features.register_link_type('external', external_link_type_handler)
