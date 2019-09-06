@@ -16,8 +16,10 @@
             <div class="c-newsfeed__content">
                 <ul class="c-list">
                     {% for element in rows %}
+                    <img src="{{ element.link }}">
+                    <strong> {{element.date}} </strong>
                     <li class="c-list__item">
-                        {% include 'streams/rss_base_block.html' with title=element.title summary=element.summary research_link=element.id edison_revert_color='c-excerpt--alt' %}
+                        {% include 'streams/rss_base_block.html' with title=element.title summary=element.summary research_link=element.id date=element.date rss_img=element.img edison_revert_color='c-excerpt--alt' %}
                     </li>
                     {% endfor %}
                 </ul>

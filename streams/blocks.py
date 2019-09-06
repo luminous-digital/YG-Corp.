@@ -1,5 +1,7 @@
 """StreamFields"""
 import re
+from datetime import date
+
 import tweepy
 from html import unescape
 from urllib.request import urlopen
@@ -676,19 +678,21 @@ class RssBlock(NewsFeedModuleBlock):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        key = make_template_fragment_key('rss', [context['self']['number_of_news']])
-        rows = cache.get(key)
-        if not rows:
-            xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
-            entries = xmldoc.getElementsByTagName('entry')
-            rows = []
-            for entry in entries[:context['self']['number_of_news']]:
-                row = {'title': self.get_value_from(entry, 'title'),
-                       'summary': unescape(self.get_value_from_paragraph(entry, 'summary')),
-                       'id': self.get_value_from(entry, 'id'),
-                       }
-                rows.append(row)
-            cache.set(key, rows)
+        # key = make_template_fragment_key('rss', [context['self']['number_of_news']])
+        # rows = cache.get(key)
+        # if not rows:
+        xmldoc = minidom.parse(urlopen(YOUGOV_NEWS_XML_URL))
+        entries = xmldoc.getElementsByTagName('entry')
+        rows = []
+        for entry in entries[:context['self']['number_of_news']]:
+            row = {'title': self.get_value_from(entry, 'title'),
+                   'summary': unescape(self.get_value_from_paragraph(entry, 'summary')),
+                   'id': self.get_value_from(entry, 'id'),
+                   'date': self.get_news_date(entry, 'id'),
+                   'img': self.get_hero_image(entry, 'link')
+                   }
+            rows.append(row)
+            # cache.set(key, rows)
         context['rows'] = rows
         return context
 
@@ -698,6 +702,16 @@ class RssBlock(NewsFeedModuleBlock):
         clean_regex = re.compile('<.*?>')
         cleaned_text = re.sub(clean_regex, '', source_text)
         return cleaned_text
+
+    @staticmethod
+    def get_hero_image(source, index):
+        return source.getElementsByTagName(index)[-2]._attrs['href'].nodeValue
+
+    @staticmethod
+    def get_news_date(source, index):
+        link = source.getElementsByTagName(index)[0].firstChild.nodeValue
+        date_data = re.findall(r'/(\d{4})/(\d{1,2})/(\d{1,2})/', link)
+        return date(year=int(date_data[0][0]), month=int(date_data[0][1]), day=int(date_data[0][2]))
 
     class Meta:
         template = "streams/rss_block.html"
