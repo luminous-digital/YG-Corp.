@@ -1,6 +1,6 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<div class="c-video-module c-video-module{% if self.image_height == '600' %}--alt{% endif %} js-video">
+<div class="c-video-module {% if self.image_height == '800' %}c-video-module--lg{% elif self.image_height == '366' %}c-video-module--sm{% endif %} js-video">
     <div class="c-video-module__media">
         {% image self.image original as img %}
         <div class="c-video" style="background-image: url({{ img.url }});"></div>
