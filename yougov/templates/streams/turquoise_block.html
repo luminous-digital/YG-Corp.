@@ -1,0 +1,37 @@
+{% load static css_style_counter_tag %}
+<div class="l-inner l-inner--small">
+    <div class="l-advisor">
+        <ul class="c-advisor-list c-advisor-list--alt">
+            {% for block in self.blocks %}
+            <li class="c-advisor-list__item">
+                <div class="c-advisor c-advisor--cyan {% if forloop.counter|css_style_counter %}{% else %}c-advisor--alt{% endif %}">
+                    <h4 class="c-advisor__heading">
+                        {{ block.title }}
+                    </h4>
+                    <div class="c-advisor__action">
+                        {% if block.link_or_doc %}
+                            {% for link in block.link_or_doc %}
+                                <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ block.link_tab_chooser }}"
+                                    {% if block.if_document_pdf == "Download" and link.block_type == 'document' %} download{% endif %}>
+                                    {{ block.link_text }}
+                                    <span class="c-underline-link__icon o-icon-wrapper">
+                                        <svg class="o-icon o-icon--arrow-right">
+                                            {% if link.block_type == 'document' %}
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-arrow-right' %}"></use>
+                                            {% else %}
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-more' %}"></use>
+                                            {% endif %}
+                                        </svg>
+                                    </span>
+                                </a>
+                            {% endfor %}
+                        {% else %}
+                            {{ block.link_text }}
+                        {% endif %}
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
