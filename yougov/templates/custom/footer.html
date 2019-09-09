@@ -9,7 +9,7 @@
                     <span class="o-icon-wrapper">
                         <svg class="o-icon o-icon--yougov">
                             <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-yougov' %}">
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-yougov">
                             </use>
                         </svg>
                     </span>
@@ -40,9 +40,7 @@
                                 <a href="{{block.value.social_channel_url}}" class="c-icon-with-decor c-icon-with-decor--alt-dark" target="_blank" rel="noopener noreferrer">
                                     <span class="o-icon-wrapper">
                                         <svg class="o-icon o-icon--{{block.value.social_channel_logo}}">
-                                            {% with 'svg/symbol/svg/sprite.symbol.svg#icon-'|add:block.value.social_channel_logo as logo_static %}
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static logo_static %}"></use>
-                                            {% endwith %}
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-{{block.value.social_channel_logo}}"></use>
                                         </svg>
                                     </span>
                                 </a>
@@ -57,7 +55,7 @@
                 <span class="c-back-to-top__icon o-icon-wrapper">
                     <svg class="o-icon o-icon--long-arrow-up">
                         <use xmlns:xlink="http:www.w3.org/1999/xlink"
-                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-long-arrow-up' %}">
+                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-long-arrow-up">
                         </use>
                     </svg>
                 </span>
@@ -92,7 +90,7 @@
                     <div class="c-footer__media-wrapper">
                         <span class="o-icon-wrapper">
                             <svg class="o-icon o-icon--assurance-mark">
-                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg#icon-assurance-mark' %}">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-assurance-mark">
                                </use>
                             </svg>
                         </span>
