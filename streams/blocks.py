@@ -531,7 +531,11 @@ class AdvisorListContentBlock(blocks.StructBlock):
     address_field_1 = blocks.CharBlock(required=True, max_length=255, help_text="")
     address_field_2 = blocks.CharBlock(required=True, max_length=255, help_text="")
     address_field_3 = blocks.CharBlock(required=True, max_length=255, help_text="")
-    hyperlink = blocks.URLBlock(required=True, help_text="add url")
+    link_text = blocks.CharBlock(required=False, max_length=255, default="Find out more")
+    link = LinkAndDocChooserBlock(required=False,)
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                             help_text="choose either download or open pdf file")
+    link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open link on new or current tab")
 
 
 class AdvisorsBlock(blocks.StructBlock):
