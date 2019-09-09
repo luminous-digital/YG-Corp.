@@ -216,9 +216,11 @@ class ImageBlock(blocks.StructBlock):
 class ImageFullBleedHeightChoiceBlock(blocks.ChoiceBlock):
     HEIGHT_1 = '800'
     HEIGHT_2 = '600'
+    HEIGHT_3 = '366'
     choices = (
         (HEIGHT_1, '800px'),
         (HEIGHT_2, '600px'),
+        (HEIGHT_3, '366px'),
     )
 
 
