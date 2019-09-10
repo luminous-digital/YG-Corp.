@@ -176,6 +176,8 @@ class VideoBlock(blocks.StructBlock):
     header = blocks.TextBlock(required=False)
     sub_copy = blocks.TextBlock(required=False)
     text_colour = TitleColorChooserBlock(required=True)
+    play_text_1 = blocks.CharBlock(required=False, max_length=255, default="Watch the video")
+    play_text_2 = blocks.CharBlock(required=False, max_length=255, default="Transparency with data")
     video_thumbnail = ImageChooserBlock(required=False)
     media_chooser = VideoMediaChooserBlock(max_num=1, required=False)
     link = LinkAndDocChooserBlock(required=False)
