@@ -461,6 +461,7 @@ class DownloadSourceTypeBlock(blocks.StreamBlock):
 
 class DownloadBlock(blocks.StructBlock):
     title = blocks.CharBlock(required=False, max_length=255)
+    headings_text_colour = TitleColorChooserBlock(required=False)
     news = blocks.ListBlock(
         blocks.StructBlock(
             [
