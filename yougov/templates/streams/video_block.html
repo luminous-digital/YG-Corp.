@@ -81,25 +81,24 @@
                 <div class="c-video-module__content">
                     <div class="c-video-teaser">
                         {% if self.header %}
-                        <h4 class="c-video-teaser__heading t-headline-4 t-bold">
+                        <h4 class="c-video-teaser__heading t-headline-4 t-bold" style="color:{{ self.text_colour }};">
                             {{self.header}}
                         </h4>
                         {% endif %}
                         {% if self.sub_copy %}
-                        <h2 class="c-video-teaser__text t-headline-2">
+                        <h2 class="c-video-teaser__text t-headline-2" style="color:{{ self.text_colour }};">
                             {{self.sub_copy}}
                         </h2>
                         {% endif %}
                     </div>
                     {% for block in self.link %}
-                    <a class="c-play" href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}" target="{{ self.link_tab_chooser }}">
-                        <div class="c-play__text t-button">
-                            <p>{{ self.link_text }}
-                                <svg class="o-icon o-icon--arrow-right">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
-                                </svg>
-                            </p>
-                        </div>
+                    <a class="c-play c-underline-link" href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}" style="color:{{ self.text_colour }};" target="{{ self.link_tab_chooser }}">
+                        {{ self.link_text }}
+                        <span class="c-play__text t-button c-underline-link__icon o-icon-wrapper">
+                            <svg class="o-icon o-icon--arrow-right">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                            </svg>
+                        </span>
                     </a>
                     {% endfor %}
                 </div>
