@@ -24,6 +24,7 @@ services:
     links:
       - db
       - elasticsearch
+      - postgres
     tty: true
     depends_on:
       - db
@@ -56,9 +57,13 @@ services:
       - 9300:9300
 
   postgres:
-    image: postgres
+    image: postgres:11
     depends_on:
       - db
+    links:
+      - db
+    security_opt:
+      - seccomp:unconfined
     environment:
       - POSTGRES_USER=yougov
       - POSTGRES_PASSWORD=yougov
