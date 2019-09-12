@@ -1,7 +1,7 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 <div class="l-inner {% if self.logo_style == 'RTE' %}l-inner--small{% endif %}">
     <div class="c-logos-bar js-scroll-reveal">
-        <ul class="c-list c-list--horizontal-wrap c-list--horizontal-{% if self.logos|length > 1 %}centered{% elif self.logos|length == 1 %}single{% endif %}">
+        <ul class="c-list c-list--horizontal-wrap c-list--horizontal-{{ self.logo_alignment }}">
             {% for logo in self.logos %}
             <li class="c-list__item">
                 {% image logo.logo_image original as img %}
