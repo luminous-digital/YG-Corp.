@@ -55,7 +55,19 @@ services:
       - 9200:9200
       - 9300:9300
 
+  postgres:
+    image: postgres
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_USER=yougov
+      - POSTGRES_PASSWORD=yougov
+      - POSTGRES_DB=yougov
+    volumes:
+      - wagtail_pg_data:/var/lib/postgresql/data
+
 volumes:
   wagtail_mysql_data:
   wagtail_es_data:
+  wagtail_pg_data:
 
