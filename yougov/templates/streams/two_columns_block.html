@@ -1,7 +1,7 @@
 {% load static two_column_decor_tag %}
 <div class="l-inner">
     <div class="l-decor-wrapper {{ self.type }}">
-        <div class="l-two-cols {% if self.type == 'l-decor-wrapper--top' %}l-two-cols--with-decor-top{% else %}l-two-cols--grid{% endif %} {% if self.left_widget_decor|two_column_decor:self.right_widget_decor and self.left_widget_decor == 'l-two-cols__box--simple-widget' %}l-two-cols--grid-alt{% endif %}">
+        <div class="l-two-cols {% if self.type == 'l-decor-wrapper--top' %}l-two-cols--with-decor-top{% else %}l-two-cols--grid{% endif %} {% if self.left_widget_decor|two_column_decor:self.right_widget_decor and self.left_widget_decor == 'l-two-cols__box--simple-widget' %}l-two-cols--grid-alt{% endif %} l-two-cols--flex">
             {% if self.social_links %}
                 <div class="l-two-cols__box l-two-cols__box--socials">
                     <ul class="c-social-media c-social-media--horizontal c-social-media--start">
