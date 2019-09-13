@@ -1166,7 +1166,7 @@ class TurquoiseListBlocks(blocks.StructBlock):
 """ Numbering module """
 
 
-class NumberBgColourChoooserBlock(blocks.ChoiceBlock):
+class NumberIconBgColourChoooserBlock(blocks.ChoiceBlock):
     GREY = '--alt'
     WHITE = ' '
 
@@ -1188,7 +1188,8 @@ class NumberBlock(blocks.StructBlock):
 
 class NumberingListBlock(blocks.StructBlock):
     main_title = blocks.TextBlock(required=False)
-    background_colour = NumberBgColourChoooserBlock(required=True, default=NumberBgColourChoooserBlock.choices[0])
+    background_colour = NumberIconBgColourChoooserBlock(required=True,
+                                                        default=NumberIconBgColourChoooserBlock.choices[0])
     numbers_colour = TitleColorChooserBlock(required=False)
     numbers = blocks.ListBlock(
         NumberBlock()
@@ -1198,3 +1199,49 @@ class NumberingListBlock(blocks.StructBlock):
         template = "streams/numbers_block.html"
         icon = "list-ol"
         label = "Numbering panel"
+
+
+""" Icon module """
+
+
+class IconChooserBlock(blocks.ChoiceBlock):
+    BOX = 'box'
+    LOCK = 'lock'
+    SQUARE = 'square'
+    SQUARE_DECOR = 'square-decor'
+    TICK_CIRCLE = 'tick-circle'
+
+    choices = (
+        (BOX, 'Box'),
+        (LOCK, 'Lock'),
+        (SQUARE, 'Square'),
+        (SQUARE_DECOR, 'Square decor'),
+        (TICK_CIRCLE, 'Tickle circle'),
+
+    )
+
+
+class IconBlock(blocks.StructBlock):
+    icon = IconChooserBlock(required=True)
+    title = blocks.CharBlock(required=False, max_length=255)
+    text = blocks.TextBlock(required=False)
+    link_text = blocks.CharBlock(required=False)
+    link = LinkAndDocChooserBlock(required=False)
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                             help_text="choose either download or open pdf file")
+    link_tab_chooser = LinkTabChooserBlock(required=True, default=LinkTabChooserBlock.choices[0])
+
+
+class IconsListBlock(blocks.StructBlock):
+    main_title = blocks.TextBlock(required=False)
+    background_colour = NumberIconBgColourChoooserBlock(required=True,
+                                                        default=NumberIconBgColourChoooserBlock.choices[0])
+    icons_colour = TitleColorChooserBlock(required=True, default=TitleColorChooserBlock.choices[4])
+    icons = blocks.ListBlock(
+        IconBlock()
+    )
+
+    class Meta:
+        template = "streams/icon_block.html"
+        icon = "list-ul"
+        label = "Icon panel"
