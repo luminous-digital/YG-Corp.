@@ -1206,25 +1206,9 @@ class NumberingListBlock(blocks.StructBlock):
 """ Icon module """
 
 
-class IconChooserBlock(blocks.ChoiceBlock):
-    BOX = 'box'
-    LOCK = 'lock'
-    SQUARE = 'square'
-    SQUARE_DECOR = 'square-decor'
-    TICK_CIRCLE = 'tick-circle'
-
-    choices = (
-        (BOX, 'Box'),
-        (LOCK, 'Lock'),
-        (SQUARE, 'Square'),
-        (SQUARE_DECOR, 'Square decor'),
-        (TICK_CIRCLE, 'Tickle circle'),
-
-    )
-
-
 class IconBlock(blocks.StructBlock):
-    icon = IconChooserBlock(required=True)
+    icon_image = ImageChooserBlock(required=True)
+    icon_alt_text = blocks.CharBlock(required=False, max_length=64)
     title = blocks.CharBlock(required=False, max_length=255)
     text = blocks.TextBlock(required=False)
     link_text = blocks.CharBlock(required=False)

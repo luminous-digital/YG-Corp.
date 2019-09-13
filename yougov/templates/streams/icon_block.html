@@ -1,4 +1,4 @@
-{% load static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 <div class="l-number l-number{{ self.background_colour }}">
     <div class="l-inner l-inner--small">
         <div class="c-number c-number--two-col">
@@ -11,13 +11,10 @@
                 {% for icon in self.icons %}
                     <li class="c-list__item">
                         <div class="c-number-box">
-                            <div class="c-number-box__decor">
-                                <span class="o-icon-wrapper">
-                                    <svg class="o-icon o-icon--decor-number" style="color: {{ self.icons_colour }}">
-                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-{{ icon.icon }}"></use>
-                                    </svg>
-                                </span>
-                            </div>
+                            {% image icon.icon_image original as img %}
+                            <figure class="c-number-box__decor">
+                                <img src="{{ img.url }}" alt="{{ icon.icon_alt_text }}" />
+                            </figure>
                             <div class="c-number-box__text">
                                 {% if icon.title %}
                                     <div class="c-number-box__title">
