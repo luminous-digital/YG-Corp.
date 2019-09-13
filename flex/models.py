@@ -24,6 +24,7 @@ class AbstractFlexPage(Page):
             ('three_column_callout_module_block', blocks.ThreeColumnCalloutsModuleBlock()),
             ('contact_block', blocks.ContactInfoBlock()),
             ('download_block', blocks.DownloadBlock()),
+            ('icon_block', blocks.IconsListBlock()),
             ('iframe_block', blocks.IframeBlock()),
             ('image_content_block', blocks.ImageContentBlock()),
             ('image_full_bleed_block', blocks.ImageFullBleedBlock()),
