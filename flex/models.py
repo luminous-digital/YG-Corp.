@@ -30,6 +30,7 @@ class AbstractFlexPage(Page):
             ('image_person_block', blocks.ImagePersonBlock()),
             ('image_people_block', blocks.ImagePeopleBlock()),
             ('newsfeed_block', blocks.NewsFeedModuleBlock()),
+            ('number_block', blocks.NumberingListBlock()),
             ('event_module_block', blocks.EventListBlock()),
             ('form_module_block', blocks.FormModuleBlock()),
             ("full_rte_editor", blocks.RichTextBlockFull()),

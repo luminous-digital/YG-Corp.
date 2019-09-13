@@ -536,7 +536,7 @@ class AdvisorListContentBlock(blocks.StructBlock):
     address_field_2 = blocks.CharBlock(required=True, max_length=255, help_text="")
     address_field_3 = blocks.CharBlock(required=True, max_length=255, help_text="")
     link_text = blocks.CharBlock(required=False, max_length=255, default="Find out more")
-    link = LinkAndDocChooserBlock(required=False,)
+    link = LinkAndDocChooserBlock(required=False, )
     if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
                                              help_text="choose either download or open pdf file")
     link_tab_chooser = LinkTabChooserBlock(required=False, help_text="choose either open link on new or current tab")
@@ -1131,7 +1131,7 @@ class LogosListBlock(blocks.StructBlock):
     logos = blocks.ListBlock(
         LogoBlock()
     )
-    logo_style = LogoStyleBlock(required=True, default=LogoStyleBlock.choices[0],)
+    logo_style = LogoStyleBlock(required=True, default=LogoStyleBlock.choices[0], )
     logo_alignment = LogoAlignmentBlock(required=True, default=LogoAlignmentBlock.choices[1])
 
     class Meta:
@@ -1149,7 +1149,7 @@ class TurquoiseBlock(blocks.StructBlock):
     link_or_doc = LinkAndDocChooserBlock(required=False)
     if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
                                              help_text="choose either download or open pdf file")
-    link_tab_chooser = LinkTabChooserBlock(required=False,)
+    link_tab_chooser = LinkTabChooserBlock(required=False, )
 
 
 class TurquoiseListBlocks(blocks.StructBlock):
@@ -1161,3 +1161,40 @@ class TurquoiseListBlocks(blocks.StructBlock):
         template = "streams/turquoise_block.html"
         icon = "grip"
         label = "Turquoise blocks"
+
+
+""" Numbering module """
+
+
+class NumberBgColourChoooserBlock(blocks.ChoiceBlock):
+    GREY = '--alt'
+    WHITE = ' '
+
+    choices = (
+        (GREY, 'Grey'),
+        (WHITE, 'White'),
+    )
+
+
+class NumberBlock(blocks.StructBlock):
+    title = blocks.CharBlock(required=False, max_length=255)
+    text = blocks.TextBlock(required=False)
+    link_text = blocks.CharBlock(required=False)
+    link = LinkAndDocChooserBlock(required=False)
+    if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
+                                             help_text="choose either download or open pdf file")
+    link_tab_chooser = LinkTabChooserBlock(required=True, default=LinkTabChooserBlock.choices[0])
+
+
+class NumberingListBlock(blocks.StructBlock):
+    main_title = blocks.TextBlock(required=False)
+    background_colour = NumberBgColourChoooserBlock(required=True, default=NumberBgColourChoooserBlock.choices[0])
+    numbers_colour = TitleColorChooserBlock(required=False)
+    numbers = blocks.ListBlock(
+        NumberBlock()
+    )
+
+    class Meta:
+        template = "streams/numbers_block.html"
+        icon = "list-ol"
+        label = "Numbering panel"
