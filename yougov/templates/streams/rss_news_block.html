@@ -17,7 +17,7 @@
                 <li class="c-list__item">
                     <a href="{{ article.id }}" class="c-news-card" target="_blank">
                         <figure class="c-news-card__media">
-                            <img src="{{ article.image }}" alt="News image"/>
+                            <img class="c-news-card__img" src="{{ article.image }}" alt="News image"/>
                         </figure>
                         <time datetime="{{ article.date }}" class="c-news-card__date">
                             {{ article.date|date:'E d, Y' }}
