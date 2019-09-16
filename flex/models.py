@@ -81,3 +81,14 @@ class FlexPage(AbstractFlexPage):
     class Meta:
         verbose_name = "Flex Page"
         verbose_name_plural = "Flex Pages"
+
+
+class ErrorPage(AbstractFlexPage):
+    """ Error page class"""
+    template = "flex/flex_page.html"
+
+    max_count = 1
+
+    class Meta:
+        verbose_name = "Error Page"
+        verbose_name_plural = "Error Pages"
