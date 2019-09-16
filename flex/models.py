@@ -90,5 +90,5 @@ class ErrorPage(AbstractFlexPage):
     max_count = 1
 
     class Meta:
-        verbose_name = "Error Page"
-        verbose_name_plural = "Error Pages"
+        verbose_name = "404 Error Page"
+        verbose_name_plural = "404 Error Pages"
