@@ -4,7 +4,6 @@ wagtailmedia==0.3.1
 wagtailstreamforms>=2
 mysqlclient==1.4.2
 gunicorn
-django-heroku
-elasticsearch==5.4.0
 icalendar
 tweepy==3.8.0
+psycopg2==2.8.3
