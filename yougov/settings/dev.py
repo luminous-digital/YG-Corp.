@@ -25,5 +25,3 @@ try:
     from .local import *  # noqa
 except ImportError:
     pass
-
-django_heroku.settings(locals())  # noqa

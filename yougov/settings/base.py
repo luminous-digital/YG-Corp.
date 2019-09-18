@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-import django_heroku # noqa
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
+    'wagtail.contrib.postgres_search',
     'wagtail.contrib.redirects',
     'wagtail.contrib.table_block',
     'wagtail.embeds',
@@ -187,16 +188,25 @@ CACHES = {
     }
 }
 
+# MYSQL Database
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.search.backends.elasticsearch5',
+#         'URLS': ['http://{}:{}'.format(os.environ.get('ELASTIC_HOST', '127.0.0.1'),
+#                                        os.environ.get('ELASTIC_PORT', '9200')), ],
+#         'INDEX': 'yougov',
+#         'TIMEOUT': 5,
+#         'OPTIONS': {},
+#         'INDEX_SETTINGS': {},
+#     }
+# }
+
+
+# PostgreSQL
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail.search.backends.elasticsearch5',
-        'URLS': ['http://{}:{}'.format(os.environ.get('ELASTIC_HOST', '127.0.0.1'),
-                                       os.environ.get('ELASTIC_PORT', '9200')), ],
-        'INDEX': 'yougov',
-        'TIMEOUT': 5,
-        'OPTIONS': {},
-        'INDEX_SETTINGS': {},
-    }
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+    },
 }
 
 OFFICE_LOCATION_MODULE_JSON_URL = 'src/js/modules/offices-map/locations.json'
