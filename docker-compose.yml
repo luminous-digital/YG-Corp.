@@ -2,17 +2,6 @@ version: '3'
 
 services:
 
-  db:
-    image: mysql:5.6.33
-    volumes:
-      - wagtail_mysql_data:/var/lib/mysql
-    ports:
-      - "3310:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_ROOT_HOST=%
-      - MYSQL_DATABASE=wagtail
-
   web:
     build:
       context: ./
@@ -22,19 +11,12 @@ services:
     ports:
       - "8000:8000"
     links:
-      - db
       - postgres
     tty: true
     depends_on:
-      - db
+      - postgres
     environment:
       - DJANGO_SETTINGS_MODULE=yougov.settings.dev
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_DATABASE=wagtail
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=admin
-      - MYSQL_HOST=db
-      - MYSQL_PORT=3306
       - POSTGRES_USER=yougov
       - POSTGRES_PASSWORD=yougov
       - POSTGRES_DB=wagtail
@@ -45,13 +27,8 @@ services:
       bash -c "python manage.py migrate
       && python manage.py runserver 0.0.0.0:8000"
 
-
   postgres:
     image: postgres:11
-    depends_on:
-      - db
-    links:
-      - db
     security_opt:
       - seccomp:unconfined
     environment:
@@ -79,6 +56,5 @@ services:
 
 
 volumes:
-  wagtail_mysql_data:
   wagtail_pg_data:
 
