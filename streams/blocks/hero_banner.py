@@ -7,7 +7,19 @@ from .title_color_chooser import TitleColorChooserBlock
 from .rte import RichTextBlock
 
 
+class HeroBannerDecor(blocks.ChoiceBlock):
+    NONE = ' '
+    DECOR = 'c-info-teaser--with-decor'
+
+    choices = (
+        (NONE, 'None'),
+        (DECOR, 'Decor'),
+    )
+    default = (NONE, 'None'),
+
+
 class HeroBannerBlock(blocks.StructBlock):
+    banner_decor = HeroBannerDecor(required=True, default=HeroBannerDecor.default)
     banner_text = RichTextBlock(required=True, label="Hero banner text")
     banner_color = TitleColorChooserBlock(required=False)
     hyperlink = LinkAndDocChooserBlock(required=False, help_text="add link")

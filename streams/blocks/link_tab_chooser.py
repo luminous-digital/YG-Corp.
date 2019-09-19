@@ -6,4 +6,3 @@ class LinkTabChooserBlock(blocks.ChoiceBlock):
         ('_self', 'Current Tab'),
         ('_blank', 'New Tab'),
     ]
-

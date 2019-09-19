@@ -25,4 +25,3 @@ class ImagePeopleBlock(blocks.StructBlock):
         template = "streams/image_people_block.html"
         icon = "group"
         label = "People panel"
-
