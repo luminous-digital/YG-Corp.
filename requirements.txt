@@ -2,7 +2,6 @@ Django>=2.2,<2.3
 wagtail>=2.5,<2.6
 wagtailmedia==0.3.1
 wagtailstreamforms>=2
-mysqlclient==1.4.2
 gunicorn
 icalendar
 tweepy==3.8.0
