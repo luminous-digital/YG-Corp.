@@ -1,0 +1,9 @@
+{% for element in self %}
+    {% if element.block_type == 'iframe' %}
+        <div style="background-color: {{ element.value.background_colour }};">
+            {{ element }}
+        </div>
+    {% else %}
+        {{ element }}
+    {% endif %}
+{% endfor %}

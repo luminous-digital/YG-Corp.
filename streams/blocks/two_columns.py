@@ -31,6 +31,13 @@ class TwoColumnWidgetDecor(blocks.ChoiceBlock):
     )
 
 
+class TwoColumnBottomWidgets(WidgetChooserBlock):
+    class Meta:
+        template = "streams/two_cols_widget_block.html"
+        icon = "cog"
+        label = "Two cols bottom widget"
+
+
 class TwoColumnModuleBlock(blocks.StructBlock):
     type = TwoColumnTypeBlock(required=False, default=TwoColumnTypeBlock.choices[1])
     social_links = blocks.ListBlock(SocialChannelsLinks(required=False))
@@ -38,6 +45,7 @@ class TwoColumnModuleBlock(blocks.StructBlock):
     left_widget = TwoColumnWidgetChooserBlock(required=False, label="Left widget")
     right_widget_decor = TwoColumnWidgetDecor(required=False, default=TwoColumnWidgetDecor.choices[1])
     right_widget = TwoColumnWidgetChooserBlock(required=False, label="Right widget")
+    bottom_widgets = TwoColumnBottomWidgets(required=False)
 
     class Meta:
         template = "streams/two_columns_block.html"
