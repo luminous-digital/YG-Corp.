@@ -130,26 +130,26 @@
                                                 <div class="c-sub-nav-box__download">
                                                     {% if block.value.link.link %}
                                                         {% for link in block.value.link.link %}
-                                                                <a href="{{ link.value.url }}" class="c-download-box" target="{{ element.menu_tab_chooser }}" {% if block.value.link.if_document_pdf == "Download" and link.block_type == 'document' %}download{% endif %}>
-                                                                    <figure class="c-download-box__media">
-                                                                        {% image block.value.link.image original as img %}
-                                                                        <img src="{{ img.url }}" alt="alt" />
-                                                                    </figure>
-                                                                    <div class="c-download-box__action">
-                                                                        <span class="c-underline-link c-underline-link--inline">
-                                                                            <span class="c-underline-link__text">
-                                                                                {{ block.value.link.text }}&nbsp;
-                                                                                <span class="c-underline-link__icon o-icon-wrapper">
-                                                                                    <svg class="o-icon o-icon--arrow-right">
-                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right">
-                                                                                        </use>
-                                                                                    </svg>
-                                                                                </span>
+                                                            <a href="{{ link.value.url }}" class="c-download-box" target="{{ element.menu_tab_chooser }}" {% if block.value.link.if_document_pdf == "Download" and link.block_type == 'document' %}download{% endif %}>
+                                                                <figure class="c-download-box__media">
+                                                                    {% image block.value.link.image original as img %}
+                                                                    <img src="{{ img.url }}" alt="alt" />
+                                                                </figure>
+                                                                <div class="c-download-box__action">
+                                                                    <span class="c-underline-link c-underline-link--inline">
+                                                                        <span class="c-underline-link__text">
+                                                                            {{ block.value.link.text }}&nbsp;
+                                                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                                                <svg class="o-icon o-icon--arrow-right">
+                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                        xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right">
+                                                                                    </use>
+                                                                                </svg>
                                                                             </span>
                                                                         </span>
-                                                                    </div>
-                                                                </a>
+                                                                    </span>
+                                                                </div>
+                                                            </a>
                                                         {% endfor %}
                                                     {% else %}
                                                         <a href="#" class="c-download-box">
