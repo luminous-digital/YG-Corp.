@@ -40,9 +40,9 @@ class MenuLinkWithDocumentChooser(MenuLinkChooser):
 
 
 class MenuLevelTwoImageLink(blocks.StructBlock):
-    text = blocks.CharBlock(required=True, max_length=255, help_text="Link or file title")
+    text = blocks.CharBlock(required=False, max_length=255, help_text="Link or file title")
     image = ImageChooserBlock(required=True)
-    link = MenuLinkWithDocumentChooser(required=True)
+    link = MenuLinkWithDocumentChooser(required=False)
     if_document_pdf = DocumentDownloadOrOpen(required=False, default=DocumentDownloadOrOpen.choices[0],
                                              help_text="choose either download or open pdf file")
 
