@@ -154,12 +154,12 @@
                                                             </a>
                                                         {% endfor %}
                                                     {% else %}
-                                                        <a href="#" class="c-download-box">
+                                                        <div class="c-download-box">
                                                             <figure class="c-download-box__media">
                                                                 {% image block.value.link.image original as img %}
                                                                 <img src="{{ img.url }}" alt="alt" />
                                                             </figure>
-                                                        </a>
+                                                        </div>
                                                     {% endif %}
                                                 </div>
                                                 <div class="c-sub-nav-box__list">

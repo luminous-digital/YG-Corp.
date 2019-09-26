@@ -5,7 +5,7 @@
             {% if doc_open_or_download == "Download" and link.block_type == 'document' %} download{% endif %}>
     {% endfor %}
 {% else %}
-    <a href="#" class="c-widget-module" target="{{ link_tab_chooser }}" style="background-color: {{ background_colour }};">
+    <div class="c-widget-module" style="background-color: {{ background_colour }};">
 {% endif %}
     {% if image_position == 'left' %}
         {% if image %}
@@ -43,4 +43,8 @@
             <div class="c-widget-module__media" style="background-image: url({{img.url}})"></div>
         {% endif %}
     {% endif %}
-</a>
+{% if link_or_doc %}
+    </a>
+{% else %}
+    </div>
+{% endif %}
