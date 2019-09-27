@@ -14,9 +14,12 @@ class AbstractFlexPage(Page):
     # commented image_block because of https://luminousweb.atlassian.net/browse/YOUG-16
     # for now it is not necessary and creates misunderstanding with image_content_block
 
+    # commented accordion_block and person_block because of https://luminousweb.atlassian.net/browse/YOUG-234
+    # as a duplicate module to accordion_list_block and not used person_block
+
     content = StreamField(
         [
-            ('accordion_block', blocks.AccordionBlock()),
+            # ('accordion_block', blocks.AccordionBlock()),
             ('accordion_list_block', blocks.AccordionListBlock()),
             ('advisor_analyst_block', blocks.AdvisorsBlock()),
             ('turquoise_block', blocks.TurquoiseListBlocks()),
@@ -28,7 +31,7 @@ class AbstractFlexPage(Page):
             ('iframe_block', blocks.IframeBlock()),
             ('image_content_block', blocks.ImageContentBlock()),
             ('image_full_bleed_block', blocks.ImageFullBleedBlock()),
-            ('image_person_block', blocks.ImagePersonBlock()),
+            # ('image_person_block', blocks.ImagePersonBlock()),
             ('image_people_block', blocks.ImagePeopleBlock()),
             ('newsfeed_block', blocks.NewsFeedModuleBlock()),
             ('number_block', blocks.NumberingListBlock()),
