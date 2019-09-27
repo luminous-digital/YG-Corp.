@@ -13,10 +13,12 @@ class AbstractFlexPage(Page):
 
     # commented image_block because of https://luminousweb.atlassian.net/browse/YOUG-16
     # for now it is not necessary and creates misunderstanding with image_content_block
+    # commented accordion_block because of https://luminousweb.atlassian.net/browse/YOUG-234
+    # as a dupliace module to accordion_list_block
 
     content = StreamField(
         [
-            ('accordion_block', blocks.AccordionBlock()),
+            #('accordion_block', blocks.AccordionBlock()),
             ('accordion_list_block', blocks.AccordionListBlock()),
             ('advisor_analyst_block', blocks.AdvisorsBlock()),
             ('turquoise_block', blocks.TurquoiseListBlocks()),
