@@ -14,8 +14,8 @@ class AbstractFlexPage(Page):
     # commented image_block because of https://luminousweb.atlassian.net/browse/YOUG-16
     # for now it is not necessary and creates misunderstanding with image_content_block
 
-    # commented accordion_block and person_block because of https://luminousweb.atlassian.net/browse/YOUG-234
-    # as a duplicate module to accordion_list_block and not used person_block
+    # commented accordion_block,  person_block & RTE because of https://luminousweb.atlassian.net/browse/YOUG-234
+    # as a duplicate module to accordion_list_block and not used person_block and Full RTE
 
     content = StreamField(
         [
@@ -48,7 +48,7 @@ class AbstractFlexPage(Page):
             ("video_block", blocks.VideoBlock()),
             ('widget_block', blocks.WidgetChooserBlock()),
             ('right_widget_block', blocks.RightWidgetChooserBlock()),
-            ("full_rich_text", blocks.RichTextBlock()),
+            # ("full_rich_text", blocks.RichTextBlock()),
             ("rss_block", blocks.RssBlock()),
             ("rss_news_block", blocks.RssNewsBlock()),
             ("back_page_block", blocks.BackPageLinkBlock()),
