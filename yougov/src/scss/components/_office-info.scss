@@ -1,0 +1,48 @@
+/* ==========================================================================
+   Office info
+   ========================================================================== */
+
+.c-office-info {
+    width: 100%;
+
+    color: color(black);
+    &:not(:last-child) {
+        margin-bottom: $size-gutter * 3;
+    }
+}
+
+.c-info-window .c-office-info {
+    flex-grow: 1;
+
+    padding: $size-gutter * 3;
+
+    background-color: color(white);
+}
+
+.c-office-info__location {
+    margin-bottom: $size-gutter;
+}
+
+.c-office-info__type {
+    margin-bottom: $size-gutter;
+}
+
+.c-office-info__address {
+    font-style: normal;
+}
+
+.c-office-info__address + .c-office-info__contact {
+    margin-top: $size-gutter * 3;
+}
+
+.c-office-info__contact:not(:last-child) {
+    margin-bottom: $size-gutter;
+}
+
+
+.c-office-info__contact a {
+    transition: 250ms ease-in-out;
+    &:hover {
+        color: color(main);
+    }
+}

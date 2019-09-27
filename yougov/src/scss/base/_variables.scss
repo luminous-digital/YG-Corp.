@@ -1,0 +1,399 @@
+/* ==========================================================================
+   Variables
+   ========================================================================== */
+
+/* Maps
+========================================================================== */
+/*
+    The names and values of variables in maps are just suggestions/random values.
+    Feel free to add new values, modify both the values and/or keys of the items depending on the project and your prefferences.
+    For each map, a functions is defined (in base/_functions.scss).
+    By default, function names are single a singular form of the map's variable name.
+    Eg. To use the "main" color, a getter function "color" is defined.
+    To use it, simply call: color(main).
+*/
+
+$font-default: 'Rawline', 'Arial', sans-serif;
+
+$breakpoints: (
+    desktop: 1200px,
+    tablet_lg: 960px,
+    tablet_md: 1100px,
+    tablet: 768px,
+    mobile: 360px
+);
+
+$orientations: (
+    portrait: portrait,
+    landscape: landscape
+);
+
+// Colors
+//
+// #FF6352 - main
+// #FFFFFF - accent
+// #FFFFFF - white
+// #000000 - black
+// #9078D7 - violet
+// #AD97ED - violet-light
+// #AE61C4 - purple
+// #DC4C81 - orchid
+// #00B7B4 - teal
+// #AEA8BB - plum
+// #E6E3EC - plum2
+// #241E31 - darkviolet
+// #F2F0F6 - gray
+// #FAF9FB - gray2
+// #D8D8D8 - darkgray
+// rgba(247, 246, 250, 0.95) - ecru-opacity
+// rgba(255,255,255,0.5) - white-opacity-05
+// rgba(255,255,255,0.8) - white-opacity-08
+// rgba(0,0,0,0.1) - black-opacity-01
+// #F372A1 - pink
+//
+// markup:
+// <div style="background: {$modifiers};" class="styleguide-color">{$modifiers}</div>
+//
+// Styleguide 1
+
+$colors: (
+    main: #FF6352,
+    accent: #000000,
+    white: #FFFFFF,
+    black: #000000,
+    violet: #9078D7,
+    violet-light: #AD97ED,
+    purple: #AE61C4,
+    orchid: #DC4C81,
+    teal: #00B7B4,
+    teal-light: #A3F5F4,
+    cyan: #29cdca,
+    plum: #AEA8BB,
+    plum2: #E6E3EC,
+    darkviolet: #241E31,
+    gray: #F2F0F6,
+    gray2: #FAF9FB,
+    darkgray: #D8D8D8,
+    ecru-opacity: rgba(247, 246, 250, 0.95),
+    white-opacity-05: rgba(255,255,255,0.5),
+    white-opacity-08: rgba(255,255,255,0.8),
+    black-opacity-01: rgba(0,0,0,0.1),
+    pink: #F372A1,
+    purple-light: #C5B3FB
+);
+
+$sizes: (
+    media: 400px,
+    inner: 1320px,
+    inner-narrow: 1096px,
+    inner-small: 648px
+);
+
+$font-sizes: (
+    size12: 12px,
+    size13: 13px,
+    size14: 14px,
+    size16: 16px,
+    size20: 20px,
+    size22: 22px,
+    size26: 26px,
+    size34: 34px,
+    size38: 38px,
+    size42: 42px,
+    size48: 48px,
+    size50: 50px,
+    size76: 76px,
+    size96: 96px,
+    size100: 100px
+);
+
+$line-heights: (
+    main: 10px,
+    size16: 16px,
+    size24: 24px,
+    size25: 25px,
+    size30: 30px,
+    size40: 40px,
+    size48: 48px,
+    size50: 50px,
+    size56: 56px,
+    size80: 80px,
+    size112: 112px
+);
+
+$offsets: (
+    default: 20px,
+);
+
+$size-gutter: 8px;
+$size-alt: 10px;
+
+$font-weights: (
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700
+);
+
+$letter-spacings: (
+    spacing-minus-150: -1.5px, //xxs
+    spacing-10: 0.1px, //xs
+    spacing-15: 0.15px, //s
+    spacing-25: 0.25px, // m
+    spacing-44: 0.44px, // l
+    spacing-50: 0.5px, // xl
+    minus-150: -1.5px,
+    plus-10: .1px,
+    plus-15: .15px,
+    plus-25: .25px,
+    plus-44: .44px,
+    plus-50: .5px
+);
+
+$defaults: (
+    border-radius: 2px,
+    line-height: 1.5
+);
+
+/* Z-index
+========================================================================== */
+$z-index-hidden: -1;
+$z-index-visible: 1;
+$z-index-cookies: 3;
+$z-index-select: 2;
+$z-index-header: 100;
+$z-index-popup: $z-index-header + 1;
+$z-index-modal: $z-index-header + 1;
+
+/* Standalone variables
+========================================================================== */
+$white-space: 2em;
+$form-control-height: 2rem;
+
+$border-default: 2px;
+$border-default-alt: 5px;
+
+$size-underline-default-height: 2px;
+
+/* Animations & transitions
+========================================================================== */
+$transition-default: all .3s ease-in-out;
+$transition-default-linear: all .3s linear .1s;
+$transition-slower: all .6s linear;
+$transition-slower-alt: all .7s linear;
+$transition-cubic: all .5s cubic-bezier(.68, -.55, .265, 1.55);
+$transition-underline: transform .3s ease;
+
+/* Hamburger
+========================================================================== */
+$size-hamburger-bar-width: 21px;
+$size-hamburger-bar-height: 3px;
+
+/* Decor
+========================================================================== */
+$size-logo-height: 22px;
+$size-logo-height-desktop: 32px;
+$size-arrow-height: 166px;
+$size-logo-width: 151px;
+$size-logo-height: 34px;
+$size-arrow-height: 166px;
+$size-arrow-down-height: 18px;
+$size-triangle-height: 14px;
+$size-arrow-right: 9px;
+$size-arrow-right-desktop: 14px;
+$size-icon-decor: 32px;
+$size-icon-popup: 50px;
+
+/* Search box
+========================================================================== */
+$size-search-box-width: 100px;
+$size-search-box-width-d: 128px;
+$size-search-box-height: 36px;
+$size-search-box-btn: $size-search-box-height;
+
+/* Header
+========================================================================== */
+$size-header-hight: 70px;
+$size-header-hight-desktop: 160px;
+$size-header-nav-item-hight-desktop: 112px;
+$size-header-height-mobile: 616px;
+$size-header-height-tablet: 825px;
+
+/* Header logo
+========================================================================== */
+$size-header-logo-width: 260px;
+
+/* Logo
+========================================================================== */
+$size-logo-max-width: 100px;
+
+/* Hamburger
+========================================================================== */
+$size-hamburger-height: 18px;
+$size-hamburger-width: 23px;
+
+/* Icons
+========================================================================== */
+$size-arrow-down-height: 18px;
+$size-triangle-height: 14px;
+
+/* About
+========================================================================== */
+$size-about-width: 351px; // 340px
+$size-about-copy-width: 212px;
+$size-about-policy-width: 230px;
+
+$size-about-bottom: -288px;
+
+/* Downloads
+========================================================================== */
+$size-downloads-width: 312px;
+
+/* Cookies
+========================================================================== */
+$size-cookies-width-mobile: 275px;
+$size-cookies-width-tablet: 425px;
+$size-cookies-width-desktop: 520px;
+
+/* Back To Top
+========================================================================== */
+$size-outer-padding: calc((100vw - (#{size(inner)} + 120px))/2);
+
+/* Video module
+========================================================================== */
+$size-video-width-tablet: 394px;
+$size-video-width-desktop: 624px;
+$size-video-width-mobile: 320px;
+$size-video-width-sm: 366px;
+
+/* Play
+========================================================================== */
+$size-play-width-height: 40px;
+
+/* Control
+========================================================================== */
+$size-video-control-height: 17px;
+$size-video-control-slider-height: 3px;
+$size-video-control-slider-width: 70px;
+$size-video-control-btn-width: 18px;
+$size-video-control-wrapper-height: 8px;
+$size-video-control-thumb-width: 4px;
+$size-video-control-track-width: 2px;
+$size-video-control-track-height: 2px;
+
+/* Person card & Card list
+========================================================================== */
+$size-person-card-height: 1000px;
+
+$size-cards-item-width-tablet: calc(50% - (#{$size-gutter} * 1.5));
+$size-cards-item-width-desktop: calc(100% / 3 - ((#{$size-gutter * 1.5} * 2)));
+
+/* Advisor
+========================================================================== */
+$size-advisor-width: 504px;
+$size-advisor-cyan-height: 150px;
+$size-advisor-cyan-heading-width: 220px;
+
+/* Info teaser
+========================================================================== */
+$size-info-teaser-max-width: 907px;
+$size-info-teaser-decor-height-sm: 141px;
+$size-info-teaser-decor-width-sm: 224px;
+$size-info-teaser-decor-height-md: 181px;
+$size-info-teaser-decor-width-md: 286px;
+$size-info-teaser-decor-height-lg: 248px;
+$size-info-teaser-decor-width-lg: 393px;
+$size-info-teaser-with-decor-max-width: 600px;
+
+/* Event cta / Event heading
+========================================================================== */
+$size-event-cta-min-height-mobile: 224px;
+$size-event-cta-min-height-tablet: 107px;
+$size-event-cta-min-height-desktop: 82px;
+
+$size-event-cta-date-max-width-desktop: 204px;
+
+$size-event-heading-width-desktop: calc((#{$size-event-cta-date-max-width-desktop}) + (#{$size-gutter} * 3));
+
+/* Quick link
+========================================================================== */
+$size-quick-link-max-width: 424px;
+
+/* Widget
+========================================================================== */
+$size-widget-max-width: 536px;
+$size-widget-module-min-height: 224px;
+
+/* Two columns layout
+========================================================================== */
+$size-column-decor-left: 328px;
+$size-column-decor-top: 324px;
+$size-column-decor-flex: 536px;
+
+/* Table
+========================================================================== */
+$size-table-width: 158px;
+
+/* Form
+========================================================================== */
+$size-form-textarea-height: 144px;
+$size-form-errors-width: 249px;
+$size-form-col-big-width: 392px;
+$size-form-field-big-width: 312px;
+
+/* Tabs
+========================================================================== */
+$size-tabs-nav-list-max-height: 1000px;
+
+/* Field
+========================================================================== */
+$size-field-icon-height: 50px;
+
+/* Pop-up
+========================================================================== */
+$size-pop-up-height-tablet: 386px;
+$size-pop-up-height-desktop: 490px;
+$size-pop-up-width-desktop: 870px;
+
+/* Timeline
+========================================================================== */
+$size-timeline-icon: 22px;
+$size-timeline-list-item-height: 63px;
+$size-timeline-list-item-width: 1px;
+$size-timeline-counter-box: 720px;
+
+/* Download box
+========================================================================== */
+$size-download-box-max-width: 192px;
+
+/* Callouts
+========================================================================== */
+$size-callouts-heading-min-height: 55px;
+$size-callouts-width: 228px;
+$size-callouts-layout-width: 536px;
+
+/* Map
+========================================================================== */
+$size-map-dot: 24px;
+
+/* Loader
+========================================================================== */
+$size-loader: 64px;
+$size-loader-item: 51px;
+$size-loader-border: 6px;
+
+/* Logos bar
+========================================================================== */
+$size-logos-bar-media-max-height: 110px;
+$size-logos-bar-media-list-item-height: 110px;
+$size-logos-bar-media-list-item-width: 160px;
+
+/* Info window
+========================================================================== */
+$size-info-window-min-height: 320px;
+$size-info-window-width: 662px;
+
+/* Number
+========================================================================== */
+$size-number-decor-width: 112px;

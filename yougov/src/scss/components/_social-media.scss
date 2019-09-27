@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Social media
+   ========================================================================== */
+
+.c-social-media {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.c-social-media--horizontal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-social-media--start {
+    justify-content: flex-start;
+}
+
+.c-social-media--alt {
+    display: flex;
+
+    list-style: none;
+}
+
+.c-social-media--alt .c-social-media__list {
+    margin: 0 $size-gutter 0 0;
+}
+
+.c-social-media__list {
+    position: relative;
+
+    margin: 0 $size-gutter;
+
+    transition: $transition-default-linear;
+
+    &:hover {
+        opacity: .5;
+    }
+}
+
+.c-social-media__list .o-icon {
+    fill: color(main);
+}
+
+@include media(tablet, desktop) {
+    .l-two-cols__box--socials .c-social-media {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: -$size-gutter;
+    }
+
+    .l-two-cols__box--socials .c-social-media__list {
+        margin: $size-gutter 0;
+    }
+}
+
+@include media(desktop) {
+    .c-social-media--alt {
+        display: block;
+    }
+
+    .c-social-media--alt .c-social-media__list {
+        margin: 0;
+    }
+
+    .c-social-media--alt .c-social-media__list + .c-social-media__list {
+        margin-top: $size-gutter * 2;
+    }
+
+    .c-social-media--alt .o-icon {
+        fill: color(white);
+    }
+}

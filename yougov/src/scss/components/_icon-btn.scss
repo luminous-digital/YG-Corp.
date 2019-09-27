@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Icon btn
+   ========================================================================== */
+
+// Icon btn
+//
+// markup:
+// <button class="c-icon-btn">
+//     <span class="c-icon-btn__icon o-icon-wrapper">
+//         <svg class="o-icon o-icon--calendar">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-calendar"></use>
+//         </svg>
+//     </span>
+//     Add to calendar
+// </button>
+//
+// Styleguide 2.6
+
+.c-icon-btn {
+    @include button-reset();
+    @include headline-5();
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    font-weight: font-weight(regular);
+
+    text-align: left;
+
+    color: color(white);
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+.c-icon-btn__icon {
+    margin-right: $size-gutter * 2;
+}
+
+@include media(tablet) {
+    .c-icon-btn {
+        white-space: nowrap;
+    }
+
+    .c-icon-btn__icon {
+        margin-right: $size-gutter;
+    }
+}

@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Number box
+   ========================================================================== */
+
+.c-number-box__title,
+.c-number-box__subtitle {
+    @include headline-5();
+}
+
+.c-number-box__title {
+    font-weight: font-weight(bold);
+}
+
+.c-number-box__decor {
+    font-size: font-size(size50);
+    font-weight: font-weight(bold);
+
+    color: color(plum2);
+}
+
+.c-number-box__cta {
+    margin-top: $size-gutter;
+}
+
+@include media(tablet) {
+    .c-number-box {
+        display: flex;
+    }
+
+    .c-number-box__decor {
+        text-align: center;
+        width: $size-number-decor-width;
+
+        font-size: font-size(size100);
+        line-height: .75;
+    }
+
+    .c-number-box__text {
+        width: calc(100% - #{$size-number-decor-width});
+    }
+}

@@ -1,0 +1,403 @@
+/* ==========================================================================
+   Table
+   ========================================================================== */
+
+// Table
+//
+// markup:
+// <div class="c-table">
+//     <div class="c-table__head">
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <h6 class="t-subtitle-1">Country</h6>
+//             </div>
+//             <div class="c-table__col">
+//                 <h6 class="t-subtitle-1">City</h6>
+//             </div>
+//             <div class="c-table__col">
+//                 <h6 class="t-subtitle-1">Company</h6>
+//             </div>
+//             <div class="c-table__col">
+//                 <h6 class="t-subtitle-1">Company Number</h6>
+//             </div>
+//             <div class="c-table__col">
+//                 <h6 class="t-subtitle-1">Registered Office Address</h6>
+//             </div>
+//         </div>
+//     </div>
+//     <div class="c-table__body">
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Country</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Australia</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">City</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Sydney</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company</dt>
+//                     <dd class="c-data-box__desc t-headline-5">YouGov Research Pty Limited</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//                     <dd class="c-data-box__desc c-data-box__desc--break t-headline-5">607 534 449</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Registered Office Address</dt>
+//                     <dd class="c-data-box__desc">
+//                         <address>
+//                             <p class="t-headline-5">c/o Emil Ford Lawyers</p>
+//                             <p class="t-headline-5">Level 5, 580 George Street</p>
+//                             <p class="t-headline-5">c/o Emil Ford Lawyers</p>
+//                             <p class="t-headline-5">Sydney</p>
+//                             <p class="t-headline-5">NSW 2000</p>
+//                             <p class="t-headline-5">Australia</p>
+//                         </address>
+//                     </dd>
+//                 </dl>
+//             </div>
+//         </div>
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Country</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Australia</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">City</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Sydney</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company</dt>
+//                     <dd class="c-data-box__desc t-headline-5">YouGov Research Pty Limited</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//                     <dd class="c-data-box__desc c-data-box__desc--break t-headline-5">607 534 449</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Registered Office Address</dt>
+//                     <dd class="c-data-box__desc">
+//                         <address>
+//                             <p class="t-headline-5">c/o Emil Ford Lawyers</p>
+//                             <p class="t-headline-5">Level 5, 580 George Street</p>
+//                             <p class="t-headline-5">c/o Emil Ford Lawyers</p>
+//                             <p class="t-headline-5">Sydney</p>
+//                             <p class="t-headline-5">NSW 2000</p>
+//                             <p class="t-headline-5">Australia</p>
+//                         </address>
+//                     </dd>
+//                 </dl>
+//             </div>
+//         </div>
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Country</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Canada</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">City</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Toronto</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company</dt>
+//                     <dd class="c-data-box__desc t-headline-5">YouGov Research Canada Limited</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//                     <dd class="c-data-box__desc c-data-box__desc--break t-headline-5">BC1185837</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Registered Office Address</dt>
+//                     <dd class="c-data-box__desc">
+//                         <address>
+//                             <p class="t-headline-5">400-725 Granville Street,</p>
+//                             <p class="t-headline-5">P.O. Box 10325,</p>
+//                             <p class="t-headline-5">Vancouver</p>
+//                             <p class="t-headline-5">Canada</p>
+//                         </address>
+//                     </dd>
+//                 </dl>
+//             </div>
+//         </div>
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Country</dt>
+//                     <dd class="c-data-box__desc t-headline-5">China</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">City</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Shanghai</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Consilium Asia Limited</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//                     <dd class="c-data-box__desc c-data-box__desc--break t-headline-5">310000400648988</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Registered Office Address</dt>
+//                     <dd class="c-data-box__desc">
+//                         <address>
+//                             <p class="t-headline-5">Room D, 22nd Floor Shuguang</p>
+//                             <p class="t-headline-5">Building, No. 189 Pu'an Road,</p>
+//                             <p class="t-headline-5">Huangpu District</p>
+//                             <p class="t-headline-5">Shanghai 200021</p>
+//                             <p class="t-headline-5">China</p>
+//                         </address>
+//                     </dd>
+//                 </dl>
+//             </div>
+//         </div>
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Country</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Denmark</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">City</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Copenhagen</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company</dt>
+//                     <dd class="c-data-box__desc t-headline-5">YouGov Denmark A/S</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//                     <dd class="c-data-box__desc c-data-box__desc--break t-headline-5">25045459</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Registered Office Address</dt>
+//                     <dd class="c-data-box__desc">
+//                         <address>
+//                             <p class="t-headline-5">Klosterstræde 9</p>
+//                             <p class="t-headline-5">DK-1157 Copenhagen K</p>
+//                             <p class="t-headline-5">Denmark</p>
+//                         </address>
+//                     </dd>
+//                 </dl>
+//             </div>
+//         </div>
+//         <div class="c-table__row">
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Country</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Finland</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">City</dt>
+//                     <dd class="c-data-box__desc t-headline-5">Helsinki</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company</dt>
+//                     <dd class="c-data-box__desc t-headline-5">YouGov Finland OY</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//                     <dd class="c-data-box__desc c-data-box__desc--break t-headline-5">1637895-6</dd>
+//                 </dl>
+//             </div>
+//             <div class="c-table__col">
+//                 <dl class="c-data-box">
+//                     <dt class="c-data-box__title t-subtitle-1">Registered Office Address</dt>
+//                     <dd class="c-data-box__desc">
+//                         <address>
+//                             <p class="t-headline-5">Alkutie 24 B 15</p>
+//                             <p class="t-headline-5">00660 Helsinki</p>
+//                             <p class="t-headline-5">Finland​</p>
+//                         </address>
+//                     </dd>
+//                 </dl>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 10.12
+
+.c-table {
+    width: 100%;
+    margin-bottom: $size-gutter * 4;
+}
+
+.c-table__head {
+    display: none;
+
+    width: 100%;
+
+    font-weight: font-weight(bold);
+
+    color: color(accent);
+}
+
+.c-table__body {
+    border-top: 1px solid color(darkgray);
+}
+
+.c-table__row {
+    width: 100%;
+    padding: $size-gutter * 4 0;
+
+    border-bottom: 1px solid color(darkgray);
+}
+
+.c-table__body .c-table__row:nth-child(odd) {
+    background-color: color(gray2)
+}
+
+.c-table__col {
+    display: flex;
+
+    padding-right: $size-gutter * 2;
+    padding-left: $size-gutter * 2;
+}
+
+.c-table__col + .c-table__col {
+    margin-top: $size-gutter * 2;
+}
+
+@include media(tablet) {
+    .c-table {
+        margin-bottom: $size-gutter * 7;
+    }
+}
+
+@include media(desktop) {
+    .c-table {
+        margin-bottom: $size-alt * 8;
+    }
+
+    .c-table--2-cols .c-table__col,
+    .c-table--2-cols .c-table__col:last-child  {
+        width: calc(100% / 2);
+    }
+
+    .c-table--3-cols .c-table__col,
+    .c-table--3-cols .c-table__col:last-child {
+        width: calc(100% / 3);
+    }
+
+    .c-table--4-cols .c-table__col,
+    .c-table--4-cols .c-table__col:last-child {
+        width: calc(100% / 4);
+    }
+
+    .c-table--5-cols .c-table__col,
+    .c-table--5-cols .c-table__col:last-child {
+        width: calc(100% / 5);
+    }
+
+    .c-table--6-cols .c-table__col,
+    .c-table--6-cols .c-table__col:last-child {
+        width: calc(100% / 6);
+    }
+
+    .c-table--7-cols .c-table__col,
+    .c-table--7-cols .c-table__col:last-child {
+        width: calc(100% / 7);
+    }
+
+    .c-table--8-cols .c-table__col,
+    .c-table--8-cols .c-table__col:last-child {
+        width: calc(100% / 8);
+    }
+
+    .c-table--9-cols .c-table__col,
+    .c-table--9-cols .c-table__col:last-child {
+        width: calc(100% / 9);
+    }
+
+    .c-table__head {
+        display: block;
+
+        border-top: 1px solid color(darkgray);
+    }
+
+    .c-table__body {
+        border-top: 0;
+    }
+
+    .c-table__row {
+        display: flex;
+
+        padding-top: $size-gutter * 4;
+    }
+
+    .c-table__head .c-table__row {
+        min-height: unset;
+    }
+
+    .c-table__col {
+        display: block;
+
+        width: 17%;
+
+        padding-right: $size-gutter;
+        padding-left: $size-gutter * 2;
+    }
+
+    .c-table__col + .c-table__col {
+        margin-top: 0;
+    }
+
+    .c-table__col:last-child {
+        width: 32%;
+    }
+
+    .c-table__body .t-subtitle-1 {
+        display: none;
+    }
+}

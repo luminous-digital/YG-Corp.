@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Widget
+   ========================================================================== */
+
+// Widget
+//
+// default - no color on the wrapper
+// .c-widget--align-right - align right content
+//
+// markup:
+// <div class="c-widget {$modifiers}">
+//     <div class="c-widget__row">
+//         <div class="c-widget__col">
+//             <a href="#" class="c-widget-module" style="background-color: #241D36;">
+//                 <div class="c-widget-module__main">
+//                     <h4 class="c-widget-module__title">
+//                         Our data
+//                     </h4>
+//                     <p class="c-widget-module__desc">
+//                         Link to solutions site
+//                     </p>
+//                     <div class="c-widget-module__action">
+//                         <span class="c-underline-link">
+//                             Read more
+//                             <span class="c-underline-link__icon o-icon-wrapper">
+//                                 <svg class="o-icon o-icon--arrow-right">
+//                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                 </svg>
+//                             </span>
+//                         </span>
+//                     </div>
+//                 </div>
+//             </a>
+//         </div>
+//         <div class="c-widget__col">
+//             <a href="#" class="c-widget-module" style="background-color: #DC4C81;">
+//                 <div class="c-widget-module__main">
+//                     <h4 class="c-widget-module__title">
+//                         Have a question?
+//                     </h4>
+//                     <p class="c-widget-module__desc">
+//                         Visit our press office page to find out more
+//                     </p>
+//                     <div class="c-widget-module__action">
+//                         <span class="c-underline-link">
+//                             Read more
+//                             <span class="c-underline-link__icon o-icon-wrapper">
+//                                 <svg class="o-icon o-icon--arrow-right">
+//                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                 </svg>
+//                             </span>
+//                         </span>
+//                     </div>
+//                 </div>
+//             </a>
+//         </div>
+//     </div>
+//     <div class="c-widget__row">
+//         <div class="c-widget__iframe">
+//             <iframe src="http://www.bbc.co.uk/news/uk-politics-38265064/embed" class="c-iframe" frameborder="0" scrolling="no"></iframe>
+//         </div>
+//     </div>
+//     <div class="c-widget__row">
+//         <a href="#" class="c-widget-module" style="background-color: #00B7B4;">
+//             <div class="c-widget-module__main">
+//                 <h4 class="c-widget-module__title">
+//                     Latest report
+//                 </h4>
+//                 <p class="c-widget-module__desc">
+//                     Download our latest Annual Report & Accounts 2018
+//                 </p>
+//                 <div class="c-widget-module__action">
+//                     <span class="c-underline-link">
+//                         Downloads
+//                         <span class="c-underline-link__icon o-icon-wrapper">
+//                             <svg class="o-icon o-icon--arrow-right">
+//                                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                             </svg>
+//                         </span>
+//                     </span>
+//                 </div>
+//             </div>
+//             <div class="c-widget-module__media" style="background-image: url(./static/img/pic-widget-1.jpg);"></div>
+//         </a>
+//     </div>
+// </div>
+//
+// Styleguide 10.7
+
+.c-widget {
+    position: relative;
+
+    width: 100%;
+    max-width: $size-widget-max-width;
+}
+
+.c-widget--align-right {
+    margin-left: auto;
+}
+
+.c-widget + * {
+    margin-top: $size-gutter * 9;
+}
+
+.c-widget__row {
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.c-widget__col {
+    width: 100%;
+}
+
+.c-widget__iframe {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    padding-top: 200%;
+}
+
+.c-widget__iframe iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+
+@include media(tablet) {
+    .c-widget__row {
+        display: flex;
+    }
+
+    .c-widget__col {
+        width: 50%;
+    }
+
+    .c-widget__iframe {
+        padding-top: 83%;
+    }
+}

@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Field
+   ========================================================================== */
+
+.f-field {
+    position: relative;
+
+    width: 100%;
+}
+
+.f-field:not(:first-child) {
+    margin-top: $size-gutter * 3;
+}
+
+// Text field
+//
+// markup:
+// <div class="f-field">
+//     <input class="f-field__control" placeholder="First Name" type="text" required/>
+// </div>
+//
+// Styleguide 11.1
+
+.f-field__control {
+    width: 100%;
+    padding: ($size-alt) ($size-gutter * 2) ($size-gutter * 1.5) ;
+
+    @include headline-4();
+    font-weight: font-weight(bold);
+
+    border: 0;
+    border-radius: 0;
+    background-color: color(gray);
+
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.f-field__control::-ms-clear {
+    display: none;
+}
+
+.f-field__control::placeholder {
+    font-weight: font-weight(bold);
+
+    color: color(accent);
+}
+
+.f-field__control:-moz-placeholder,
+.f-field__control::-moz-placeholder {
+    opacity: 1;
+}
+
+// Validation
+
+.f-field__validation-icon {
+    position: absolute;
+    top: $size-gutter * 2.5;
+    right: $size-gutter * 2.5;
+}
+
+.f-field__validation-icon .o-icon {
+    display: none;
+}
+
+// Text area
+//
+// markup:
+// <div class="f-field f-field--textarea">
+//     <textarea class="f-field__control" placeholder="How can we help?" required></textarea>
+// </div>
+//
+// Styleguide 11.2
+
+.f-field--textarea .f-field__control {
+    height: $size-form-textarea-height;
+}
+
+// Button
+//
+// markup:
+// <div class="f-form__action">
+//     <button class="c-btn c-btn--fluid">
+//         Submit
+//         <span class="c-btn__icon o-icon-wrapper">
+//             <svg class="o-icon o-icon--arrow-right">
+//                 <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                 xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right">
+//                 </use>
+//             </svg>
+//         </span>
+//     </button>
+// </div>
+//
+// Styleguide 11.3
+
+.f-form__action {
+    width: 100%;
+    margin-top: $size-gutter * 3;
+}
+
+// Select
+//
+// Select not working correctly on styleguide (show searching insted of options)
+//
+// markup:
+// <div style="height: 500px">
+//    <div class="f-field f-field--select">
+//        <select class="f-field__control js-select" data-placeholder="Select">
+//            <option></option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//            <option value="Lorem ipsum">Lorem ipsum</option>
+//        </select>
+//        <span class="o-icon-wrapper">
+//            <svg class="o-icon o-icon--arrow-simple">
+//                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold">
+//                </use>
+//            </svg>
+//        </span>
+//    </div>
+// </div>
+//
+// Styleguide 11.4
+
+
+.f-field--select {
+    display: flex;
+    flex-direction: column-reverse;
+
+    background-color: color(gray);
+}
+
+.f-field--select .o-icon-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: $size-field-icon-height;
+    padding-right: $size-gutter * 2;
+
+    color: color(main);
+
+    .o-icon {
+        transition: $transition-default;
+    }
+}
+
+.f-field--select .select2-container--open + .o-icon-wrapper .o-icon {
+    transform: rotate(270deg);
+}
+
+.f-field--select .select2 {
+    width: 100%;
+
+
+    background-color: transparent;
+
+    @include headline-4();
+    font-weight: font-weight(bold);
+}
+
+.f-field--select .select2-container {
+    z-index: $z-index-select;
+
+    display: flex;
+
+    width: 100%;
+}
+
+.f-field--select .select2-container--open {
+    z-index: $z-index-select + 1;
+}
+
+.f-field--select .select2-dropdown {
+    border: none;
+    border-radius: 0;
+    background-color: color(white);
+}
+
+.f-field--select .select2-results__option {
+    padding: ($size-alt) ($size-gutter * 2) ($size-gutter * 1.5);
+
+    background-color: color(gray);
+
+    @include headline-5();
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.f-field--select .select2-results__option {
+    margin-top: $size-alt * .2;
+}
+
+.f-field--select .select2-selection__placeholder:focus,
+.f-field--select .select2-selection__rendered:focus,
+.f-field--select .select2-selection__selection:focus,
+.f-field--select .select2-selection,
+.f-field--select .selection:focus {
+    outline: 0;
+}
+
+.f-field--select .selection,
+.f-field--select .select2-selection {
+    display: flex;
+
+    width: 100%;
+}
+
+.f-field--select .select2-selection--single {
+    height: auto;
+    padding: ($size-gutter) ($size-gutter * 2) ($size-gutter * 1.5);
+
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+.f-field--select .select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 0;
+}
+
+.f-field--select .select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: color(accent);
+}
+
+.f-field--select .select2-container--default .select2-results > .select2-results__options {
+    max-height: 240px;
+}
+
+.f-field--select .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    color: inherit;
+    background-color: color(gray);
+}
+
+.f-field--select .select2-selection__arrow,
+.f-field--select .select2-selection__clear,
+.section-markup-wrapper .f-field--select .select2-search.select2-search--dropdown {
+    display: none;
+}
+
+.f-field--select .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: color(accent);
+}
+
+.f-field--select .select2-container--disabled {
+    opacity: .8;
+}
+
+.f-field--select .select2-container--disabled + .o-icon-wrapper,
+.f-field--select .select2-container--default.select2-container--disabled .select2-selection--single .select2-selection__placeholder {
+    color: color(plum);
+}
+
+.f-field--select .select2-container--default.select2-container--disabled .select2-selection--single {
+    background-color: transparent;
+}
+
+.f-field--select .select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: color(plum2);
+}

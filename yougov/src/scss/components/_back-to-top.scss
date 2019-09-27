@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Back to top
+   ========================================================================== */
+
+.c-back-to-top {
+    display: none;
+}
+
+.c-back-to-top__text {
+    @include button-text;
+    margin-top: $size-gutter * 2;
+}
+
+.c-back-to-top__icon {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    height: $size-arrow-height;
+}
+
+.c-back-to-top:hover .o-icon {
+    position: absolute;
+    top: 0;
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        left: -4px;
+    }
+
+    animation-name: bounceTopBottom;
+    animation-duration: .9s;
+
+    animation-fill-mode: forwards;
+}
+
+.c-back-to-top:hover .c-underline-link:before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+@include media(desktop) {
+    .c-back-to-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 32%;
+    }
+}

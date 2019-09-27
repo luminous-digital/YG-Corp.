@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Map
+   ========================================================================== */
+
+.c-map {
+    position: relative;
+
+    width: 100%;
+}
+
+.c-map__main {
+    width: 100%;
+    padding-top: 62.6%;
+}
+
+.c-map__legend {
+    width: 100%;
+    margin-top: $size-gutter;
+}
+
+.c-map__popup {
+    display: none;
+}
+
+.c-map__popup.is-opened {
+    position: fixed;
+    z-index: $z-index-popup;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: block;
+    overflow: auto;
+
+    max-height: 100vh;
+    padding: 0 ($size-gutter * 3);
+
+    background-color: color(white);
+}
+
+.c-map__popup__close {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: $size-gutter * 3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+    padding: 0;
+
+    color: color(white);
+    border: 0;
+    background-color: transparent;
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+.c-map__popup__close .o-icon {
+    font-size: 18px;
+}
+
+.gm-style .gm-style-iw-c {
+    overflow: visible !important;
+
+    max-width: 100% !important;
+    max-height: auto !important;
+    padding: 0 !important;
+}
+
+.gm-style .gm-style-iw-d {
+    overflow: visible !important;
+
+    max-width: 100% !important;
+    max-height: auto !important;
+}
+
+.gm-ui-hover-effect {
+    top: 0 !important;
+    right: 0 !important;
+}
+
+.gm-style .gm-style-iw-t::after,
+.gm-control-active.gm-fullscreen-control,
+.gmnoprint .gm-svpc,
+.gmnoprint .gm-style-mtc {
+    display: none;
+}
+
+.gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom .gmnoprint {
+    top: 0px !important;
+}
+
+@include media(tablet) {
+    .c-map__legend {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+
+        width: auto;
+        margin-top: 0;
+    }
+
+    .c-map__popup__close {
+        display: none;
+    }
+}

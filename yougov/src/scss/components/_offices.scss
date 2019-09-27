@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Offices
+   ========================================================================== */
+
+.c-offices {
+    width: 100%;
+}
+
+.c-offices__heading {
+    width: 100%;
+    margin-bottom: $size-gutter;
+
+    color: color(black);
+}
+
+.c-offices__body {
+    width: 100%;
+}
+
+.c-offices__headquarters,
+.c-offices__additional {
+    width: 100%;
+}
+
+.c-offices__additional {
+    margin-top: $size-gutter * 6;
+}
+
+@include media(tablet) {
+    .c-offices__body {
+        display: flex;
+    }
+
+    .c-offices__headquarters {
+        width: percentage(1 / 2);
+    }
+
+    .c-offices__additional {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .c-offices__headquarters + .c-offices__additional {
+        width: percentage(1 / 2);
+    }
+
+    .c-offices__headquarters + .c-offices__additional .c-list--3-col-width.c-list--horizontal-wrap .c-list__item {
+        width: calc((100%) - (#{$size-gutter} * 4));
+    }
+}
+
+@include media(desktop) {
+    .c-offices__headquarters {
+        width: percentage(1 / 3);
+    }
+
+    .c-offices__additional{
+        width: 100%;
+    }
+
+    .c-offices__headquarters + .c-offices__additional {
+        width: percentage(2 / 3);
+    }
+
+    .c-offices__headquarters + .c-offices__additional .c-list--3-col-width.c-list--horizontal-wrap .c-list__item {
+        width: calc((100% / 2) - (#{$size-gutter} * 4));
+    }
+}

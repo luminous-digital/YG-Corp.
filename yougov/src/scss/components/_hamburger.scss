@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Hamburger icon
+   ========================================================================== */
+
+// Hamburger
+//
+// default - default state
+// is-menu-opened - class added to body to open mobile menu (mobile color is white)
+//
+// markup:
+// <button type="button" class="c-hamburger js-menu-open-trigger {$modifiers}" title="Toggle menu">
+//     <span class="c-hamburger__line c-hamburger__line--hidden">Toggle menu</span>
+//     <span class="c-hamburger__line"></span>
+//     <span class="c-hamburger__line"></span>
+//     <span class="c-hamburger__line"></span>
+// </button>
+//
+// Styleguide 4
+
+.c-hamburger {
+    position: relative;
+    z-index: 60;
+
+    display: block;
+
+    width: $size-hamburger-width;
+    height: $size-hamburger-height;
+    padding: 0;
+
+    transition: transform .6s cubic-bezier(.165,.84,.44,1),-webkit-transform .6s cubic-bezier(.165,.84,.44,1);
+    pointer-events: all;
+
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+.c-hamburger__line {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+
+    width: auto;
+    height: 2px;
+    margin-top: -1px;
+
+    transition: transform .6s cubic-bezier(.165,.84,.44,1),opacity .3s cubic-bezier(.165,.84,.44,1),background-color .6s cubic-bezier(.165,.84,.44,1),-webkit-transform .6s cubic-bezier(.165,.84,.44,1);
+
+    background-color: color(black);
+    &:nth-child(2) {
+        transform: translateY(-6px);
+    }
+    &:nth-child(3) {
+        transform: scaleX(.8);
+        transform-origin: 100% 50%;
+    }
+    &:nth-child(4) {
+        transform: translateY(6px);
+    }
+}
+
+.c-hamburger:hover .c-hamburger__line:nth-child(3) {
+    @include media(desktop) {
+        transform: scaleX(1);
+    }
+}
+
+.c-hamburger__line--hidden {
+    position: absolute;
+
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+
+    border: 0;
+}
+
+.is-menu-opened .c-hamburger {
+    transform: rotate(-180deg);
+}
+
+.is-menu-opened .c-hamburger__line {
+    background-color: color(white);
+}
+
+.is-menu-opened .c-hamburger__line:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.is-menu-opened .c-hamburger__line:nth-child(3) {
+    transform: scaleX(1);
+
+    opacity: 0;
+}
+
+.is-menu-opened .c-hamburger__line:nth-child(4) {
+    transform: rotate(-45deg);
+}
+
+@include media(desktop) {
+    .c-hamburger {
+        display: none;
+    }
+
+    .section-markup-wrapper .c-hamburger {
+        display: block;
+    }
+
+    .section-markup-wrapper .is-menu-opened .c-hamburger__line {
+        background-color: color(black);
+    }
+}

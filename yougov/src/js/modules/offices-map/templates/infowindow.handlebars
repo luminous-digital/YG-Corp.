@@ -1,0 +1,36 @@
+<div class="c-info-window">
+    <div class="c-info-window__col">
+        <div class="c-office-info">
+            <h4 class="c-office-info__location t-headline-4 t-bold">
+                {{city}}
+            </h4>
+            <h5 class="c-office-info__type t-headline-5 t-light">
+                {{#if isHeadquarter}}
+                    Corporate Headquarters
+                {{/if}}
+            </h5>
+            <address class="c-office-info__address t-body-1 t-light">
+                {{addressLine1}}<br>
+                {{addressLine2}}<br>
+                {{addressLine3}}
+            </address>
+            {{#if isHeadquarter}}
+                {{#if tel }} <p class="c-office-info__contact t-body-1 t-light">Tel: <a href="tel:{{tel}}">{{tel}}</a></p> {{/if}}
+                {{#if mail }} <p class="c-office-info__contact t-body-1 t-light">Email: <a href="mailto:{{mail}}">{{mail}}</a></p> {{/if}}
+                {{#if web }} <p class="c-office-info__contact t-body-1 t-light">Web: <a href="{{web}}" target="_blank">{{web}}</a></p> {{/if}}
+            {{/if}}
+        </div>
+    </div>
+    <div class="c-info-window__col">
+        <div class="c-oddity {{#if isHeadquarter}}c-oddity--headquarter{{/if}}">
+            {{#if didYouKnow }}
+            <h6 class="c-oddity__label t-subtitle-1 t-bold">
+                Did you know?
+            </h6>
+            {{/if}}
+            <h4 class="c-oddity__info t-headline-4 t-bold">
+                {{didYouKnow}}
+            </h4>
+        </div>
+    </div>
+</div>

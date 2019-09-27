@@ -1,0 +1,388 @@
+/* ==========================================================================
+WYSIWYG
+========================================================================== */
+
+// Wysiwyg
+//
+// Styleguide 5
+
+// Headline
+//
+// markup:
+// <div class="c-wysiwyg">
+//     <h1>
+//         H1 Headline
+//     </h1>
+//     <h2>
+//         H2 Headline
+//     </h2>
+//     <h3>
+//         H3 Headline
+//     </h3>
+//     <h4>
+//         H4 Headline
+//     </h4>
+//     <h5>
+//         H5 Headline
+//     </h5>
+//     <h6>
+//         Subtitle
+//     </h6>
+// </div>
+//
+// Styleguide 5.1
+
+.c-wysiwyg {
+    width: 100%;
+
+    font-family: $font-default;
+
+    h1 {
+        @include headline-1();
+    }
+
+    h2 {
+        @include headline-2();
+    }
+
+    h3 {
+        @include headline-3();
+    }
+
+    h4 {
+        @include headline-4();
+    }
+
+    h5 {
+        @include headline-5();
+    }
+}
+
+// Paragraph
+//
+// markup:
+// <div class="c-wysiwyg">
+//     <p>
+//         Paragraph: Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Aliquam condimentum placerat hendrerit</strong>.
+//     </p>
+// </div>
+//
+// Styleguide 5.2
+
+.c-wysiwyg {
+    p {
+        @include body-1();
+    }
+
+    strong {
+        font-weight: font-weight(bold);
+    }
+}
+
+// Subtitle
+//
+// markup:
+// <div class="c-wysiwyg">
+//     <h6>
+//         Subtitle 1
+//     </h6>
+// </div>
+//
+// Styleguide 5.3
+
+.c-wysiwyg {
+    h6 {
+        @include subtitle-1();
+    }
+}
+
+// Unordered list
+//
+//  markup:
+// <div class="c-wysiwyg">
+//  <ul>
+//      <li>
+//          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+//      </li>
+//      <li>
+//          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+//      </li>
+//      <li>
+//          Lorem ipsum dolor sit amet, consectetur adipiscing elit
+//      </li>
+//  </ul>
+// </div>
+//
+// Styleguide 5.4
+
+.c-wysiwyg {
+    ul {
+        @include body-1();
+
+        padding-left: $size-alt * 2;
+    }
+}
+
+// Ordered list
+//
+// markup:
+// <div class="c-wysiwyg">
+//     <ol>
+//         <li>
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit
+//         </li>
+//         <li>
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit
+//         </li>
+//         <li>
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit
+//         </li>
+//     </ol>
+// </div>
+//
+// Styleguide 5.5
+
+.c-wysiwyg {
+    ol {
+        @include body-1();
+
+        padding-left: $size-alt * 2;
+    }
+}
+
+// Image, Image caption
+//
+//  markup:
+// <div class="c-wysiwyg">
+//     <figure>
+//         <img src="./static/img/pic_person_1.jpg" alt="">
+//         <figcaption>Caption text goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</figcaption>
+//     </figure>
+// </div>
+//
+// Styleguide 5.6
+
+.c-wysiwyg {
+    figure {
+        width: 100%;
+        margin: 0;
+    }
+
+    * + figure,
+    figure + * {
+        margin: ($size-gutter * 6) 0 0;
+    }
+
+    img {
+        display: block;
+
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    figcaption {
+        @include caption-text;
+
+        margin-top: $size-gutter * 2;
+    }
+}
+
+@include media(tablet) {
+    .c-wysiwyg {
+        * + figure,
+        figure + * {
+            margin: ($size-gutter * 9) 0 0;
+        }
+    }
+}
+
+@include media(desktop) {
+    .c-wysiwyg {
+        figcaption {
+            margin-top: $size-alt * 2;
+        }
+    }
+}
+
+.c-wysiwyg {
+    h1:not([class]) + h1:not([class]),
+    h1:not([class]) + h2:not([class]),
+    h1:not([class]) + h3:not([class]),
+    h1:not([class]) + h4:not([class]),
+    h1:not([class]) + h5:not([class]),
+    h2:not([class]) + h1:not([class]),
+    h2:not([class]) + h2:not([class]),
+    h2:not([class]) + h3:not([class]),
+    h2:not([class]) + h4:not([class]),
+    h2:not([class]) + h5:not([class]),
+    h3:not([class]) + h1:not([class]),
+    h3:not([class]) + h2:not([class]),
+    h3:not([class]) + h3:not([class]),
+    h3:not([class]) + h4:not([class]),
+    h3:not([class]) + h5:not([class]),
+    h4:not([class]) + h1:not([class]),
+    h4:not([class]) + h2:not([class]),
+    h4:not([class]) + h3:not([class]),
+    h4:not([class]) + h4:not([class]),
+    h4:not([class]) + h5:not([class]),
+    h5:not([class]) + h1:not([class]),
+    h5:not([class]) + h2:not([class]),
+    h5:not([class]) + h3:not([class]),
+    h5:not([class]) + h4:not([class]),
+    h5:not([class]) + h5:not([class]),
+    h6:not([class]) + h1:not([class]),
+    h6:not([class]) + h2:not([class]),
+    h6:not([class]) + h3:not([class]),
+    h6:not([class]) + h4:not([class]),
+    h6:not([class]) + h5:not([class]) {
+        margin-top: $size-alt * 5;
+    }
+
+    h1:not([class]) + h6:not([class]),
+    h2:not([class]) + h6:not([class]),
+    h3:not([class]) + h6:not([class]),
+    h4:not([class]) + h6:not([class]),
+    h5:not([class]) + h6:not([class]),
+    h6:not([class]) + h6:not([class]),
+    h1:not([class]) + p:not([class]),
+    h2:not([class]) + p:not([class]),
+    h1:not([class]) + ol:not([class]),
+    h2:not([class]) + ol:not([class]),
+    h1:not([class]) + ul:not([class]),
+    h2:not([class]) + ul:not([class]) {
+        margin-top: $size-alt * 3;
+    }
+
+    h3:not([class]) + p:not([class]),
+    h4:not([class]) + p:not([class]),
+    h5:not([class]) + p:not([class]),
+    h6:not([class]) + p:not([class]),
+    h3:not([class]) + ol:not([class]),
+    h4:not([class]) + ol:not([class]),
+    h5:not([class]) + ol:not([class]),
+    h6:not([class]) + ol:not([class]),
+    h3:not([class]) + ul:not([class]),
+    h4:not([class]) + ul:not([class]),
+    h5:not([class]) + ul:not([class]),
+    h6:not([class]) + ul:not([class]) {
+        margin-top: $size-alt * 1.5;
+    }
+
+    p:not([class]) + h1:not([class]),
+    p:not([class]) + h2:not([class]),
+    p:not([class]) + h3:not([class]),
+    p:not([class]) + h4:not([class]),
+    p:not([class]) + h5:not([class]),
+    p:not([class]) + h6:not([class]),
+    ul:not([class]) + h1:not([class]),
+    ul:not([class]) + h2:not([class]),
+    ul:not([class]) + h3:not([class]),
+    ul:not([class]) + h4:not([class]),
+    ul:not([class]) + h5:not([class]),
+    ul:not([class]) + h6:not([class]),
+    ol:not([class]) + h1:not([class]),
+    ol:not([class]) + h2:not([class]),
+    ol:not([class]) + h3:not([class]),
+    ol:not([class]) + h4:not([class]),
+    ol:not([class]) + h5:not([class]),
+    ol:not([class]) + h6:not([class]) {
+        margin-top: $size-alt * 6;
+    }
+
+    p:not([class]) + p:not([class]),
+    ul:not([class]) + ul:not([class]),
+    ol:not([class]) + ol:not([class]),
+    p:not([class]) + ul:not([class]),
+    p:not([class]) + ol:not([class]),
+    ul:not([class]) + p:not([class]),
+    ol:not([class]) + p:not([class]) {
+        margin-top: $size-alt * 1.5;
+    }
+}
+
+.c-wysiwyg--small {
+    h1:not([class]) + h1:not([class]),
+    h2:not([class]) + h1:not([class]),
+    h3:not([class]) + h1:not([class]),
+    h4:not([class]) + h1:not([class]),
+    h5:not([class]) + h1:not([class]),
+    h6:not([class]) + h1:not([class]),
+    p:not([class]) + h1:not([class]),
+    ul:not([class]) + h1:not([class]),
+    ol:not([class]) + h1:not([class]),
+    h1:not([class]) + h2:not([class]),
+    h2:not([class]) + h2:not([class]),
+    h3:not([class]) + h2:not([class]),
+    h4:not([class]) + h2:not([class]),
+    h5:not([class]) + h2:not([class]),
+    h6:not([class]) + h2:not([class]),
+    p:not([class]) + h2:not([class]),
+    ul:not([class]) + h2:not([class]),
+    ol:not([class]) + h2:not([class]),
+    h1:not([class]) + h3:not([class]),
+    h2:not([class]) + h3:not([class]),
+    h3:not([class]) + h3:not([class]),
+    h4:not([class]) + h3:not([class]),
+    h5:not([class]) + h3:not([class]),
+    h6:not([class]) + h3:not([class]),
+    p:not([class]) + h3:not([class]),
+    ul:not([class]) + h3:not([class]),
+    ol:not([class]) + h3:not([class]),
+    h1:not([class]) + h4:not([class]),
+    h2:not([class]) + h4:not([class]),
+    h3:not([class]) + h4:not([class]),
+    h4:not([class]) + h4:not([class]),
+    h5:not([class]) + h4:not([class]),
+    h6:not([class]) + h4:not([class]),
+    p:not([class]) + h4:not([class]),
+    ul:not([class]) + h4:not([class]),
+    ol:not([class]) + h4:not([class]),
+    h1:not([class]) + h5:not([class]),
+    h2:not([class]) + h5:not([class]),
+    h3:not([class]) + h5:not([class]),
+    h4:not([class]) + h5:not([class]),
+    h5:not([class]) + h5:not([class]),
+    h6:not([class]) + h5:not([class]),
+    p:not([class]) + h5:not([class]),
+    ul:not([class]) + h5:not([class]),
+    ol:not([class]) + h5:not([class]),
+    h1:not([class]) + h6:not([class]),
+    h2:not([class]) + h6:not([class]),
+    h3:not([class]) + h6:not([class]),
+    h4:not([class]) + h6:not([class]),
+    h5:not([class]) + h6:not([class]),
+    h6:not([class]) + h6:not([class]),
+    p:not([class]) + h6:not([class]),
+    ul:not([class]) + h6:not([class]),
+    ol:not([class]) + h6:not([class]),
+    h1:not([class]) + p:not([class]),
+    h2:not([class]) + p:not([class]),
+    h3:not([class]) + p:not([class]),
+    h4:not([class]) + p:not([class]),
+    h5:not([class]) + p:not([class]),
+    h6:not([class]) + p:not([class]),
+    p:not([class]) + p:not([class]),
+    ul:not([class]) + p:not([class]),
+    ol:not([class]) + p:not([class]),
+    h1:not([class]) + ul:not([class]),
+    h2:not([class]) + ul:not([class]),
+    h3:not([class]) + ul:not([class]),
+    h4:not([class]) + ul:not([class]),
+    h5:not([class]) + ul:not([class]),
+    h6:not([class]) + ul:not([class]),
+    p:not([class]) + ul:not([class]),
+    ul:not([class]) + ul:not([class]),
+    ol:not([class]) + ul:not([class]),
+    h1:not([class]) + ol:not([class]),
+    h2:not([class]) + ol:not([class]),
+    h3:not([class]) + ol:not([class]),
+    h4:not([class]) + ol:not([class]),
+    h5:not([class]) + ol:not([class]),
+    h6:not([class]) + ol:not([class]),
+    p:not([class]) + ol:not([class]),
+    ul:not([class]) + ol:not([class]),
+    ol:not([class]) + ol:not([class]) {
+        margin-top: $size-gutter * 3;
+    }
+}

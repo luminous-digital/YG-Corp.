@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Decor wrapper
+   ========================================================================== */
+
+.l-decor-wrapper {
+    width: 100%;
+    padding-bottom: $size-gutter * 20;
+}
+
+.l-decor-wrapper--top {
+    padding-bottom: $size-gutter * 6;
+}
+
+@include media(0, tablet) {
+    .l-decor-wrapper--mobile-bottom {
+        position: relative;
+        &:after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+
+            width: 60%;
+            padding-top: 40%;
+
+            content: '';
+            transform: translateY(50%);
+
+            background-image: url('../../../static/img/pic-widget-decor-3.png');
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+    }
+}
+
+@include media(tablet) {
+    .l-decor-wrapper {
+        padding-bottom: $size-gutter * 10;
+    }
+
+    .l-decor-wrapper--top {
+        position: relative;
+
+        overflow: hidden;
+
+        padding-top: $size-gutter * 18;
+        padding-bottom: 0;
+        &:before {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            width: $size-column-decor-top;
+            height: $size-column-decor-top;
+
+            content: '';
+            transform: translateY(-65%);
+
+            background-image: url('../../../static/img/pic-widget-decor-3.png');
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+    }
+
+    .l-decor-wrapper--alt {
+        &:before {
+            transform: translateY(-45%);
+        }
+    }
+}
+
+@include media(desktop) {
+    .l-decor-wrapper {
+        padding-bottom: $size-gutter * 15;
+    }
+
+    .l-decor-wrapper--top {
+        padding-bottom: $size-gutter * 2;
+    }
+
+    .l-decor-wrapper--top:before {
+        width: 50%;
+        height: auto;
+        padding-top: 25%;
+
+        background-image: url('../../../static/img/pic-widget-decor-2.png');
+    }
+}

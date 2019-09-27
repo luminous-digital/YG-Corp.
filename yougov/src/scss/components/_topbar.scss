@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Top bar
+   ========================================================================== */
+
+// Top bar
+//
+// markup:
+// <ul class="c-topbar">
+//     <li class="c-topbar__item">
+//         <p href="governance.html" class="t-body-2">
+//             Our other sites:
+//         </p>
+//     </li>
+//     <li class="c-topbar__item">
+//         <a href="products-and-services.html" class="c-underline-link" target="_blank">
+//             Products and services
+//         </a>
+//     </li>
+//     <li class="c-topbar__item">
+//         <a href="careers.html" class="c-underline-link" target="_blank">
+//             Careers
+//         </a>
+//     </li>
+// </ul>
+//
+// Styleguide 10.23
+
+.c-topbar {
+    text-align: center;
+
+    color: color(white);
+
+    @include helper--list ();
+}
+
+.c-topbar__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:first-child {
+        margin-bottom: $size-gutter;
+    }
+}
+
+.c-topbar__item .c-underline-link {
+    @include body-2 ();
+}
+
+@include media(desktop) {
+    .c-topbar__item:first-child {
+        margin-bottom: $size-gutter * 2;
+    }
+}
+
+@include media(desktop) {
+    .c-topbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        color: color(plum);
+    }
+
+    .c-topbar__item:not(:last-child) {
+        margin-right: $size-gutter * 4;
+    }
+
+    .c-topbar__item:first-child {
+        margin-bottom: 0;
+    }
+}

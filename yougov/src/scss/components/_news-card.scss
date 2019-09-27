@@ -1,0 +1,91 @@
+/* ==========================================================================
+   News card
+   ========================================================================== */
+
+// News card
+//
+// markup:
+// <a href="#" class="c-news-card">
+//     <figure class="c-news-card__media">
+//         <img src="/static/img/img-news-1.jpg" alt="News image"/>
+//     </figure>
+//     <time datetime="11-07-2020" class="c-news-card__date">
+//         July 11, 2020
+//     </time>
+//     <h5 class="c-news-card__title">
+//         Headline goes here
+//     </h5>
+//     <p class="c-news-card__info">
+//         Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Maecenas va rius tortor nibh, sit amet tempor ni bh finibus et. Aenean eu enim jus to vestibulum aliquam
+//     </p>
+// </a>
+//
+// Styleguide 10.4
+
+.c-news-card {
+    width: 100%;
+
+    cursor: pointer;
+}
+
+.c-news-card__media {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    margin: 0;
+    padding-top: 57%;
+
+    transition: $transition-default;
+}
+
+.c-news-card__img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+
+    display: block;
+
+    object-fit: cover;
+    font-family: 'object-fit: cover;';
+
+    width: 100%;
+    height: 100%;
+
+    transform: translateY(-50%);
+}
+
+.c-news-card__date {
+    @include caption-text();
+
+    display: block;
+
+    margin-top: $size-gutter;
+}
+
+.c-news-card__title {
+    @include headline-4;
+
+    margin-top: $size-gutter;
+
+    font-weight: font-weight(bold);
+    color: color(main);
+}
+
+.c-news-card__info {
+    @include body-1;
+}
+
+@include media(tablet) {
+    .c-news-card__date {
+        margin-top: $size-gutter * 2;
+    }
+}
+
+@include media(desktop) {
+    .c-news-card:hover .c-news-card__media {
+        opacity: .5;
+    }
+}

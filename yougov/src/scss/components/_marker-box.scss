@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Marker box
+   ========================================================================== */
+
+.c-marker-box {
+    display: flex;
+    align-items: center;
+
+    padding: ($size-gutter * 2) 0;
+}
+
+.c-marker-box__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-right: $size-gutter;
+}
+
+.c-marker-box__icon .o-icon {
+    font-size: 24px;
+
+    fill: color(violet);
+}
+
+.c-marker-box__small-marker {
+    width: 14px;
+    height: 14px;
+
+    border-radius: 100%;
+    background-color: color(main);
+}
+
+@include media(tablet) {
+    .c-marker-box {
+        padding: $size-gutter * 2;
+    }
+
+    .c-marker-box__icon .o-icon {
+        font-size: 42px;;
+    }
+
+    .c-marker-box__small-marker {
+        width: 24px;
+        height: 24px;
+    }
+}

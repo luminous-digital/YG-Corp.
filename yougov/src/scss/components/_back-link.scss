@@ -1,0 +1,41 @@
+/* ==========================================================================
+Back link
+========================================================================== */
+
+// Underline link
+//
+// Styleguide 3.3
+
+// Back link
+//
+// markup:
+// <a href="#" class="c-back-link" target="_blank">
+//     <span class="o-icon-wrapper">
+//         <svg class="o-icon o-icon--arrow-mid">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                  xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-mid">
+//            </use>
+//         </svg>
+//     </span>
+//     Back to Privacy and security
+// </a>
+//
+// Styleguide 3.3.1
+
+.c-back-link {
+    @include button-text;
+
+    display: inline-flex;
+    align-items: flex-start;
+
+    color: color(accent);
+    transition: $transition-default;
+
+    &:hover {
+        color: color(main);
+    }
+}
+
+.c-back-link .o-icon-wrapper {
+    margin-right: $size-gutter;
+}
