@@ -1,0 +1,229 @@
+/* ==========================================================================
+   Downloads
+   ========================================================================== */
+
+// Downloads
+//
+// markup:
+// <div class="l-inner">
+//     <div class="c-downloads-wrapper">
+//         <div class="c-downloads-table">
+//             <div class="c-downloads-table__heading c-downloads-table__heading--alt">
+//                 <div class="c-heading c-heading--alt">
+//                     <h6 class="c-heading__date">
+//                         Date
+//                     </h6>
+//                     <h6 class="c-heading__news">
+//                         News title
+//                     </h6>
+//                 </div>
+//             </div>
+//             <div class="c-downloads-table__content">
+//                 <div class="c-downloads">
+//                     <div class="c-downloads__post-wrapper">
+//                         <time datetime="0000-00-00" class="c-downloads__date">
+//                             00/00/00
+//                         </time>
+//                         <h5 class="c-downloads__title">
+//                             Lorem ipum dolor et
+//                         </h5>
+//                     </div>
+//                     <div class="c-downloads__info-wrapper">
+//                         <div class="c-downloads__link">
+//                             <a href="#" class="c-underline-link c-underline-link--inline c-underline-link--left" download>
+//                                 <span class="c-underline-link__icon o-icon-wrapper">
+//                                     <svg class="o-icon o-icon--download">
+//                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                                             xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-download">
+//                                         </use>
+//                                     </svg>
+//                                 </span>
+//                                 <span class="c-underline-link__text-wrapper">
+//                                     <span class="c-underline-link__text">
+//                                         Presentation – 0.00Mb
+//                                     </span>
+//                                 </span>
+//                             </a>
+//                         </div>
+//                         <div class="c-downloads__link">
+//                             <a href="#" class="c-underline-link c-underline-link--inline c-underline-link--left" download>
+//                                 <span class="c-underline-link__icon o-icon-wrapper">
+//                                     <svg class="o-icon o-icon--download">
+//                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                                             xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-download">
+//                                         </use>
+//                                     </svg>
+//                                 </span>
+//                                 <span class="c-underline-link__text-wrapper">
+//                                     <span class="c-underline-link__text">
+//                                         Presentation – 0.00Mb
+//                                     </span>
+//                                 </span>
+//                             </a>
+//                         </div>
+//                         <div class="c-downloads__link">
+//                             <a href="#" class="c-underline-link c-underline-link--inline c-underline-link--left" download>
+//                                 <span class="c-underline-link__icon o-icon-wrapper">
+//                                     <svg class="o-icon o-icon--triangle">
+//                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                                             xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-triangle">
+//                                         </use>
+//                                     </svg>
+//                                 </span>
+//                                 <span class="c-underline-link__text-wrapper">
+//                                     <span class="c-underline-link__text">
+//                                         Web cast
+//                                     </span>
+//                                 </span>
+//                             </a>
+//                         </div>
+//                         <div class="c-downloads__link">
+//                             <a href="#" class="c-underline-link c-underline-link--inline c-underline-link--left" download>
+//                                 <span class="c-underline-link__icon o-icon-wrapper">
+//                                     <svg class="o-icon o-icon--download">
+//                                         <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                                             xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-download">
+//                                         </use>
+//                                     </svg>
+//                                 </span>
+//                                 <span class="c-underline-link__text-wrapper">
+//                                     <span class="c-underline-link__text">
+//                                         Presentation – 0.00Mb
+//                                     </span>
+//                                 </span>
+//                             </a>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="c-downloads-table__content">
+//                 <div class="c-downloads">
+//                     <div class="c-downloads__post-wrapper">
+//                         <time datetime="0000-00-00" class="c-downloads__date">
+//                             00/00/00
+//                         </time>
+//                         <h5 class="c-downloads__title">
+//                             Lorem ipum dolor et
+//                         </h5>
+//                     </div>
+//                     <div class="c-downloads__info-wrapper">
+//                         <a href="#" class="c-underline-link c-underline-link--inline c-underline-link--left" download>
+//                             <span class="c-underline-link__icon o-icon-wrapper">
+//                                 <svg class="o-icon o-icon--download">
+//                                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                                         xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-download">
+//                                     </use>
+//                                 </svg>
+//                             </span>
+//                             <span class="c-underline-link__text-wrapper">
+//                                 <span class="c-underline-link__text">
+//                                     PDF 0.00Mb
+//                                 </span>
+//                             </span>
+//                         </a>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 2.7
+
+.c-downloads {
+    display: flex;
+    flex-direction: column;
+
+    padding: ($size-alt * 3) 0 ($size-alt * 3) ($size-gutter * 2);
+
+    border-bottom: 1px solid color(plum);
+}
+
+.c-downloads__date,
+.c-downloads__title {
+    @include headline-5;
+}
+
+.c-downloads__title {
+    margin-top: 0;
+    margin-bottom: $size-alt * 1.4;
+
+    font-weight: font-weight(bold);
+}
+
+.c-downloads__info-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-downloads__info-wrapper .c-underline-link {
+    @include button-text;
+}
+
+.c-downloads .o-icon {
+    color: color(main);
+}
+
+.c-downloads .c-underline-link {
+    @include body-1;
+}
+
+.c-downloads .c-underline-link__icon {
+    margin-right: $size-gutter;
+}
+
+.c-downloads__link + .c-downloads__link {
+    margin-top: $size-gutter;
+}
+
+@include media(tablet) {
+    .c-downloads {
+        flex-direction: row;
+    }
+
+    .c-downloads__post-wrapper {
+        display: flex;
+
+        width: 65%;
+    }
+
+    .c-downloads__info-wrapper {
+        width: 35%;
+    }
+
+    .c-downloads__date {
+        width: 40%;
+
+        padding-right: $size-gutter * 2;
+    }
+
+    .c-downloads__title {
+        width: 60%;
+        margin-bottom: 0;
+
+        padding-right: $size-gutter * 2;
+    }
+}
+
+@include media(desktop) {
+    .c-downloads {
+        justify-content: space-between;
+    }
+
+    .c-downloads__info-wrapper {
+        flex-shrink: 0;
+        width: $size-downloads-width;
+    }
+
+    .c-downloads__post-wrapper {
+        width: calc(100% - #{$size-downloads-width});
+    }
+
+    .c-downloads__date {
+        width: 25%;
+    }
+
+    .c-downloads__title {
+        width: 75%;
+    }
+}

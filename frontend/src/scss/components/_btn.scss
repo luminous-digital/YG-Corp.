@@ -1,0 +1,80 @@
+
+// Btn
+//
+// markup:
+// <button class="c-btn c-btn--fluid">
+//     Submit
+//     <span class="c-btn__icon o-icon-wrapper">
+//         <svg class="o-icon o-icon--arrow-right">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//             xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right">
+//             </use>
+//         </svg>
+//     </span>
+// </button>
+//
+// Styleguide 10.13
+
+.c-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: $size-gutter * 2;
+
+    cursor: pointer;
+
+    color: color(white);
+    border: 0;
+    background-color: color(violet);
+
+    @include button-text;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.c-btn--fluid {
+    width: 100%;
+}
+
+.c-btn__icon {
+    margin-left: $size-alt;
+}
+
+.c-clear-btn {
+    display: flex;
+    align-items: center;
+
+    padding: 0;
+
+    cursor: pointer;
+    transition: 250ms ease-in-out;
+    text-align: left;
+
+    border: 0;
+    background-color: transparent;
+    &:hover {
+        opacity: .8;
+    }
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+.c-clear-btn__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2px;
+    margin-left: $size-gutter;
+}
+
+@include media(tablet) {
+    .c-clear-btn {
+        height: 48px;
+    }
+}

@@ -1,0 +1,49 @@
+/* ==========================================================================
+   Icon with decor
+   ========================================================================== */
+
+// Icon with decor
+//
+// default - default state
+// c-icon-with-decor--alt-dark - dark
+// c-icon-with-decor--light - light
+//
+// markup:
+// <a href="#" class="c-icon-with-decor {$modifiers}" target="_blank" rel="noopener noreferrer">
+//     <span class="o-icon-wrapper">
+//         <svg class="o-icon o-icon--instagram">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-instagram"></use>
+//         </svg>
+//     </span>
+// </a>
+//
+// Styleguide 2.2
+
+.c-icon-with-decor {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    width: $size-icon-decor;
+    height: $size-icon-decor;
+
+    border-radius: 50%;
+    background-color: color(white);
+}
+
+.c-icon-with-decor--light {
+    background-color: color(gray);
+    color: color(plum);
+}
+
+.c-social-media__list .c-icon-with-decor--light .o-icon {
+    fill: currentColor;
+}
+
+@include media(desktop) {
+    .c-icon-with-decor--alt-dark {
+        color: color(white);
+        background-color: color(darkviolet);
+    }
+}

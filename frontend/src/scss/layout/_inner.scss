@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Inner
+   ========================================================================== */
+
+@mixin inner () {
+    width: 100%;
+    margin: 0 auto;
+    padding-right: $size-gutter * 3;
+    padding-left: $size-gutter * 3;
+
+    @include media(tablet) {
+        max-width: size(inner) + $size-gutter * 15;
+        padding-right: $size-gutter * 7.5;
+        padding-left: $size-gutter * 7.5;
+    }
+}
+
+.l-inner {
+    @include inner;
+}
+
+.l-inner--small {
+    max-width: size(inner-small) + $size-gutter * 15;
+}

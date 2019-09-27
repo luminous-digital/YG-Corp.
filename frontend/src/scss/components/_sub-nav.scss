@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Sub nav
+   ========================================================================== */
+
+.c-sub-nav {
+    display: flex;
+}
+
+.c-sub-nav-list {
+    display: flex;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.c-sub-nav-list__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    @include headline-5;
+}
+
+.c-sub-nav-list__back.c-underline-link {
+    @include body-1;
+}
+
+@include media(desktop) {
+    .c-sub-nav-list__back {
+        display: none;
+    }
+
+    .c-sub-nav-list {
+        display: none;
+        flex-direction: row;
+        justify-content: center;
+
+        padding: 12px 0;
+    }
+
+    .is-active .c-sub-nav-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .c-sub-nav-list__item {
+        display: flex;
+    }
+
+    .c-sub-nav-list__item--mobile {
+        display: none;
+    }
+
+    .c-sub-nav-list__item--mobile:not(:last-child) {
+        margin-right: 0;
+    }
+}

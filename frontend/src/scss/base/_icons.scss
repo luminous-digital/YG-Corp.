@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Icons
+   ========================================================================== */
+
+// Icons
+//
+// cross - 18px
+// arrow-right - 18px
+// arrow-right-bold - 18px
+// arrow-down - 18px
+// arrow-mid - 9px
+// long-arrow-up - 18px
+// search - 18px
+// triangle - 18px
+// download - 18px
+// facebook - 32px
+// twitter - 32px
+// instagram - 32px
+// rss - 32px
+// yougov - 60px
+// triangle-large - 14px
+// calendar - 20px
+// more - 11px
+//
+// markup:
+// <span class="o-icon-wrapper">
+//     <svg class="o-icon o-icon--{$modifiers}">
+//         <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//              xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-{$modifiers}">
+//        </use>
+//     </svg>
+// </span>
+//
+// Styleguide 2
+
+.o-icon-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.o-icon {
+    width: 1em;
+    height: 1em;
+
+    transition: inherit;
+
+    fill: currentColor;
+}
+
+/* Icons sizes
+========================================================================== */
+.o-icon--facebook {
+    width: .47em;
+
+    font-size: 17px;
+}
+
+.o-icon--twitter {
+    width: 1.16em;
+
+    font-size: 12px;
+}
+
+.o-icon--instagram {
+    font-size: 16px;
+}
+
+.o-icon--rss {
+    font-size: 12px;
+}
+
+.o-icon--linkedin {
+    font-size: 12px;
+}
+
+.o-icon--long-arrow-up {
+    width: .05em;
+
+    font-size: $size-arrow-height;
+}
+
+.o-icon--yougov {
+    width: 4.44em;
+
+    font-size: $size-logo-height;
+
+    @include media(desktop) {
+        font-size: $size-logo-height-desktop;
+    }
+}
+
+.o-icon--arrow-down {
+    width: 2em;
+
+    font-size: 5px;
+}
+
+.o-icon--triangle {
+    font-size: $size-triangle-height;
+}
+
+.o-icon--search {
+    font-size: 28px;
+
+    @include media(desktop) {
+        font-size: 18px;
+    }
+}
+
+.o-icon--right {
+    width: 1.1em;
+
+    font-size: $size-arrow-right;
+}
+
+.o-icon--cross {
+    font-size: 9px;
+}
+
+.o-icon--arrow-right {
+    width: 1.1em;
+
+    font-size: $size-arrow-right;
+}
+
+.o-icon--arrow-left {
+    width: 1.1em;
+
+    font-size: $size-arrow-right;
+
+    transform: rotate(180deg);
+}
+
+.o-icon--arrow-right-bold {
+    width: 1.1em;
+
+    font-size: 14px;
+}
+
+.o-icon--triangle-large {
+    width: .85em;
+
+    font-size: 14px;
+}
+
+.o-icon--cross-large {
+    width: .95em;
+
+    font-size: 18px;
+}
+
+.o-icon--calendar {
+    font-size: 20px;
+}
+
+.o-icon--arrow-simple {
+    width: 1.27em;
+
+    font-size: 11px;
+
+    transform: rotate(90deg);
+}
+
+.o-icon--error {
+    font-size: 9px;
+}
+
+.o-icon--tick {
+    width: 1.2em;
+
+    font-size: 10px;
+}
+
+.o-icon--popup {
+    font-size: $size-icon-popup;
+}
+
+.o-icon--map-pin {
+    width: .8em;
+}
+
+.o-icon--download {
+    width: .83em;
+
+    font-size: 18px;
+}
+
+.o-icon--assurance-mark {
+    width: 2.2em;
+
+    font-size: 57px;
+}
+
+.o-icon--arrow-mid {
+    font-size: 19px;
+
+    width: 1.68em;
+}
+
+.o-icon--more {
+    font-size: 11px;
+}
+
+.o-icon--decor-number {
+    font-size: 38px;
+}

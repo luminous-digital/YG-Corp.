@@ -1,0 +1,73 @@
+/* ==========================================================================
+   Modal
+   ========================================================================== */
+
+.c-modal {
+    position: fixed;
+    z-index: $z-index-modal;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    transition: $transition-default;
+    transform: translateY(-100%);
+
+    opacity: 0;
+}
+
+.c-modal--search {
+    display: none;
+}
+
+.c-modal.is-opened {
+    transform: translateY(0);
+
+    opacity: 1;
+}
+
+.c-modal__content {
+    background-color: color(white);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.c-modal__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: size(inner) + $size-gutter * 15;
+    height: $size-header-hight-desktop;
+    margin: 0 auto;
+    padding-right: $size-gutter * 7;
+    padding-left: $size-gutter * 7;
+}
+
+.c-modal__close .o-icon--cross {
+    font-size: 18px;
+
+    transition: $transition-default;
+    &:hover {
+        opacity: .8;
+    }
+}
+
+.c-modal__body {
+    width: 100%;
+    max-width: size(inner) + $size-gutter * 15;
+    margin: 0 auto;
+    padding: 170px 0;
+    padding-right: $size-gutter * 7;
+    padding-left: $size-gutter * 7;
+}
+
+@include media(desktop) {
+    .c-modal--search {
+        display: block;
+    }
+}

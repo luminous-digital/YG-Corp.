@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Read more btn
+   ========================================================================== */
+// Read more btn
+//
+// default - default state
+// :hover - hover
+//
+// markup:
+// <button class="c-read-more-btn c-underline-link c-underline-link--with-rotation {$modifiers} js-toggle-btn">
+//     <span class="c-read-more-btn__span">Read more</span>
+//     <span class="c-read-more-btn__span">Read less</span>
+//     <span class="c-underline-link__icon o-icon-wrapper">
+//         <svg class="o-icon o-icon--cross">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//         </svg>
+//     </span>
+// </button>
+//
+// Styleguide 3.2
+
+.c-read-more-btn {
+    @include button-reset ();
+
+    display: flex;
+    align-items: baseline;
+
+    padding: ($size-gutter / 2) 0;
+
+    cursor: pointer;
+
+    border: 0;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+.c-read-more-btn__span:nth-child(1) {
+    display: block;
+}
+
+.c-read-more-btn__span:nth-child(2) {
+    display: none;
+}
+
+.c-person-card.is-opened .c-read-more-btn__span:nth-child(1) {
+    display: none;
+}
+
+.c-person-card.is-opened .c-read-more-btn__span:nth-child(2) {
+    display: block;
+}
+
+.c-person-card.is-opened .c-underline-link__icon {
+    transform: rotate(45deg);
+}

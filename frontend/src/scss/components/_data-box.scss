@@ -1,0 +1,57 @@
+/* ==========================================================================
+   Data box
+   ========================================================================== */
+
+// Data box
+//
+// default - default state
+// .c-data-box__desc--break - word break state
+//
+// markup:
+// <dl class="c-data-box">
+//     <dt class="c-data-box__title t-subtitle-1">Company Number</dt>
+//     <dd class="c-data-box__desc t-headline-5 {$modifiers}">607 534 449</dd>
+// </dl>
+//
+// Styleguide 10.11
+
+.c-data-box {
+    display: flex;
+
+    margin: 0;
+
+    width: 100%;
+}
+
+.c-data-box__title,
+.c-data-box__desc {
+    width: 50%;
+}
+
+.c-data-box__title {
+    padding-right: $size-gutter * 3;
+}
+
+.c-data-box__desc {
+    margin: 0;
+
+    address {
+        font-style: normal;
+    }
+}
+
+@include media (tablet) {
+    .c-data-box__desc--break {
+        word-break: break-all;
+    }
+}
+
+@include media(desktop) {
+    .c-data-box__title {
+        padding-right: 0;
+    }
+    .c-data-box__title,
+    .c-data-box__desc {
+        width: 100%;
+    }
+}

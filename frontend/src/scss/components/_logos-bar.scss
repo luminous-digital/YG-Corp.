@@ -1,0 +1,87 @@
+/* ==========================================================================
+   Logos bar
+   ========================================================================== */
+
+// Logos bar
+//
+// markup:
+// <div class="c-logos-bar">
+//     <ul class="c-list c-list--horizontal">
+//         <li class="c-list__item">
+//             <a href="https://iapp.org" class="c-logos-bar__link">
+//                 <figure class="c-logos-bar__media">
+//                     <img src="static/img/logo-iapp.svg" alt="Iapp logo" class="c-logos-bar__img" />
+//                 </figure>
+//             </a>
+//         </li>
+//         <li class="c-list__item">
+//             <a href="https://www.esomar.org/" class="c-logos-bar__link">
+//                 <figure class="c-logos-bar__media">
+//                     <img src="static/img/logo-esomar.svg" alt="Esomar logo" class="c-logos-bar__img" />
+//                 </figure>
+//             </a>
+//         </li>
+//         <li class="c-list__item">
+//             <a href="https://www.insightsassociation.org/" class="c-logos-bar__link">
+//                 <figure class="c-logos-bar__media">
+//                     <img src="static/img/logo-insights-assoc.svg" alt="insights Association logo" class="c-logos-bar__img" />
+//                 </figure>
+//             </a>
+//         </li>
+//     </ul>
+// </div>
+//
+// Styleguide 10.30
+
+.c-logos-bar {
+    width: 100%;
+    padding: $size-gutter * 3 0;
+}
+
+.c-logos-bar .c-list--horizontal {
+    display: flex;
+    align-items: center;
+}
+
+.c-logos-bar .c-list__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: $size-logos-bar-media-list-item-width;
+    height: auto;
+    max-height: $size-logos-bar-media-list-item-height;
+}
+
+.c-logos-bar .c-list__item + .c-list__item {
+    margin-left: $size-gutter * 3;
+}
+
+.c-logos-bar__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-logos-bar__media {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-logos-bar__img {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+@include media(desktop) {
+    .c-logos-bar .c-list--horizontal {
+        justify-content: center;
+    }
+}

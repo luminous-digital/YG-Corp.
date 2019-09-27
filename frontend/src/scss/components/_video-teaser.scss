@@ -1,0 +1,60 @@
+/* ==========================================================================
+   Video Teaser
+   ========================================================================== */
+
+// Video Teaser
+//
+// markup:
+// <div class="c-video-teaser" style="background: #333; padding: 20px">
+//     <h4 class="c-video-teaser__heading t-headline-4 t-bold">
+//         Data privacy
+//     </h4>
+//     <h2 class="c-video-teaser__text t-headline-2">
+//         You trust us with <br>your data. It’s our responsibility to be transparent about the data that we collect
+//     </h2>
+// </div>
+//
+// Styleguide 2.17
+
+.c-video-teaser {
+    width: 100%;
+}
+
+@include media(0, tablet) {
+    .c-video-teaser__text {
+        color: color(accent) !important;
+    }
+
+    .c-video-teaser__heading {
+        color: color(main) !important;
+    }
+}
+
+@include media(tablet) {
+    .c-video-teaser__heading,
+    .c-video-teaser__text {
+        color: color(white);
+    }
+    .c-video-teaser {
+        margin: 0 0 ($size-alt * 2) 0;
+    }
+    .c-video-teaser__heading {
+        margin-bottom: $size-alt;
+    }
+}
+
+@include media(tablet, desktop) {
+    .c-video-teaser__text {
+        font-size: font-size(size38);
+    }
+}
+
+@include media(desktop) {
+    .c-video-teaser {
+        margin-bottom: ($size-gutter * 3);
+    }
+
+    .c-video-teaser__heading {
+        margin-bottom: $size-alt * 2;
+    }
+}

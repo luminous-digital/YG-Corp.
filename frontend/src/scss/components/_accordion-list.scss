@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Accordion list
+   ========================================================================== */
+
+// Accordion list
+//
+// markup:
+// <ul class="c-accordion-list">
+//      <li class="c-accordion-list__item">
+//          <div class="c-accordion js-accordion is-opened">
+//               <button class="c-accordion__toggler js-toggle-accordion">
+//                   <div class="c-accordion__heading">
+//                       <h4 class="c-accordion__title t-headline-4 t-bold">Region</h4>
+//                   </div>
+//                   <div class="c-accordion__icon">
+//                       <div class="o-icon-wrapper">
+//                           <svg class="o-icon o-icon--arrow-simple">
+//                               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                           </svg>
+//                       </div>
+//                   </div>
+//               </button>
+//               <div class="c-accordion__content-wrapper">
+//                   <div class="c-accordion__content">
+//                       <div class="c-info c-wysiwyg">
+//                           <h4>
+//                               <strong>Email</strong>
+//                           </h4>
+//                           <h5>
+//                               UK Panel member queries
+//                           </h5>
+//                           <h5>
+//                               Press enquiries
+//                           </h5>
+//                           <p>
+//                               press@yougov.com
+//                           </p>
+//                           <h5>
+//                               Sales and general info
+//                           </h5>
+//                           <p>
+//                               info@yougov.com
+//                           </p>
+//                        </div>
+//                   </div>
+//               </div>
+//          </div>
+//    </li>
+//    <li class="c-accordion-list__item">
+//        <div class="c-accordion js-accordion">
+//             <button class="c-accordion__toggler js-toggle-accordion">
+//                 <div class="c-accordion__heading">
+//                     <h4 class="c-accordion__title t-headline-4 t-bold">Region</h4>
+//                     <h4 class="c-accordion__subtitle t-headline-4 t-bold">Line 2</h4>
+//                 </div>
+//                 <div class="c-accordion__icon">
+//                     <div class="o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-simple">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </div>
+//                 </div>
+//             </button>
+//             <div class="c-accordion__content-wrapper">
+//                 <div class="c-accordion__content">
+//                     <div class="c-info c-wysiwyg">
+//                         <h4>
+//                             <strong>Email</strong>
+//                         </h4>
+//                         <h5>
+//                             UK Panel member queries
+//                         </h5>
+//                         <h5>
+//                             Press enquiries
+//                         </h5>
+//                         <p>
+//                             press@yougov.com
+//                         </p>
+//                         <h5>
+//                             Sales and general info
+//                         </h5>
+//                         <p>
+//                             info@yougov.com
+//                         </p>
+//                      </div>
+//                 </div>
+//             </div>
+//        </div>
+//    </li>
+// </ul>
+//
+// Styleguide 10.9
+
+.c-accordion-list,
+.c-accordion-list__item {
+    width: 100%;
+}
+
+.c-accordion-list__item:not(:first-of-type) {
+    margin-top: $size-gutter;
+}

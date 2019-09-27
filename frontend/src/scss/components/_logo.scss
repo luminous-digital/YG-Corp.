@@ -1,0 +1,32 @@
+/* ==========================================================================
+   Logos
+   ========================================================================== */
+
+.c-logo {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+    transition: $transition-default;
+
+    color: color(main);
+}
+
+@include media(0, desktop) {
+    .is-menu-opened .c-logo {
+        color: color(white);
+    }
+}
+
+@include media(desktop) {
+    .c-logo {
+        max-width: unset;
+        margin: 0;
+        padding: 0;
+
+
+        &:hover {
+            opacity: .8;
+        }
+    }
+}

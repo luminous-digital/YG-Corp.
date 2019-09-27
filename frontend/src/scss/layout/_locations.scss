@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Locations
+   ========================================================================== */
+
+.l-locations {
+    width: 100%;
+}
+
+.l-locations__row {
+    width: 100%;
+    padding: ($size-gutter * 4) 0;
+
+    border-bottom: 1px solid color(plum);
+}
+
+.l-locations__row--no-padding {
+    padding: 0 0 ($size-gutter * 2);
+}
+
+@include media(tablet) {
+    .l-locations__row--no-padding {
+        padding: 0;
+    }
+}

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.l-real-text {
+    padding-bottom: $size-alt * 2; // 40px - prev, now - 20px
+}
+
+@include media(desktop) {
+    .l-real-text {
+        padding-bottom: $size-alt * 4; // 80px - prev, now - 40px
+    }
+
+    .l-real-text figure:last-child {
+        margin-bottom: 0;
+    }
+}

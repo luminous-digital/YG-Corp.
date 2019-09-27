@@ -54,6 +54,28 @@ services:
 #    command: >
 #      bash -c "pgloader mysql://root:admin@db/wagtail pgsql://yougov:yougov@postgres/yougov"
 
+# For compile css and js, and add them to project
+# (Frontend source files are in `frontend/src` folder.
+# Files are moved to `yougov/static` after compiled)
+  frontend:
+    build: ./frontend
+    volumes:
+      - .:/app
+    working_dir: /app/frontend
+    command: >
+      sh -c "gulp --version
+      && node --version
+      && apt-get update -y
+      && apt remove cmdtest -y
+      && apt remove yarn -y
+      && npm install -g yarn git -y
+      && echo 'yarn install:'
+      && yarn install
+      && echo 'gulp css:'
+      && gulp css
+      && echo 'gulp commit:'
+      && echo '(Do not worry about exit 1)'
+      && gulp commit"
 
 volumes:
   wagtail_pg_data:

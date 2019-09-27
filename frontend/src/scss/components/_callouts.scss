@@ -1,0 +1,67 @@
+/* ==========================================================================
+   Callouts
+   ========================================================================== */
+
+// Callouts
+//
+// markup:
+// <div class="c-callouts">
+//     <h4 class="c-callouts__heading">
+//         Turnover
+//     </h4>
+//     <h2 class="c-callouts__price">
+//         £116.6m
+//     </h2>
+//     <div class="c-callouts__info">
+//         <time datetime="2017" class="c-callouts__date">
+//             2017:
+//         </time>
+//         <span class="c-callouts__previous-price">
+//             £107.0m
+//         </span>
+//     </div>
+// </div>
+//
+// Styleguide 10.21.1
+
+.c-callouts {
+    width: 100%;
+}
+
+.c-callouts__heading {
+    @include headline-4 ();
+
+    min-height: $size-callouts-heading-min-height;
+
+    font-weight: font-weight(bold);
+}
+
+.c-callouts__price {
+    @include headline-2 ();
+
+    font-size: font-size(size48);
+
+    color: color(teal);
+}
+
+.c-callouts__info {
+    display: block;
+
+    margin-top: $size-gutter;
+}
+
+.c-callouts__date,
+.c-callouts__previous-price {
+    @include headline-5 ();
+}
+
+@include media(tablet) {
+    .c-callouts {
+        max-width: $size-callouts-width;
+    }
+    .c-callouts__price {
+        margin-top: 0px;
+
+        font-size: font-size(size48);
+    }
+}

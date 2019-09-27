@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Download box
+   ========================================================================== */
+
+// Download box
+//
+// markup:
+// <a href="#" class="c-download-box" download="#">
+//     <figure class="c-download-box__media">
+//         <img src="./static/img/pic-download-1.jpg" alt="alt" />
+//     </figure>
+//     <div class="c-download-box__action">
+//         <span class="c-underline-link">
+//             Download our factsheet&nbsp;
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--arrow-right">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                         xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                 </svg>
+//             </span>
+//         </span>
+//     </div>
+// </a>
+//
+// Styleguide 10.24
+
+.c-download-box {
+    display: block;
+
+    width: 100%;
+    max-width: $size-download-box-max-width;
+}
+
+.c-download-box__media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin: 0;
+}
+
+.c-download-box__media img {
+    display: block;
+
+    width: auto;
+    max-width: 100%;
+    height: 101px;
+}
+
+.c-download-box__action {
+    display: flex;
+
+    width: 100%;
+    margin-top: $size-gutter * 2 - 1px;
+}
+
+.c-download-box__action .c-underline-link {
+    display: inline-block;
+
+    font-weight: font-weight(light);
+}
+
+.c-download-box__action .c-underline-link__icon {
+    display: inline-block;
+
+    margin-left: 0;
+}
+
+@include media(desktop) {
+    .c-download-box:hover .c-underline-link__text {
+        background-size: 100% 100%;
+    }
+}

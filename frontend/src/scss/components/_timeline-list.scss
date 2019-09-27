@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Timeline list
+   ========================================================================== */
+
+// Timeline list
+//
+// markup:
+// <ul class="c-timeline-list">
+//     <li class="c-timeline-list__item" data-panel='100' data-employees='200' data-offices='300'>
+//          <div class="c-timeline-box">
+//              <div class="c-timeline-box__heading t-headline-2">2000</div>
+//              <div class="c-timeline-box__content c-wysiwyg c-wysiwyg--small">
+//                  <p>
+//                      YouGov is established as the pioneer of internet-based market research.
+//                  </p>
+//                  <p>
+//                      The company is co-founded by Stephan Shakespeare and Nadhim Zahawi, who first met while working in British politics.
+//                  </p>
+//                  <p>
+//                      The official company registration name is YouGov Dot Com Limited.
+//                  </p>
+//                  <p>
+//                      Shakespeare is named Chief Innovations Officer while Zahawi is Chief Executive Officer.
+//                  </p>
+//              </div>
+//          </div>
+//     </li>
+// <li class="c-timeline-list__item" data-panel='100' data-employees='200' data-offices='300'>
+//     <div class="c-timeline-box">
+//         <div class="c-timeline-box__heading t-headline-2">2000</div>
+//         <div class="c-timeline-box__content c-wysiwyg c-wysiwyg--small">
+//             <p>
+//                 YouGov is established as the pioneer of internet-based market research.
+//             </p>
+//             <p>
+//                 The company is co-founded by Stephan Shakespeare and Nadhim Zahawi, who first met while working in British politics.
+//             </p>
+//             <p>
+//                 The official company registration name is YouGov Dot Com Limited.
+//             </p>
+//             <p>
+//                 Shakespeare is named Chief Innovations Officer while Zahawi is Chief Executive Officer.
+//             </p>
+//             <img src="./static/img/pic-timeline-map.jpg" alt="Map">
+//         </div>
+//     </div>
+// </li>
+// </ul>
+//
+// Styleguide 10.17
+
+.c-timeline-list {
+    padding-top: $size-gutter * 2;
+}
+
+.c-timeline-list__item {
+    position: relative;
+
+    padding-top: ($size-gutter * 15);
+}
+
+.c-timeline-list__item:not(:first-of-type) {
+    margin-top: $size-alt * 5;
+}
+
+.c-timeline-list__item:before {
+    position: absolute;
+    display: block;
+    content: '';
+
+    top: 0;
+    left: calc(50% - #{$size-alt});
+
+    background-image: url('/static/img/icon-three-lines.svg');
+    background-position: 50% 50%;
+    background-size: cover;
+
+    width: $size-timeline-icon;
+    height: $size-timeline-icon;
+}
+
+.c-timeline-list__item:after {
+    position: absolute;
+    display: block;
+    content: '';
+
+    background-color: color(darkgray);
+
+    left: 50%;
+    top: ($size-alt * 3.8);
+
+    height: $size-timeline-list-item-height;
+    width: $size-timeline-list-item-width;
+}
+
+@include media(tablet) {
+    .c-timeline-list {
+        padding-top: 0;
+    }
+
+    .c-timeline-list__item {
+        padding: 0 0 ($size-gutter * 10) ($size-gutter * 5.5);
+    }
+
+    .c-timeline-list__item:not(:first-of-type) {
+        margin-top: 0;
+    }
+
+    .c-timeline-list__item:before {
+        top: $size-gutter * 2;
+        left: -($size-alt);
+    }
+
+    .c-timeline-list__item:after {
+        left: 0;
+        top: $size-alt * 5;
+        height: calc(100% - #{($size-alt * 5)});
+    }
+}
+
+@include media(desktop) {
+    .c-timeline-list__item {
+        padding: 0 0 ($size-gutter * 16.5) ($size-gutter * 7);
+    }
+}

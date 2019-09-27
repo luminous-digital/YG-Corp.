@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Heading
+   ========================================================================== */
+
+.c-heading {
+    width: 100%;
+}
+
+.c-heading--alt {
+    display: flex;
+}
+
+.c-heading--alt .c-heading__date,
+.c-heading--alt .c-heading__news {
+    @include subtitle-1;
+}
+
+.c-heading__title {
+    font-weight: font-weight(regular);
+
+    color: color(main);
+}
+
+.c-heading--small .c-heading__title {
+    color: color(black);
+}
+
+.c-heading__subtitle {
+    margin-top: $size-gutter * 3;
+
+    color: color(black);
+}
+
+@include media(tablet) {
+    .c-heading--alt {
+        width: 65%;
+    }
+    .c-heading--alt .c-heading__date {
+        width: 40%;
+    }
+    .c-heading--alt .c-heading__news {
+        width: 60%;
+    }
+}
+
+@include media(desktop) {
+    .c-heading--alt {
+        width: calc(100% - #{$size-downloads-width});
+    }
+    .c-heading--alt .c-heading__date {
+        width: 25%;
+    }
+    .c-heading--alt .c-heading__news {
+        width: 75%;
+    }
+}

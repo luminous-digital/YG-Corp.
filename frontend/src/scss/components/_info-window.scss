@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Info window
+   ========================================================================== */
+
+.c-info-window {
+    display: flex;
+    flex-direction: column-reverse;
+
+    width: 100%;
+}
+
+.c-info-window__col {
+    position: relative;
+
+    width: 100%;
+}
+
+@include media(tablet) {
+    .c-info-window {
+        flex-direction: row;
+
+        width: $size-info-window-width;
+        min-height: $size-info-window-min-height;
+    }
+
+    .c-info-window__col {
+        display: flex;
+
+        width: 50%;
+        @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+            min-height: $size-info-window-min-height;
+        }
+    }
+}

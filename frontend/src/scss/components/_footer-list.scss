@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Footer list
+   ========================================================================== */
+
+// Footer list
+//
+// markup:
+// <div style="background: #241E31">
+//     <div class="c-footer">
+//         <div class="c-footer__col c-footer__col--narrow">
+//             <h4 class="c-footer__heading">Company</h4>
+//             <ul class="c-footer-list">
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Modern slavery act
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Careers
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Join
+//                     </a>
+//                 </li>
+//             </ul>
+//         </div>
+//         <div class="c-footer__col c-footer__col--wide">
+//             <h4 class="c-footer__heading">Global Sites</h4>
+//             <ul class="c-footer-list c-footer-list--alt">
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Australia
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Canada
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Denmark
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Finland
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         France
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Germany
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Hong Kong
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         India
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Indonesia
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Italy
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Malaysia
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Mexico
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Middle East
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Norway
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Pakistan
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Philippines
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Poland
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Singapore
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Spain
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Sweden
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Taiwan
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Thailand
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         United Kingdom
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         United States
+//                     </a>
+//                 </li>
+//                 <li class="c-footer-list__item">
+//                     <a href="#" class="c-underline-link">
+//                         Vietnam
+//                     </a>
+//                 </li>
+//             </ul>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 2.4
+
+.c-footer-list {
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+.c-footer-list--alt {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+.c-footer-list__item {
+    color: color(white);
+}
+
+.c-footer-list__item .c-underline-link {
+    @include body-2;
+}
+
+.c-footer-list__item span {
+    position: relative;
+}
+
+.c-footer-list__item span:hover:after {
+    position: absolute;
+    display: block;
+    content: '';
+
+    left: 0;
+    width: 0;
+    bottom: -2px;
+    height: 1px;
+
+    background-color: color(main);
+
+    animation-name: zeroToFullWidth;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@include media(tablet) {
+    .c-footer-list--alt {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@include media(desktop) {
+    .c-footer-list--alt {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
