@@ -1,0 +1,22 @@
+/* ==========================================================================
+iFrame
+========================================================================== */
+
+// iFrame
+//
+// markup:
+// <iframe src="http://www.bbc.co.uk/news/uk-politics-38265064/embed" class="c-iframe" frameborder="0" scrolling="no"></iframe>
+//
+// Styleguide 9
+
+.c-iframe {
+    display: block;
+
+    width: 100%;
+
+    border: none;
+}
+
+.c-iframe--pad {
+    padding: ($size-gutter * 3 - 2px) $size-gutter * 3;
+}

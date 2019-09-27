@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Quick link
+   ========================================================================== */
+
+// Quick link
+//
+// default - no color on the wrapper
+// #00B7B5 - blue
+// #9078D7 - purple
+// #605A70 - gray
+// #241D36 - dark blue/purple
+//
+// markup:
+// <div class="c-quick-link" style="color: {$modifiers};">
+//     <h3 class="c-quick-link__title">
+//         Modern slavery act
+//     </h3>
+//     <p class="c-quick-link__desc">
+//         Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat vel illum dolore eu feugiat nulla. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie.
+//     </p>
+//     <div class="c-quick-link__action">
+//         <a href="#" class="c-underline-link">
+//             Read more
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--arrow-right-bold">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right-bold"></use>
+//                 </svg>
+//             </span>
+//         </a>
+//     </div>
+// </div>
+//
+// Styleguide 10.5
+
+.c-quick-link {
+    width: 100%;
+    max-width: $size-quick-link-max-width;
+}
+
+.c-quick-link__title {
+    color: currentColor;
+
+    @include headline-3 ();
+}
+
+.c-quick-link__desc {
+    margin-top: $size-gutter;
+
+    color: color(black);
+
+    @include body-1 ();
+}
+
+.c-quick-link__action {
+    width: 100%;
+    margin-top: $size-gutter * 2;
+
+    color: color(black);
+}

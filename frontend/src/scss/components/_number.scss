@@ -1,0 +1,312 @@
+/* ==========================================================================
+   Number
+   ========================================================================== */
+
+// Number
+//
+// markup:
+// <div class="l-number l-number--alt">
+//     <div class="l-inner l-inner--small">
+//         <div class="c-number">
+//             <div class="c-number__heading">
+//                 There are three reasons that data may be shared with other YouGov Group companies:
+//             </div>
+//             <ul class="c-list">
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <div class="c-number-box__decor">
+//                             1
+//                         </div>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Our operations hubs in Romania and India provide survey scripting and data processing services to other YouGov Group companies, and our Operations teams require access to personal data to create the research insights that we provide to our clients.
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <div class="c-number-box__decor">
+//                             2
+//                         </div>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Our operations hubs in Romania and India provide survey scripting and data processing services to other YouGov Group companies, and our Operations teams require access to personal data to create the research insights that we provide to our clients.
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <div class="c-number-box__decor">
+//                             3
+//                         </div>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Our operations hubs in Romania and India provide survey scripting and data processing services to other YouGov Group companies, and our Operations teams require access to personal data to create the research insights that we provide to our clients.
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//             </ul>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 10.31
+
+
+// Number Alt
+//
+// markup:
+// <div class="l-number">
+//     <div class="l-inner l-inner--small">
+//         <div class="c-number c-number--two-col">
+//             <div class="c-number__heading">
+//                 This means...
+//             </div>
+//             <ul class="c-list">
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <figure class="c-number-box__decor">
+//                             <img src="./static/img/icon-box.svg" alt="alt" />
+//                         </figure>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Regular training and awareness all staff on security and data protection
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <figure class="c-number-box__decor">
+//                             <img src="./static/img/icon-tick-circle.svg" alt="alt" />
+//                         </figure>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Regular training and awareness all staff on security and data protection
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <figure class="c-number-box__decor">
+//                             <img src="./static/img/icon-square.svg" alt="alt" />
+//                         </figure>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Regular training and awareness all staff on security and data protection
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <figure class="c-number-box__decor">
+//                             <img src="./static/img/icon-lock.svg" alt="alt" />
+//                         </figure>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Regular training and awareness all staff on security and data protection
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-number-box">
+//                         <figure class="c-number-box__decor">
+//                             <img src="./static/img/icon-square-decor.svg" alt="alt" />
+//                         </figure>
+//                         <div class="c-number-box__text">
+//                             <div class="c-number-box__title">
+//                                 Data processing
+//                             </div>
+//                             <div class="c-number-box__subtitle">
+//                                 Regular training and awareness all staff on security and data protection
+//                             </div>
+//                             <div class="c-number-box__cta">
+//                                 <a href="#" class="c-underline-link">
+//                                     Find out more
+//                                     <span class="c-underline-link__icon o-icon-wrapper">
+//                                         <svg class="o-icon o-icon--arrow-right">
+//                                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                         </svg>
+//                                     </span>
+//                                 </a>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </li>
+//             </ul>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 10.32
+
+.c-number {
+    padding: ($size-gutter * 6.5) $size-gutter ($size-gutter * 6.5) 0;
+}
+
+.c-number__heading {
+    @include headline-4();
+
+    margin-bottom: $size-gutter * 4.5;
+
+    font-weight: font-weight(bold);
+}
+
+.c-number .c-list__item + .c-list__item {
+    margin-top: $size-gutter * 4.5
+}
+
+.c-number--two-col .c-number-box__decor {
+    display: flex;
+    margin: 0 0 $size-gutter;
+
+    font-size: unset;
+}
+
+.c-number--two-col .c-number-box__decor img {
+    height: 38px;
+    width: auto;
+}
+
+@include media(0, tablet) {
+    .c-number--two-col .c-number-box {
+        max-width: 270px;
+    }
+}
+
+@include media(tablet) {
+    .c-number--two-col .c-number-box {
+        display: block;
+    }
+
+    .c-number--two-col .c-number-box__decor {
+        margin-bottom: $size-gutter * 2;
+
+        text-align: left;
+        width: auto;
+    }
+
+    .c-number--two-col .c-number-box__text {
+        width: auto;
+    }
+
+    .c-number--two-col .c-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        width: 100%;
+    }
+
+    .c-number--two-col.c-number .c-list__item + .c-list__item {
+        margin-top: 0;
+    }
+
+    .c-number--two-col .c-list__item {
+        width: calc(50% - #{$size-alt * 4});
+
+        margin-bottom: $size-gutter * 6.5
+    }
+
+    .c-number--two-col .c-list__item:last-child,
+    .c-number--two-col .c-list__item:nth-last-child(2) {
+        margin-bottom: 0
+    }
+}

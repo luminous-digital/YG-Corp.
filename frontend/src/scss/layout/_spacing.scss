@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Spacing
+   ========================================================================== */
+
+// Spacing
+//
+// s - l-spacing--s
+// m - l-spacing--m
+// l - l-spacing--l
+//
+// markup:
+// <div class="l-spacing l-spacing--{$modifiers}">
+// </div>
+//
+// Styleguide 10.28
+
+.l-spacing {
+    width: 100%
+}
+
+.l-spacing--s {
+    padding: $size-alt;
+}
+
+.l-spacing--m {
+    padding: $size-alt * 2;
+}
+
+.l-spacing--l {
+    padding: $size-alt * 4;
+}
+
+@include media(tablet) {
+    .l-spacing--s {
+        padding: $size-alt * 2;
+    }
+
+    .l-spacing--m {
+        padding: $size-alt * 4;
+    }
+
+    .l-spacing--l {
+        padding: $size-alt * 8;
+    }
+}
+
+@include media(desktop) {
+    .l-spacing--s {
+        padding: $size-alt * 4;
+    }
+
+    .l-spacing--m {
+        padding: $size-alt * 8;
+    }
+
+    .l-spacing--l {
+        padding: $size-alt * 12;
+    }
+}

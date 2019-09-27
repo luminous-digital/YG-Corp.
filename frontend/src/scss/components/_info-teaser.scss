@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Info teaser
+   ========================================================================== */
+
+// Info teaser
+//
+// Styleguide 6
+
+// Info teaser default
+//
+// markup:
+// <div class="c-info-teaser">
+//     <div class="c-info-teaser__heading">
+//         <div class="c-wysiwyg">
+//             <h2>
+//                 Our mission is to supply a continuous stream of accurate data into what the world thinks, so that organisations can better serve the communities that sustain them.
+//             </h2>
+//         </div>
+//     </div>
+//     <div class="c-info-teaser__link">
+//         <a href="#" class="c-underline-link">
+//             About YouGov
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--arrow-right">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                 </svg>
+//             </span>
+//         </a>
+//     </div>
+// </div>
+//
+// Styleguide 6.1
+
+// Info teaser with decor
+//
+// markup:
+// <div class="c-info-teaser c-info-teaser--with-decor">
+//     <div class="c-info-teaser__heading">
+//         <div class="c-wysiwyg">
+//             <h2>
+//                 Our vision is for YouGov data to be a valued public resource used by hundreds of millions of people on a daily basis.
+//             </h2>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 6.2
+
+.c-info-teaser {
+    max-width: $size-info-teaser-max-width;
+    padding: ($size-alt * 3) 0 ($size-alt * 8);
+}
+
+.c-info-teaser--with-decor {
+    position: relative;
+
+    overflow: hidden;
+
+    padding-bottom: $size-gutter * 22;
+    &:before{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        height: $size-info-teaser-decor-height-sm;
+        width: $size-info-teaser-decor-width-sm;
+
+        content: '';
+
+        background-image: url('/static/img/pic-widget-decor-1.png');
+        background-repeat: repeat;
+        background-position: 50% 50%;
+        background-size: contain;
+
+        transform: translateY(23%);
+    }
+}
+
+.c-info-teaser__heading {
+    color: color(main);
+}
+
+.c-info-teaser__heading .c-wysiwyg h2 {
+    font-weight: font-weight(regular);
+}
+
+.c-info-teaser__link {
+    margin-top: $size-gutter * 3;
+}
+
+@include media(tablet) {
+    .c-info-teaser {
+        padding: ($size-alt * 5) 0 ($size-alt * 8);
+    }
+
+    .c-info-teaser__link {
+        margin-top: $size-gutter * 4;
+    }
+
+    .c-info-teaser--with-decor:before {
+        height: $size-info-teaser-decor-height-md;
+        width: $size-info-teaser-decor-width-md;
+    }
+
+    .c-info-teaser--with-decor {
+        padding-bottom: $size-gutter * 21;
+    }
+
+    .c-info-teaser--with-decor .c-info-teaser__heading {
+        max-width: $size-info-teaser-with-decor-max-width;
+    }
+}
+
+@include media(desktop) {
+    .c-info-teaser {
+        padding: ($size-alt * 6) 0 ($size-alt * 8);
+    }
+
+    .c-info-teaser--with-decor:before {
+        height: $size-info-teaser-decor-height-lg;
+        width: $size-info-teaser-decor-width-lg;
+
+        transform: translateY(0%);
+    }
+
+    .c-info-teaser--with-decor {
+        padding-bottom: $size-gutter * 14;
+        padding-right: $size-info-teaser-decor-width-lg + ($size-alt * 8);
+
+        max-width: 100%;
+    }
+
+    .c-info-teaser--with-decor .c-info-teaser__heading {
+        max-width: 100%;
+    }
+}

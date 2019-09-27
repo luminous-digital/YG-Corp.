@@ -1,0 +1,43 @@
+/* ==========================================================================
+   Search
+   ========================================================================== */
+
+.l-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin-top: $size-gutter * 2;
+}
+
+.l-search__action {
+    display: none;
+}
+
+.l-search__main {
+    display: flex;
+
+    width: 100%;
+}
+
+@include media(tablet) {
+    .l-search {
+        margin-top: $size-gutter * 10;
+    }
+}
+
+@include media(desktop) {
+    .l-search {
+        justify-content: flex-end;
+        margin-top: 0;
+    }
+
+    .l-search__action {
+        display: flex;
+    }
+
+    .l-search__main {
+        display: none;
+    }
+}

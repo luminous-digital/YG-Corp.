@@ -1,0 +1,261 @@
+/* ==========================================================================
+   List
+   ========================================================================== */
+
+// Lists
+//
+// Styleguide 10.19
+
+// Simple list
+//
+// markup:
+// <ul class="c-list">
+//     <li class="c-list__item">
+//         <div class="c-list__decor">
+//             <a href="#" class="c-redirect-cta" target="_blank">
+//                 <h5 class="c-redirect-cta__section t-headline-5">
+//                     Section
+//                 </h5>
+//                 <h5 class="c-redirect-cta__title t-headline-5">
+//                     Lorem ipum dolor et
+//                 </h5>
+//                 <div class="c-redirect-cta__icon" target="_blank">
+//                     <span class="o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </div>
+//             </a>
+//         </div>
+//     </li>
+//     <li class="c-list__item">
+//         <div class="c-list__decor">
+//             <a href="#" class="c-redirect-cta" target="_blank">
+//                 <h5 class="c-redirect-cta__section t-headline-5">
+//                     Section
+//                 </h5>
+//                 <h5 class="c-redirect-cta__title t-headline-5">
+//                     Lorem ipum dolor et
+//                 </h5>
+//                 <div class="c-redirect-cta__icon" target="_blank">
+//                     <span class="o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </div>
+//             </a>
+//         </div>
+//     </li>
+// </ul>
+//
+// Styleguide 10.19.1
+
+.c-list {
+    @include helper--list ();
+
+    width: 100%;
+}
+
+.c-list--column-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-list--column-wrap .c-list__item:not(:last-child) {
+    margin-bottom: $size-gutter * 2;
+}
+
+.c-list__item {
+    display: block;
+}
+
+.c-newsfeed .c-list .c-list__item:not(:last-child) {
+    margin-bottom: $size-gutter * 2;
+}
+
+.c-newsfeed--invert-colors .c-list .c-list__item:not(:last-child) {
+    margin-bottom: $size-gutter * 4;
+}
+
+.c-newsfeed--invert-colors-alt .c-list .c-list__item:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.c-list--big-spacing .c-list__item {
+    border-bottom: 0;
+
+    &:not(:last-child) {
+        margin-bottom: $size-gutter * 7;
+    }
+}
+
+.c-list--load-more .c-list__item:nth-child(n + 11) {
+    display: none;
+}
+
+.c-list--load-more .c-list__item.is-visible {
+    display: block;
+
+    animation: SlideDown .3s linear;
+
+    background-color: #fff;
+}
+
+.c-list--big-spacing .c-list__item:nth-child(n + 11) {
+    display: block;
+}
+
+.c-list__decor {
+    border-bottom: 1px solid color(darkgrey);
+}
+
+.c-list__item:first-child .c-list__decor {
+    border-top: 1px solid color(darkgrey);
+}
+
+.c-list--odd .c-list__item:nth-child(odd) {
+    background-color: color(gray2);
+}
+
+.c-list--odd .c-list__item:first-child {
+    border-top: 1px solid color(darkgrey);
+}
+
+@include media(tablet) {
+    .c-list--horizontal {
+        display: flex;
+        align-items: center;
+    }
+}
+
+@include media(desktop) {
+    $row: 0;
+    .c-list--column-wrap {
+        display: grid;
+
+        grid-auto-flow: column;
+        grid-gap: $size-gutter * 2;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, auto);
+    }
+    @for $j from 1 through 12 {
+        @for $i from 1 through 4 {
+            $row: $row + 1;
+            .c-list--column-wrap .c-list__item:nth-child(#{$row}) {
+                -ms-grid-column: $j;
+                -ms-grid-row: $i;
+            }
+        }
+    }
+
+    .c-list--column-wrap .c-list__item:not(:last-child) {
+        margin-bottom: 0;
+    }
+
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        .c-list--column-wrap .c-list__item {
+            margin-bottom: $size-gutter * 2;
+            margin-right: $size-gutter * 2;
+        }
+
+        .c-list--column-wrap .c-list__item:not(:last-child) {
+            margin-bottom: $size-gutter * 2;
+        }
+    }
+
+    .c-list .c-list__item--desktop-hidden {
+        display: none;
+    }
+}
+
+// List grid
+//
+// markup:
+// <ul class="c-list c-list--horizontal-wrap">
+//     <li class="c-list__item">
+//         Lorem ipsum
+//     </li>
+//     <li class="c-list__item">
+//         Lorem ipsum
+//     </li>
+//     <li class="c-list__item">
+//         Lorem ipsum
+//     </li>
+// </ul>
+//
+// Styleguide 10.19.2
+
+.c-list--horizontal-wrap {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: calc(100% + (#{$size-gutter} * 4));
+    margin: {
+        top: -($size-gutter * 3);
+        right: -($size-gutter * 2);
+        left: -($size-gutter * 2);
+    };
+}
+
+.c-list--horizontal-centered {
+    justify-content: center;
+}
+
+.c-list--half-width.c-list--horizontal-wrap {
+    margin-bottom: -($size-gutter * 3);
+}
+
+.c-list--3-col-width.c-list--horizontal-wrap {
+    margin-bottom: -($size-gutter * 3);
+}
+
+.c-list--horizontal-wrap .c-list__item {
+    width: calc(100% - (#{$size-gutter} * 4));
+    margin: ($size-gutter * 3) ($size-gutter * 2);
+}
+
+.c-list--horizontal-single .c-list__item {
+    margin: ($size-gutter * 3) 0;
+}
+
+@include media(tablet) {
+    .c-list--horizontal-wrap .c-list__item {
+        width: calc((100% / 2) - (#{$size-gutter} * 4));
+    }
+
+    .c-list--half-width.c-list--horizontal-wrap .c-list__item {
+        width: calc(100% - (#{$size-gutter} * 4));
+    }
+
+    .c-list--3-col-width.c-list--horizontal-wrap .c-list__item {
+        width: calc(50% - (#{$size-gutter} * 6));
+    }
+}
+
+@include media(desktop) {
+    .c-list--horizontal-wrap .c-list__item {
+        width: calc((100% / 3) - (#{$size-gutter} * 6));
+    }
+
+    .l-callouts .c-list--horizontal-wrap {
+        margin-top: -($size-gutter * 4);
+    }
+
+    .c-list--half-width.c-list--horizontal-wrap .c-list__item {
+        width: calc((100% / 2) - (#{$size-gutter} * 4));
+    }
+
+    .c-list--3-col-width.c-list--horizontal-wrap .c-list__item {
+        width: calc((100% / 3) - (#{$size-gutter} * 4));
+    }
+
+    .l-callouts .c-list--horizontal-wrap .c-list__item {
+        width: calc((100% / 2) - (#{$size-gutter} * 4));
+    }
+
+    .l-callouts .c-list--three-columns .c-list__item {
+        width: calc((100% / 3) - (#{$size-gutter} * 4));
+    }
+}

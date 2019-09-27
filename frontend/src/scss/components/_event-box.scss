@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Event box
+   ========================================================================== */
+
+// Event box
+//
+// markup:
+// <div class="c-event-box">
+//     <div class="c-event-box__head">
+//         <time datetime="31-March-2020" class="c-event-box__date">
+//             31 March 2020
+//         </time>
+//         <h5 class="c-event-box__title">
+//             Next interim announcement
+//         </h5>
+//     </div>
+//     <div class="c-event-box__btn-wrapper">
+//         <a href="#" target="_blank" class="c-icon-btn">
+//             <span class="c-icon-btn__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--calendar">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-calendar"></use>
+//                 </svg>
+//             </span>
+//             Add to calendar
+//         </a>
+//     </div>
+// </div>
+//
+// Styleguide 10.20
+
+.c-event-box {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    min-height: $size-event-cta-min-height-mobile;
+    padding: ($size-alt * 2) ($size-gutter * 3) ($size-gutter * 3);
+
+    color: color(white);
+    background-color: color(teal);
+}
+
+.c-event-box__head {
+    display: block;
+}
+
+.c-event-box__date,
+.c-event-box__title {
+    margin-bottom: $size-gutter;
+}
+
+.c-event-box__date {
+    @include headline-4 ();
+
+    font-weight: font-weight(bold);
+}
+
+.c-event-box__title {
+    @include body-1 ();
+}
+
+.c-event-box__dropdown {
+    margin-top: auto;
+}
+
+@include media(tablet) {
+    .c-event-box {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        min-height: $size-event-cta-min-height-tablet;
+        padding: $size-gutter * 3;
+    }
+
+    .c-event-box__date {
+        @include headline-5 ();
+
+        margin-bottom: $size-gutter;
+
+        font-weight: font-weight(regular);
+    }
+
+    .c-event-box__title {
+        @include headline-4 ();
+
+        font-weight: font-weight(bold);
+    }
+
+    .c-event-box__dropdown {
+        margin-top: 0;
+    }
+}
+
+@include media(desktop) {
+    .c-event-box {
+        min-height: auto;
+        padding: $size-gutter ($size-gutter * 3);
+    }
+
+    .c-event-box__head {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    .c-event-box__date {
+        width: 100%;
+        max-width: $size-event-cta-date-max-width-desktop;
+    }
+
+    .c-event-box__dropdown {
+        flex-shrink: 0;
+
+        width: 270px;
+    }
+}

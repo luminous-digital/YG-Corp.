@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Person card
+   ========================================================================== */
+
+// Person card
+//
+// default - default state
+// .is-opened - opened state
+//
+// markup:
+// <div class="c-person-card js-accordion {$modifiers}">
+//     <figure class="c-person-card__media">
+//         <img src="/static/img/pic_person_1.jpg" alt="Office worker"/>
+//     </figure>
+//     <h5 class="c-person-card__title">
+//         Name Surname
+//     </h5>
+//     <h6 class="c-person-card__subtitle">
+//         Position
+//     </h6>
+//     <div class="c-person-card__details">
+//         <p class="c-person-card__info-title">
+//             Appointed:
+//         </p>
+//         <p class="c-person-card__info">
+//             January 2007
+//         </p>
+//         <p class="c-person-card__info">
+//             Roger is Chair of Oxford Metrics and a Non-Executive Director of Uber UK. He was previously Chair of Future Publishing, Johnston Press and Shakespeare’s Globe Trust; a consultant with McKinsey & Co; CEO of More Group, and
+//             CEO of Clear Channel International. Roger was educated at the universities of Oxford and Bristol. He is a Visiting Fellow of Oxford University. He was awarded the CBE in 2014. He is the author of five books including The
+//             Ascent of Media.
+//         </p>
+//         <p class="c-person-card__info-title">
+//             Committees:
+//         </p>
+//         <p class="c-person-card__info">
+//             Member of Nomination Committee
+//         </p>
+//     </div>
+//     <div class="c-person-card__action">
+//         <button class="c-read-more-btn c-underline-link js-toggle-accordion">
+//             <span class="c-read-more-btn__span">Read more</span>
+//             <span class="c-read-more-btn__span">Read less</span>
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--cross">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//                 </svg>
+//             </span>
+//         </button>
+//     </div>
+// </div>
+//
+// Styleguide 8
+
+.c-person-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+}
+
+.c-person-card__media {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    margin-bottom: $size-gutter;
+}
+
+.c-person-card__media img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.c-person-card__title {
+    @include headline-4;
+
+    margin: 0;
+
+    font-weight: font-weight(bold);
+
+    color: color(main);
+}
+
+.c-person-card__subtitle {
+    @include headline-5;
+}
+
+.c-person-card__details {
+    overflow: hidden;
+
+    width: 100%;
+    max-height: 0;
+
+    transition: all .8s ease-in-out;
+
+    opacity: .2;
+
+    margin-top: $size-gutter * 3;
+}
+
+.c-person-card.is-opened .c-person-card__details {
+    max-height: $size-person-card-height;
+
+    opacity: 1;
+}
+
+.c-person-card__action {
+    width: 100%;
+}
+
+.c-person-card__action .c-underline-link {
+    @include button-text;
+}
+
+.c-person-card__info {
+    @include body-1;
+
+    margin-bottom: $size-gutter * 3;
+}
+
+.c-person-card__info:last-child {
+    margin-bottom: $size-gutter;
+}
+
+.c-person-card__info-title {
+    @include body-1;
+
+    font-weight: font-weight(bold);
+}
+
+@include media(tablet) {
+    .c-person-card__media {
+        margin-bottom: $size-gutter * 2.5;
+    }
+}

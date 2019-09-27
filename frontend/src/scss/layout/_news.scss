@@ -1,0 +1,32 @@
+/* ==========================================================================
+   News
+   ========================================================================== */
+
+.l-news {
+    padding-bottom: $size-alt * 5;
+}
+
+.l-news__action {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: $size-gutter * 4;
+}
+
+@include media(tablet) {
+    .l-news {
+        padding-bottom: $size-alt * 6;
+    }
+}
+
+@include media(desktop) {
+    .l-news {
+        padding-bottom: $size-alt * 7;
+    }
+
+    .l-news__action {
+        margin-top: $size-gutter * 8;
+    }
+}

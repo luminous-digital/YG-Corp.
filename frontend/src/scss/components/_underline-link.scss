@@ -1,0 +1,207 @@
+/* ==========================================================================
+Underline link
+========================================================================== */
+
+// Links
+//
+// Styleguide 3
+
+// Underline link
+//
+// Styleguide 3.1
+
+// Simple
+//
+// default - default state
+// :hover - hover
+//
+// markup:
+// <a href="#" class="c-underline-link {$modifiers}" target="_blank">
+//     Contact us
+// </a>
+//
+// Styleguide 3.1.1
+
+// With arrow icon
+//
+// default - default state
+// :hover - hover
+//
+// markup:
+// <a href="#" class="c-underline-link {$modifiers}" target="_blank">
+//     Contact us
+//     <span class="c-underline-link__icon o-icon-wrapper">
+//         <svg class="o-icon o-icon--arrow-right">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//         </svg>
+//     </span>
+// </a>
+//
+// Styleguide 3.1.2
+
+// With cross icon
+//
+// c-underline-link--with-rotation - class with rotation animation for icon
+// c-underline-link--with-rotation:hover - hover
+//
+// markup:
+// <a href="#" class="c-underline-link {$modifiers}" target="_blank">
+//     Read more
+//     <span class="c-underline-link__icon o-icon-wrapper">
+//         <svg class="o-icon o-icon--cross">
+//             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//         </svg>
+//     </span>
+// </a>
+//
+// Styleguide 3.1.3
+
+.c-underline-link {
+    @include button-text;
+
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: ($size-gutter / 2) 0;
+}
+
+.c-underline-link--inline {
+    @include button-text-alt;
+
+    display: inline-block;
+
+    padding: 0;
+
+    font-weight: font-weight(light);
+    &:before {
+        display: none;
+    }
+}
+
+.c-underline-link--left {
+    display: flex;
+    align-items: flex-start;
+}
+
+.c-underline-link__text-wrapper {
+    display: inline-block;
+}
+
+.c-underline-link__text {
+    display: inline;
+
+    padding: ($size-gutter / 2) 0;
+
+    transition: background-size .3s ease-in-out;
+
+    background-image: linear-gradient(transparent calc(100% - 2px), color(main) 2px);
+
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        background-image: linear-gradient(transparent 94%, color(main) 6%);
+    }
+
+    background-repeat: no-repeat;
+    background-size: 0 100%;
+}
+
+.c-underline-link:before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: $size-underline-default-height;
+
+    content: '';
+    transition: $transition-underline;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+
+    background-color: color(main);
+}
+
+.c-sub-nav .is-active .c-underline-link:before {
+    background-color: color(main);
+}
+
+.c-underline-link--desktop {
+    display: none;
+}
+
+.c-underline-link__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 2px;
+    margin-left: $size-gutter;
+
+    transition: $transition-default;
+}
+
+.c-underline-link--inline .c-underline-link__icon {
+    display: inline;
+
+    margin-left: 0;
+}
+
+.c-underline-link__icon--no-margin {
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.c-underline-link--revert .c-underline-link__icon {
+    margin-right: $size-gutter;
+    margin-left: 0;
+}
+
+.c-underline-link__icon .o-icon--cross {
+    transform: rotate(45deg);
+
+    fill: color(main);
+}
+
+.c-underline-link--with-rotation:hover .c-underline-link__icon {
+    transform: rotate(45deg);
+}
+
+@include media(tablet) {
+    .is-active .c-underline-link:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+
+        background-color: color(main);
+    }
+
+    .is-active > .c-underline-link:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+
+        background-color: color(plum);
+    }
+
+    .is-active .c-underline-link--inline .c-underline-link__text {
+        background-size: 100% 100%;
+    }
+}
+
+@include media(desktop) {
+    .c-underline-link:hover:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .c-underline-link--desktop {
+        display: inline-flex;
+    }
+
+    .c-nav-list__item .c-underline-link--desktop + .c-underline-link {
+        display: none;
+    }
+
+    .c-underline-link--inline:hover .c-underline-link__text {
+        background-size: 100% 100%;
+    }
+}

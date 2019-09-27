@@ -1,0 +1,39 @@
+/* ==========================================================================
+   Event heading
+   ========================================================================== */
+
+// Event heading
+//
+// markup:
+// <div class="c-event-heading">
+//     <p class="c-event-heading__text">
+//         Date<span class="c-event-heading__separator">/</span>
+//     </p>
+//     <p class="c-event-heading__text">
+//         Event
+//     </p>
+// </div>
+//
+// Styleguide 10.21
+
+.c-event-heading {
+    display: flex;
+}
+
+.c-event-heading__text {
+    margin-bottom: $size-alt * 3;
+
+    font-weight: font-weight(bold);
+}
+
+@include media(desktop) {
+    .c-event-heading__text:first-child {
+        display: inline-block;
+
+        width: $size-event-heading-width-desktop;
+    }
+
+    .c-event-heading__separator {
+        display: none;
+    }
+}

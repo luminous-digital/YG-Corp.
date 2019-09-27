@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Quick links
+   ========================================================================== */
+
+.l-quick-links {
+    width: 100%;
+
+    margin-top: $size-alt * 9;
+}
+
+.l-quick-links__heading {
+    margin-bottom: $size-gutter * 4;
+
+    color: color(black);
+}
+
+.l-quick-links__content {
+    width: 100%;
+}
+
+@include media(desktop) {
+    .l-quick-links {
+        width: 100%;
+    }
+
+    .l-quick-links__heading {
+        margin-bottom: $size-gutter * 7;
+    }
+}

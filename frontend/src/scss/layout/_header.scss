@@ -1,0 +1,135 @@
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.l-header {
+    position: fixed;
+    z-index: $z-index-header;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    transition: 250ms ease-in-out;
+    overflow: auto;
+}
+
+.l-header__wrapper {
+    overflow: hidden;
+    min-height: $size-header-height-mobile;
+}
+
+.is-not-sticky-header .l-header {
+    transform: translateY(-100%);
+}
+
+.is-not-sticky-header.is-menu-opened .l-header,
+.is-sticky-header .l-header {
+    transform: translateY(0);
+}
+
+.l-header__topbar {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    order: 1;
+
+    padding: ($size-gutter * 2) 0;
+}
+
+.l-header__main {
+    display: flex;
+    flex-grow: 1;
+    order: 0;
+
+    width: 100%;
+}
+
+.l-header__social-media {
+    flex-shrink: 0;
+    order: 2;
+}
+
+@include media(0, desktop) {
+    .l-header {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        max-height: 70px;
+
+        transition: 250ms ease-in-out;
+
+        background-color: color(white);
+    }
+
+
+    .l-header__wrapper {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        height: 100%;
+    }
+
+    .is-menu-opened .l-header {
+        height: 100vh;
+        max-height: 100vh;
+        padding-bottom: $size-gutter * 3;
+
+        overflow: auto;
+
+        background-color: color(main);
+    }
+
+    .l-header__topbar {
+        transition: 250ms ease-in-out;
+        transform: translateX(0);
+    }
+
+    .is-sub-nav-opened .l-header__topbar {
+        transform: translateX(-100%);
+    }
+}
+
+@include media(tablet, desktop) {
+    .l-header__topbar {
+        padding: ($size-gutter * 4) 0;
+    }
+    .l-header__wrapper {
+        min-height: $size-header-height-tablet;
+    }
+}
+
+@include media(desktop) {
+    .l-header {
+        height: auto;
+        max-height: unset;
+        overflow: visible;
+    }
+
+    .l-header__wrapper {
+        min-height: auto;
+        overflow: visible;
+    }
+
+    .is-menu-opened .l-header {
+        transform: translateY(-100%);
+    }
+
+    .l-header__topbar {
+        display: block;
+
+        width: 100%;
+        padding: $size-gutter 0;
+
+        background-color: color(gray2);
+    }
+
+    .l-header__main {
+        background-color: color(white);
+    }
+
+    .l-header__social-media {
+        display: none;
+    }
+}

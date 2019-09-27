@@ -1,0 +1,110 @@
+/* ==========================================================================
+   Excerpt
+   ========================================================================== */
+
+//  Excerpt
+//
+// default - default state
+// .c-excerpt--alt - alt version
+// .c-excerpt--with-border - background version
+//
+// markup:
+// <a href="#" class="c-excerpt {$modifiers}">
+//     <p class="c-excerp__subtitle">
+//         Data: the connecting currency
+//     </p>
+//     <p class="c-excerp__text">
+//         YouGov continues to develop its data, platform and tools to address significant opportunities to embed in clients’ workflows, particularly within…
+//     </p>
+//     <div class="c-excerp__btn-wrapper">
+//         <span class="c-underline-link" target="_blank">
+//             Read more
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--arrow-right">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                 </svg>
+//             </span>
+//         </span>
+//     </div>
+// </a>
+//
+// Styleguide 10.26.1
+
+.c-excerpt {
+    display: block;
+
+    color: color(white);
+}
+
+.c-excerpt--alt {
+    color: color(darkviolet);
+}
+
+.c-excerp__subtitle {
+    @include subtitle-1();
+
+    font-weight: font-weight(bold);
+}
+
+.c-excerp__text {
+    @include body-1();
+}
+
+.c-excerpt--with-border {
+    padding: ($size-gutter * 3) ($size-alt * 4.2) ($size-gutter * 3) ($size-gutter * 2);
+
+    border-bottom: 1px solid color(darkgray);
+
+    color: color(accent);
+}
+
+.c-excerpt--with-border .c-excerp__subtitle {
+    color: color(teal);
+    font-size: font-size(size20);
+    font-weight: font-weight(bold);
+}
+
+.c-excerpt--with-border .c-excerp__text {
+    margin-bottom: $size-gutter * 2;
+
+    font-size: font-size(size20);
+}
+
+@include media(desktop) {
+    .c-excerpt:hover .c-underline-link:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+//  Excerpt twitter
+//
+// markup:
+// <a href="#" class="c-excerpt c-excerpt--twitter" style="background-color: #241E31;">
+//     <p class="c-excerpt__text">
+//         <span class="c-excerpt__name">@Name</span>
+//         Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio.
+//     </p>
+//     <div class="c-excerpt__signature">
+//         <time class="c-excerpt__time" datetime="25-06-2019 16:32">25 Jun 16:32</time>
+//         <p class="c-excerpt__name">@YouGov</p>
+//     </div>
+// </a>
+//
+// Styleguide 10.26.2
+
+.c-excerpt--twitter .c-excerpt__name,
+.c-excerpt--twitter .c-excerpt__time {
+    @include subtitle-1();
+
+    font-weight: font-weight(bold);
+}
+
+.c-excerpt--twitter .c-excerpt__signature {
+    display: flex;
+    align-items: center;
+}
+
+.c-excerpt--twitter .c-excerpt__time {
+    margin-right: $size-gutter;
+}

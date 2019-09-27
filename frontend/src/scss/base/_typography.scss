@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/* Global texts
+========================================================================== */
+html {
+    @include font-smoothing(on);
+}
+
+body {
+    font-family: $font-default;
+
+    color: color(black);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    &:not([class]) + &:not([class]) {
+        margin-top: ($size-alt * 6);
+    }
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+
+    color: currentColor;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:not([class]) {
+        color: color(main);
+
+        text-decoration: underline;
+
+        &:hover {
+            color: color(black);
+        }
+    }
+}
+
+ul,
+ol {
+    padding-left: $size-gutter;
+
+    @include helper--list;
+    &:not([class]) {
+        padding-left: $size-gutter;
+        li + li {
+            margin-top: $size-gutter/2;
+        }
+    }
+}
+
+ul {
+    &:not([class]) {
+        list-style-type: disc;
+    }
+}
+
+ol {
+    &:not([class]) {
+        list-style-type: decimal;
+    }
+}
+
+/* Text styles
+========================================================================== */
+
+[class*='t-headline-'],
+[class*='t-subtitle-'],
+[class*='t-body-'] {
+    font-family: $font-default;
+}
+
+// Typography
+//
+// Styleguide 0
+
+// Headline
+//
+// t-headline-1 - m: 52px / 56px medium, t: 76px / 80px light, d: 96px / 112px light
+// t-headline-2 - m: 26px / 30px medium, t: 38px / 48px medium, d: 48px / 56px medium
+// t-headline-3 - m: 22px / 25px medium, t: 34px / 40px medium, d: 34px / 40px medium
+// t-headline-4 - m: 20px / 24px medium, t: 20px / 24px medium, d: 20px / 24px medium
+// t-headline-5 - m: 20px / 24px regular, t: 20px / 24px regular, d: 20px / 24px regular
+//
+// markup:
+// <h2 class="{$modifiers}">Headline: {$modifiers}</h2>
+//
+// Styleguide 0.1
+
+.t-headline-1 {
+    @include headline-1;
+}
+
+.t-headline-2 {
+    @include headline-2;
+}
+
+.t-headline-3 {
+    @include headline-3;
+}
+
+.t-headline-4 {
+    @include headline-4;
+}
+
+.t-headline-5 {
+    @include headline-5;
+}
+
+// Subtitle
+//
+// t-subtitle-1 - m: 16px / 24px bold, t: 16px / 24px bold, d: 16px / 24px bold
+// t-subtitle-2 - m: 14px / 24px bold, t: 14px / 24px bold, d: 14px / 24px bold
+//
+// markup:
+// <h6 class="{$modifiers}">Subtitle: {$modifiers}</h6>
+//
+// Styleguide 0.2
+
+.t-subtitle-1 {
+    @include subtitle-1;
+}
+
+.t-subtitle-2 {
+    @include subtitle-2;
+}
+
+// Body
+//
+// t-body-1 - m: 16px / 24px regular, t: 16px / 24px regular, d: 16px / 24px regular
+// t-body-2 - m: 14px / 24px regular, t: 14px / 24px regular, d: 14px / 24px regular
+//
+// markup:
+// <p class="{$modifiers}">Body: {$modifiers}</p>
+//
+// Styleguide 0.3
+
+
+.t-body-1 {
+    @include body-1;
+}
+
+.t-body-2 {
+    @include body-2;
+}
+
+// Button
+//
+// t-button - m: 14px / 24px semibold, t: 14px / 24px semibold, d: 14px / 24px semibold
+//
+// markup:
+// <span class="{$modifiers}">Button: {$modifiers}</span>
+//
+// Styleguide 0.4
+
+.t-button {
+    @include button-text;
+}
+
+// Caption
+//
+// t-caption - m: 12px / 16px regular, t: 12px / 16px regular, d: 12px / 16px regular
+//
+// markup:
+// <figcaption class="{$modifiers}">Caption: {$modifiers}</figcaption>
+//
+// Styleguide 0.5
+
+.t-caption {
+    @include caption-text;
+}
+
+/* Text utils
+========================================================================== */
+// Font weights
+//
+// t-light - 300
+// t-regular - 400
+// t-medium - 500
+// t-semibold - 600
+// t-bold - 700
+//
+// markup:
+// <p class="t-body-1 {$modifiers}">Text</p>
+//
+// Styleguide 0.6
+
+.t-light {
+    font-weight: font-weight(light);
+}
+
+.t-regular {
+    font-weight: font-weight(regular);
+}
+
+.t-medium {
+    font-weight: font-weight(medium);
+}
+
+.t-semibold {
+    font-weight: font-weight(semibold);
+}
+
+.t-bold {
+    font-weight: font-weight(bold);
+}
+
+
+// Text styles
+//
+// t-center - center align text
+// t-right - right align text
+// t-left - left align text
+//
+// markup:
+// <p class="t-body-1 {$modifiers}">Text</p>
+//
+// Styleguide 0.7
+
+.t-center {
+    text-align: center;
+}
+
+.t-right {
+    text-align: right;
+}
+
+.t-left {
+    text-align: left;
+}
+
+.t-regular {
+    font-weight: font-weight(regular);
+}

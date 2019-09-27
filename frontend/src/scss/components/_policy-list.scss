@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Footer list
+   ========================================================================== */
+
+.c-policy-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.c-policy-list__item {
+    position: relative;
+
+    &:not(:last-child) {
+        padding-right: $size-alt;
+        margin-right: $size-alt;
+    }
+}
+
+.c-policy-list__item .c-underline-link {
+    @include body-2;
+}
+
+.c-policy-list__item:not(:last-child):after {
+    position: absolute;
+    top: 9px;
+    right: 0;
+
+    display: block;
+
+    width: 1px;
+    height: 50%;
+
+    content: '';
+
+    background-color: color(white);
+}
+
+.c-policy-list + .c-social-media--alt {
+    margin-top: $size-gutter * 4;
+}

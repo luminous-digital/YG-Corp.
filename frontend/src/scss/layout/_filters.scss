@@ -1,0 +1,18 @@
+/* ==========================================================================
+   Filters
+   ========================================================================== */
+
+.l-filters {
+    width: 100%;
+    padding: ($size-gutter * 2) 0 ($size-gutter * 4);
+
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: color(plum);
+}
+
+@include media(tablet) {
+    .l-filters {
+        padding: ($size-gutter * 2) 0;
+    }
+}

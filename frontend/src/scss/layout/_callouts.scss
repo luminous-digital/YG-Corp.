@@ -1,0 +1,279 @@
+/* ==========================================================================
+   Callouts
+   ========================================================================== */
+
+// Callouts layout
+//
+// default - without l-inner
+// l-inner - .l-inner
+//
+// markup:
+// <div class="{$modifiers}">
+//     <div class="l-callouts">
+//         <div class="l-callouts__content">
+//             <ul class="c-list c-list--horizontal-wrap">
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Turnover
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £116.6m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £107.0m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Operating cash generation
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £23.6m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £18.9m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted earnings per share
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £16.6p
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £10.9m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted operating profit
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £19.7m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £14.5m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted operating profit
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £19.7m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £14.5m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted operating profit
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £19.7m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £14.5m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//             </ul>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 10.25
+
+.l-callouts {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+    padding-bottom: $size-alt * 10;
+}
+
+.l-callouts__content {
+    max-width: $size-callouts-layout-width;
+    width: 100%;
+}
+
+// Callouts layout full width
+//
+// default - without l-inner
+// l-inner - .l-inner
+//
+// markup:
+// <div class="{$modifiers}">
+//     <div class="l-callouts">
+//         <div class="l-callouts__content l-callouts__content--full-width">
+//             <ul class="c-list c-list--horizontal-wrap c-list--three-columns">
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Turnover
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £116.6m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £107.0m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Operating cash generation
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £23.6m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £18.9m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted earnings per share
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £16.6p
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £10.9m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted operating profit
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £19.7m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £14.5m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted operating profit
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £19.7m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £14.5m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//                 <li class="c-list__item">
+//                     <div class="c-callouts">
+//                         <h4 class="c-callouts__heading">
+//                             Adjusted operating profit
+//                         </h4>
+//                         <h2 class="c-callouts__price">
+//                             £19.7m
+//                         </h2>
+//                         <div class="c-callouts__info">
+//                             <time datetime="2017" class="c-callouts__date">
+//                                 2017:
+//                             </time>
+//                             <span class="c-callouts__previous-price">
+//                                 £14.5m
+//                             </span>
+//                         </div>
+//                     </div>
+//                 </li>
+//             </ul>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 10.25.1
+
+.l-callouts__content--full-width {
+    max-width: 100%;
+}
+
+.l-callouts__content--full-width .c-list--horizontal-wrap {
+    @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        width: calc(100% + (#{$size-gutter} * 5));
+    }
+    @supports (-ms-ime-align:auto) {
+        width: calc(100% + (#{$size-gutter} * 5));
+    }
+}

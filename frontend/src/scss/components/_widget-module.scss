@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Widget module
+   ========================================================================== */
+
+// Widget module
+//
+// Styleguide 10.6
+
+// Widget module with image
+//
+// default - no color on the wrapper
+// #00B7B5 - blue
+// #9078D7 - purple
+// #605A70 - gray
+// #DC4C81 - pink
+// #241D36 - dark blue/purple
+//
+// markup:
+// <a href="#" class="c-widget-module" style="background-color: {$modifiers};">
+//     <div class="c-widget-module__main">
+//         <h4 class="c-widget-module__title">
+//             Latest report
+//         </h4>
+//         <p class="c-widget-module__desc">
+//             Download our latest Annual Report & Accounts 2018
+//         </p>
+//         <div class="c-widget-module__action">
+//             <span class="c-underline-link">
+//                 Downloads
+//                 <span class="c-underline-link__icon o-icon-wrapper">
+//                     <svg class="o-icon o-icon--arrow-right">
+//                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                     </svg>
+//                 </span>
+//             </span>
+//         </div>
+//     </div>
+//     <div class="c-widget-module__media" style="background-image: url(./static/img/pic-widget-1.jpg);"></div>
+// </a>
+//
+// Styleguide 10.6.1
+
+// Widget module without image
+//
+// default - no color on the wrapper
+// #00B7B5 - blue
+// #9078D7 - purple
+// #605A70 - gray
+// #DC4C81 - pink
+// #241D36 - dark blue/purple
+//
+// markup:
+// <a href="#" class="c-widget-module" style="background-color: {$modifiers};">
+//     <div class="c-widget-module__main">
+//         <h4 class="c-widget-module__title">
+//             Latest report
+//         </h4>
+//         <p class="c-widget-module__desc">
+//             Download our latest Annual Report & Accounts 2018
+//         </p>
+//         <div class="c-widget-module__action">
+//             <span class="c-underline-link">
+//                 Downloads
+//                 <span class="c-underline-link__icon o-icon-wrapper">
+//                     <svg class="o-icon o-icon--arrow-right">
+//                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                     </svg>
+//                 </span>
+//             </span>
+//         </div>
+//     </div>
+// </a>
+//
+// Styleguide 10.6.2
+
+.c-widget-module {
+    display: block;
+
+    width: 100%;
+
+    text-decoration: none;
+
+    color: color(white);
+    background-color: color(teal);
+    &:hover {
+        .c-underline-link:before {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    }
+}
+
+.c-widget-module__main {
+    display: grid;
+    min-width: 50%;
+
+    min-height: $size-widget-module-min-height;
+    padding: ($size-gutter * 3 - 2px) $size-gutter * 3;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto) 1fr;
+}
+
+
+.c-widget-module__title {
+    @include headline-4 ();
+
+    font-weight: font-weight(bold);
+
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.c-widget-module__desc {
+    @include body-1 ();
+
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.c-widget-module__action {
+    align-self: end;
+
+    margin-top: $size-gutter * 3;
+
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.c-widget-module__media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    width: 100%;
+    margin: 0;
+    padding-top: 100%;
+
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+@include media(tablet) {
+    .c-widget-module {
+        display: flex;
+    }
+
+    .c-widget-module__media {
+        width: 50%;
+        padding-top: 42%;
+    }
+
+    .c-widget-module__main {
+        min-height: unset;
+    }
+
+    .c-widget__col .c-widget-module__main {
+        min-height: $size-widget-module-min-height;
+    }
+}

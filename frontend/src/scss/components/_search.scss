@@ -1,0 +1,25 @@
+/* ==========================================================================
+   Search
+   ========================================================================== */
+
+.c-search-toggler .c-underline-link {
+    @include body-2;
+}
+
+@include media(desktop) {
+    .c-search-toggler {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: $font-default;
+        font-size: 14px;
+        font-weight: font-weight(medium);
+        line-height: 24px;
+    }
+
+    .c-search-toggler:hover .c-underline-link:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}

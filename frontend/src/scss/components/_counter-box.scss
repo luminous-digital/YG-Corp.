@@ -1,0 +1,71 @@
+/* ==========================================================================
+   Count
+   ========================================================================== */
+
+// Count
+//
+// markup:
+// <div class="c-counter-box">
+//     <p class="c-counter-box__number">
+//         7,000,000
+//     </p>
+//     <p class="c-counter-box__desc">
+//         panel members
+//     </p>
+//     <p class="c-counter-box__number">
+//         7,000
+//     </p>
+//     <p class="c-counter-box__desc">
+//         employees
+//     </p>
+//     <p class="c-counter-box__number">
+//         900
+//     </p>
+//     <p class="c-counter-box__desc">
+//         offices
+//     </p>
+// </div>
+//
+// Styleguide 10.18
+
+.c-counter-box {
+    text-align: center;
+}
+
+.c-counter-box__number {
+    @include headline-4;
+
+    font-weight: font-weight(bold);
+
+    color: color(teal)
+}
+
+.c-counter-box__desc {
+    @include headline-5;
+
+    margin-top: $size-gutter;
+}
+
+.c-counter-box__desc + .c-counter-box__number {
+    margin-top: $size-gutter * 2;
+}
+
+@include media(tablet) {
+    .c-counter-box__number {
+        @include headline-2;
+    }
+
+    .c-counter-box__desc + .c-counter-box__number {
+        margin-top: $size-gutter * 4;
+    }
+}
+
+@include media(desktop) {
+    .c-counter-box__number {
+        @include headline-1;
+    }
+
+    .c-counter-box__desc + .c-counter-box__number {
+        margin-top: $size-gutter * 4;
+    }
+}

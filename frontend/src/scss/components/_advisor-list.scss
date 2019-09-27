@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Advisor list
+   ========================================================================== */
+// Advisor list
+//
+// markup:
+// <ul class="c-advisor-list">
+//      <li class="c-advisor-list__item">
+//         <div class="c-advisor c-advisor--alt">
+//             <h4 class="c-advisor__heading">
+//                 Banker
+//             </h4>
+//             <p class="c-advisor__company ">
+//                 Company Name
+//             </p>
+//             <address class="c-advisor__address">
+//                 <p class="t-subtitle-1 t-light">Address line 2</p>
+//                 <p class="t-subtitle-1 t-light">Address line 3</p>
+//                 <p class="t-subtitle-1 t-light">Address line 4</p>
+//             </address>
+//             <div class="c-advisor__action">
+//                 <a href="#" class="c-underline-link">
+//                     Find out more
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </a>
+//             </div>
+//         </div>
+//      </li>
+//      <li class="c-advisor-list__item">
+//         <div class="c-advisor c-advisor">
+//             <h4 class="c-advisor__heading">
+//                 Banker
+//             </h4>
+//             <p class="c-advisor__company ">
+//                 Company Name
+//             </p>
+//             <address class="c-advisor__address">
+//                 <p class="t-subtitle-1 t-light">Address line 2</p>
+//                 <p class="t-subtitle-1 t-light">Address line 3</p>
+//                 <p class="t-subtitle-1 t-light">Address line 4</p>
+//             </address>
+//             <div class="c-advisor__action">
+//                 <a href="#" class="c-underline-link">
+//                     Find out more
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </a>
+//             </div>
+//         </div>
+//      </li>
+//      <li class="c-advisor-list__item">
+//         <div class="c-advisor c-advisor--alt">
+//             <h4 class="c-advisor__heading">
+//                 Banker
+//             </h4>
+//             <p class="c-advisor__company ">
+//                 Company Name
+//             </p>
+//             <address class="c-advisor__address">
+//                 <p class="t-subtitle-1 t-light">Address line 2</p>
+//                 <p class="t-subtitle-1 t-light">Address line 3</p>
+//                 <p class="t-subtitle-1 t-light">Address line 4</p>
+//             </address>
+//             <div class="c-advisor__action">
+//                 <a href="#" class="c-underline-link">
+//                     Find out more
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </a>
+//             </div>
+//         </div>
+//      </li>
+// </ul>
+//
+// Styleguide 2.10
+
+// Advisor list alt
+//
+// markup:
+// <ul class="c-advisor-list c-advisor-list--alt">
+//      <li class="c-advisor-list__item">
+//         <div class="c-advisor c-advisor--cyan">
+//             <h4 class="c-advisor__heading">
+//                 Banker
+//             </h4>
+//             <div class="c-advisor__action">
+//                 <a href="#" class="c-underline-link">
+//                     Find out more
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </a>
+//             </div>
+//         </div>
+//      </li>
+//      <li class="c-advisor-list__item">
+//         <div class="c-advisor c-advisor--cyan c-advisor--alt">
+//             <h4 class="c-advisor__heading">
+//                 Banker
+//             </h4>
+//             <div class="c-advisor__action">
+//                 <a href="#" class="c-underline-link">
+//                     Find out more
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </a>
+//             </div>
+//         </div>
+//      </li>
+//      <li class="c-advisor-list__item">
+//         <div class="c-advisor c-advisor--cyan">
+//             <h4 class="c-advisor__heading">
+//                 Banker
+//             </h4>
+//             <div class="c-advisor__action">
+//                 <a href="#" class="c-underline-link">
+//                     Find out more
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--arrow-right">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                         </svg>
+//                     </span>
+//                 </a>
+//             </div>
+//         </div>
+//      </li>
+// </ul>
+//
+// Styleguide 2.18
+
+.c-advisor-list {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.c-advisor-list__item + .c-advisor-list__item {
+    margin-top: ($size-gutter * 3);
+}
+
+@include media(tablet) {
+    .c-advisor-list__item {
+        max-width: $size-advisor-width;
+        margin: 0 auto;
+    }
+
+    .c-advisor-list--alt {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .c-advisor-list--alt .c-advisor-list__item {
+        width: calc(50% - #{$size-gutter*1.5});
+        max-width: 100%;
+        margin: 0 0 ($size-gutter * 3);
+    }
+
+    .c-advisor-list--alt .c-advisor-list__item {
+        width: calc(50% - #{$size-gutter*1.5});
+        max-width: 100%;
+        margin: 0 0 ($size-gutter * 3);
+    }
+
+    .c-advisor-list__item:nth-last-child(2),
+    .c-advisor-list__item:nth-last-child(1) {
+        margin-bottom: 0;
+    }
+}
+
+@include media(desktop) {
+    .c-advisor-list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .c-advisor-list__item {
+        width: calc(50% - #{$size-gutter*1.5});
+        max-width: 100%;
+        margin: 0 0 ($size-gutter * 3);
+    }
+
+    .c-advisor-list__item + .c-advisor-list__item {
+        margin-top: 0;
+    }
+}
