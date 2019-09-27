@@ -11,7 +11,8 @@ register = template.Library()
 def embeded_videos(video_url):
     try:
         embed = get_embed(video_url)
-        embed = embed.html.replace('<iframe', '<iframe class="c-video__player c-video__player--iframe js-viewer js-video-module"')
+        embed = embed.html.replace('<iframe',
+                                   '<iframe class="c-video__player c-video__player--iframe js-viewer js-video-module"')
         embeded_url = re.search("(?P<url>https?://[^\s'\"]+)", embed).group("url")
         delimiter = '?'
         if '?' in embeded_url:

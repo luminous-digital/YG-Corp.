@@ -19,7 +19,7 @@ class AbstractFlexPage(Page):
 
     content = StreamField(
         [
-            #('accordion_block', blocks.AccordionBlock()),
+            # ('accordion_block', blocks.AccordionBlock()),
             ('accordion_list_block', blocks.AccordionListBlock()),
             ('advisor_analyst_block', blocks.AdvisorsBlock()),
             ('turquoise_block', blocks.TurquoiseListBlocks()),

@@ -28,7 +28,7 @@ urlpatterns = [
 
     url(r'^calendar-add/ical/(?P<name>[\w.@+-]+)/(?P<date>[\w.@+-]+)', ical_view, name="calendar-add"),
 
-    url('^sitemap\.xml$', sitemap),
+    url('^sitemap.xml$', sitemap),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
