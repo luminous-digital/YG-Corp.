@@ -63,19 +63,24 @@ services:
       - .:/app
     working_dir: /app/frontend
     command: >
-      sh -c "gulp --version
+      sh -c "
+      echo 'gulp --version:'
+      && gulp --version
+      && echo 'node --version:'
       && node --version
       && apt-get update -y
       && apt remove cmdtest -y
       && apt remove yarn -y
+      && echo 'npm install -g yarn git -y:'
       && npm install -g yarn git -y
-      && echo 'yarn install:'
-      && yarn install
+      && echo 'npm install --save handlebars:'
+      && npm install -g handlebars -y
+      && echo 'yarn install -y:'
+      && yarn install -y
       && echo 'gulp css:'
       && gulp css
       && echo 'gulp commit:'
-      && echo '(Do not worry about exit 1)'
-      && gulp commit"
+      && echo 'gulp commit'"
 
 volumes:
   wagtail_pg_data:
