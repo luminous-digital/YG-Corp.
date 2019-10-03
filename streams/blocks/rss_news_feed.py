@@ -35,9 +35,12 @@ class RssBlock(NewsFeedModuleBlock):
         return context
 
     def get_news_text_from_paragraphs(self, source, index):
-        clean_regex = re.compile('<.*?>')
-        cleaned_text = re.sub(clean_regex, '', self.get_value_from(source, index))
-        return cleaned_text
+        regex_to_remove = ['<iframe.*?</iframe>', '<script.*?</script>', '<.*?>']
+        text = self.get_value_from(source, index)
+        for regex in regex_to_remove:
+            clean_regex = re.compile(regex)
+            text = re.sub(clean_regex, '', text)
+        return text
 
     def get_news_date(self, source, index):
         date_data = re.findall(r'/(\d{4})/(\d{1,2})/(\d{1,2})/', self.get_value_from(source, index))
