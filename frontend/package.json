@@ -79,6 +79,7 @@
     "@google/markerclusterer": "^1.0.3",
     "countup.js": "^2.0.4",
     "gulp-concat": "^2.6.1",
+    "handlebars": "^4.4.0",
     "handlebars-loader": "^1.7.1",
     "idempotent-babel-polyfill": "^7.4.4",
     "jquery": "^3.3.1",
