@@ -1,0 +1,51 @@
+{% load static %}
+{% if self.headline %}
+<section class="l-heading">
+    <div class="l-inner">
+        <div class="c-heading">
+            <h1 class="c-heading__title t-headline-2">
+                {{ self.headline }}
+            </h1>
+        </div>
+    </div>
+</section>
+{% endif %}
+<div class="l-inner">
+    <div class="l-news" {% if self.background_colour %}style="background-color: {{ self.background_colour }};"{% endif %}">
+        <ul class="c-list c-list--horizontal-wrap">
+            {% for article in rows %}
+                <li class="c-list__item">
+                    <a href="{{ article.id }}" class="c-news-card" target="_blank">
+                        <figure class="c-news-card__media">
+                            <img class="c-news-card__img" src="{{ article.image }}" alt="News image"/>
+                        </figure>
+                        <time datetime="{{ article.date }}" class="c-news-card__date">
+                            {{ article.date|date:'E d, Y' }}
+                        </time>
+                        <h5 class="c-news-card__title">
+                            {{ article.title }}
+                        </h5>
+                        <p class="c-news-card__info">
+                            {{ article.summary|truncatewords:40 }}
+                        </p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% for link in self.link_feed %}
+            <div class="l-news__action">
+                <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ self.link_tab_chooser }}">
+                    {{ self.link_text }}
+                    <span class="c-underline-link__icon o-icon-wrapper">
+                        <svg class="o-icon o-icon--arrow-right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                        </svg>
+                    </span>
+                </a>
+            </div>
+        {% endfor %}
+        {% if not self.link_feed %}
+            {{ self.link_text }}
+        {% endif %}
+    </div>
+</div>

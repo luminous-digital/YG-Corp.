@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Heading
+   ========================================================================== */
+
+// Heading
+//
+// markup:
+// <section class="l-heading">
+//     <div class="c-heading">
+//         <h1 class="c-heading__title t-headline-2">
+//             Global offices
+//         </h1>
+//         <p class="c-heading__subtitle t-body-1">
+//             Subtitle
+//         </p>
+//     </div>
+// </section>
+//
+// Styleguide 10.27
+
+.l-heading {
+    width: 100%;
+    padding: ($size-gutter * 8) 0 ($size-gutter * 6);
+}
+
+@include media(tablet) {
+    .l-heading {
+        padding: ($size-gutter * 8) 0;
+    }
+}

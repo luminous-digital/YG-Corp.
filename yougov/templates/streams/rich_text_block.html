@@ -1,1 +1,7 @@
-{{ self }}
+<div class="l-real-text">
+    <div class="l-inner {% if not self.full_size %} l-inner--small {% endif %}">
+        <div class="c-wysiwyg" style="color:{{ self.text_colour }};">
+            {{ self.rich_text }}
+        </div>
+    </div>
+</div>

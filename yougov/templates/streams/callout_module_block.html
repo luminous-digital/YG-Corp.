@@ -1,0 +1,22 @@
+<div class="l-inner">
+    <div class="l-callouts">
+        <div class="l-callouts__content">
+            {% if self.headline %}
+                <section class="l-heading">
+                    <div class="c-heading c-heading--small">
+                        <h2 class="c-heading__title t-headline-2 t-regular">
+                            {{ self.headline }}
+                        </h2>
+                    </div>
+                </section>
+            {% endif %}
+            <ul class="c-list c-list--horizontal-wrap">
+                {% for element in self.callouts %}
+                    <li class="c-list__item">
+                         {% include 'streams/callout_base_block.html' with heading=element.heading callout=element.callout subcopy=element.subcopy %}
+                    </li>
+                 {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

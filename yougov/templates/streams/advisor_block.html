@@ -1,0 +1,41 @@
+{% load static css_style_counter_tag %}
+<div class="l-inner">
+    <div class="l-advisor">
+        <ul class="c-advisor-list">
+            {% for advisor in self.advisors %}
+                 <li class="c-advisor-list__item">
+                    <div class="c-advisor c-advisor{% if forloop.counter|css_style_counter %}--alt{% endif %}">
+                        <h4 class="c-advisor__heading">
+                            {{advisor.title}}
+                        </h4>
+                        <p class="c-advisor__company ">
+                            {{advisor.company_name}}
+                        </p>
+                        <address class="c-advisor__address">
+                            <p class="t-subtitle-1 t-light">{{advisor.address_field_1}}</p>
+                            <p class="t-subtitle-1 t-light">{{advisor.address_field_2}}</p>
+                            <p class="t-subtitle-1 t-light">{{advisor.address_field_3}}</p>
+                        </address>
+                        <div class="c-advisor__action">
+                            {% if advisor.link %}
+                                {% for link in advisor.link %}
+                                <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ advisor.link_tab_chooser }}"
+                                    {% if advisor.if_document_pdf == "Download" and link.block_type == 'document' %} download{% endif %}>
+                                    {{ advisor.link_text }}
+                                    <span class="c-underline-link__icon o-icon-wrapper">
+                                        <svg class="o-icon o-icon--arrow-right">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                                        </svg>
+                                    </span>
+                                </a>
+                                {% endfor %}
+                            {% else %}
+                                {{ advisor.link_text }}
+                            {% endif %}
+                        </div>
+                    </div>
+                 </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{% load static two_column_decor_tag %}
+<div class="l-inner">
+    <div class="l-decor-wrapper {{ self.type }}">
+        <div class="l-two-cols {% if self.type == 'l-decor-wrapper--top' %}l-two-cols--with-decor-top{% elif self.type == 'l-decor-wrapper--mobile-bottom' %}l-two-cols--grid l-two-cols--flex{% endif %} {% if self.left_widget_decor|two_column_decor:self.right_widget_decor and self.left_widget_decor == 'l-two-cols__box--simple-widget' %}l-two-cols--grid-alt{% endif %}">
+            {% if self.social_links %}
+                <div class="l-two-cols__box l-two-cols__box--socials">
+                    <ul class="c-social-media c-social-media--horizontal c-social-media--start">
+                        {% for link in self.social_links %}
+                        <li class="c-social-media__list">
+                            <a href="{{ link.social_channel_url }}" class="c-icon-with-decor c-icon-with-decor--light" target="_blank" rel="noopener noreferrer">
+                                <span class="o-icon-wrapper">
+                                    <svg class="o-icon o-icon--twitter">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-{{ link.social_channel_logo }}"></use>
+                                    </svg>
+                                </span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            <div class="{{ self.left_widget_decor }}">
+                {{ self.left_widget }}
+            </div>
+            <div class="{{ self.right_widget_decor }}{% if self.left_widget_decor|two_column_decor:self.right_widget_decor %}-alt{% endif %}">
+                {{ self.right_widget }}
+            </div>
+        </div>
+        {{ self.bottom_widgets }}
+    </div>
+</div>

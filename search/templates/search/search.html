@@ -6,33 +6,59 @@
 {% block title %}Search{% endblock %}
 
 {% block content %}
-    <h1>Search</h1>
-
-    <form action="{% url 'search' %}" method="get">
-        <input type="text" name="query"{% if search_query %} value="{{ search_query }}"{% endif %}>
-        <input type="submit" value="Search" class="button">
-    </form>
-
-    {% if search_results %}
-        <ul>
-            {% for result in search_results %}
-                <li>
-                    <h4><a href="{% pageurl result %}">{{ result }}</a></h4>
-                    {% if result.search_description %}
-                        {{ result.search_description }}
+<div class="l-inner">
+    <div class="l-search-results js-search-list">
+        <div class="l-search-results__heading">
+            <h2 class="c-results-heading">
+                Search results for: <span class="c-results-heading__accent">{{ search_query }}</span>
+            </h2>
+        </div>
+        <div class="l-search-results__list">
+            {% if search_results %}
+                <ul class="c-list c-list--load-more">
+                    {% for result in search_results %}
+                        <li class="c-list__item">
+                            <div class="c-list__decor">
+                                <a href="{% pageurl result %}" class="c-redirect-cta" target="_self">
+                                    <h5 class="c-redirect-cta__section t-headline-5">
+                                        {{ result }}
+                                    </h5>
+                                    <h5 class="c-redirect-cta__title t-headline-5">
+                                        {% if result.search_description %} {{ result.search_description }} {% endif %}
+                                    </h5>
+                                    <div class="c-redirect-cta__icon" target="_blank">
+                                        <span class="o-icon-wrapper">
+                                            <svg class="o-icon o-icon--arrow-right-bold">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right-bold"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+                    {% if pagination.has_next %}
+<!--                        <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>-->
+                        <div class="l-search-results__cta">
+                            <button class="c-read-more-btn c-underline-link js-list-load-more">
+                                <span class="c-read-more-btn__span">
+                                    Load more
+                                </span>
+                                <span class="c-underline-link__icon o-icon-wrapper">
+                                    <svg class="o-icon o-icon--cross">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-cross"></use>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
                     {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-
-        {% if search_results.has_previous %}
-            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.previous_page_number }}">Previous</a>
-        {% endif %}
-
-        {% if search_results.has_next %}
-            <a href="{% url 'search' %}?query={{ search_query|urlencode }}&amp;page={{ search_results.next_page_number }}">Next</a>
-        {% endif %}
-    {% elif search_query %}
-        No results found
-    {% endif %}
+            {% elif search_query %}
+                <h5 class="c-redirect-cta__section t-headline-5">
+                    No results found
+                </h5>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

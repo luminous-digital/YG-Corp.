@@ -1,0 +1,90 @@
+{% load static year_list_tag %}
+<div class="l-section">
+    <div class="l-inner">
+        <div class="c-downloads-wrapper">
+            <div class="c-tabs js-main-container">
+                <div class="c-tabs__nav c-tabs__nav--no-margin">
+                    <button class="c-tabs__placeholder c-underline-link js-tabs-open">
+                        <span class="js-main-tab-placeholder">
+                                All
+                        </span>
+                        <span class="c-tabs__placeholder-icon o-icon-wrapper">
+                            <svg class="o-icon o-icon--arrow-right-bold">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right-bold"></use>
+                            </svg>
+                        </span>
+                    </button>
+                    <ul class="c-tabs__nav-list js-main-tabs-nav">
+                        {% for news_date in self.news|dictsortreversed:"date"|year_list %}
+                            <li {% if news_date == 'All' %}class="c-tabs__nav-item js-tab-clear-filter is-active"{% else %}class="c-tabs__nav-item" data-tab="{{ news_date }}"{% endif %}>
+                                <button class="c-tabs__cta c-underline-link">
+                                   {{ news_date }}
+                                </button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="c-downloads-table js-table-content">
+                    <div class="c-downloads-table__heading c-downloads-table__heading--alt" data-index="0">
+                        <div class="c-heading c-heading--alt">
+                            <h6 class="c-heading__date">
+                                Date
+                            </h6>
+                            {% if self.title %}
+                                <h6 class="c-heading__news">
+                                     {{ self.title }}
+                                </h6>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% for news in self.news|dictsortreversed:"date" %}
+                        {% if news.date.year in self.news|dictsortreversed:"date"|year_list %}
+                            <div class="c-downloads-table__content" data-tab="{{ news.date|date:'Y' }}" data-index="{{ forloop.counter }}">
+                        {% else %}
+                            <div class="c-downloads-table__content" data-tab="Archive" data-index="{{ forloop.counter }}">
+                        {% endif %}
+                            <div class="c-downloads">
+                                <div class="c-downloads__post-wrapper">
+                                    <time datetime="{{ news.date|date:'Y-m-d' }}" class="c-downloads__date">
+                                        {{ news.date|date:"d M Y" }}
+                                    </time>
+                                    <h5 class="c-downloads__title" style="color:{{self.headings_text_colour}};">
+                                        {{ news.file_name }}
+                                    </h5>
+                                </div>
+                                <div class="c-downloads__info-wrapper">
+                                    {% for source in news.source_type %}
+                                        {% if source.value.hyper_link_url or source.value.page_link %}
+                                            <a href="{{ source.value.hyper_link_url }}{{ source.value.page_link.url }}" target="{{ source.value.link_tab_chooser }}" class="c-underline-link c-underline-link--inline c-underline-link--left">
+                                                <span class="c-underline-link__icon o-icon-wrapper">
+                                                    <svg class="o-icon o-icon--triangle">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-triangle"></use>
+                                                    </svg>
+                                                </span>
+                                        {% else %}
+                                            <a href="{% if source.value.audio_video %}{{source.value.audio_video.url}}{% else %}{{source.value.document.url}}{% endif %}"  class="c-underline-link c-underline-link--inline c-underline-link--left" {% if source.value.download_or_open == "Download" %}download{% endif %}>
+                                                <span class="c-underline-link__icon o-icon-wrapper">
+                                                    <svg class="o-icon o-icon--download">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-download"></use>
+                                                    </svg>
+                                                </span>
+                                        {% endif %}
+                                                <span class="c-underline-link__text-wrapper">
+                                                    <span class="c-underline-link__text">
+                                                        {{ source.value.source_name }}
+                                                        {% if source.value.audio_video.file %} - {{ source.value.audio_video.file.size|filesizeformat }}{% endif %}
+                                                        {% if source.value.document.file %} - {{ source.value.document.file.size|filesizeformat }}{% endif %}
+                                                    </span>
+                                                </span>
+                                            </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none"></div>
+</div>

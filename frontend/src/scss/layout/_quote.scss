@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Quote
+   ========================================================================== */
+
+.l-quote {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    padding-top: $size-gutter * 10;
+}
+
+@include media(desktop) {
+    .l-quote {
+        padding-top: $size-gutter * 2;
+    }
+}

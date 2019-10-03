@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Redirect cta
+   ========================================================================== */
+
+// Redirect cta
+//
+// markup:
+// <a href="#" class="c-redirect-cta">
+//     <h5 class="c-redirect-cta__section t-headline-5">
+//         Section
+//     </h5>
+//     <h5 class="c-redirect-cta__title t-headline-5">
+//         Lorem ipum dolor et
+//     </h5>
+//     <div class="c-redirect-cta__icon" target="_blank">
+//         <span class="o-icon-wrapper">
+//             <svg class="o-icon o-icon--arrow-right">
+//                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//             </svg>
+//         </span>
+//     </div>
+// </a>
+//
+// Styleguide 10.2
+
+.c-redirect-cta {
+    display: flex;
+    flex-direction: column;
+
+    padding: ($size-gutter * 4) 0;
+}
+
+.c-redirect-cta__title {
+    margin-bottom: $size-gutter;
+}
+
+.c-redirect-cta .o-icon {
+    fill: color(main);
+}
+
+@include media(tablet) {
+    .c-redirect-cta {
+        align-items: baseline;
+        flex-direction: row;
+
+        padding: ($size-gutter * 3) 0;
+    }
+
+    .c-redirect-cta__section {
+        width: auto;
+        min-width: 28%;
+
+        padding-right: $size-gutter * 2;
+    }
+
+    .c-redirect-cta__icon {
+        margin-left: auto;
+    }
+}
+
+@include media(desktop) {
+    .c-redirect-cta__section {
+        width: auto;
+        min-width: 17%;
+    }
+}

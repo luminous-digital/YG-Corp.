@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Quote
+   ========================================================================== */
+
+// Quote
+//
+// markup:
+// <div class="l-quote">
+//     <div class="c-quote" style="color: #00B7B4;">
+//         <h4 class="c-quote__author t-headline-4 t-bold">
+//             Name Surname
+//         </h4>
+//         <h5 class="c-quote__position t-headline-5">
+//             Edison Investment Research
+//         </h5>
+//         <h2 class="c-quote__quotation t-headline-2">
+//             Access to permissioned data is a key differentiator, allowing for faster responses and increased automation and efficiency.
+//         </h2>
+//         <div class="c-quote__action">
+//             <a href="#" class="c-underline-link {$modifiers}" target="_blank">
+//                 Find out more
+//                 <span class="c-underline-link__icon o-icon-wrapper">
+//                     <svg class="o-icon o-icon--arrow-right">
+//                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                     </svg>
+//                 </span>
+//             </a>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 10.1
+
+.c-quote {
+    position: relative;
+
+    width: 100%;
+
+    font-family: $font-default;
+    max-width: 648px;
+}
+
+.c-quote__author,
+.c-quote__position,
+.c-quote__action {
+    color: color(black);
+}
+
+.c-quote__quotation {
+    position: relative;
+
+    margin-top: $size-gutter;
+
+    &:before,
+    &:after {
+        @include headline-2();
+
+        position: absolute;
+
+        font-family: $font-default;
+
+        color: currentColor;
+    }
+
+    &:before {
+        top: 0;
+        left: -($size-gutter * 1.5);
+
+        content: open-quote;
+    }
+
+    &:after {
+        bottom: 0;
+
+        content: close-quote;
+    }
+}
+
+.c-quote__action {
+    width: 100%;
+    margin-top: $size-gutter;
+}
+
+@include media(tablet) {
+    .c-quote__quotation {
+        &:before {
+            left: -($size-gutter * 3);
+        }
+    }
+}
+
+@include media(desktop) {
+    .c-quote {
+        padding-left: $size-gutter * 3;
+    }
+
+    .c-quote__action {
+        margin-top: $size-gutter * 3;
+    }
+}

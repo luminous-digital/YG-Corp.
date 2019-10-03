@@ -1,0 +1,44 @@
+/* ==========================================================================
+   Timeline box
+   ========================================================================== */
+
+// Timeline box
+//
+// markup:
+// <div class="c-timeline-box">
+//      <div class="c-timeline-box__heading t-headline-2">2000</div>
+//      <div class="c-timeline-box__content c-wysiwyg c-wysiwyg--small">
+//          <p>
+//              YouGov is established as the pioneer of internet-based market research.
+//          </p>
+//          <p>
+//              The company is co-founded by Stephan Shakespeare and Nadhim Zahawi, who first met while working in British politics.
+//          </p>
+//          <p>
+//              The official company registration name is YouGov Dot Com Limited.
+//          </p>
+//          <p>
+//              Shakespeare is named Chief Innovations Officer while Zahawi is Chief Executive Officer.
+//          </p>
+//      </div>
+// </div>
+//
+// Styleguide 10.16
+
+.c-timeline-box__heading {
+    margin-bottom: $size-gutter * 2;
+
+    color: color(main);
+}
+
+.c-timeline-box__content img {
+    margin-top: ($size-gutter * 2);
+
+    width: 100%;
+}
+
+@include media(tablet) {
+    .c-timeline-box__content img {
+        margin-top: ($size-gutter * 3.5);
+    }
+}

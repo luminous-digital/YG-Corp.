@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Loader
+   ========================================================================== */
+
+.c-loader {
+    position: relative;
+
+    display: none;
+
+    width: $size-loader;
+    height: $size-loader;
+    margin-bottom: $size-gutter * 4;
+}
+
+.is-loading .c-loader {
+    display: inline-block;
+}
+
+.c-loader__item {
+    position: absolute;
+
+    display: block;
+
+    box-sizing: border-box;
+    width: $size-loader-item;
+    height: $size-loader-item;
+    margin: $size-loader-border;
+
+    animation: Loading 1.2s cubic-bezier(.5, 0, .5, 1) infinite;
+
+    border: $size-loader-border solid color(main);
+    border-color: color(main) transparent transparent transparent;
+    border-radius: 50%;
+}
+
+.c-loader__item:nth-child(1) {
+    animation-delay: -.45s;
+}
+
+.c-loader__item:nth-child(2) {
+    animation-delay: -.3s;
+}
+
+.c-loader__item:nth-child(3) {
+    animation-delay: -.15s;
+}

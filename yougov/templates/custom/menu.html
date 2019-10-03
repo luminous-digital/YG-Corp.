@@ -1,0 +1,243 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% for element in menu_elements|slice:":1" %}
+<header class="l-header js-header">
+    <div class="l-header__wrapper">
+        <div class="l-header__topbar">
+            <div class="l-inner">
+                <ul class="c-topbar">
+                    {% if element.global_navigation_text %}
+                    <li class="c-topbar__item">
+                        <p class="t-body-2">
+                            {{ element.global_navigation_text }}
+                        </p>
+                    </li>
+                    {% endif %}
+                    {% for global_sites in element.global_navigation_link %}
+                        {% for link in global_sites.value.global_link %}
+                            <li class="c-topbar__item">
+                                <a href="{{ link.value.url }}" class="c-underline-link" target="{{ global_sites.value.link_tab_chooser }}">
+                                    {% if link.block_type == 'menu_external_url' %}{{link.value.displayed_name}}{% else %}{{link.value}}{% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="l-header__main">
+            <div class="l-inner">
+                <div class="c-header">
+                    <div class="c-header__action">
+                        <a href="/" class="c-logo">
+                            <span class="o-icon-wrapper">
+                                <svg class="o-icon o-icon--yougov">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-yougov">
+                                    </use>
+                                </svg>
+                            </span>
+                        </a>
+                        <button type="button" class="c-hamburger js-menu-open-trigger" title="Toggle menu">
+                            <span class="c-hamburger__line c-hamburger__line--hidden">Toggle menu</span>
+                            <span class="c-hamburger__line"></span>
+                            <span class="c-hamburger__line"></span>
+                            <span class="c-hamburger__line"></span>
+                        </button>
+                    </div>
+                    <div class="c-header__main">
+                        <div class="l-nav">
+                            <div class="l-nav__main">
+                                <nav class="c-nav">
+                                    <ul class="c-nav__list">
+                                    {% for block in element.menu_links %}
+                                        {% for nested_menu in block.value.menu_navigation_level_1 %}
+                                            <li class="c-nav__item {% if request.path == nested_menu.value.url %} is-active {% endif %}">
+                                                {% if nested_menu.block_type == 'menu_external_url' %}
+                                                    <a href="#{{block.value.navigation_html_id}}" class="c-nav__link js-sub-nav-open-trigger">
+                                                        <span class="c-nav__name">{{nested_menu.value.displayed_name}}</span>
+                                                            <span class="c-nav__icon o-icon-wrapper">
+                                                            <svg class="o-icon o-icon--arrow-down">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-down">
+                                                                </use>
+                                                            </svg>
+                                                        </span>
+                                                     </a>
+                                                    {% else %}
+                                                    <a href="#{{block.value.navigation_html_id}}" class="c-nav__link js-sub-nav-open-trigger">
+                                                        <span class="c-nav__name">{{nested_menu.value}}</span>
+                                                            <span class="c-nav__icon o-icon-wrapper">
+                                                            <svg class="o-icon o-icon--arrow-down">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-down">
+                                                                </use>
+                                                            </svg>
+                                                        </span>
+                                                     </a>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    </ul>
+                                </nav>
+                                <div class="l-search">
+                                    <div class="l-search__action">
+                                        <a href="#search-modal" class="c-search-toggler js-open-modal-trigger">
+                                            <span class="c-underline-link">
+                                                <span class="c-underline-link__icon c-underline-link__icon--no-margin c-search-toggler__icon o-icon-wrapper">
+                                                    <svg class="o-icon o-icon--search">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-search">
+                                                        </use>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="l-search__main">
+                                        <form action="/search/" class="f-search-form">
+                                            <div class="f-field f-field--search">
+                                                <input type="text" class="f-field__control" placeholder="Search" name="query"/>
+                                                <a class="f-field__btn js-search-toggler">
+                                                    <span class="o-icon-wrapper">
+                                                        <svg class="o-icon o-icon--search">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-search">
+                                                            </use>
+                                                        </svg>
+                                                    </span>
+                                                </a>
+                                                <button type="submit" class="f-field__btn f-field__btn--hidden">
+                                                    <span class="o-icon-wrapper">
+                                                        <svg class="o-icon o-icon--search">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-search">
+                                                            </use>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="l-nav__sub js-sub-nav-container">
+                                <div class="c-sub-nav">
+                                    <div class="l-inner">
+                                        {% for block in element.menu_links %}
+                                            <div id="{{block.value.navigation_html_id}}" class="c-sub-nav-box">
+                                                <div class="c-sub-nav-box__download">
+                                                    {% if block.value.link.link %}
+                                                        {% for link in block.value.link.link %}
+                                                            <a href="{{ link.value.url }}" class="c-download-box" target="{{ element.menu_tab_chooser }}" {% if block.value.link.if_document_pdf == "Download" and link.block_type == 'document' %}download{% endif %}>
+                                                                <figure class="c-download-box__media">
+                                                                    {% image block.value.link.image original as img %}
+                                                                    <img src="{{ img.url }}" alt="alt" />
+                                                                </figure>
+                                                                <div class="c-download-box__action">
+                                                                    <span class="c-underline-link c-underline-link--inline">
+                                                                        {% if block.value.link.text %}
+                                                                            <span class="c-underline-link__text">
+                                                                                {{ block.value.link.text }}
+                                                                                <span class="c-underline-link__icon o-icon-wrapper">
+                                                                                    <svg class="o-icon o-icon--arrow-right">
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                            xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right">
+                                                                                        </use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </span>
+                                                                        {% endif %}
+                                                                    </span>
+                                                                </div>
+                                                            </a>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <div class="c-download-box">
+                                                            <figure class="c-download-box__media">
+                                                                {% image block.value.link.image original as img %}
+                                                                <img src="{{ img.url }}" alt="alt" />
+                                                            </figure>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="c-sub-nav-box__list">
+                                                    <a href="#"
+                                                        class="c-sub-nav-box__back c-underline-link c-underline-link--revert js-sub-nav-close-trigger">
+                                                        <span class="c-underline-link__icon o-icon-wrapper">
+                                                            <svg class="o-icon o-icon--arrow-left">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                    xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right">
+                                                                </use>
+                                                            </svg>
+                                                        </span>
+                                                        Main Menu
+                                                    </a>
+                                                    <ul class="c-list c-list--column-wrap">
+                                                        {% if block.value.menu_navigation_level_2 %}
+                                                            {% for nested_menu in block.value.menu_navigation_level_2 %}
+                                                                <li class="c-list__item">
+                                                                {% if nested_menu.block_type == 'menu_external_url' %}
+                                                                    <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link c-underline-link--inline">
+                                                                        <span class="c-underline-link__text">
+                                                                        {{nested_menu.value.displayed_name}}
+                                                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                                                <svg class="o-icon o-icon--arrow-right">
+                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                        xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right">
+                                                                                    </use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                {% else %}
+                                                                    <a href="{{nested_menu.value.url}}" target="{{ element.menu_tab_chooser }}" class="c-underline-link c-underline-link--inline">
+                                                                        <span class="c-underline-link__text">
+                                                                        {{nested_menu.value}}
+                                                                            <span class="c-underline-link__icon o-icon-wrapper">
+                                                                                <svg class="o-icon o-icon--arrow-right">
+                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                                        xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right">
+                                                                                    </use>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </a>
+                                                                {% endif %}
+                                                                </li>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="l-header__social-media">
+            <div class="c-header__social-media">
+                <ul class="c-social-media c-social-media--horizontal">
+                    {% for block in element.social_channel_links %}
+                    <li class="c-social-media__list">
+                        <a href="{{block.value.social_channel_url}}" class="c-icon-with-decor" target="_blank">
+                            <span class="o-icon-wrapper">
+                                <svg class="o-icon o-icon--{{block.value.social_channel_logo}}">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-{{ block.value.social_channel_logo }}"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+{% endfor %}

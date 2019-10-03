@@ -24,13 +24,19 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
-    'search',
+    'custom',
     'flex',
+    'home',
+    'office',
+    'news',
+    'search',
     'streams',
 
     'wagtail.contrib.forms',
+    'wagtail.contrib.modeladmin',
+    'wagtail.contrib.postgres_search',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.table_block',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -41,6 +47,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
     'wagtailmedia',
+    'wagtailstreamforms',
     'modelcluster',
     'taggit',
 
@@ -48,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    "django.contrib.sitemaps",
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
@@ -131,6 +139,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+DATE_FORMAT = '%d-%m-%Y'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -160,10 +169,56 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "yougov"
 
+WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
+    ('form/form_block.html', 'YouGov Form Template'),
+)
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
+EDISONINVESTMENTSEARCH_XML_URL = "https://www.edisoninvestmentresearch.com/widgets-xml/901"
+
+YOUGOV_NEWS_XML_URL = 'https://yougov.co.uk/news/feeds/latest/'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/django_cache',
+        'TIMEOUT': 3600,
+    }
+}
+
+# PostgreSQL DATABASE
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB', 'yougov'),
+        'USER': os.environ.get('POSTGRES_USER', 'root'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', ''),
+        'HOST': os.environ.get('POSTGRES_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('POSTGRES_PORT', 5432),
+    }
+}
+
+# PostgreSQL
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.contrib.postgres_search.backend',
+    },
+}
+
+OFFICE_LOCATION_MODULE_JSON_URL = 'src/js/modules/offices-map/locations.json'
+
+GOOGLE_API_KEY = 'Add google api key in local.py'
+
+YEARS_BEFORE_ARCHIVE = 4
+
+# Twitter data
+TWITTER_CONSUMER_KEY = "TWITTER_CONSUMENR_KEY"
+TWITTER_CONSUMER_SECRET_KEY = "TWITTER_CONSUMER_SECRET_KEY"
+TWITTER_ACCESS_TOKEN_KEY = "TWITTER_ACCESS_TOKEN_KEY"
+TWITTER_ACCESS_SECRET_TOKEN_KEY = "TWITTER_ACCESS_SECRET_TOKEN_KEY"
 
 try:
     from .local import *  # NOQA

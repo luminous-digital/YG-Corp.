@@ -1,0 +1,84 @@
+    <div class="l-inner">
+        <div class="l-contact">
+             <div class="l-contact__row">
+                 <div class="c-info c-wysiwyg">
+                     {% if self.left_column.title %}
+                         <h4>
+                             <strong>{{self.left_column.title}}</strong>
+                         </h4>
+                     {% endif %}
+                     {% if self.left_column.sub_title %}
+                         <h5>
+                             {{self.left_column.sub_title}}
+                         </h5>
+                     {% endif %}
+                     {% for item in self.left_column.items %}
+                        {% if item.title %}
+                            <h5>
+                                {{item.title}}
+                            </h5>
+                        {% endif %}
+                        {%if item.email %}
+                            <p>
+                                {{item.email}}
+                            </p>
+                     {% endif %}
+                     {% endfor %}
+                 </div>
+             </div>
+             <div class="l-contact__row l-contact__row--alt">
+                 <div class="c-info c-info--alt c-wysiwyg">
+                     {% if self.right_column.title %}
+                         <h4>
+                             <strong>{{self.right_column.title}}</strong>
+                         </h4>
+                     {% endif %}
+                     {% for item in self.right_column.items %}
+                        {% if item.city %}
+                            <h6>
+                                 {{item.city}}
+                            </h6>
+                        {% endif %}
+                         <p>
+                             {% if item.address_line_1 %}
+                                 {{item.address_line_1}}
+                                 <br>
+                             {% endif %}
+                             {% if item.address_line_2 %}
+                                 {{item.address_line_2}}
+                                 <br>
+                             {% endif %}
+                             {% if item.address_line_3 %}
+                                 {{item.address_line_3}}
+                                 <br>
+                             {% endif %}
+                             {% if item.country %}
+                                 {{item.country}}
+                                 <br>
+                             {% endif %}
+                         </p>
+                            {% if item.right_column_text_editor %}
+                                {{item.right_column_text_editor}}
+                            {% endif %}
+                         <p>
+                             <br>
+                             {% if item.telephone %}
+                             Tel: <a href="tel:{{item.telephone}}" target="_blank">{{item.telephone}}</a>*
+                             <br>
+                             {% endif %}
+                             {% if item.email_address %}
+                             Email: <a href="mailto:{{item.email_address}}">{{item.email_address}}</a>
+                             <br>
+                             {% endif %}
+                             {% if item.website %}
+                             Web: <a href="{{item.website}}">{{item.website}}</a>
+                             {% endif %}
+                         </p>
+                     {% endfor %}
+                     {% if self.contact_text_editor %}
+                     {{ self.contact_text_editor }}
+                     {% endif %}
+                 </div>
+             </div>
+        </div>
+    </div>

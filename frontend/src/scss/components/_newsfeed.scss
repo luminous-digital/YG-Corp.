@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Newsfeed
+   ========================================================================== */
+
+// Newsfeed
+//
+// markup:
+// <div class="c-newsfeed ">
+//     <h4 class="c-newsfeed__heading">
+//         Company Research
+//     </h4>
+//     <div class="c-newsfeed__content">
+//         <ul class="c-list">
+//             <li class="c-list__item">
+//                 <a href="#" class="c-excerpt">
+//                     <p class="c-excerp__subtitle">
+//                         Data: the connecting currency
+//                     </p>
+//                     <p class="c-excerp__text">
+//                         YouGov continues to develop its data, platform and tools to address significant opportunities to embed in clients’ workflows, particularly within…
+//                     </p>
+//                     <div class="c-excerp__btn-wrapper">
+//                         <span class="c-underline-link" target="_blank">
+//                             Read more
+//                             <span class="c-underline-link__icon o-icon-wrapper">
+//                                 <svg class="o-icon o-icon--arrow-right">
+//                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                 </svg>
+//                             </span>
+//                         </span>
+//                     </div>
+//                 </a>
+//             </li>
+//         </ul>
+//     </div>
+//     <div class="c-newsfeed__btn-wrapper">
+//         <a href="#" class="c-underline-link" target="_blank">
+//             See more company research
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--arrow-right">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                 </svg>
+//             </span>
+//         </a>
+//     </div>
+// </div>
+//
+// Styleguide 10.26
+
+.c-newsfeed {
+    width: 100%;
+    padding: $size-gutter * 3;
+
+    color: color(white);
+    background-color: color(darkviolet);
+}
+
+.c-newsfeed--invert-colors,
+.c-newsfeed--invert-colors-alt {
+    color: color(darkviolet);
+    background-color: color(white);
+}
+
+.c-newsfeed--no-padding {
+    padding: 0;
+}
+
+.c-newsfeed__heading {
+    @include headline-4();
+
+    margin-bottom: $size-alt * 4;
+}
+
+.c-newsfeed__content {
+    margin-bottom: $size-gutter * 2.5;
+}
+
+.c-newsfeed--invert-colors-alt .c-newsfeed__content {
+    margin-bottom: $size-alt * 4;
+}
+
+@include media(tablet) {
+    .c-newsfeed__content {
+        margin-bottom: $size-alt * 6;
+    }
+}

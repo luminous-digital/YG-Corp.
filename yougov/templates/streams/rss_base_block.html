@@ -1,0 +1,19 @@
+{% load static %}
+<a href="{{ research_link }}" class="c-excerpt {{ edison_revert_color }}" target="_blank">
+    <p class="c-excerp__subtitle">
+        {{ element.title }}
+    </p>
+    <p class="c-excerp__text">
+        {{ element.summary|truncatewords:20 }}
+    </p>
+    <div class="c-excerp__btn-wrapper">
+        <span class="c-underline-link">
+            Read more
+            <span class="c-underline-link__icon o-icon-wrapper">
+                <svg class="o-icon o-icon--arrow-right">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                </svg>
+            </span>
+        </span>
+    </div>
+</a>

@@ -1,4 +1,8 @@
 Django>=2.2,<2.3
-wagtail>=2.5,<2.6
+wagtail>=2.5,<=2.6.2
 wagtailmedia==0.3.1
-mysqlclient==1.4.2
+wagtailstreamforms>=2
+gunicorn
+icalendar
+tweepy==3.8.0
+psycopg2==2.8.3

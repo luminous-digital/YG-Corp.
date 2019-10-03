@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Controls
+   ========================================================================== */
+
+// Controls
+//
+// markup:
+// <div class="c-controls"style="background-color: #333; padding: 20px">
+//     <button class="c-controls__button js-toggle-button" title="Toggle Play">►</button>
+//     <div class="c-controls__progress">
+//          <div class="c-progress">
+//              <div class="c-progress__filled"></div>
+//              <div class="c-progress__info t-caption"><span class="js-current-time">1:45</span><span class="js-full-time">6:45</span></div>
+//          </div>
+//     </div>
+//     <div class="c-controls__slider-">
+//          <div class="c-slider">
+//              <input class="c-slider__bar" type="range" name="volume" min="0" max="1" step="0.05" value="1">
+//              <div class="c-slider__info t-caption"><span>Volume</span></div>
+//          </div>
+//     </div>
+// </div>
+//
+// Styleguide 2.16
+
+.c-controls {
+    display: flex;
+    align-items: center;
+
+    padding: 0 ($size-gutter * 3) ($size-gutter * 3);
+
+    width: 100%;
+}
+
+.c-controls__button {
+    text-align: center;
+    font-size: font-size(size13);
+
+    color: color(white);
+
+    width: $size-video-control-btn-width;
+
+    padding: 0;
+
+    outline: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.c-controls__progress {
+    display: flex;
+
+    width: 100%;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: $size-video-control-track-height;
+
+    cursor: pointer;
+
+    background-color: color(white-opacity-08);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: $size-video-control-height;
+    width: $size-video-control-thumb-width;
+
+    margin-top: -($size-alt * .75);
+
+    background-color: color(white);
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: $size-video-control-track-width;
+
+    cursor: pointer;
+
+    background: color(white-opacity-08);
+}
+
+input[type=range]::-moz-range-thumb {
+    height: $size-video-control-height;
+    width: $size-video-control-thumb-width;
+
+    margin-top: -($size-alt * .75);
+
+    background-color: color(white);
+
+    cursor: pointer;
+}

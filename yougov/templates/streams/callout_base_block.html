@@ -1,0 +1,15 @@
+<div class="c-callouts">
+    <h4 class="c-callouts__heading">
+        {{ heading }}
+    </h4>
+    <h2 class="c-callouts__price">
+         {{ callout }}
+    </h2>
+    {% if subcopy %}
+    <div class="c-callouts__info">
+        <span class="c-callouts__previous-price">
+            {{ subcopy }}
+        </span>
+    </div>
+    {% endif %}
+</div>

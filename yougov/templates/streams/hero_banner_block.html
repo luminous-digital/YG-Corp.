@@ -1,0 +1,26 @@
+{% load static %}
+<section class="l-section" {% if self.banner_decor == 'c-info-teaser--with-decor' %}style="background-color: #FAF9FB;"{% endif %}>
+    <div class="l-inner">
+        <div class="c-info-teaser {{ self.banner_decor }}">
+            <div class="c-info-teaser__heading">
+                <div class="c-wysiwyg" style="color:{{self.banner_color}};">
+                    {{self.banner_text}}
+                </div>
+            </div>
+            <div class="c-info-teaser__link">
+                {% for block in self.hyperlink %}
+                <a href="{% if block.block_type == 'link_external_url' %}{{ block.value }}{% else %}{{ block.value.url }}{% endif %}"
+                   class="c-underline-link"
+                   {% if self.if_hyperlink_pdf == "Download" and block.block_type == 'document' %} download{% endif %} target="{{self.link_tab_chooser}}">
+                    {{self.link_text}}
+                    <span class="c-underline-link__icon o-icon-wrapper">
+                        <svg class="o-icon o-icon--arrow-right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                        </svg>
+                    </span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

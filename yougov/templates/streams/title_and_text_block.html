@@ -1,6 +1,14 @@
-
-<div>
-    <h2> {{ self.title }}</h2>
-    <p> {{ self.text }} </p>
+<div class="l-inner">
+    <section class="l-heading">
+        <div class="c-heading">
+            <h1 class="c-heading__title t-headline-2" style="color:{{self.title_colour}};">
+                 {{ self.title }}
+            </h1>
+            {% if self.text %}
+                <p class="c-heading__subtitle t-body-1">
+                    {{ self.text }}
+                </p>
+            {% endif %}
+        </div>
+    </section>
 </div>
-

@@ -1,0 +1,115 @@
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+// About
+//
+// markup:
+// <div class="c-about" style="background-color: #9078D7">
+//      <div class="c-about__heading">
+//          <span class="o-icon-wrapper">
+//              <svg class="o-icon o-icon--yougov">
+//                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+//                  xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-yougov">
+//                  </use>
+//              </svg>
+//          </span>
+//      </div>
+//      <div class="c-about__text c-wysiwyg">
+//          <h5><strong>About YouGov</strong></h5>
+//          <p>
+//              At the heart of our company is a global online community, where millions of people and thousands of political, cultural and commercial organizations engage in a continuous conversation about their beliefs, behaviours and brands.
+//          </p>
+//      </div>
+//      <div class="c-about__copyright">
+//          <p>
+//              Copyright &copy; 2018 YouGov PLC. All Rights Reserved.
+//          </p>
+//      </div>
+//      <div class="c-about__policy">
+//          <ul class="c-policy-list">
+//              <li class="c-policy-list__item">
+//                  <a href="#" class="c-underline-link">
+//                      Privacy
+//                  </a>
+//              </li>
+//              <li class="c-policy-list__item">
+//                  <a href="#" class="c-underline-link">
+//                      Terms and Conditions
+//                  </a>
+//              </li>
+//              <li class="c-policy-list__item">
+//                  <a href="#" class="c-underline-link">
+//                      Cookie Policy
+//                  </a>
+//              </li>
+//          </ul>
+//      </div>
+// </div>
+//
+// Styleguide 2.3
+
+.c-about {
+    position: relative;
+
+    width: 100%;
+    margin: 0;
+    padding-top: ($size-gutter * 4);
+    padding-bottom: ($size-gutter * 4);
+
+    color: color(white);
+    background-color: color(violet);
+}
+
+.c-about__text {
+    max-width: $size-about-width;
+    margin-top: $size-alt * 3.4;
+}
+
+.c-about__text h5:not([class]) + p:not([class]) {
+    margin-top: 0;
+}
+
+.c-about__copyright {
+    @include body-2;
+
+    max-width: $size-about-copy-width;
+    margin-top: $size-alt * 5.4;
+}
+
+.c-about__policy .c-underline-link {
+    @include body-2;
+}
+
+.c-about__social {
+    margin-top: $size-alt * 4;
+}
+
+@include media(tablet) {
+    .c-about__policy,
+    .c-about__copyright {
+        max-width: 100%;
+    }
+    .c-about__social {
+        position: absolute;
+        right: ($size-gutter * 4);
+        bottom: ($size-gutter * 4);
+    }
+    .c-about__social {
+        margin-top: 0;
+    }
+}
+
+@include media(desktop) {
+    .c-about__social {
+        bottom: $size-about-bottom;
+        left: ($size-gutter * 7.5);
+    }
+    .c-about {
+        z-index: $z-index-visible;
+
+        padding-top: ($size-alt * 5.5);
+        padding-bottom: ($size-alt * 5.5);
+        padding-left: $size-gutter * 7.5;
+    }
+}

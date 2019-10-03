@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Cards list
+   ========================================================================== */
+// Cards list
+//
+// markup:
+// <ul class="c-cards-list">
+//     <li class="c-cards-list__item">
+//         <div class="c-person-card js-accordion">
+//             <figure class="c-person-card__media">
+//                 <img src="/static/img/pic_person_1.jpg" alt="Office worker"/>
+//             </figure>
+//             <h5 class="c-person-card__title">
+//                 Name Surname
+//             </h5>
+//             <h6 class="c-person-card__subtitle">
+//                 Position
+//             </h6>
+//             <div class="c-person-card__details">
+//                 <p class="c-person-card__info-title">
+//                     Appointed:
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     January 2007
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     Roger is Chair of Oxford Metrics and a Non-Executive Director of Uber UK. He was previously Chair of Future Publishing, Johnston Press and Shakespeare’s Globe Trust; a consultant with McKinsey & Co; CEO of More Group, and
+//                     CEO of Clear Channel International. Roger was educated at the universities of Oxford and Bristol. He is a Visiting Fellow of Oxford University. He was awarded the CBE in 2014. He is the author of five books including The
+//                     Ascent of Media.
+//                 </p>
+//                 <p class="c-person-card__info-title">
+//                     Committees:
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     Member of Nomination Committee
+//                 </p>
+//             </div>
+//             <div class="c-person-card__action">
+//                 <button class="c-read-more-btn c-underline-link js-toggle-accordion">
+//                     <span class="c-read-more-btn__span">Read more</span>
+//                     <span class="c-read-more-btn__span">Read less</span>
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--cross">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//                         </svg>
+//                     </span>
+//                 </button>
+//             </div>
+//         </div>
+//     </li>
+//     <li class="c-cards-list__item">
+//         <div class="c-person-card js-accordion">
+//             <figure class="c-person-card__media">
+//                 <img src="/static/img/pic_person_2.jpg" alt="Office worker"/>
+//             </figure>
+//             <h5 class="c-person-card__title">
+//                 Name Surname
+//             </h5>
+//             <h6 class="c-person-card__subtitle">
+//                 Position
+//             </h6>
+//             <div class="c-person-card__details">
+//                 <p class="c-person-card__info-title">
+//                     Appointed:
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     January 2007
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     Roger is Chair of Oxford Metrics and a Non-Executive Director of Uber UK. He was previously Chair of Future Publishing, Johnston Press and Shakespeare’s Globe Trust; a consultant with McKinsey & Co; CEO of More Group, and
+//                     CEO of Clear Channel International. Roger was educated at the universities of Oxford and Bristol. He is a Visiting Fellow of Oxford University. He was awarded the CBE in 2014. He is the author of five books including The
+//                     Ascent of Media.
+//                 </p>
+//                 <p class="c-person-card__info-title">
+//                     Committees:
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     Member of Nomination Committee
+//                 </p>
+//             </div>
+//             <div class="c-person-card__action">
+//                 <button class="c-read-more-btn c-underline-link js-toggle-accordion">
+//                     <span class="c-read-more-btn__span">Read more</span>
+//                     <span class="c-read-more-btn__span">Read less</span>
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--cross">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//                         </svg>
+//                     </span>
+//                 </button>
+//             </div>
+//         </div>
+//     </li>
+//     <li class="c-cards-list__item">
+//         <div class="c-person-card js-accordion">
+//             <figure class="c-person-card__media">
+//                 <img src="/static/img/pic_person_1.jpg" alt="Office worker"/>
+//             </figure>
+//             <h5 class="c-person-card__title">
+//                 Name Surname
+//             </h5>
+//             <h6 class="c-person-card__subtitle">
+//                 Position
+//             </h6>
+//             <div class="c-person-card__details">
+//                 <p class="c-person-card__info-title">
+//                     Appointed:
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     January 2007
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     Roger is Chair of Oxford Metrics and a Non-Executive Director of Uber UK. He was previously Chair of Future Publishing, Johnston Press and Shakespeare’s Globe Trust; a consultant with McKinsey & Co; CEO of More Group, and
+//                     CEO of Clear Channel International. Roger was educated at the universities of Oxford and Bristol. He is a Visiting Fellow of Oxford University. He was awarded the CBE in 2014. He is the author of five books including The
+//                     Ascent of Media.
+//                 </p>
+//                 <p class="c-person-card__info-title">
+//                     Committees:
+//                 </p>
+//                 <p class="c-person-card__info">
+//                     Member of Nomination Committee
+//                 </p>
+//             </div>
+//             <div class="c-person-card__action">
+//                 <button class="c-read-more-btn c-underline-link js-toggle-accordion">
+//                     <span class="c-read-more-btn__span">Read more</span>
+//                     <span class="c-read-more-btn__span">Read less</span>
+//                     <span class="c-underline-link__icon o-icon-wrapper">
+//                         <svg class="o-icon o-icon--cross">
+//                             <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//                         </svg>
+//                     </span>
+//                 </button>
+//             </div>
+//         </div>
+//     </li>
+// </ul>
+//
+// Styleguide 8.1
+
+.c-cards-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.c-cards-list__item {
+    width: 100%;
+    margin: $size-gutter * 6 0 0 0;
+    padding-left: 0;
+}
+
+.c-cards-list__item:first-child {
+    @include media(0, tablet) {
+        margin-top: 0;
+    }
+}
+
+@include media(tablet) {
+    .c-cards-list {
+        @include media(tablet) {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
+    .c-cards-list__item {
+        @include media(tablet) {
+            width: $size-cards-item-width-tablet;
+        }
+    }
+}
+
+@include media(tablet, desktop) {
+    .c-cards-list__item:nth-child(-n + 2) {
+        margin-top: 0;
+    }
+
+    .c-cards-list__item:nth-child(odd) {
+        margin-right: $size-gutter * 3;
+    }
+}
+
+@include media(desktop) {
+    .c-cards-list__item {
+        width: $size-cards-item-width-desktop;
+    }
+
+    .c-cards-list__item:nth-child(-n + 3) {
+        margin-top: 0;
+    }
+
+    .c-cards-list__item:not(:nth-child(3n)) {
+        margin-right: $size-gutter * 3;
+    }
+}

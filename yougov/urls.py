@@ -2,22 +2,33 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
 
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
+from wagtail.contrib.sitemaps.views import sitemap
 from wagtail.documents import urls as wagtaildocs_urls
+from office import views as office_views
 
+from streams.views import serve
 from search import views as search_views
+from yougov.settings.base import OFFICE_LOCATION_MODULE_JSON_URL
+from flex.views import ical_view
 
 urlpatterns = [
+    url(r'^{}'.format(OFFICE_LOCATION_MODULE_JSON_URL), office_views.json, name='offices_json'),
     url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^documents/(\d+)/(.*)$', serve, name='wagtaildocs_serve'),
+
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+
+    url(r'^calendar-add/ical/(?P<name>[\w.@+-]+)/(?P<date>[\w.@+-]+)', ical_view, name="calendar-add"),
+
+    url('^sitemap.xml$', sitemap),
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
@@ -37,10 +48,3 @@ if settings.DEBUG:
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-    # import debug_toolbar
-    # urlpatterns = [
-    #     path('__debug__/', include(debug_toolbar.urls)),
-    #
-    #
-    # ] + urlpatterns

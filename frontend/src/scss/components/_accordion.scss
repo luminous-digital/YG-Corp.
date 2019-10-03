@@ -1,0 +1,184 @@
+/* ==========================================================================
+   Accordion
+   ========================================================================== */
+
+// Accordion
+//
+// default - default state
+// .is-opened - opened state
+//
+// markup:
+// <div class="c-accordion js-accordion {$modifiers}">
+//      <button class="c-accordion__toggler js-toggle-accordion">
+//          <div class="c-accordion__heading">
+//              <h4 class="c-accordion__title t-headline-4 t-bold">Region</h4>
+//          </div>
+//          <div class="c-accordion__icon">
+//              <div class="o-icon-wrapper">
+//                  <svg class="o-icon o-icon--arrow-simple">
+//                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                  </svg>
+//              </div>
+//          </div>
+//      </button>
+//      <div class="c-accordion__content-wrapper">
+//          <div class="c-accordion__content">
+//              <div class="c-info c-wysiwyg">
+//                  <h4>
+//                      <strong>Email</strong>
+//                  </h4>
+//                  <h5>
+//                      UK Panel member queries
+//                  </h5>
+//                  <h5>
+//                      Press enquiries
+//                  </h5>
+//                  <p>
+//                      press@yougov.com
+//                  </p>
+//                  <h5>
+//                      Sales and general info
+//                  </h5>
+//                  <p>
+//                      info@yougov.com
+//                  </p>
+//               </div>
+//          </div>
+//      </div>
+// </div>
+// <div class="c-accordion js-accordion {$modifiers}" style="margin-top: 20px">
+//      <button class="c-accordion__toggler js-toggle-accordion">
+//          <div class="c-accordion__heading">
+//              <h4 class="c-accordion__title t-headline-4 t-bold">Region</h4>
+//              <h4 class="c-accordion__subtitle t-headline-4 t-bold">Line 2</h4>
+//          </div>
+//          <div class="c-accordion__icon">
+//              <div class="o-icon-wrapper">
+//                  <svg class="o-icon o-icon--arrow-simple">
+//                      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                  </svg>
+//              </div>
+//          </div>
+//      </button>
+//      <div class="c-accordion__content-wrapper">
+//          <div class="c-accordion__content">
+//              <div class="c-info c-wysiwyg">
+//                  <h4>
+//                      <strong>Email</strong>
+//                  </h4>
+//                  <h5>
+//                      UK Panel member queries
+//                  </h5>
+//                  <h5>
+//                      Press enquiries
+//                  </h5>
+//                  <p>
+//                      press@yougov.com
+//                  </p>
+//                  <h5>
+//                      Sales and general info
+//                  </h5>
+//                  <p>
+//                      info@yougov.com
+//                  </p>
+//               </div>
+//          </div>
+//      </div>
+// </div>
+//
+// Styleguide 10.8
+
+.c-accordion__toggler {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: $size-gutter * 3;
+
+    background-color: color(gray);
+    color: color(accent);
+
+    width: 100%;
+
+    transition: $transition-default;
+
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.c-accordion__heading {
+    padding-right: $size-gutter;
+    text-align: left;
+}
+
+.c-accordion.is-opened .c-accordion__toggler {
+    background-color: color(violet);
+    color: color(white);
+}
+
+.c-accordion .c-info {
+    h4:not([class]) + h4:not([class]) {
+        margin-top: 0;
+    }
+}
+
+.c-accordion__content-wrapper {
+    overflow: hidden;
+
+    transition: $transition-default;
+
+    opacity: .2;
+}
+
+.c-accordion.is-opened .c-accordion__content-wrapper {
+    opacity: 1;
+}
+
+.c-accordion__content {
+    padding-left: ($size-gutter * 3);
+    padding-right: ($size-gutter * 3);
+
+    transition: $transition-default;
+}
+
+.c-accordion.is-opened .c-accordion__content {
+    padding-top: ($size-gutter * 3);
+    padding-bottom: ($size-gutter * 3);
+}
+
+.c-accordion .o-icon {
+    transition: $transition-default;
+}
+
+.c-accordion.is-opened .o-icon {
+    transform: rotate(270deg);
+}
+
+
+@include media(0, tablet) {
+    .c-accordion .c-info.c-wysiwyg {
+        transform: unset !important;
+    }
+
+    .c-accordion__content-wrapper {
+        display: none;
+    }
+
+    .c-accordion.is-opened .c-accordion__content-wrapper {
+        display: block;
+    }
+}
+
+@include media(tablet) {
+    .c-accordion__content-wrapper {
+        max-height: 0;
+    }
+
+    .c-accordion.is-opened .c-accordion__content-wrapper {
+        max-height: 100000px;
+    }
+}

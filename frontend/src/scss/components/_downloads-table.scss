@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Downloads table
+   ========================================================================== */
+
+.c-downloads-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.c-downloads-table__heading {
+    width: 100%;
+
+    padding: ($size-alt * 3) 0;
+
+    border-bottom: 1px solid color(plum);
+}
+
+.c-downloads-table__heading--alt {
+    display: none;
+}
+
+.c-downloads-table__content:nth-child(even) {
+    background-color: color(gray2);
+}
+
+@include media(tablet) {
+    .c-downloads-table__heading--alt {
+        display: block;
+    }
+
+    .c-downloads-table__heading {
+        padding-left: $size-gutter * 2;
+    }
+}

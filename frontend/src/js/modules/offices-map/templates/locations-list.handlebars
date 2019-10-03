@@ -1,0 +1,64 @@
+{{#each locations}}
+  <div class="l-locations__row">
+      <div class="c-offices">
+          <div class="c-offices__heading">
+              <h4 class="c-offices__title t-headline-4 t-bold">
+                {{@key}}
+              </h4>
+          </div>
+          {{#with this}}
+            {{#if headquarter}}
+                {{#with headquarter}}
+                    <div class="c-offices__heading">
+                        <h5 class="c-offices__title t-headline-5 t-light">
+                            Corporate Headquarters
+                        </h5>
+                    </div>
+                    <div class="c-offices__body">
+                        <div class="c-offices__headquarters">
+                            <div class="c-office-info">
+                                <address class="c-office-info__address t-body-1 t-light">
+                                {{#if addressLine4}}
+                                    <strong class="t-bold">{{addressLine4}}</strong><br>
+                                {{/if}}
+                                    {{addressLine1}}<br>
+                                    {{addressLine2}}<br>
+                                    {{addressLine3}}
+                                </address>
+                                {{#if tel }} <p class="c-office-info__contact t-body-1 t-light">Tel: <a href="tel:{{tel}}">{{tel}}</a></p> {{/if}}
+                                {{#if mail }} <p class="c-office-info__contact t-body-1 t-light">Email: <a href="mailto:{{mail}}">{{mail}}</a></p> {{/if}}
+                                {{#if web }} <p class="c-office-info__contact t-body-1 t-light">Web: <a href="{{web}}" target="_blank">{{web}}</a></p> {{/if}}
+                            </div>
+                        </div>
+                        {{/with}}
+                        {{/if}}
+                        {{#if offices}}
+                        <div class="c-offices__additional">
+                            <ul class="c-list c-list--horizontal-wrap c-list--3-col-width">
+                                {{#each offices}}
+                                    {{#with this}}
+                                    <li class="c-list__item">
+                                        <div class="c-office-info">
+                                            <address class="c-office-info__address t-body-1 t-light">
+                                            {{#if addressLine4}}
+                                                <strong class="t-bold">{{addressLine4}}</strong><br>
+                                            {{/if}}
+                                            {{addressLine1}}<br>
+                                            {{addressLine2}}<br>
+                                            {{addressLine3}}
+                                            </address>
+                                            {{#if tel }} <p class="c-office-info__contact t-body-1 t-light">Tel: <a href="tel:{{tel}}">{{tel}}</a></p> {{/if}}
+                                            {{#if mail }} <p class="c-office-info__contact t-body-1 t-light">Email: <a href="mailto:{{mail}}">{{mail}}</a></p> {{/if}}
+                                            {{#if web }} <p class="c-office-info__contact t-body-1 t-light">Web: <a href="{{web}}" target="_blank">{{web}}</a></p> {{/if}}
+                                        </div>
+                                    </li>
+                                    {{/with}}
+                                {{/each}}
+                            </ul>
+                        </div>
+                        {{/if}}
+                    </div>
+          {{/with}}
+      </div>
+  </div>
+{{/each}}

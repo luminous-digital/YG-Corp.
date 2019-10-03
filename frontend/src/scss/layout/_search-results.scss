@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Search results
+   ========================================================================== */
+
+// Search results
+//
+// markup:
+// <div class="l-search-results">
+//     <div class="l-search-results__heading">
+//         <h2 class="c-results-heading">
+//             <span class="c-results-heading__accent">14 results</span>
+//             for Share price
+//         </h2>
+//     </div>
+//     <div class="l-search-results__list">
+//         <ul class="c-list">
+//             <li class="c-list__item">
+//                 <div class="c-list__decor">
+//                     <a href="#" class="c-redirect-cta" target="_blank">
+//                         <h5 class="c-redirect-cta__section t-headline-5">
+//                             Section
+//                         </h5>
+//                         <h5 class="c-redirect-cta__title t-headline-5">
+//                             Lorem ipum dolor et
+//                         </h5>
+//                         <div class="c-redirect-cta__icon" target="_blank">
+//                             <span class="o-icon-wrapper">
+//                                 <svg class="o-icon o-icon--arrow-right">
+//                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                 </svg>
+//                             </span>
+//                         </div>
+//                     </a>
+//                 </div>
+//             </li>
+//             <li class="c-list__item">
+//                 <div class="c-list__decor">
+//                     <a href="#" class="c-redirect-cta" target="_blank">
+//                         <h5 class="c-redirect-cta__section t-headline-5">
+//                             Section
+//                         </h5>
+//                         <h5 class="c-redirect-cta__title t-headline-5">
+//                             Lorem ipum dolor et
+//                         </h5>
+//                         <div class="c-redirect-cta__icon" target="_blank">
+//                             <span class="o-icon-wrapper">
+//                                 <svg class="o-icon o-icon--arrow-right">
+//                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-arrow-right"></use>
+//                                 </svg>
+//                             </span>
+//                         </div>
+//                     </a>
+//                 </div>
+//             </li>
+//         </ul>
+//     </div>
+//     <div class="l-search-results__cta">
+//         <button class="c-read-more-btn c-underline-link">
+//             <span class="c-read-more-btn__span">Load more</span>
+//             <span class="c-underline-link__icon o-icon-wrapper">
+//                 <svg class="o-icon o-icon--cross">
+//                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="./static/svg/symbol/svg/sprite.symbol.svg#icon-cross"></use>
+//                 </svg>
+//             </span>
+//         </button>
+//     </div>
+// </div>
+//
+// Styleguide 10.3
+
+.l-search-results {
+    padding-top: $size-alt * 5;
+}
+
+.l-search-results__heading {
+    margin-bottom: $size-gutter * 8;
+}
+
+.l-search-results__cta {
+    display: flex;
+    justify-content: center;
+
+    margin-top: $size-gutter * 4;
+}
+
+@include media(tablet) {
+    .l-search-results {
+        margin-top: $size-alt * 6;
+    }
+
+    .l-search-results__cta {
+        margin-top: $size-gutter * 8;
+    }
+}
+
+@include media(desktop) {
+    .l-search-results {
+        margin-bottom: $size-gutter * 9;
+    }
+
+    .l-search-results__heading {
+        margin-bottom: $size-gutter * 9;
+    }
+
+    .l-search-results__list {
+        width: 100%;
+    }
+
+    .l-search-results__cta {
+        margin-top: $size-gutter * 8;
+    }
+}

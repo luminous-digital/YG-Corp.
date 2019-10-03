@@ -1,0 +1,43 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="l-inner">
+    <div class="l-timeline js-timeline">
+        <div class="l-timeline__col l-timeline__col--fixed js-timeline--col">
+            <div class="c-counter-box">
+                <p class="c-counter-box__number js-timeline-number-panel" id="countup-panel">
+                    0
+                </p>
+                <p class="c-counter-box__desc">
+                    panel members
+                </p>
+                <p class="c-counter-box__number js-timeline-number-employees" id="countup-employees">
+                    0
+                </p>
+                <p class="c-counter-box__desc">
+                    employees
+                </p>
+                <p class="c-counter-box__number js-timeline-number-offices" id="countup-offices">
+                    0
+                </p>
+                <p class="c-counter-box__desc">
+                    offices
+                </p>
+            </div>
+        </div>
+        <div class="l-timeline__col l-timeline__col--margin-top">
+            <ul class="c-timeline-list">
+                {% for element in self.timeline %}
+                <li class="c-timeline-list__item" data-panel='{{ element.panel_field }}' data-employees='{{ element.employees_field }}' data-offices='{{ element.offices_field }}'>
+                    <div class="c-timeline-box">
+                        <div class="c-timeline-box__heading t-headline-2">{{ element.year_field }}</div>
+                        <div class="c-timeline-box__content c-wysiwyg c-wysiwyg--small">
+                            <p>{{ element.text_editor }}</p>
+                            {% image element.image original as img %}
+                            <img src="{{ img.url }}">
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

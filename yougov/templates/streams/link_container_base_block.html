@@ -1,0 +1,50 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% if link_or_doc %}
+    {% for link in link_or_doc %}
+        <a href="{% if link.block_type == 'link_external_url' %}{{ link }}{% else %}{{ link.value.url }}{% endif %}" class="c-widget-module" target="{{ link_tab_chooser }}" style="background-color: {{ background_colour }};"
+            {% if doc_open_or_download == "Download" and link.block_type == 'document' %} download{% endif %}>
+    {% endfor %}
+{% else %}
+    <div class="c-widget-module" style="background-color: {{ background_colour }};">
+{% endif %}
+    {% if image_position == 'left' %}
+        {% if image %}
+            {% image image original as img %}
+            <div class="c-widget-module__media" style="background-image: url({{img.url}})"></div>
+        {% endif %}
+    {% endif %}
+    <div class="c-widget-module__main">
+        {% if title %}
+            <h4 class="c-widget-module__title">
+                {{ title }}
+            </h4>
+        {% endif %}
+        {% if content %}
+            <p class="c-widget-module__desc">
+                {{ content }}
+            </p>
+        {% endif %}
+        <div class="c-widget-module__action">
+            {% if link_text %}
+                <span class="c-underline-link">
+                    {{ link_text }}
+                    <span class="c-underline-link__icon o-icon-wrapper">
+                        <svg class="o-icon o-icon--arrow-right">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                        </svg>
+                    </span>
+                </span>
+            {% endif %}
+        </div>
+    </div>
+    {% if image_position == 'right' %}
+        {% if image %}
+            {% image image original as img %}
+            <div class="c-widget-module__media" style="background-image: url({{img.url}})"></div>
+        {% endif %}
+    {% endif %}
+{% if link_or_doc %}
+    </a>
+{% else %}
+    </div>
+{% endif %}

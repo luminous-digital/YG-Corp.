@@ -2,17 +2,6 @@ version: '3'
 
 services:
 
-  db:
-    image: mysql:5.6.33
-    volumes:
-      - wagtail_mysql_data:/var/lib/mysql
-    ports:
-      - "3310:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_ROOT_HOST=%
-      - MYSQL_DATABASE=wagtail
-
   web:
     build:
       context: ./
@@ -22,23 +11,77 @@ services:
     ports:
       - "8000:8000"
     links:
-      - db
+      - postgres
     tty: true
     depends_on:
-      - db
+      - postgres
     environment:
       - DJANGO_SETTINGS_MODULE=yougov.settings.dev
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_DATABASE=wagtail
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=admin
-      - MYSQL_HOST=db
-      - MYSQL_PORT=3306
+      - POSTGRES_USER=yougov
+      - POSTGRES_PASSWORD=yougov
+      - POSTGRES_DB=wagtail
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
 
     command: >
       bash -c "python manage.py migrate
       && python manage.py runserver 0.0.0.0:8000"
 
+  postgres:
+    image: postgres:11
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - POSTGRES_USER=yougov
+      - POSTGRES_PASSWORD=yougov
+      - POSTGRES_DB=wagtail
+    volumes:
+      - wagtail_pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+# USE ONLY TO MOVE DB FROM MYSQL TO POSTGRESQL For local purpose you can create networking
+#  pgloader:
+#    image: dimitri/pgloader
+#    depends_on:
+#      - db
+#      - postgres
+#    links:
+#      - db
+#      - postgres
+#    networks:
+#      - yougov-net
+#    command: >
+#      bash -c "pgloader mysql://root:admin@db/wagtail pgsql://yougov:yougov@postgres/yougov"
+
+# For compile css and js, and add them to project
+# (Frontend source files are in `frontend/src` folder.
+# Files are moved to `yougov/static` after compiled)
+  frontend:
+    build: ./frontend
+    volumes:
+      - .:/app
+    working_dir: /app/frontend
+    command: >
+      sh -c "
+      echo 'gulp --version:'
+      && gulp --version
+      && echo 'node --version:'
+      && node --version
+      && apt-get update -y
+      && apt remove cmdtest -y
+      && apt remove yarn -y
+      && echo 'npm install -g yarn git -y:'
+      && npm install -g yarn git -y
+      && echo 'npm install --save handlebars:'
+      && npm install -g handlebars -y
+      && echo 'yarn install -y:'
+      && yarn install -y
+      && echo 'gulp css:'
+      && gulp css
+      && echo 'gulp commit:'
+      && echo 'gulp commit'"
+
 volumes:
-  wagtail_mysql_data:
+  wagtail_pg_data:
 

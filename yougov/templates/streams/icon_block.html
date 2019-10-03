@@ -1,0 +1,49 @@
+{% load static wagtailcore_tags wagtailimages_tags %}
+<div class="l-number l-number{{ self.background_colour }}">
+    <div class="l-inner l-inner--small">
+        <div class="c-number c-number--two-col">
+            {% if self.main_title %}
+                <div class="c-number__heading">
+                    {{ self.main_title }}
+                </div>
+            {% endif %}
+            <ul class="c-list">
+                {% for icon in self.icons %}
+                    <li class="c-list__item">
+                        <div class="c-number-box">
+                            {% image icon.icon_image original as img %}
+                            <figure class="c-number-box__decor">
+                                <img src="{{ img.url }}" alt="{{ icon.icon_alt_text }}" />
+                            </figure>
+                            <div class="c-number-box__text">
+                                {% if icon.title %}
+                                    <div class="c-number-box__title">
+                                        {{ icon.title }}
+                                    </div>
+                                {% endif %}
+                                <div class="c-number-box__subtitle">
+                                    {{ icon.text }}
+                                </div>
+                                <div class="c-number-box__cta">
+                                    {% for link in icon.link %}
+                                        <a href="{% if link.block_type == 'link_external_url' %}{{ link.value }}{% else %}{{ link.value.url }}{% endif %}" class="c-underline-link" target="{{ icon.link_tab_chooser }}"
+                                        {% if icon.if_document_pdf == "Download" and link.block_type == 'document' %} download{% endif %}>
+                                    {% endfor %}
+                                    {{ icon.link_text }}
+                                    {% if icon.link %}
+                                        <span class="c-underline-link__icon o-icon-wrapper">
+                                            <svg class="o-icon o-icon--arrow-right">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{% static 'svg/symbol/svg/sprite.symbol.svg' %}#icon-arrow-right"></use>
+                                            </svg>
+                                        </span>
+                                    {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+/* ==========================================================================
+   Oddity
+   ========================================================================== */
+
+.c-oddity {
+    width: 100%;
+
+    padding: $size-gutter * 3;
+
+    color: color(white);
+    background-color: color(main);
+}
+
+.c-oddity--headquarter {
+    background-color: color(violet);
+}
+
+.c-oddity__label {
+    margin-bottom: $size-gutter / 2;
+}

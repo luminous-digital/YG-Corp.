@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Info
+   ========================================================================== */
+
+// Info
+//
+// markup:
+// <div class="c-info c-wysiwyg">
+//      <h4>
+//          <strong>Email</strong>
+//      </h4>
+//      <h5>
+//          UK Panel member queries
+//      </h5>
+//      <br>
+//      <h5>
+//          Press enquiries
+//      </h5>
+//      <p>
+//          press@yougov.com
+//      </p>
+//      <br>
+//      <h5>
+//          Sales and general info
+//      </h5>
+//      <p>
+//          info@yougov.com
+//      </p>
+//      <br>
+//      <h4>
+//          <strong>Addresses</strong>
+//      </h4>
+//      <h6>
+//          London
+//      </h6>
+//      <p>
+//          50 Featherstone Street
+//          <br>
+//          London
+//          <br>
+//          EC1Y 8RT
+//          <br>
+//          United Kingdom
+//      </p>
+//      <br>
+//      <p>
+//          Registered in England and Wales.
+//          <br>
+//          Registered company no: 3607311.
+//          <br>
+//          Main country of operation: United Kingdom
+//      </p>
+//      <br>
+//      <p>
+//          Tel: <a href="tel:44-20-7012-6000" target="_blank">+44 (0)20 7012 6000</a>*
+//      </p>
+//      <p>
+//          Email: <a href="mailto:name.surname@address.co">name.surname@address.co</a>
+//      </p>
+//      <p>
+//          Web: <a href="www.address.co">www.address.co</a>
+//      <p>
+//      <br>
+//      <br>
+//      <h6>
+//          Manchester
+//      </h6>
+//      <p>
+//          WeWork - 02-114
+//          <br>
+//          No. 1 Spinningfields
+//          <br>
+//          Quay Street
+//          <br>
+//          Manchester
+//          <br>
+//          M3 3EB
+//      </p>
+//      <br>
+//      <br>
+//      <p>
+//          To contact the Press Office, please email us directly through press@yougov.com.
+//          <br>
+//          <br>
+//          * Calls to the UK Sales team may be recorded for training purposes.
+//      </p>
+//      <br>
+//      <br>
+//      <h4>
+//          <strong>Panel members</strong>
+//      </h4>
+//      <h5>
+//          Please contact us directly through <a href="https://yougov.zendesk.com/hc/en-us/requests/new">https://yougov.zendesk.com/hc/en-us/requests/new</a>
+//      </h5>
+//      <br>
+//      <br>
+//      <h4>
+//          <strong>Reporting security issues</strong>
+//      </h4>
+//      <h5>
+//          If you are a YouGov panel member and have a security issue to report regarding your YouGov account, please contact us through <a href="https://yougov.zendesk.com/hc/en-us/requests/new">https://yougov.zendesk.com/hc/en-us/requests/new</a>
+//          <br>
+//          <br>
+//          This includes password problems, login issues, suspected fraud and account abuse issues. If you believe you have discovered a vulnerability in a YouGov website or product, please email <a href="security@yougov.com">security@yougov.com</a>
+//      </h5>
+// </div>
+// <div style="margin-top: 40px;">
+//     <div class="c-info c-wysiwyg">
+//          <h4>
+//              <strong>Country/region</strong>
+//          </h4>
+//          <h5>
+//              Office type/headquarters
+//          </h5>
+//          <p>
+//              Address line 1
+//              <br>
+//              Address line 2
+//              <br>
+//              Address line 3
+//              <br>
+//          </p>
+//          <br>
+//          <p>
+//              Tel: <a href="tel:000-0000-0000" target="_blank">000 0000 0000</a>*
+//          </p>
+//          <p>
+//              Email: <a href="mailto:name.surname@address.co">name.surname@address.co</a>
+//          </p>
+//          <p>
+//              Web: <a href="www.address.co">www.address.co</a>
+//          <p>
+//     </div>
+// </div>
+//
+// Styleguide 2.11
+
+.c-info {
+    h4:not([class]) + h5:not([class]) {
+        margin-top: $size-gutter;;
+    }
+    h4:not([class]) + h6:not([class]) {
+        margin-top: $size-gutter;
+    }
+    h5:not([class]) + h4:not([class]) {
+        margin-top: $size-gutter * 5.75;
+    }
+    h5:not([class]) + h5:not([class]) {
+        margin-top: $size-gutter * 3;
+    }
+    h5:not([class]) + p:not([class]) {
+        margin-top: $size-gutter;
+    }
+    h6:not([class]) + p:not([class]) {
+        margin-top: 0;
+    }
+    p:not([class]) + h4:not([class]) {
+        margin-top: $size-gutter * 5.75;
+    }
+    p:not([class]) + h5:not([class]) {
+        margin-top: $size-gutter * 3;
+    }
+    p:not([class]) + h6:not([class]) {
+        margin-top: $size-gutter * 6.75;
+    }
+}
+
+.c-info p a:not(:first-of-type) {
+    margin-top: $size-gutter;
+}
+
+.c-info a {
+    position: relative;
+
+    display: inline-flex;
+}
+
+.c-info h5 a {
+    font: inherit;
+
+    transition: $transition-default;
+    text-decoration: underline;
+    word-break: break-all;
+
+    color: color(main);
+}
+
+@include media(tablet) {
+    .c-info h5 a {
+        word-break: unset;
+    }
+}

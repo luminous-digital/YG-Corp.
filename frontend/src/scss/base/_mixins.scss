@@ -1,0 +1,263 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+/* 1. Font smoothing
+========================================================================== */
+/* Better font-rendering on OSX
+   https://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+*/
+@mixin font-smoothing($value: on) {
+    @if $value == on {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    } @else {
+        -webkit-font-smoothing: subpixel-antialiased;
+        -moz-osx-font-smoothing: auto;
+    }
+}
+
+/* 2. A clearfix for floated elements
+========================================================================== */
+@mixin clearfix {
+    &:after {
+        display: block;
+        visibility: hidden;
+        clear: both;
+        overflow: hidden;
+
+        height: 0;
+        margin: 0!important;
+
+        line-height: 0;
+
+        content: '';
+    }
+}
+
+/* 3. Append a modificator class that changes color/bg
+========================================================================== */
+@mixin color-modifiers {
+    @each $name, $hex in $colors {
+        &--#{$name} {
+            color: $hex;
+        }
+    }
+}
+
+@mixin background-modifiers {
+    @each $name, $hex in $colors {
+        &--#{$name} {
+            background-color: $hex;
+        }
+    }
+}
+
+@mixin transition ($duration: 170ms, $timing: ease) {
+    transition-timing-function: $timing;
+    transition-duration: $duration;
+}
+
+@mixin ellipsis () {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin animate-link ($anim-line-h: 100%, $anim-line-v: 1px, $paint: currentColor) {
+    position: relative;
+
+    overflow: hidden;
+    &:before {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        display: block;
+
+        width: $anim-line-h;
+        height: $anim-line-v;
+
+        content: '';
+        transition: .18s cubic-bezier(.52, .01, .16, 1);
+        transform: scaleX(0);
+        transform-origin: 0 50%;
+
+        background: $paint;
+    }
+}
+
+@mixin animate-link-reverse () {
+    &:before {
+        transition-timing-function: cubic-bezier(.62, .02, .34, 1);
+        transition-duration: .24s;
+        transform: scaleX(1);
+    }
+}
+
+@mixin helper--list () {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+/* 2. Headline mixins
+========================================================================== */
+
+// 52 / 56 (500), 76 / 80 / -1.5 (300), 96 / 112 / -1.5 (300)
+@mixin headline-1 () {
+    font-size: font-size(size42);
+    font-weight: font-weight(medium);
+    line-height: (line-height(size56) / font-size(size42));
+
+    @include media(tablet) {
+        font-size: font-size(size76);
+        font-weight: font-weight(light);
+        line-height: (line-height(size80) / font-size(size76));
+
+        letter-spacing: letter-spacing(minus-150);
+    }
+    @include media(desktop) {
+        font-size: font-size(size96);
+        line-height: (line-height(size112) / font-size(size96));
+    }
+}
+
+// 26 / 30 (500), 38 / 48 (500), 48 / 56 (500)
+@mixin headline-2 () {
+    font-size: font-size(size26);
+    font-weight: font-weight(medium);
+    line-height: (line-height(size30) / font-size(size26));
+
+    @include media(tablet) {
+        font-size: font-size(size38);
+        line-height: (line-height(size48) / font-size(size38));
+    }
+    @include media(desktop) {
+        font-size: font-size(size48);
+        line-height: (line-height(size56) / font-size(size48));
+    }
+}
+
+// 22 / 25 / 0.25 (500), 34 / 40 / 0.25 (500), 34 / 40 / 0.25 (500)
+@mixin headline-3 () {
+    font-size: font-size(size22);
+    font-weight: font-weight(medium);
+    line-height: (line-height(size25) / font-size(size22));
+
+    letter-spacing: letter-spacing(plus-25);
+
+    @include media(tablet) {
+        font-size: font-size(size34);
+        line-height: (line-height(size40) / font-size(size34));
+    }
+}
+
+// 20 / 24 / 0.15 (500), 20 / 24 / 0.15 (500), 20 / 24 / 0.15 (500)
+@mixin headline-4 () {
+    font-size: font-size(size20);
+    font-weight: font-weight(medium);
+    line-height: (line-height(size24) / font-size(size20));
+
+    letter-spacing: letter-spacing(plus-15);
+}
+
+// 20 / 24 / 0.15 (400), 20 / 24 / 0.15 (400), 20 / 24 / 0.15 (400)
+@mixin headline-5 () {
+    @include headline-4 ();
+    font-weight: font-weight(regular);
+}
+
+/* 3. Subtitle mixins
+========================================================================== */
+
+// 16 / 24 / 0.15 (700), 16 / 24 / 0.15 (700), 16 / 24 / 0.15 (700)
+@mixin subtitle-1 () {
+    font-size: font-size(size16);
+    font-weight: font-weight(bold);
+    line-height: (line-height(size24) / font-size(size16));
+
+    letter-spacing: letter-spacing(plus-15);
+}
+
+// 14 / 24 / 0.1 (700), 14 / 24 / 0.1 (700), 14 / 24 / 0.1 (700)
+@mixin subtitle-2 () {
+    font-size: font-size(size14);
+    font-weight: font-weight(bold);
+    line-height: (line-height(size24) / font-size(size14));
+
+    letter-spacing: letter-spacing(plus-10);
+}
+
+/* 4. Body mixins
+========================================================================== */
+
+// 16 / 24 / 0.44 (400), 16 / 24 / 0.44 (400), 16 / 24 / 0.44 (400)
+@mixin body-1 () {
+    font-size: font-size(size16);
+    font-weight: font-weight(regular);
+    line-height: (line-height(size24) / font-size(size16));
+
+    letter-spacing: letter-spacing(plus-44);
+}
+
+// 14 / 24 / 0.25 (400), 14 / 24 / 0.25 (400), 14 / 24 / 0.25 (400)
+@mixin body-2 () {
+    font-size: font-size(size14);
+    font-weight: font-weight(regular);
+    line-height: (line-height(size24) / font-size(size14));
+
+    letter-spacing: letter-spacing(plus-25);
+}
+
+/* 5. Button mixins
+========================================================================== */
+
+// 14 / 16 / 0.50 (600), 14 / 16 / 0.50 (600), 14 / 16 / 0.50 (600)
+@mixin button-text () {
+    font-family: $font-default;
+    font-size: font-size(size14);
+    font-weight: font-weight(semibold);
+    line-height: (line-height(size16) / font-size(size14));
+
+    letter-spacing: letter-spacing(plus-50);
+}
+
+// 14 / 24 / 0.50 (600), 14 / 24 / 0.50 (600), 14 / 24 / 0.50 (600)
+@mixin button-text-alt () {
+    font-family: $font-default;
+    font-size: font-size(size14);
+    font-weight: font-weight(semibold);
+    line-height: (line-height(size24) / font-size(size14));
+
+    letter-spacing: letter-spacing(plus-50);
+}
+
+/* 6. Caption mixins
+========================================================================== */
+
+// 12 / 16 / 0.50 (400), 12 / 16 / 0.50 (400), 12 / 16 / 0.50 (400)
+@mixin caption-text () {
+    font-family: $font-default;
+    font-size: font-size(size12);
+    font-weight: font-weight(regular);
+    line-height: (line-height(size16) / font-size(size12));
+
+    letter-spacing: letter-spacing(plus-50);
+}
+
+/* 7. Button reset
+========================================================================== */
+@mixin button-reset {
+    padding: 0;
+
+    font-size: inherit;
+
+    cursor: pointer;
+
+    color: inherit;
+    border: none;
+    background-color: transparent;
+}

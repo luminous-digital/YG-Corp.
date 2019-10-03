@@ -1,0 +1,54 @@
+/* ==========================================================================
+   Slider
+   ========================================================================== */
+
+
+.c-slider {
+    position: relative;
+    display: flex;
+
+    height: $size-video-control-slider-height;
+    width: $size-video-control-slider-width;
+}
+
+.c-slider__info {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+
+    bottom: ($size-alt * 1.2);
+    left: 0;
+    bottom: 26px;
+
+    height: 0;
+
+    width: 100%;
+
+    color: color(white);
+}
+
+.c-slider__bar {
+    margin: 0;
+    padding: 0;
+
+    width: $size-video-control-slider-width;
+    height: $size-video-control-slider-height;
+}
+
+.c-slider__bar::-ms-fill-lower {
+    background-color: color(white);
+}
+
+.c-slider__bar::-ms-fill-upper {
+    background-color: color(accent);
+    opacity: 0.5;
+}
+
+.c-slider__bar::-ms-thumb {
+    height: $size-video-control-slider-height;
+    background-color: color(white);
+}
+
+.c-slider__bar::-ms-track {
+    border: none;
+}
