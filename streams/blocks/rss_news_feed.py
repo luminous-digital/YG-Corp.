@@ -1,6 +1,7 @@
 import re
 from datetime import date
 
+from bs4 import BeautifulSoup
 from django.core.cache import cache
 from django.core.cache.utils import make_template_fragment_key
 
@@ -35,12 +36,8 @@ class RssBlock(NewsFeedModuleBlock):
         return context
 
     def get_news_text_from_paragraphs(self, source, index):
-        regex_to_remove = ['<iframe.*?</iframe>', '<script.*?</script>', '<.*?>']
-        text = self.get_value_from(source, index)
-        for regex in regex_to_remove:
-            clean_regex = re.compile(regex)
-            text = re.sub(clean_regex, '', text)
-        return text
+        news_text = BeautifulSoup(self.get_value_from(source, index), 'html.parser')
+        return ' '.join(p.get_text() for p in news_text.find_all('p') if p.get_text() != '')
 
     def get_news_date(self, source, index):
         date_data = re.findall(r'/(\d{4})/(\d{1,2})/(\d{1,2})/', self.get_value_from(source, index))
